@@ -1,6 +1,6 @@
 {
   "name": "iamgld-ui-angular",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",
@@ -8,14 +8,14 @@
     "start:host": "ng serve --configuration development --host 0.0.0.0",
     "start:stag": "ng serve --configuration staging",
     "start:prod": "ng serve --configuration production",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test": "",
+    "test:watch": "",
     "build": "npm run build:prod",
     "build:dev": "ng build --configuration development --progress",
     "build:stag": "ng build --configuration staging --progress",
     "build:prod": "ng build --configuration production --progress",
-    "server:ssr": "node dist/server/server.mjs",
-    "serve:ssr:iamgld-ui-angular": "node dist/iamgld-ui-angular/server/server.mjs",
+    "build:iamgld-ui": "ng build --project=iamgld-ui",
+    "server:ssr": "node dist/iamgld-ui-angular/server/server.mjs",
     "prettier:": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --check --config .prettierrc",
     "prettier:fix": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --write --config .prettierrc",
     "stylelint": "stylelint src/**/*.{css,scss}",
@@ -26,7 +26,6 @@
     "lintstaged": "npx lint-staged",
     "postinstall": "npx husky"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "19.0.1",
     "@angular/common": "19.0.1",
@@ -56,6 +55,7 @@
     "eslint": "9.16.0",
     "husky": "9.1.7",
     "lint-staged": "15.2.10",
+    "ng-packagr": "^19.0.0",
     "prettier": "3.4.1",
     "stylelint": "16.11.0",
     "stylelint-config-standard": "36.0.1",

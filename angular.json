@@ -60,9 +60,13 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["./src/app/styles"]
+              "includePaths": [
+                "./src/app/styles"
+              ]
             },
             "scripts": [],
             "allowedCommonJsDependencies": []
@@ -152,11 +156,63 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "iamgld-ui": {
+      "projectType": "library",
+      "root": "projects/iamgld-ui",
+      "sourceRoot": "projects/iamgld-ui/src",
+      "prefix": "gld",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/iamgld-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/iamgld-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/iamgld-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/iamgld-ui/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/iamgld-ui/**/*.ts",
+              "projects/iamgld-ui/**/*.html"
+            ],
+            "eslintConfig": "projects/iamgld-ui/eslint.config.js"
           }
         }
       }
     }
+  },
+  "cli": {
+    "packageManager": "pnpm",
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
-

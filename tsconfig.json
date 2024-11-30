@@ -23,7 +23,8 @@
       "@app": ["src/app/index.ts"],
       "@environment": ["src/environments/environment.local.ts"],
       // Shared Paths
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@iamgld/ui": ["projects/iamgld-ui/src/public-api.ts"]
     }
   },
   "angularCompilerOptions": {
@@ -33,3 +34,4 @@
     "strictTemplates": true
   }
 }
+
