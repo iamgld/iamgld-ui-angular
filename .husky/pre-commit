@@ -1,0 +1,1 @@
+echo "[hook pre-commit] Running linters - linting, formatting and stylelint..." && npm run linter

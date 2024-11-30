@@ -1,0 +1,157 @@
+@use './setting' as setting;
+@use 'sass:math';
+
+/*
+  En esta capa estarán:
+    1. Herramientas que están disponible globalmente
+    2. Funciones utilitarias
+    3. Mixins
+*/
+
+// From (mayor que $breakpoint)
+@mixin from($from) {
+  @if $from == zero {
+    @media screen and (width > 0) {
+      @content;
+    }
+  }
+
+  @if $from == mobile {
+    @media screen and (width > 320px) {
+      @content;
+    }
+  }
+
+  @if $from == landscape {
+    @media screen and (width > 576px) {
+      @content;
+    }
+  }
+
+  @if $from == tablet {
+    @media screen and (width > 768px) {
+      @content;
+    }
+  }
+
+  @if $from == desktop {
+    @media screen and (width > 992px) {
+      @content;
+    }
+  }
+
+  @if $from == extra-desktop {
+    @media screen and (width > 1280px) {
+      @content;
+    }
+  }
+}
+
+// To (es menor que $to)
+@mixin to($to) {
+  @if $to == zero {
+    @media screen and (width <= 0) {
+      @content;
+    }
+  }
+
+  @if $to == mobile {
+    @media screen and (width <= 320px) {
+      @content;
+    }
+  }
+
+  @if $to == landscape {
+    @media screen and (width <= 576px) {
+      @content;
+    }
+  }
+
+  @if $to == tablet {
+    @media screen and (width <= 768px) {
+      @content;
+    }
+  }
+
+  @if $to == desktop {
+    @media screen and (width <= 992px) {
+      @content;
+    }
+  }
+
+  @if $to == extra-desktop {
+    @media screen and (width <= 1280px) {
+      @content;
+    }
+  }
+}
+
+// Styles of Scroll Bar on Chrome, Edge y Safari.
+@mixin scrollbar {
+  // Chrome, Edge y Safari.
+  &::-webkit-scrollbar {
+    width: var(--spacing--xxs);
+    height: var(--spacing--xxs);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; // color of the tracking area
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--green); // color of the scroll thumb
+    border-radius: var(--radius--s); // roundness of the scroll thumb
+    // border: 2px solid Palette(Primary); // creates padding around scroll thumb
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+
+  // color of the scroll thumb, color of the tracking area
+  scrollbar-color: var(--green) transparent;
+  scroll-behavior: smooth;
+}
+
+@mixin fontSizeHeadingOne() {
+  font-size: var(--font-size--heading-two);
+
+  @include from(desktop) {
+    font-size: var(--font-size--heading-one);
+  }
+}
+
+@mixin fontSizeHeadingTwo() {
+  font-size: var(--font-size--heading-three);
+
+  @include from(desktop) {
+    font-size: var(--font-size--heading-two);
+  }
+}
+
+@mixin fontSizeHeadingThree() {
+  font-size: var(--font-size--normal);
+
+  @include from(desktop) {
+    font-size: var(--font-size--heading-three);
+  }
+}
+
+@mixin fontSizeNormal() {
+  font-size: var(--font-size--small);
+
+  @include from(desktop) {
+    font-size: var(--font-size--normal);
+  }
+}
+
+@mixin fontSizeSmall() {
+  font-size: var(--font-size--tiny);
+
+  @include from(desktop) {
+    font-size: var(--font-size--small);
+  }
+}
+
+@mixin fontSizeTiny() {
+  font-size: var(--font-size--tiny);
+}
