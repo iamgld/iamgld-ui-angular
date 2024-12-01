@@ -2,5 +2,5 @@
  * Public API Surface of iamgld-ui
  */
 
-export * from './lib/buttons'
+export * from './lib/components'
 

@@ -60,13 +60,9 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["./projects/iamgld-ui/public/styles/styles.scss", "src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "./src/app/styles"
-              ]
+              "includePaths": ["./src/app/styles"]
             },
             "scripts": [],
             "allowedCommonJsDependencies": []
@@ -156,10 +152,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
@@ -189,19 +182,13 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/iamgld-ui/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/iamgld-ui/**/*.ts",
-              "projects/iamgld-ui/**/*.html"
-            ],
+            "lintFilePatterns": ["projects/iamgld-ui/**/*.ts", "projects/iamgld-ui/**/*.html"],
             "eslintConfig": "projects/iamgld-ui/eslint.config.js"
           }
         }
@@ -211,8 +198,7 @@
   "cli": {
     "packageManager": "pnpm",
     "analytics": false,
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
+

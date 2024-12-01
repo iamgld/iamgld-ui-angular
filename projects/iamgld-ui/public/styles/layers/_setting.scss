@@ -1,0 +1,119 @@
+/*
+  En esta capa estarán:
+    1. configuraciones disponibles globalmente
+    2. cambios de configuraciones
+    3. colores representativos de la marca o empresa
+*/
+
+:root {
+  // Breakpoints
+  --gld-break-point--zero: 0;
+  --gld-break-point--mobile: 320px;
+  --gld-break-point--landscape: 576px;
+  --gld-break-point--tablet: 768px;
+  --gld-break-point--desktop: 1080px;
+  --gld-break-point--extra-desktop: 1280px;
+
+  // Fonts
+  --gld-font-size--heading-one: 36px;
+  --gld-font-size--heading-two: 26px;
+  --gld-font-size--heading-three: 20px;
+  --gld-font-size--normal: 16px;
+  --gld-font-size--small: 12px;
+  --gld-font-size--tiny: 8px;
+  --gld-font--poppins: 'Poppins', sans-serif;
+
+  // Radius
+  --gld-radius--z: 0;
+  --gld-radius--xxxs: 4px;
+  --gld-radius--xxs: 6px;
+  --gld-radius--xs: 8px;
+  --gld-radius--s: 12px;
+  --gld-radius--m: 16px;
+  --gld-radius--l: 24px;
+  --gld-radius--xl: 32px;
+  --gld-radius--xxl: 40px;
+
+  // Spacing
+  --gld-spacing--z: 0;
+  --gld-spacing--xxxs: 4px;
+  --gld-spacing--xxs: 8px;
+  --gld-spacing--xs: 12px;
+  --gld-spacing--s: 16px;
+  --gld-spacing--m: 24px;
+  --gld-spacing--l: 32px;
+  --gld-spacing--xl: 48px;
+  --gld-spacing--xxl: 70px;
+
+  // Z Index
+  --gld-zindex--one: 1000;
+  --gld-zindex--two: 2000;
+  --gld-zindex--three: 3000;
+  --gld-zindex--four: 4000;
+  --gld-zindex--five: 5000;
+
+  // Icons Size
+  --gld-icon-size--large: 48px;
+  --gld-icon-size--medium: 40px;
+  --gld-icon-size--normal: 32px;
+  --gld-icon-size--small: 24px;
+  --gld-icon-size--tiny: 16px;
+
+  // Colors
+  --gld-red: #ef4444;
+  --gld-red-transparent--010: #{rgba(#ef4444, 0.1)};
+  --gld-red-transparent--020: #{rgba(#ef4444, 0.2)};
+  --gld-red-transparent--030: #{rgba(#ef4444, 0.3)};
+  --gld-blue: #3c82f6;
+  --gld-blue-transparent--010: #{rgba(#3c82f6, 0.1)};
+  --gld-blue-transparent--020: #{rgba(#3c82f6, 0.2)};
+  --gld-blue-transparent--030: #{rgba(#3c82f6, 0.3)};
+  --gld-green: #12b981;
+  --gld-green-transparent--010: #{rgba(#12b981, 0.1)};
+  --gld-green-transparent--020: #{rgba(#12b981, 0.2)};
+  --gld-green-transparent--030: #{rgba(#12b981, 0.3)};
+  --gld-purple: #a855f7;
+  --gld-purple-transparent--010: #{rgba(#a855f7, 0.1)};
+  --gld-purple-transparent--020: #{rgba(#a855f7, 0.2)};
+  --gld-purple-transparent--030: #{rgba(#a855f7, 0.3)};
+  --gld-mustard: #ebb305;
+  --gld-mustard-transparent--010: #{rgba(#ebb305, 0.1)};
+  --gld-mustard-transparent--020: #{rgba(#ebb305, 0.2)};
+  --gld-mustard-transparent--030: #{rgba(#ebb305, 0.3)};
+  --gld-orange: #f97315;
+  --gld-orange-transparent--010: #{rgba(#f97315, 0.1)};
+  --gld-orange-transparent--020: #{rgba(#f97315, 0.2)};
+  --gld-orange-transparent--020: #{rgba(#f97315, 0.3)};
+  --gld-pink: #ec4899;
+  --gld-pink-transparent--010: #{rgba(#ec4899, 0.1)};
+  --gld-pink-transparent--020: #{rgba(#ec4899, 0.2)};
+  --gld-pink-transparent--030: #{rgba(#ec4899, 0.3)};
+  --gld-gray: #b5b5b5;
+  --gld-gray-transparent--015: #{rgba(#b5b5b5, 0.15)};
+  --gld-gray-transparent--050: #{rgba(#b5b5b5, 0.5)};
+  --gld-gray-transparent--075: #{rgba(#b5b5b5, 0.75)};
+  --gld-white: #fff;
+  --gld-whitelight: #f9fafb;
+  --gld-whitelight-transparent--090: #{rgba(#f9fafb, 0.9)};
+  --gld-whitelight-transparent--080: #{rgba(#f9fafb, 0.8)};
+  --gld-whitelight-transparent--070: #{rgba(#f9fafb, 0.7)};
+  --gld-whitelight-transparent--060: #{rgba(#f9fafb, 0.6)};
+  --gld-whitelight-transparent--030: #{rgba(#f9fafb, 0.3)};
+  --gld-darkblue: #101827;
+  --gld-darkblue-transparent--090: #{rgba(#101827, 0.9)};
+  --gld-darkblue-transparent--080: #{rgba(#101827, 0.8)};
+  --gld-darkblue-transparent--070: #{rgba(#101827, 0.7)};
+  --gld-darkblue-transparent--060: #{rgba(#101827, 0.6)};
+  --gld-darkblue-transparent--030: #{rgba(#101827, 0.3)};
+
+  // Borders
+  --gld-border-size: 1px;
+  // Animations
+  --gld-animation-time--150: 150ms;
+  --gld-animation-time--250: 250ms;
+  --gld-animation-time--10s: 10s;
+  // General
+  --gld-max-width: 1280px;
+  --gld-navbar-height: 50px;
+  --gld-sidebar-width: 250px;
+}

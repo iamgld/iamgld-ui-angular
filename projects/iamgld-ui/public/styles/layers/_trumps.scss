@@ -1,0 +1,11 @@
+@use './setting' as setting;
+@use './tools' as tools;
+
+/*
+  En esta capa estarán:
+    1. sobreescrituras de estilos
+    2. helpers o utilities
+    3. pueden usar el flag !important
+    4. solo afecta a una pieza del DOM a la vez
+    5. especificidad por lo regular alta
+*/

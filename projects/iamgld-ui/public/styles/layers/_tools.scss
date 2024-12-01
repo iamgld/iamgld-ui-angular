@@ -1,0 +1,390 @@
+@use './setting' as setting;
+@use 'sass:math';
+
+/*
+  En esta capa estarán:
+    1. Herramientas que están disponible globalmente
+    2. Funciones utilitarias
+    3. Mixins
+*/
+
+/*
+  Transforma un valor de pixeles a em.
+    @param   {number} $el - el valor en pixeles que se desea convertir.
+    @param   {number} $context - el valor en pixeles del contenedor.
+    @return  {number} el tamaño transformado en em.
+*/
+@function em($el, $context: 16px) {
+  @if meta.type_of($el) ==number and math.unit($el) == 'px' {
+    @return math.div($el, $context) * 1em;
+  } @else {
+    @error 'Function em() requires a px unit as first argument / La función em() requiere una unidad de pixeles como primer argumento (el segundo es opcional)';
+  }
+}
+
+/*
+  Transforma un valor de pixeles a rem.
+  @param   {number} $el - el valor en pixeles que se desea convertir.
+  @return  {number} el tamaño transformado en rem.
+*/
+@function rem($el) {
+  @if meta.type_of($el) ==number and math.unit($el) == 'px' {
+    @return math.div($el / 16px) * 1rem;
+  } @else {
+    @error 'Function rem() requires a px unit as argument / La funcion rem() requiere una unidad de pixeles como argumento';
+  }
+}
+
+// Devuelve true si el breakpoint es parte del core
+@function isCoreBreakpoint($breakpoint) {
+  @if var($breakpoint) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+// Devuelve true si el breakpoint es válido (em, rem, px)
+@function isValidBreakpoint($breakpoint) {
+  @if meta.type-of($breakpoint)
+    ==number and
+    (
+      math.unit($breakpoint) ==
+        'px' or
+        math.unit($breakpoint) ==
+        'em' or
+        math.unit($breakpoint) ==
+        'rem'
+    )
+  {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+// Obtiene un breakpoint del core
+@function getBp($breakpoint) {
+  @return var($breakpoint);
+}
+
+// Convierte un valor en em o rem a px
+@function toPx($value) {
+  @if meta.type-of($value) ==number {
+    @if math.unit($value) == 'em' {
+      @return math.div($value, 1em) * 16px;
+    } @else if math.unit($value) == 'rem' {
+      @return math.div($value, 1rem) * 16px;
+    } @else if math.unit($value) == 'px' {
+      @return $value;
+    } @else {
+      @error "La funcion toPx() solo acepta números en em o rem o px";
+    }
+  } @else {
+    @error "La funcion toPx() solo acepta números en em o rem";
+  }
+}
+
+// From (mayor que $breakpoint)
+@mixin from($from) {
+  @if $from ==zero {
+    @media screen and (width > 0) {
+      @content;
+    }
+  }
+
+  @if $from ==mobile {
+    @media screen and (width > 320px) {
+      @content;
+    }
+  }
+
+  @if $from ==landscape {
+    @media screen and (width > 576px) {
+      @content;
+    }
+  }
+
+  @if $from ==tablet {
+    @media screen and (width > 768px) {
+      @content;
+    }
+  }
+
+  @if $from ==desktop {
+    @media screen and (width > 992px) {
+      @content;
+    }
+  }
+
+  @if $from ==extra-desktop {
+    @media screen and (width > 1280px) {
+      @content;
+    }
+  }
+}
+
+// To (es menor que $to)
+@mixin to($to) {
+  @if $to ==zero {
+    @media screen and (width <=0) {
+      @content;
+    }
+  }
+
+  @if $to ==mobile {
+    @media screen and (width <=320px) {
+      @content;
+    }
+  }
+
+  @if $to ==landscape {
+    @media screen and (width <=576px) {
+      @content;
+    }
+  }
+
+  @if $to ==tablet {
+    @media screen and (width <=768px) {
+      @content;
+    }
+  }
+
+  @if $to ==desktop {
+    @media screen and (width <=992px) {
+      @content;
+    }
+  }
+
+  @if $to ==extra-desktop {
+    @media screen and (width <=1280px) {
+      @content;
+    }
+  }
+}
+
+// fromTo la regla se ejecuta entre ambos breakpoints.
+@mixin fromTo($from, $to) {
+  // Si ambos son breakpoints del core
+  @if isCoreBreakpoint($from) and isCoreBreakpoint($to) {
+    @if getBp($to) >getBp($from) {
+      @media screen and (min-width: getBp($from)) and (max-width: (getBp($to) - 1px)) {
+        @content;
+      }
+    } @else {
+      @error "El segundo argumento del mixin fromTo debe ser mayor que el primero";
+    }
+  }
+
+  // Si solo $from es breakpoint del core
+  @else if isCoreBreakpoint($from) and not isCoreBreakpoint($to) {
+    @if isValidBreakpoint($to) {
+      @if toPx($to) >toPx(getBp($from)) {
+        @media screen and (min-width: getBp($from)) and (max-width: (toPx($to) - 1px)) {
+          @content;
+        }
+      } @else {
+        @error "El segundo argumento del mixin fromTo debe ser mayor que el primero";
+      }
+    } @else {
+      @error "El segundo argumento del mixin fromTo() debe ser un breakpoint del Core (#{map-keys(setting.$breakPoints)}) o un número en px, em o rem";
+    }
+  }
+
+  // Si solo $to es breakpoint del core
+  @else if not isCoreBreakpoint($from) and isCoreBreakpoint($to) {
+    @if isValidBreakpoint($from) {
+      @if toPx(getBp($to)) >toPx($from) {
+        @media screen and (min-width: $from) and (max-width: (getBp($to) - 1px)) {
+          @content;
+        }
+      } @else {
+        @error "El segundo argumento del mixin fromTo debe ser mayor que el primero";
+      }
+    } @else {
+      @error "El primer argumento del mixin fromTo() debe ser un breakpoint del Core (#{map-keys(setting.$breakPoints)}) o un número en px, em o rem";
+    }
+  }
+
+  // Si no son breakpoints del core pero son breakpoints válidos (px, em, rem)
+  @else if isValidBreakpoint($from) and isValidBreakpoint($to) {
+    @if toPx($to) >toPx($from) {
+      @media screen and (min-width: $from) and (max-width: (toPx($to) - 1px)) {
+        @content;
+      }
+    } @else {
+      @error "El segundo argumento del mixin fromTo debe ser mayor que el primero";
+    }
+  }
+
+  // Si al menos hay un breakpoint inválido
+  @else {
+    @error 'Los argumentos del mixin fromTo() deben ser breakpoints del Core (#{map-keys(setting.$breakPoints)}) o números en px, em o rem';
+  }
+}
+
+// Styles of Scroll Bar on Chrome, Edge y Safari.
+@mixin scrollbar {
+  // Chrome, Edge y Safari.
+  &::-webkit-scrollbar {
+    width: var(--spacing--xxs);
+    height: var(--spacing--xxs);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; // color of the tracking area
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--green); // color of the scroll thumb
+    border-radius: var(--radius--s); // roundness of the scroll thumb
+    // border: 2px solid Palette(Primary); // creates padding around scroll thumb
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+
+  // color of the scroll thumb, color of the tracking area
+  scrollbar-color: var(--green) transparent;
+  scroll-behavior: smooth;
+}
+
+@mixin scrollbar--dark {
+  // Chrome, Edge y Safari.
+  &::-webkit-scrollbar {
+    width: var(--spacing--xxs);
+    height: var(--spacing--xxs);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; // color of the tracking area
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--darkblue); // color of the scroll thumb
+    border-radius: var(--radius--s); // roundness of the scroll thumb
+    // border: 2px solid Palette(Primary); // creates padding around scroll thumb
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+
+  // color of the scroll thumb, color of the tracking area
+  scrollbar-color: var(--darkblue) transparent;
+  scroll-behavior: smooth;
+}
+
+@mixin scrollbar--light {
+  // Chrome, Edge y Safari.
+  &::-webkit-scrollbar {
+    width: var(--spacing--xxs);
+    height: var(--spacing--xxs);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; // color of the tracking area
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--whitelight); // color of the scroll thumb
+    border-radius: var(--radius--s); // roundness of the scroll thumb
+    // border: 2px solid Palette(Primary); // creates padding around scroll thumb
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+
+  // color of the scroll thumb, color of the tracking area
+  scrollbar-color: var(--whitelight) transparent;
+  scroll-behavior: smooth;
+}
+
+@mixin fontsizeHeadingOne() {
+  font-size: var(--font-size--heading-two);
+
+  @include from(desktop) {
+    font-size: var(--font-size--heading-one);
+  }
+}
+
+@mixin fontsizeHeadingTwo() {
+  font-size: var(--font-size--heading-three);
+
+  @include from(desktop) {
+    font-size: var(--font-size--heading-two);
+  }
+}
+
+@mixin fontsizeHeadingThree() {
+  font-size: var(--font-size--normal);
+
+  @include from(desktop) {
+    font-size: var(--font-size--heading-three);
+  }
+}
+
+@mixin fontsizeNormal() {
+  font-size: var(--font-size--small);
+
+  @include from(desktop) {
+    font-size: var(--font-size--normal);
+  }
+}
+
+@mixin fontsizeSmall() {
+  font-size: var(--font-size--tiny);
+
+  @include from(desktop) {
+    font-size: var(--font-size--small);
+  }
+}
+
+@mixin fontsizeTiny() {
+  font-size: var(--font-size--tiny);
+}
+
+// Gradient's Color
+@mixin gradients($type) {
+  @if $type == 'all' {
+    color: var(--pink--one);
+    background: linear-gradient(
+      to right,
+      var(--green--three),
+      var(--blue--one),
+      var(--pink--one),
+      var(--purple--one),
+      var(--green--three)
+    );
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// Gradient's Background
+@mixin backgroundGradients($type, $direction: 'horizontal') {
+  @if $direction == 'horizontal' {
+    @if $type == 'all' {
+      background: linear-gradient(
+        to right,
+        var(--green--three),
+        var(--blue--one),
+        var(--pink--one),
+        var(--purple--one),
+        var(--green--three)
+      );
+    }
+  }
+
+  @if $direction == 'vertical' {
+    @if $type == 'all' {
+      background: linear-gradient(
+        to bottom,
+        var(--green--three),
+        var(--blue--one),
+        var(--pink--one),
+        var(--purple--one),
+        var(--green--three)
+      );
+    }
+  }
+}
