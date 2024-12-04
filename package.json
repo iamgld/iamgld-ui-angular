@@ -8,6 +8,7 @@
     "start:host": "ng serve --configuration development --host 0.0.0.0",
     "start:stag": "ng serve --configuration staging",
     "start:prod": "ng serve --configuration production",
+    "start:story": "ng run iamgld-ui:storybook",
     "test": "",
     "test:watch": "",
     "build": "npm run build:prod",
@@ -15,6 +16,7 @@
     "build:stag": "ng build --configuration staging --progress",
     "build:prod": "ng build --configuration production --progress",
     "build:iamgld-ui": "ng build --project=iamgld-ui",
+    "build:story": "ng run iamgld-ui:storybook-build",
     "server:ssr": "node dist/iamgld-ui-angular/server/server.mjs",
     "prettier:": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --check --config .prettierrc",
     "prettier:fix": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --write --config .prettierrc",
@@ -46,23 +48,36 @@
     "@angular-devkit/build-angular": "19.0.2",
     "@angular/cli": "19.0.2",
     "@angular/compiler-cli": "19.0.1",
+    "@chromatic-com/storybook": "^3.2.2",
     "@commitlint/cli": "19.6.0",
     "@commitlint/config-conventional": "19.6.0",
     "@schematics/angular": "19.0.2",
+    "@storybook/addon-essentials": "^8.4.6",
+    "@storybook/addon-interactions": "^8.4.6",
+    "@storybook/addon-onboarding": "^8.4.6",
+    "@storybook/angular": "^8.4.6",
+    "@storybook/blocks": "^8.4.6",
+    "@storybook/test": "^8.4.6",
     "@types/express": "5.0.0",
     "@types/node": "22.10.1",
     "angular-eslint": "19.0.0",
     "eslint": "9.16.0",
+    "eslint-plugin-storybook": "^0.11.1",
     "husky": "9.1.7",
     "lint-staged": "15.2.10",
     "ng-packagr": "^19.0.0",
     "prettier": "3.4.1",
+    "storybook": "^8.4.6",
     "stylelint": "16.11.0",
     "stylelint-config-standard": "36.0.1",
     "stylelint-config-standard-scss": "14.0.0",
     "stylelint-selector-bem-pattern": "4.0.1",
     "typescript": "5.6.2",
     "typescript-eslint": "8.16.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }
-

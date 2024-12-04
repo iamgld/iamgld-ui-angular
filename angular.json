@@ -178,18 +178,32 @@
           },
           "defaultConfiguration": "production"
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/iamgld-ui/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": ["projects/iamgld-ui/**/*.ts", "projects/iamgld-ui/**/*.html"],
             "eslintConfig": "projects/iamgld-ui/eslint.config.js"
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/iamgld-ui/.storybook",
+            "browserTarget": "iamgld-ui:build",
+            "compodoc": false,
+            "port": 6006,
+            "open": false,
+            "styles": ["./projects/iamgld-ui/public/styles/styles.scss"]
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/iamgld-ui/.storybook",
+            "browserTarget": "iamgld-ui:build",
+            "compodoc": false,
+            "outputDir": "dist/storybook/iamgld-ui",
+            "styles": ["./projects/iamgld-ui/public/styles/styles.scss"]
           }
         }
       }
@@ -198,7 +212,7 @@
   "cli": {
     "packageManager": "pnpm",
     "analytics": false,
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": ["angular-eslint"]
   }
 }
 
