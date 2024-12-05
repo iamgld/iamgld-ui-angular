@@ -18,6 +18,7 @@
     "build:iamgld-ui": "ng build --project=iamgld-ui",
     "build:story": "ng run iamgld-ui:storybook-build",
     "server:ssr": "node dist/iamgld-ui-angular/server/server.mjs",
+    "npm:publish": "npm run build:iamgld-ui && cd dist/iamgld-ui && npm publish",
     "prettier:": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --check --config .prettierrc",
     "prettier:fix": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --write --config .prettierrc",
     "stylelint": "stylelint src/**/*.{css,scss}",
@@ -81,3 +82,4 @@
     ]
   }
 }
+
