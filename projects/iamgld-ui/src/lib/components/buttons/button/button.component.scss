@@ -1,12 +1,5 @@
 // @use 'styles';
 
-:host {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // width: inherit;
-}
-
 .Button {
   --color: initial;
   --border-color: initial;
@@ -19,7 +12,6 @@
   --radius: var(--gld-radius--xxs);
   --font-size: var(--gld-font-size--normal);
   --font: 600 var(--font-size) var(--gld-font--poppins);
-  --height: 40px;
 
   outline: none;
   border: var(--border);
@@ -28,7 +20,6 @@
   font: var(--font);
   cursor: pointer;
   width: inherit;
-  height: var(--height);
   color: var(--color);
   background: var(--background);
   box-shadow: 0 var(--box-shadow-size) 0 0;
@@ -103,12 +94,13 @@
   }
 
   &--tiny {
-    --font-size: var(--gld-font-size--tiny);
+    --font-size: var(--gld-font-size--small);
+    --padding: var(--gld-spacing--xxxs) var(--gld-spacing--xxs);
   }
 
   &--small {
     --font-size: var(--gld-font-size--small);
-    --padding: var(--gld-spacing--xxxs) var(--gld-spacing--xxs);
+    --padding: var(--gld-spacing--xxs);
   }
 
   &--normal {
@@ -125,9 +117,11 @@
     --padding: var(--gld-spacing--xs) var(--gld-spacing--l);
   }
 
-  &--disabled {
+  &--disable {
     --color: var(--gld-gray-transparent--075);
+    --border-color: var(--gld-gray-transparent--075);
     --background: var(--gld-gray-transparent--015);
+    --background--hover: var(--gld-gray-transparent--015);
     pointer-events: none;
     cursor: not-allowed;
   }

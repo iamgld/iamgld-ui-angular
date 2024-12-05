@@ -2,15 +2,8 @@
   id="{{ name() }}"
   attr.aria-label="{{ name() }}"
   class="Button Button--{{ color() }} Button--{{ size() }}"
-  [class.Button--disabled]="disabled()"
+  [class.Button--disable]="disable()"
   (click)="emitClick()">
-  <!-- @if (hasIcon()) {
-      <gld-icon
-        [icon]="icon()"
-        [size]="iconSize()"
-        [moveLeftToRight]="iconMoveLeftToRight()"
-        [moveTopToBottom]="iconMoveTopToBottom()" />
-    } -->
   <span>
     <ng-content />
   </span>

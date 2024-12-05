@@ -44,7 +44,7 @@ const meta: Meta<ButtonComponent> = {
         defaultValue: { summary: 'normal' },
       },
     },
-    disabled: {
+    disable: {
       control: {
         type: 'boolean',
         accept: 'boolean',
@@ -65,7 +65,7 @@ const meta: Meta<ButtonComponent> = {
     name: 'button',
     color: 'pink',
     size: 'normal',
-    disabled: false,
+    disable: false,
     clicked: fn(),
   },
   parameters: {},
@@ -75,7 +75,7 @@ const meta: Meta<ButtonComponent> = {
       ngContent: 'Button',
     },
     template: `
-    <gld-button [name]="name" [color]="color" [size]="size" [disabled]="disabled">
+    <gld-button [name]="name" [color]="color" [size]="size" [disable]="disable">
       {{ ngContent }}
     </gld-button>`,
   }),
@@ -87,35 +87,5 @@ type Story = StoryObj<ButtonComponent>
 export const Pink: Story = {
   args: {
     color: 'pink',
-  },
-}
-export const purple: Story = {
-  args: {
-    color: 'purple',
-  },
-}
-export const mustard: Story = {
-  args: {
-    color: 'mustard',
-  },
-}
-export const orange: Story = {
-  args: {
-    color: 'orange',
-  },
-}
-export const red: Story = {
-  args: {
-    color: 'red',
-  },
-}
-export const blue: Story = {
-  args: {
-    color: 'blue',
-  },
-}
-export const green: Story = {
-  args: {
-    color: 'green',
   },
 }
