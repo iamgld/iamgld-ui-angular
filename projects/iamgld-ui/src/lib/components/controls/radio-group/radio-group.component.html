@@ -1,0 +1,30 @@
+@let errors = this.control().invalid && (this.control().dirty || this.control().touched);
+
+<article class="radio" [class.radio--disabled]="control().disabled" [id]="name()">
+	<!-- Label -->
+	@if (label()) {
+		<label class="radio__label" [for]="name()">
+			{{ label() }}
+		</label>
+	}
+	<section class="radio__items radio__items--{{ direction() }}">
+		<ng-content select="gld-radio-button" />
+	</section>
+</article>
+<!-- Errors -->
+@if (errors) {
+	<ng-content select="gld-input-error">
+    <gld-input-error [errors]="control().errors" />
+  </ng-content>
+} @else {
+	<!-- Hint -->
+	<ng-content select="gld-input-hint" />
+}
+
+<!-- <h3>Debugging</h3> -->
+<!-- <section>errors: {{ control().errors | json }}</section> -->
+<!-- <section>errors: {{ errors }}</section> -->
+<!-- <section>invalid: {{ control().invalid }}</section> -->
+<!-- <section>dirty: {{ control().dirty }}</section> -->
+<!-- <section>touched: {{ control().touched }}</section> -->
+<!-- <section>disable: {{ control().disabled }}</section> -->

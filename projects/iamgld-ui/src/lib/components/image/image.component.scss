@@ -1,0 +1,24 @@
+:host {
+	position: relative;
+	aspect-ratio: 1;
+	overflow: hidden;
+	display: inline-block;
+	width: inherit;
+	height: inherit;
+}
+
+img {
+	width: inherit;
+	height: inherit;
+	max-width: 100%;
+	max-height: 100%;
+	display: inherit;
+	aspect-ratio: inherit;
+	z-index: inherit;
+	object-fit: inherit;
+	border-radius: inherit;
+	border: inherit;
+	background-color: inherit;
+	user-select: none;
+	pointer-events: none;
+}

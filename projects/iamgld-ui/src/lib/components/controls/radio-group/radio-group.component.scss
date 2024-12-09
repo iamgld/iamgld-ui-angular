@@ -1,0 +1,33 @@
+.radio {
+	--color: var(--dark);
+	--color--disabled: var(--gray-transparent--050);
+
+	margin-bottom: var(--spacing--xxxs);
+
+	&__label {
+		margin-bottom: var(--spacing--xxxs);
+		color: var(--color);
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	&--disabled &__label {
+		--color: var(--color--disabled);
+		pointer-events: none;
+	}
+
+	&__items {
+		display: flex;
+		gap: var(--spacing--xxs);
+
+		&--horizontal {
+			align-items: center;
+		}
+
+		&--vertical {
+			flex-direction: column;
+		}
+	}
+}

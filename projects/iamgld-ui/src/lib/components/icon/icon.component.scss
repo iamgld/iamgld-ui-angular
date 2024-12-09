@@ -1,0 +1,41 @@
+@use 'styles' as styles;
+
+:host {
+	color: inherit;
+	display: inline-flex;
+
+	&:has(.Icon--left) {
+		margin-left: var(--spacing--xxxs);
+	}
+
+	&:has(.Icon--right) {
+		margin-right: var(--spacing--xxxs);
+	}
+}
+
+.Icon {
+	--icon-size: var(--icon-size--normal);
+
+	position: relative;
+	color: inherit;
+	font-weight: normal;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	margin: auto;
+
+	&--tiny {
+		--icon-size: var(--icon-size--tiny);
+	}
+
+	&--small {
+		--icon-size: var(--icon-size--small);
+	}
+
+	&--medium {
+		--icon-size: var(--icon-size--medium);
+	}
+
+	&--large {
+		--icon-size: var(--icon-size--large);
+	}
+}

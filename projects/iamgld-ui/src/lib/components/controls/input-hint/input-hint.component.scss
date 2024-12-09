@@ -1,0 +1,25 @@
+.hint {
+	--color: var(--graydark);
+	--background: transparent;
+
+	color: var(--color);
+	background: var(--background);
+	padding: var(--spacing--xxxs) var(--spacing--xxs);
+	display: flex;
+	align-items: flex-start;
+	gap: var(--spacing--xxxs);
+
+	&__icon {
+		display: flex;
+		align-items: center;
+	}
+
+	&__message {
+		font: 400 var(--font-size--small) / 1.25 var(--font--poppins);
+		text-transform: lowercase;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+}

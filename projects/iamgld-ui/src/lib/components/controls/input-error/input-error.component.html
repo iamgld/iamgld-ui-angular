@@ -1,0 +1,20 @@
+<section class="error">
+	<span class="error__message">
+		<ng-content>
+			@switch (true) {
+				@case (this.errors()?.['required']) {
+          This field is required!
+				}
+				@case (this.errors()?.['email']) {
+          This field must be a valid email
+				}
+				@case (this.errors()?.['maxlength']) {
+          This field must have a maximum of {{ this.errors()?.['maxlength'].requiredLength }} characters
+				}
+				@case (this.errors()?.['minlength']) {
+          This field must have a minimum of {{ this.errors()?.['minlength'].requiredLength }} characters
+				}
+			}
+		</ng-content>
+	</span>
+</section>
