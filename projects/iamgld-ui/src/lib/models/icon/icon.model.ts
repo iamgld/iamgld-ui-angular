@@ -3,6 +3,7 @@ export enum Icons {
   arrowUpSLine = 'arrow-up-s-line',
   checkboxCircleLine = 'checkbox-circle-line',
   checkboxBlankCircleLine = 'checkbox-blank-circle-line',
+  loader4Fill = 'loader-4-fill',
 }
 
 export enum IconsSize {

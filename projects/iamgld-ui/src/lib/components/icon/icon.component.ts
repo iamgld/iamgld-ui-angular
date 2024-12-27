@@ -1,5 +1,12 @@
 // Angular Imports
-import { ChangeDetectionStrategy, Component, input, numberAttribute } from '@angular/core'
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  numberAttribute,
+  output,
+} from '@angular/core'
 // Shared Imports
 import { Icons, IconsSize } from '../../models'
 
@@ -20,6 +27,16 @@ export class IconComponent {
   space = input<keyof typeof IconsSpace>(IconsSpace.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
+  disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
+  clicked = output<void>()
+
+  emitClick() {
+    if (!this.disabled()) this.clicked.emit()
+  }
+
+  keyup() {
+    this.emitClick()
+  }
 }
 
 enum IconsSpace {
