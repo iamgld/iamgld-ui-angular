@@ -1,82 +1,82 @@
 .input {
-	--background: var(--white);
-	--color: var(--dark);
-	--color--disabled: var(--gray-transparent--050);
-	--color--error: var(--red);
-	--placeholder-color: var(--gray);
-	--border-color: var(--gray);
-	--label-color: var(--dark);
-	--height: 40px;
-	--min-with: 50px;
-	--animation-time: var(--animation-time--150);
+  --background: var(--white);
+  --color: var(--dark);
+  --color--disabled: var(--gray-transparent--075);
+  --color--error: var(--red);
+  --placeholder-color: var(--gray);
+  --border-color: var(--gray);
+  --label-color: var(--dark);
+  --height: 40px;
+  --min-with: 50px;
+  --animation-time: var(--animation-time--150);
 
-	position: relative;
+  position: relative;
 
-	label {
-		padding: 0;
-		font-size: var(--font-size--normal);
-		color: var(--label-color);
-		will-change: color;
-		transition: color var(--animation-time) ease;
-		cursor: text;
-	}
+  label {
+    padding: 0;
+    font-size: var(--font-size--normal);
+    color: var(--label-color);
+    will-change: color;
+    transition: color var(--animation-time) ease;
+    cursor: text;
+  }
 
-	input {
-		width: 100%;
-		min-width: var(--min-with);
-		height: var(--height);
-		padding: var(--spacing--xxs);
-		padding-right: var(--spacing--m);
-		font: 400 var(--font-size--normal) / 1.25 var(--font--poppins);
-		border: none;
-		outline: none;
-		border-bottom: var(--border-size) solid var(--border-color);
-		color: var(--color);
-		background: var(--background);
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		will-change: color;
-		transition: color var(--animation-time) ease-in-out;
+  input {
+    width: 100%;
+    min-width: var(--min-with);
+    height: var(--height);
+    padding: var(--spacing--xxs);
+    padding-right: var(--spacing--m);
+    font: 400 var(--font-size--normal) / 1.25 var(--font--roboto);
+    border: none;
+    outline: none;
+    border-bottom: var(--border-size) solid var(--border-color);
+    color: var(--color);
+    background: var(--background);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    will-change: color;
+    transition: color var(--animation-time) ease-in-out;
 
-		&:focus {
-			--border-color: var(--graydark);
-		}
+    &:focus {
+      --border-color: var(--graydark);
+    }
 
-		&::placeholder {
-			color: var(--placeholder-color);
-		}
-	}
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+  }
 
-	&--error {
-		--color: var(--color--error);
-		--label-color: var(--color--error);
-		--border-color: var(--color--error);
-		// --placeholder-color: var(--color--error);
+  &--error {
+    --color: var(--color--error);
+    --label-color: var(--color--error);
+    --border-color: var(--color--error);
+    // --placeholder-color: var(--color--error);
 
-		// input:focus {
-		// 	--border-color: var(--color--error);
-		// }
-	}
+    // input:focus {
+    // 	--border-color: var(--color--error);
+    // }
+  }
 
-	&--disabled {
-		--color: var(--color--disabled);
-		--border-color: var(--color--disabled);
-		--label-color: var(--color--disabled);
-		--placeholder-color: var(--color--disabled);
+  &--disabled {
+    --color: var(--color--disabled);
+    --border-color: var(--color--disabled);
+    --label-color: var(--color--disabled);
+    --placeholder-color: var(--color--disabled);
 
-		pointer-events: none;
-		cursor: not-allowed;
-	}
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 
-	&-icon {
-		position: absolute;
-		right: var(--spacing--xxs);
-		bottom: 0;
-		display: inline-block;
-		color: var(--color);
-		will-change: transform, color;
-		transition: color var(--animation-time) ease;
-		cursor: pointer;
-	}
+  &-icon {
+    position: absolute;
+    right: var(--spacing--xxs);
+    bottom: 0;
+    display: inline-block;
+    color: var(--color);
+    will-change: transform, color;
+    transition: color var(--animation-time) ease;
+    cursor: pointer;
+  }
 }

@@ -83,7 +83,7 @@
   --gld-orange: #f97315;
   --gld-orange-transparent--010: #{rgba(#f97315, 0.1)};
   --gld-orange-transparent--020: #{rgba(#f97315, 0.2)};
-  --gld-orange-transparent--020: #{rgba(#f97315, 0.3)};
+  --gld-orange-transparent--030: #{rgba(#f97315, 0.3)};
   --gld-pink: #ec4899;
   --gld-pink-transparent--010: #{rgba(#ec4899, 0.1)};
   --gld-pink-transparent--020: #{rgba(#ec4899, 0.2)};
@@ -108,10 +108,12 @@
 
   // Borders
   --gld-border-size: 1px;
+
   // Animations
   --gld-animation-time--150: 150ms;
   --gld-animation-time--250: 250ms;
   --gld-animation-time--10s: 10s;
+
   // General
   --gld-max-width: 1280px;
   --gld-navbar-height: 50px;

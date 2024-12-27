@@ -1,6 +1,7 @@
-@let errors = this.control().invalid && (this.control().dirty || this.control().touched);
+@let errors = control().invalid && (control().dirty || control().touched);
+@let disabled = control().disabled || (control().pending && control().disabled);
 
-<section class="input" [class.input--disabled]="control().disabled" [class.input--error]="errors">
+<section class="input" [class.input--disabled]="disabled" [class.input--error]="errors">
   <!-- Label -->
   @if (label()) {
     <label [for]="name()">
@@ -10,12 +11,15 @@
 
   <!-- Input -->
   <input
-    [id]="name()"
+    id="input-{{ name() }}"
+    [tabindex]="disabled ? '-1' : '0'"
     [name]="name()"
     [type]="type()"
     [placeholder]="placeholder()"
-    [formControl]="control()"
-    (blur)="onTouched()" />
+    [formControl]="innerControl()"
+    (focus)="onFocus()"
+    (blur)="onTouched()"
+    (keyup.escape)="onBlur()" />
 
   <!-- Suffix -->
   @if (suffix()) {
@@ -46,3 +50,4 @@
 <!-- <section>dirty: {{ control().dirty }}</section> -->
 <!-- <section>touched: {{ control().touched }}</section> -->
 <!-- <section>disable: {{ control().disabled }}</section> -->
+<!-- <section>status: {{ control().status }}</section> -->

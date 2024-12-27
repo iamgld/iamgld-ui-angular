@@ -1,11 +1,15 @@
 // Angular Imports
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  DestroyRef,
+  OnInit,
   booleanAttribute,
-  effect,
   forwardRef,
+  inject,
   input,
+  signal,
 } from '@angular/core'
 import {
   ReactiveFormsModule,
@@ -14,6 +18,7 @@ import {
   FormControl,
 } from '@angular/forms'
 import { NgTemplateOutlet } from '@angular/common'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
 import { InputType } from '../../../models'
 import { InputErrorComponent } from '../input-error/input-error.component'
@@ -35,7 +40,10 @@ const components = [InputErrorComponent]
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputComponent implements ControlValueAccessor, OnInit {
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #changeDetectorRef = inject(ChangeDetectorRef)
+
   control = input.required<FormControl<unknown>>()
   name = input.required<string>()
   label = input<string>('')
@@ -43,26 +51,32 @@ export class InputComponent implements ControlValueAccessor {
   type = input<InputType>('text')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
+  innerControl = signal(new FormControl<unknown>(''))
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
   constructor() {
-    effect(() => {
-      const currentValue = this.control().value
-      if (this.control().dirty || this.control().touched) {
-        const newValue = this.control().value
-        if (newValue !== currentValue) this.onChange(newValue)
-      }
-    })
+    this.innerControl()
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((value) => {
+        const valueTransformed = value
+        this.onChange(valueTransformed)
+      })
+  }
+
+  ngOnInit(): void {
+    // Subscribes to the form control's events and triggers change detection to update the view accordingly.
+    this.control()
+      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
   writeValue(value: unknown): void {
     // console.log('writeValue')
-    if (value !== this.control().value) {
-      this.control().setValue(value, { emitEvent: false })
-    }
+    if (value !== this.innerControl().value) this.innerControl().setValue(value)
   }
 
   registerOnChange(onChange: (value: unknown) => void): void {
@@ -73,5 +87,14 @@ export class InputComponent implements ControlValueAccessor {
   registerOnTouched(onTouched: () => void): void {
     // console.log('registerOnTouched')
     this.onTouched = onTouched
+  }
+
+  onFocus() {
+    // this.isMenuOpen.set(true)
+  }
+
+  onBlur() {
+    this.onTouched()
+    // this.isMenuOpen.set(false)
   }
 }
