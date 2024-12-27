@@ -1,26 +1,28 @@
-@let errors = this.control().invalid && (this.control().dirty || this.control().touched);
+@let errors = control().invalid && (control().dirty || control().touched);
+@let disabled = control().disabled || (control().pending && control().disabled);
 
-<section class="input" [class.input--disabled]="control().disabled" [class.input--error]="errors">
-	<!-- Label -->
-	@if (label()) {
-		<label [for]="name()">
-			{{ label() }}
-		</label>
-	}
+<section class="input" [class.input--disabled]="disabled" [class.input--error]="errors">
+  <!-- Label -->
+  @if (label()) {
+    <label [for]="name()">
+      {{ label() }}
+    </label>
+  }
 
-	<!-- Input -->
-	<textarea
-		#inputElement
-		[id]="name()"
-		[name]="name()"
-		[placeholder]="placeholder()"
-		[formControl]="control()"
-		(blur)="onTouched()"></textarea>
+  <!-- Input -->
+  <textarea
+    id="input-textarea-{{ name() }}"
+    [name]="name()"
+    [placeholder]="placeholder()"
+    [formControl]="innerControl()"
+    (focus)="onFocus()"
+    (blur)="onTouched()"
+    (keyup.escape)="onBlur()"></textarea>
 
-	<!-- Suffix Icon -->
-	@if (suffix()) {
-		<ng-container [ngTemplateOutlet]="iconTemplate" [ngTemplateOutletContext]="{ inputElement }" />
-	}
+  <!-- Suffix -->
+  @if (suffix()) {
+    <ng-container [ngTemplateOutlet]="suffixTemplate" />
+  }
 </section>
 <!-- Errors -->
 @if (errors) {
@@ -28,20 +30,15 @@
     <gld-input-error [errors]="control().errors" />
   </ng-content>
 } @else {
-	<!-- Hint -->
-	<ng-content select="gld-input-hint" />
+  <!-- Hint -->
+  <ng-content select="gld-input-hint" />
 }
 
-<!-- Template -->
-<ng-template #iconTemplate let-inputElement="inputElement">
-	<span
-		tabindex="-1"
-		class="input-icon"
-		[class.input-icon--error]="errors"
-		(keyup.enter)="inputElement.focus()"
-		(click)="inputElement.focus()">
-		<ng-content select="[inputSuffix]" />
-	</span>
+<!-- Suffix emplate -->
+<ng-template #suffixTemplate>
+  <span tabindex="-1" class="input-icon" [class.input-icon--error]="errors">
+    <ng-content select="[inputSuffix]" />
+  </span>
 </ng-template>
 
 <!-- <h3>Debugging</h3>

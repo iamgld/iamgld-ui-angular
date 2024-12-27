@@ -2,10 +2,14 @@
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
-  effect,
+  DestroyRef,
   forwardRef,
+  inject,
   input,
+  OnInit,
+  signal,
 } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
 import {
@@ -14,6 +18,7 @@ import {
   FormControl,
   ReactiveFormsModule,
 } from '@angular/forms'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
 import { InputType } from '../../../models/controls'
 import { InputErrorComponent } from '../input-error/input-error.component'
@@ -35,7 +40,10 @@ const components = [InputErrorComponent]
     },
   ],
 })
-export class TextareaComponent implements ControlValueAccessor {
+export class TextareaComponent implements ControlValueAccessor, OnInit {
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #changeDetectorRef = inject(ChangeDetectorRef)
+
   control = input.required<FormControl<unknown>>()
   name = input.required<string>()
   label = input<string>('')
@@ -48,22 +56,27 @@ export class TextareaComponent implements ControlValueAccessor {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
+  innerControl = signal(new FormControl<unknown>(''))
+
   constructor() {
-    effect(() => {
-      // console.log(this.control())
-      const currentValue = this.control().value
-      if (this.control().dirty || this.control().touched) {
-        const newValue = this.control().value
-        if (newValue !== currentValue) this.onChange(newValue)
-      }
-    })
+    this.innerControl()
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((value) => {
+        const valueTransformed = value
+        this.onChange(valueTransformed)
+      })
+  }
+
+  ngOnInit(): void {
+    // Subscribes to the form control's events and triggers change detection to update the view accordingly.
+    this.control()
+      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
   writeValue(value: unknown): void {
     // console.log('writeValue')
-    if (value !== this.control().value) {
-      this.control().setValue(value, { emitEvent: false })
-    }
+    if (value !== this.innerControl().value) this.innerControl().setValue(value)
   }
 
   registerOnChange(onChange: (value: unknown) => void): void {
@@ -74,5 +87,14 @@ export class TextareaComponent implements ControlValueAccessor {
   registerOnTouched(onTouched: () => void): void {
     // console.log('registerOnTouched')
     this.onTouched = onTouched
+  }
+
+  onFocus() {
+    // this.isMenuOpen.set(true)
+  }
+
+  onBlur() {
+    this.onTouched()
+    // this.isMenuOpen.set(false)
   }
 }
