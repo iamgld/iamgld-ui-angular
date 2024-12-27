@@ -1,78 +1,78 @@
 :host {
-	display: inline-flex;
-	color: inherit;
-	width: inherit;
-	height: inherit;
+  display: inline-flex;
+  color: inherit;
+  width: inherit;
+  height: inherit;
 }
 
 .radio {
-	--height: 26px;
-	--color: var(--dark);
-	--color--disabled: var(--gray-transparent--050);
-	--dot-color: var(--red);
-	--dot-color--outer: var(--gray);
-	--dot-color--outer-hover: var(--graydark);
-	--dot-color--outer-selected: var(--red);
-	--dot-color--outer-error: var(--red);
+  --height: 26px;
+  --color: var(--dark);
+  --color--disabled: var(--gray-transparent--075);
+  --dot-color: var(--red);
+  --dot-color--outer: var(--gray);
+  --dot-color--outer-hover: var(--graydark);
+  --dot-color--outer-selected: var(--red);
+  --dot-color--outer-error: var(--red);
 
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	border: none;
-	background: none;
-	gap: var(--spacing--xxs);
-	font: 400 var(--font-size--normal) / 1.25 var(--font--poppins);
-	color: var(--color);
-	height: var(--height);
-	padding: var(--spacing--xxxs);
-	cursor: pointer;
-	user-select: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  gap: var(--spacing--xxs);
+  font: 400 var(--font-size--normal) / 1.25 var(--font--roboto);
+  color: var(--color);
+  height: var(--height);
+  padding: var(--spacing--xxxs);
+  cursor: pointer;
+  user-select: none;
 
-	&:hover &__icon,
-	&:focus &__icon {
-		--dot-color--outer: var(--dot-color--outer-hover);
-	}
+  &:hover &__icon,
+  &:focus &__icon {
+    --dot-color--outer: var(--dot-color--outer-hover);
+  }
 
-	&:focus {
-		outline: none;
-	}
+  &:focus {
+    outline: none;
+  }
 
-	&__icon {
-		--size: 20px;
-		width: var(--size);
-		height: var(--size);
-		border-radius: 50%;
-		border: var(--border-size) solid var(--dot-color--outer);
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+  &__icon {
+    --size: 20px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border: var(--border-size) solid var(--dot-color--outer);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-		&--selected::before {
-			content: '';
-			position: absolute;
-			width: calc(var(--size) / 2);
-			height: calc(var(--size) / 2);
-			background: var(--dot-color);
-			border-radius: inherit;
-		}
-	}
+    &--selected::before {
+      content: '';
+      position: absolute;
+      width: calc(var(--size) / 2);
+      height: calc(var(--size) / 2);
+      background: var(--dot-color);
+      border-radius: inherit;
+    }
+  }
 
-	&__label::first-letter {
-		text-transform: uppercase;
-	}
+  &__label::first-letter {
+    text-transform: uppercase;
+  }
 
-	&--selected {
-		--dot-color--outer: var(--dot-color--outer-selected);
-	}
+  &--selected {
+    --dot-color--outer: var(--dot-color--outer-selected);
+  }
 
-	&--disabled {
-		--color: var(--color--disabled);
-		--dot-color--outer: var(--color--disabled);
-		pointer-events: none;
-	}
+  &--disabled {
+    --color: var(--color--disabled);
+    --dot-color--outer: var(--color--disabled);
+    pointer-events: none;
+  }
 
-	&--error &__icon {
-		--dot-color--outer: var(--dot-color--outer-error);
-	}
+  &--error &__icon {
+    --dot-color--outer: var(--dot-color--outer-error);
+  }
 }

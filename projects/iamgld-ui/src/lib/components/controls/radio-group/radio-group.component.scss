@@ -1,33 +1,33 @@
 .radio {
-	--color: var(--dark);
-	--color--disabled: var(--gray-transparent--050);
+  --color: var(--dark);
+  --color--disabled: var(--gray-transparent--075);
 
-	margin-bottom: var(--spacing--xxxs);
+  margin-bottom: var(--spacing--xxxs);
 
-	&__label {
-		margin-bottom: var(--spacing--xxxs);
-		color: var(--color);
+  &__label {
+    margin-bottom: var(--spacing--xxxs);
+    color: var(--color);
 
-		&::first-letter {
-			text-transform: uppercase;
-		}
-	}
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
 
-	&--disabled &__label {
-		--color: var(--color--disabled);
-		pointer-events: none;
-	}
+  &--disabled &__label {
+    --color: var(--color--disabled);
+    pointer-events: none;
+  }
 
-	&__items {
-		display: flex;
-		gap: var(--spacing--xxs);
+  &__items {
+    display: flex;
+    gap: var(--spacing--xxs);
 
-		&--horizontal {
-			align-items: center;
-		}
+    &--horizontal {
+      align-items: center;
+    }
 
-		&--vertical {
-			flex-direction: column;
-		}
-	}
+    &--vertical {
+      flex-direction: column;
+    }
+  }
 }

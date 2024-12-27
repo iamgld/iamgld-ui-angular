@@ -29,7 +29,11 @@ export class RadioButtonComponent {
     this.select(value)
   }
 
-  focus(focus: boolean) {
-    this.changeFocus.emit(focus)
+  onFocus() {
+    this.changeFocus.emit(true)
+  }
+
+  onBlur() {
+    this.changeFocus.emit(false)
   }
 }

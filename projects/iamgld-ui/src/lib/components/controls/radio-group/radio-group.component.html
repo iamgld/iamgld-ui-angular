@@ -1,24 +1,25 @@
-@let errors = this.control().invalid && (this.control().dirty || this.control().touched);
+@let errors = control().invalid && (control().dirty || control().touched);
+@let disabled = control().disabled || (control().pending && control().disabled);
 
-<article class="radio" [class.radio--disabled]="control().disabled" [id]="name()">
-	<!-- Label -->
-	@if (label()) {
-		<label class="radio__label" [for]="name()">
-			{{ label() }}
-		</label>
-	}
-	<section class="radio__items radio__items--{{ direction() }}">
-		<ng-content select="gld-radio-button" />
-	</section>
+<article class="radio" [class.radio--disabled]="disabled" [attr.name]="name()">
+  <!-- Label -->
+  @if (label()) {
+    <label class="radio__label" [for]="name()">
+      {{ label() }}
+    </label>
+  }
+  <section class="radio__items radio__items--{{ direction() }}">
+    <ng-content select="gld-radio-button" />
+  </section>
 </article>
 <!-- Errors -->
 @if (errors) {
-	<ng-content select="gld-input-error">
+  <ng-content select="gld-input-error">
     <gld-input-error [errors]="control().errors" />
   </ng-content>
 } @else {
-	<!-- Hint -->
-	<ng-content select="gld-input-hint" />
+  <!-- Hint -->
+  <ng-content select="gld-input-hint" />
 }
 
 <!-- <h3>Debugging</h3> -->
