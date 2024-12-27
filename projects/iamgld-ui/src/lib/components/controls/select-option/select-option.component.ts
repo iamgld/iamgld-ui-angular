@@ -1,5 +1,6 @@
 // Angular Imports
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input, output } from '@angular/core'
+// This Module Imports
 import { InputValue } from '../../../models'
 
 @Component({
@@ -12,13 +13,23 @@ import { InputValue } from '../../../models'
 })
 export class SelectOptionComponent {
   value = input.required<InputValue>()
+  disabled = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   selected = output<InputValue>()
+  changeFocus = output<boolean>()
 
   select(): void {
-    this.selected.emit(this.value())
+    if (!this.disabled()) this.selected.emit(this.value())
   }
 
   keyup() {
     this.select()
+  }
+
+  onFocus() {
+    this.changeFocus.emit(true)
+  }
+
+  onBlur() {
+    this.changeFocus.emit(false)
   }
 }

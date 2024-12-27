@@ -1,41 +1,35 @@
 :host {
-	height: var(--height);
+  height: var(--height);
 }
 
 button {
-	--background: transparent;
-	--background-hover: var(--gray-transparent--050);
-	--color: var(--dark);
+  --background: transparent;
+  --background-hover: var(--gray-transparent--075);
+  --color: var(--dark);
 
-	padding: var(--spacing--xs) var(--spacing--s);
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
-	background: var(--background);
-	color: var(--color);
-	font: 400 var(--font-size--normal) / 1.25 var(--font--poppins);
-	text-transform: capitalize;
-	display: flex;
-	align-items: center;
-	user-select: none;
-	outline: none;
-	border: none;
-	cursor: pointer;
+  padding: var(--spacing--xs) var(--spacing--s);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background: var(--background);
+  color: var(--color);
+  font: 400 var(--font-size--normal) / 1.25 var(--font--roboto);
+  display: flex;
+  align-items: center;
+  user-select: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
-	&:hover,
-	&:focus {
-		--background: var(--background-hover);
-		--color: var(--blue);
-	}
+  &:hover,
+  &:focus {
+    --background: var(--background-hover);
+    --color: var(--blue);
+  }
 
-	span {
-		text-transform: lowercase;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-
-		&::first-letter {
-			text-transform: uppercase;
-		}
-	}
+  span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }

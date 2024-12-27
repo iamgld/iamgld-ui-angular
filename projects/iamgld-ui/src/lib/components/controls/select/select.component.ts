@@ -9,6 +9,11 @@ import {
   input,
   viewChild,
   effect,
+  OnInit,
+  inject,
+  DestroyRef,
+  ChangeDetectorRef,
+  signal,
 } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
 import {
@@ -17,11 +22,12 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
 import { IconComponent } from '../../icon/icon.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
 import { SelectOptionComponent } from '../select-option/select-option.component'
-import { Icons, InputValue, SelectType } from '../../../models'
+import { Icons, InputValue } from '../../../models'
 
 const components = [IconComponent, InputErrorComponent]
 
@@ -40,18 +46,22 @@ const components = [IconComponent, InputErrorComponent]
     },
   ],
 })
-export class SelectComponent implements ControlValueAccessor, AfterContentInit {
+export class SelectComponent implements ControlValueAccessor, OnInit, AfterContentInit {
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #changeDetectorRef = inject(ChangeDetectorRef)
   readonly Icons = Icons
 
   control = input.required<FormControl<unknown>>()
   name = input.required<string>()
   label = input<string>('')
   placeholder = input<string>('')
-  type = input<keyof typeof SelectType>(SelectType.default)
   transform = input<(value: unknown) => string>((value: unknown) => String(value))
 
-  selectElement = viewChild<ElementRef>('selectElement')
-  selectOptionElements = contentChildren<SelectOptionComponent>(SelectOptionComponent)
+  selectElement = viewChild<ElementRef<HTMLElement>>('selectElement')
+  selectOptionChildren = contentChildren<SelectOptionComponent>(SelectOptionComponent)
+
+  innerControl = signal(new FormControl<unknown>(''))
+  isMenuOpen = signal(false)
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -60,28 +70,38 @@ export class SelectComponent implements ControlValueAccessor, AfterContentInit {
 
   constructor() {
     effect(() => {
-      if (this.selectOptionElements()) this.#detectSelectOptionElements()
+      if (this.selectOptionChildren()) this.#detectSelectOptionChildren()
     })
 
-    effect(() => {
-      // console.log(this.control())
-      const currentValue = this.control().value
-      if (this.control().dirty || this.control().touched) {
-        const newValue = this.control().value
-        if (newValue !== currentValue) this.onChange(newValue)
-      }
-    })
+    this.innerControl()
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((value) => this.onChange(value))
+  }
+
+  ngOnInit(): void {
+    // Subscribes to the form control's events and triggers change detection to update the view accordingly.
+    this.control()
+      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
   ngAfterContentInit(): void {
-    this.#detectSelectOptionElements()
+    this.#detectSelectOptionChildren()
+
+    this.selectOptionChildren().map((selectOption: SelectOptionComponent) => {
+      selectOption.changeFocus.subscribe((focus) => {
+        // console.log('focus', focus)
+        if (focus) this.onFocus()
+        else this.onBlur()
+      })
+    })
   }
 
   writeValue(value: unknown): void {
     // console.log('writeValue')
-    if (value !== this.control().value) {
+    if (value !== this.innerControl().value) {
       const valueTransformed = this.#transformValue(value)
-      this.control().setValue(valueTransformed, { emitEvent: false })
+      this.innerControl().setValue(valueTransformed)
     }
   }
 
@@ -95,6 +115,24 @@ export class SelectComponent implements ControlValueAccessor, AfterContentInit {
     this.onTouched = onTouched
   }
 
+  onFocus() {
+    this.isMenuOpen.set(true)
+  }
+
+  onBlur() {
+    // console.log('blur')
+    this.onTouched()
+    this.isMenuOpen.set(false)
+  }
+
+  arrowIconClicked() {
+    // FIXME: This is a workaround to prevent the menu from closing when the arrow icon is clicked.
+    // console.log('clicked - init', this.isMenuOpen())
+    if (this.isMenuOpen()) this.onTouched()
+    this.isMenuOpen.update((open) => !open)
+    // console.log('clicked - end', this.isMenuOpen())
+  }
+
   #transformValue(value: unknown): string | null {
     let valueTransformed: string | null
 
@@ -104,25 +142,26 @@ export class SelectComponent implements ControlValueAccessor, AfterContentInit {
     return valueTransformed
   }
 
-  #detectSelectOptionElements() {
-    const selectOptionElements = this.selectOptionElements()
-    const selectElement: HTMLSelectElement | undefined = this.selectElement()?.nativeElement
-    selectElement?.style.setProperty('--option-items', String(selectOptionElements.length))
+  #detectSelectOptionChildren() {
+    const selectOptionChildren = this.selectOptionChildren()
+    const selectElement: HTMLElement | undefined = this.selectElement()?.nativeElement
+    selectElement?.style.setProperty('--option-items', String(selectOptionChildren.length))
     const clientHeight: number | undefined =
       selectElement?.querySelector('gld-select-option')?.clientHeight
     if (clientHeight) selectElement?.style.setProperty('--option-height', `${clientHeight}px`)
 
-    selectOptionElements.map((selectOptionElement) => {
-      selectOptionElement.selected.subscribe((value: InputValue) => {
+    selectOptionChildren.map((selectOption) => {
+      selectOption.selected.subscribe((value: InputValue) => {
         if (value) {
           const buttons = Array.from(
             selectElement?.querySelectorAll('gld-select-option button') ?? [],
           ) as HTMLButtonElement[]
           buttons.map((button) => button.blur())
           const valueTransformed = this.#transformValue(value)
-          this.control().setValue(valueTransformed, { emitEvent: false })
+          this.innerControl().setValue(valueTransformed, { emitEvent: false })
           this.onChange(value)
           this.onTouched()
+          this.isMenuOpen.set(false)
         }
       })
     })
