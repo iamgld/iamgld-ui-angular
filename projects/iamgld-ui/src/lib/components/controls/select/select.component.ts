@@ -28,6 +28,8 @@ import { IconComponent } from '../../icon/icon.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
 import { SelectOptionComponent } from '../select-option/select-option.component'
 import { Icons, InputValue } from '../../../models'
+// Shared Imports
+import { debounceTime } from 'rxjs'
 
 const components = [IconComponent, InputErrorComponent]
 
@@ -74,14 +76,14 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
     })
 
     this.innerControl()
-      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => this.onChange(value))
   }
 
   ngOnInit(): void {
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 

@@ -18,6 +18,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { RadioDirection, InputValue } from '../../../models'
 import { RadioButtonComponent } from '../radio-button/radio-button.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
+// Shared Imports
+import { debounceTime } from 'rxjs'
 
 const components = [InputErrorComponent]
 
@@ -55,7 +57,7 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
 
   constructor() {
     this.innerControl()
-      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
         const valueTransformed = value
         this.onChange(valueTransformed)
@@ -65,7 +67,7 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
   ngOnInit(): void {
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe(() => {
         this.updateErrorInChildren(
           this.control().invalid && (this.control().dirty || this.control().touched),

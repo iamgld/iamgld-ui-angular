@@ -22,6 +22,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
 import { InputType } from '../../../models/controls'
 import { InputErrorComponent } from '../input-error/input-error.component'
+// Shared Imports
+import { debounceTime } from 'rxjs'
 
 const components = [InputErrorComponent]
 
@@ -60,7 +62,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
   constructor() {
     this.innerControl()
-      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
         const valueTransformed = value
         this.onChange(valueTransformed)
@@ -70,7 +72,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   ngOnInit(): void {
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
