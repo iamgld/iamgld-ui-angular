@@ -1,26 +1,28 @@
 // Angular Imports
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms'
+// Shared Imports
+import { formatDateFromISOToYYYYMMDD } from '../../utils'
 
-// Regex para validar el formato de fecha DD/MM/YYYY
-const DATE_REGEX = /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/
+// Regex to validate the ISO date format (YYYY-MM-DD)
+const ISO_DATE_REGEX = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/
 
 export function isDateValidator(): ValidatorFn {
-	return (control: AbstractControl): ValidationErrors | null => {
-		const value = control.value
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = formatDateFromISOToYYYYMMDD(control.value)
 
-		if (!value) return null
+    if (!value) return null
 
-		if (!DATE_REGEX.test(value))
-			return { isDate: 'Este campo debe ser una fecha valida con formato DD/MM/YYYY!' }
+    if (!ISO_DATE_REGEX.test(value))
+      return { isDate: 'Este campo debe ser una fecha valida con formato DD/MM/YYYY!' }
 
-		// Verificar si la fecha es válida (lógica adicional)
-		const [day, month, year] = value.split('/').map(Number)
-		const date = new Date(year, month - 1, day)
+    // Verify if the date is valid (additional logic)
+    const [year, month, day] = value.split('-').map(Number)
+    const date = new Date(year, month - 1, day)
 
-		// Verificar si la fecha es lógica y corresponde con el formato
-		if (date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day)
-			return null
-		else return { isDate: 'Este campo debe ser una fecha valida!' }
-	}
+    // Verify if the date is logical and corresponds to the format
+    if (date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day)
+      return null
+    else return { isDate: 'Este campo debe ser una fecha valida!' }
+  }
 }
 

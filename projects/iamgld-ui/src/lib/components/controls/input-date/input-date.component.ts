@@ -21,6 +21,9 @@ import {
 import { NgTemplateOutlet } from '@angular/common'
 // This Module Imports
 import { InputErrorComponent } from '../input-error/input-error.component'
+import { formatDateToISO, formatDateFromISOToYYYYMMDD } from '../../../utils'
+// Thirdparty Imports
+import { debounceTime } from 'rxjs'
 
 const components = [InputErrorComponent]
 
@@ -47,15 +50,15 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
   name = input.required<string>()
   label = input<string>('')
   min = input<string | null, string>('', {
-    transform: (value: string) => this.#formatDateToYYYYMMDD(value),
+    transform: (value: string) => formatDateFromISOToYYYYMMDD(value),
   })
   max = input<string | null, string>('', {
-    transform: (value: string) => this.#formatDateToYYYYMMDD(value),
+    transform: (value: string) => formatDateFromISOToYYYYMMDD(value),
   })
   placeholder = input<string>('')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
-  innerControl = signal(new FormControl<unknown>(''))
+  innerControl = signal(new FormControl<string>('', { nonNullable: true }))
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -64,9 +67,9 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
 
   constructor() {
     this.innerControl()
-      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
-        const valueTransformed = this.#formatDateToDDMMYYYY(String(value))
+        const valueTransformed = formatDateToISO(value)
         this.onChange(valueTransformed)
       })
   }
@@ -74,13 +77,13 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
   ngOnInit(): void {
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
   writeValue(value: unknown): void {
     // console.log('writeValue')
-    if (value !== this.innerControl().value) this.innerControl().setValue(value)
+    if (value !== this.innerControl().value) this.innerControl().setValue(String(value))
   }
 
   registerOnChange(onChange: (value: unknown) => void): void {
@@ -91,18 +94,6 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
   registerOnTouched(onTouched: () => void): void {
     // console.log('registerOnTouched')
     this.onTouched = onTouched
-  }
-
-  #formatDateToDDMMYYYY(dateAsString: string): string | null {
-    const [year, month, day] = dateAsString.split('-')
-    if (year && month && day) return `${day}/${month}/${year}`
-    else return null
-  }
-
-  #formatDateToYYYYMMDD(dateAsString: string): string | null {
-    const [day, month, year] = dateAsString.split('/')
-    if (day && month && year) return `${year}-${month}-${day}`
-    else return null
   }
 }
 
