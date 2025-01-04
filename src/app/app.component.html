@@ -1,11 +1,51 @@
 <h2>buttons</h2>
-<section class="buttons">
-  <gld-button disabled name="button" color="pink"> button </gld-button>
-  <gld-button name="button" color="pink" size="tiny"> button </gld-button>
-  <gld-button name="button" color="purple" size="small"> button </gld-button>
-  <gld-button name="button" color="mustard" size="normal"> button </gld-button>
-  <gld-button name="button" color="orange" size="medium"> button </gld-button>
-  <gld-button name="button" color="red" size="large"> button </gld-button>
-  <gld-button name="button" color="blue"> button </gld-button>
-  <gld-button name="button" color="green"> button </gld-button>
+<section>
+  <gld-button disable name="button" color="pink">button</gld-button>
+  <gld-button name="button" color="pink" size="tiny">button</gld-button>
+  <gld-button name="button" color="purple" size="small">button</gld-button>
+  <gld-button name="button" color="mustard" size="normal">button</gld-button>
+  <gld-button name="button" color="orange" size="medium">button</gld-button>
+  <gld-button name="button" color="red" size="large">button</gld-button>
+  <gld-button name="button" color="blue">button</gld-button>
+  <gld-button name="button" color="green">button</gld-button>
+</section>
+
+<h2>controls</h2>
+<section [formGroup]="form">
+  <!--Name-->
+  <gld-input
+    [control]="form.controls.name"
+    formControlName="name"
+    name="name"
+    label="Nombre"
+    placeholder="john doe">
+  </gld-input>
+  <!--  Comments -->
+  <!--  <gld-textarea-->
+  <!--    [control]="form.controls.howDidItHappenInformation.controls.accidentDescription"-->
+  <!--    formControlName="accidentDescription"-->
+  <!--    label=""-->
+  <!--    name="accidentDescription"-->
+  <!--    placeholder="Detalla cómo ocurrió el incidente. ¿Hubo personas lesionadas? Si tu vehículo sufrió daños, indícanos en qué partes.">-->
+  <!--				<span-->
+  <!--          inputSuffix-->
+  <!--          class="utils&#45;&#45;pill"-->
+  <!--          [class.color&#45;&#45;graydark]="-->
+  <!--						!Boolean(-->
+  <!--							form.controls.howDidItHappenInformation.controls.accidentDescription.invalid &&-->
+  <!--								(form.controls.howDidItHappenInformation.controls.accidentDescription.touched ||-->
+  <!--									form.controls.howDidItHappenInformation.controls.accidentDescription.dirty)-->
+  <!--						)-->
+  <!--					"-->
+  <!--          [class.color&#45;&#45;red]="-->
+  <!--						Boolean(-->
+  <!--							form.controls.howDidItHappenInformation.controls.accidentDescription.invalid &&-->
+  <!--								(form.controls.howDidItHappenInformation.controls.accidentDescription.touched ||-->
+  <!--									form.controls.howDidItHappenInformation.controls.accidentDescription.dirty)-->
+  <!--						)-->
+  <!--					">-->
+  <!--					{{ form.controls.howDidItHappenInformation.controls.accidentDescription.value.length }} - -->
+  <!--          {{ accidentDescriptionMaxLength() }}-->
+  <!--				</span>-->
+  <!--  </gld-textarea>-->
 </section>

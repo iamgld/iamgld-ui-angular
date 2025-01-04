@@ -1,14 +1,27 @@
 // Angular Imports
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
+import { FormControl, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms'
 // @iamgld/ui  Imports
-import { ButtonComponent } from '@iamgld/ui'
+import { ButtonComponent, InputComponent, SelectComponent, SelectOptionComponent } from '@iamgld/ui'
+
+const components = [ButtonComponent, InputComponent, SelectComponent, SelectOptionComponent]
 
 @Component({
   selector: 'gld-root',
-  imports: [ButtonComponent],
+  imports: [ReactiveFormsModule, ...components],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'iamgld-ui-angular'
+  readonly #fb = inject(NonNullableFormBuilder)
+
+  readonly form = this.#fb.group<Form>({
+    name: this.#fb.control(''),
+    comments: this.#fb.control(''),
+  })
+}
+
+interface Form {
+  name: FormControl<string>
+  comments: FormControl<string>
 }
