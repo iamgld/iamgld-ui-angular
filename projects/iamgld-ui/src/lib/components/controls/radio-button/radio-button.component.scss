@@ -6,31 +6,34 @@
 }
 
 .radio {
-  --height: 26px;
-  --color: var(--dark);
-  --color--disabled: var(--gray-transparent--075);
-  --dot-color: var(--red);
-  --dot-color--outer: var(--gray);
-  --dot-color--outer-hover: var(--graydark);
-  --dot-color--outer-selected: var(--red);
-  --dot-color--outer-error: var(--red);
+  --gld-height: 26px;
+  --gld-color: var(--gld-darkblue);
+  --gld-color--disabled: var(--gld-gray-transparent--075);
+  --gld-dot-color: var(--gld-blue);
+  --gld-dot-color--outer: var(--gld-gray-transparent--075);
+  --gld-dot-color--outer-hover: var(--gld-blue);
+  --gld-dot-color--outer-selected: var(--gld-blue);
+  --gld-dot-color--outer-error: var(--gld-red);
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
   border: none;
   background: none;
-  gap: var(--spacing--xxs);
-  font: 400 var(--font-size--normal) / 1.25 var(--font--roboto);
-  color: var(--color);
-  height: var(--height);
-  padding: var(--spacing--xxxs);
+  gap: var(--gld-spacing--xxs);
+  font-family: var(--gld-font--poppins);
+  font-size: var(--gld-font-size--normal);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--gld-color);
+  height: var(--gld-height);
+  padding: var(--gld-spacing--xxxs);
   cursor: pointer;
   user-select: none;
 
   &:hover &__icon,
   &:focus &__icon {
-    --dot-color--outer: var(--dot-color--outer-hover);
+    --gld-dot-color--outer: var(--gld-dot-color--outer-hover);
   }
 
   &:focus {
@@ -38,11 +41,11 @@
   }
 
   &__icon {
-    --size: 20px;
-    width: var(--size);
-    height: var(--size);
+    --gld-size: 20px;
+    width: var(--gld-size);
+    height: var(--gld-size);
     border-radius: 50%;
-    border: var(--border-size) solid var(--dot-color--outer);
+    border: var(--gld-border-size) solid var(--gld-dot-color--outer);
     position: relative;
     display: flex;
     justify-content: center;
@@ -51,9 +54,9 @@
     &--selected::before {
       content: '';
       position: absolute;
-      width: calc(var(--size) / 2);
-      height: calc(var(--size) / 2);
-      background: var(--dot-color);
+      width: calc(var(--gld-size) / 2);
+      height: calc(var(--gld-size) / 2);
+      background: var(--gld-dot-color);
       border-radius: inherit;
     }
   }
@@ -63,16 +66,16 @@
   }
 
   &--selected {
-    --dot-color--outer: var(--dot-color--outer-selected);
+    --gld-dot-color--outer: var(--gld-dot-color--outer-selected);
   }
 
   &--disabled {
-    --color: var(--color--disabled);
-    --dot-color--outer: var(--color--disabled);
+    --gld-color: var(--gld-color--disabled);
+    --gld-dot-color--outer: var(--gld-color--disabled);
     pointer-events: none;
   }
 
   &--error &__icon {
-    --dot-color--outer: var(--dot-color--outer-error);
+    --gld-dot-color--outer: var(--gld-dot-color--outer-error);
   }
 }
