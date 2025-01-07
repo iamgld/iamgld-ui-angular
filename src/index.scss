@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'styles';
+
+body {
+  background: var(--whitelight);
+  color: var(--darkblue);
+  font-family: var(--font--poppins);
+}
