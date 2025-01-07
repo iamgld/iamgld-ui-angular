@@ -1,70 +1,79 @@
 .input {
-  --background: var(--white);
-  --color: var(--dark);
-  --color--disabled: var(--gray-transparent--075);
-  --color--error: var(--red);
-  --placeholder-color: var(--gray);
-  --border-color: var(--gray);
-  --label-color: var(--dark);
-  --min-height: 120px;
-  --max-height: 240px;
-  --min-with: 50px;
-  --animation-time: var(--animation-time--150);
+  --gld-color: var(--gld-darkblue);
+  --gld-color--disabled: var(--gld-gray-transparent--075);
+  --gld-color--error: var(--gld-red);
+  --gld-placeholder-color: var(--gld-gray-transparent--075);
+  --gld-border-color: var(--gld-gray-transparent--075);
+  --gld-label-color: var(--gld-darkblue);
+  --gld-min-height: 120px;
+  --gld-max-height: 240px;
+  --gld-min-with: 50px;
+  --gld-animation-time: var(--gld-animation-time--150);
 
   position: relative;
+  background: transparent;
 
   label {
     padding: 0;
-    font-size: var(--font-size--normal);
-    color: var(--label-color);
+    font-family: var(--gld-font--poppins);
+    font-size: var(--gld-font-size--normal);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--gld-label-color);
     will-change: color;
-    transition: color var(--animation-time) ease;
+    transition: color var(--gld-animation-time) ease;
     cursor: text;
   }
 
   textarea {
     display: flex;
     width: 100%;
-    min-width: var(--min-with);
-    min-height: var(--min-height);
-    max-height: var(--max-height);
-    padding: var(--spacing--xxs);
-    font: 400 var(--font-size--normal) / 1.25 var(--font--roboto);
+    min-width: var(--gld-min-with);
+    min-height: var(--gld-min-height);
+    max-height: var(--gld-max-height);
+    padding: var(--gld-spacing--xxs);
+    font-family: var(--gld-font--poppins);
+    font-size: var(--gld-font-size--normal);
+    font-weight: 400;
+    line-height: 1.25;
     border: none;
     outline: none;
-    border-bottom: var(--border-size) solid var(--border-color);
-    color: var(--color);
-    background: var(--background);
+    border-bottom: var(--gld-border-size) solid var(--gld-border-color);
+    color: var(--gld-color);
+    background: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     resize: vertical;
     form-sizing: content;
     will-change: color;
-    transition: color var(--animation-time) ease-in-out;
+    transition: color var(--gld-animation-time) ease-in-out;
 
     &:focus {
-      --border-color: var(--graydark);
+      --gld-border-color: var(--gld-blue);
     }
 
     &::placeholder {
-      color: var(--placeholder-color);
+      color: var(--gld-placeholder-color);
     }
   }
 
   &--error {
-    --color: var(--color--error);
-    --label-color: var(--color--error);
-    --border-color: var(--color--error);
-    // --placeholder-color: var(--color--error);
+    --gld-color: var(--gld-color--error);
+    --gld-label-color: var(--gld-color--error);
+    --gld-border-color: var(--gld-color--error);
+    --gld-placeholder-color: var(--gld-color--error);
 
-    // textarea:focus {
-    // 	--border-color: var(--color--error);
+    // input:focus {
+    // 	--gld-border-color: var(--gld-color--error);
     // }
   }
 
   &--disabled {
-    --color: var(--color--disabled);
-    --border-color: var(--color--disabled);
-    --label-color: var(--color--disabled);
-    --placeholder-color: var(--color--disabled);
+    --gld-color: var(--gld-color--disabled);
+    --gld-border-color: var(--gld-color--disabled);
+    --gld-label-color: var(--gld-color--disabled);
+    --gld-placeholder-color: var(--gld-color--disabled);
 
     pointer-events: none;
     cursor: not-allowed;
@@ -72,12 +81,12 @@
 
   &-icon {
     position: absolute;
-    right: var(--spacing--xxs);
-    bottom: var(--spacing--xxs);
+    right: var(--gld-spacing--xxs);
+    bottom: 0;
     display: inline-block;
-    color: var(--color);
+    color: var(--gld-color);
     will-change: transform, color;
-    transition: color var(--animation-time) ease;
-    user-select: none;
+    transition: color var(--gld-animation-time) ease;
+    cursor: pointer;
   }
 }
