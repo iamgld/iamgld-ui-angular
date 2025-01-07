@@ -1,0 +1,89 @@
+.input {
+  --gld-color: var(--gld-darkblue);
+  --gld-color--disabled: var(--gld-gray-transparent--060);
+  --gld-color--error: var(--gld-red);
+  --gld-placeholder-color: var(--gld-gray-transparent--060);
+  --gld-border-color: var(--gld-gray-transparent--060);
+  --gld-label-color: var(--gld-darkblue);
+  --gld-height: 40px;
+  --gld-min-with: 50px;
+  --gld-animation-time: var(--gld-animation-time--150);
+
+  position: relative;
+  background: transparent;
+
+  label {
+    padding: 0;
+    font-family: var(--gld-font--poppins);
+    font-size: var(--gld-font-size--normal);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--gld-label-color);
+    will-change: color;
+    transition: color var(--gld-animation-time) ease;
+    cursor: text;
+  }
+
+  input {
+    width: 100%;
+    min-width: var(--gld-min-with);
+    height: var(--gld-height);
+    padding: var(--gld-spacing--xxs);
+    padding-right: var(--gld-spacing--m);
+    font-family: var(--gld-font--poppins);
+    font-size: var(--gld-font-size--normal);
+    font-weight: 400;
+    line-height: 1.25;
+    border: none;
+    outline: none;
+    border-bottom: var(--gld-border-size) solid var(--gld-border-color);
+    color: var(--gld-color);
+    background: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    will-change: color;
+    transition: color var(--gld-animation-time) ease-in-out;
+
+    &:focus {
+      --gld-border-color: var(--gld-blue);
+    }
+
+    &::placeholder {
+      color: var(--gld-placeholder-color);
+    }
+  }
+
+  &--error {
+    --gld-color: var(--gld-color--error);
+    --gld-label-color: var(--gld-color--error);
+    --gld-border-color: var(--gld-color--error);
+    --gld-placeholder-color: var(--gld-color--error);
+
+    // input:focus {
+    // 	--gld-border-color: var(--gld-color--error);
+    // }
+  }
+
+  &--disabled {
+    --gld-color: var(--gld-color--disabled);
+    --gld-border-color: var(--gld-color--disabled);
+    --gld-label-color: var(--gld-color--disabled);
+    --gld-placeholder-color: var(--gld-color--disabled);
+
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  &-icon {
+    position: absolute;
+    right: var(--gld-spacing--xxs);
+    bottom: 0;
+    display: inline-block;
+    color: var(--gld-color);
+    will-change: transform, color;
+    transition: color var(--gld-animation-time) ease;
+    cursor: pointer;
+  }
+}
+

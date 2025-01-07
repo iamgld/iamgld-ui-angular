@@ -1,0 +1,30 @@
+.hint {
+  --gld-color: var(--gld-darkblue);
+  --gld-background: var(--gld-gray-transparent--010);
+  --gld-radius: var(--gld-radius--xxxs);
+
+  color: var(--gld-color);
+  background: var(--gld-background);
+  border-radius: 0 0 var(--gld-radius) var(--gld-radius);
+  padding: var(--gld-spacing--xxxs) var(--gld-spacing--xxs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gld-spacing--xxxs);
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &__message {
+    font-family: var(--gld-font--poppins);
+    font-size: var(--gld-font-size--small);
+    font-weight: 400;
+    line-height: 1.25;
+    text-transform: lowercase;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

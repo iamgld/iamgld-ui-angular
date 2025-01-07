@@ -1,0 +1,10 @@
+<button
+  id="{{ name() }}"
+  attr.aria-label="{{ name() }}"
+  class="Button Button--{{ color() }} Button--{{ size() }}"
+  [class.Button--disable]="disable()"
+  (click)="emitClick()">
+  <span>
+    <ng-content />
+  </span>
+</button>

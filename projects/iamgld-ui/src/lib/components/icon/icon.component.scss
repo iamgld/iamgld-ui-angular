@@ -1,0 +1,39 @@
+:host {
+  color: inherit;
+  display: inline-flex;
+
+  &:has(.Icon--left) {
+    margin-left: var(--gld-spacing--xxxs);
+  }
+
+  &:has(.Icon--right) {
+    margin-right: var(--gld-spacing--xxxs);
+  }
+}
+
+.Icon {
+  --gld-icon-size: var(--gld-icon-size--normal);
+
+  position: relative;
+  color: inherit;
+  font-weight: normal;
+  width: var(--gld-icon-size);
+  height: var(--gld-icon-size);
+  margin: auto;
+
+  &--tiny {
+    --gld-icon-size: var(--gld-icon-size--tiny);
+  }
+
+  &--small {
+    --gld-icon-size: var(--gld-icon-size--small);
+  }
+
+  &--medium {
+    --gld-icon-size: var(--gld-icon-size--medium);
+  }
+
+  &--large {
+    --gld-icon-size: var(--gld-icon-size--large);
+  }
+}

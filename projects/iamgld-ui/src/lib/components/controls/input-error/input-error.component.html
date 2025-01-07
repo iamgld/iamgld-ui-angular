@@ -1,0 +1,54 @@
+<section class="error" [class.error--with-border]="border()">
+  <span class="error__message">
+    <ng-content>
+      <ng-content>
+        @switch (true) {
+          @case (Boolean(this.errors()?.['required'])) {
+            Este campo es requerido!
+          }
+          @case (Boolean(this.errors()?.['email'])) {
+            {{ this.errors()?.['email'] }}
+          }
+          @case (Boolean(this.errors()?.['maxlength'])) {
+            Este campo debe tener como máximo
+            {{ this.errors()?.['maxlength'].requiredLength }}
+            caracteres!
+          }
+          @case (Boolean(this.errors()?.['minlength'])) {
+            Este campo debe tener como mínimo
+            {{ this.errors()?.['minlength'].requiredLength }}
+            caracteres!
+          }
+          @case (Boolean(this.errors()?.['isDate'])) {
+            {{ this.errors()?.['isDate'] }}
+          }
+          @case (Boolean(this.errors()?.['minimumAge'])) {
+            Esta campo debe cumplir con la edad minima,
+            {{ this.errors()?.['minimumAge'].requiredAge }} años
+          }
+          @case (Boolean(this.errors()?.['naturalNumber'])) {
+            {{ this.errors()?.['naturalNumber'] }}
+          }
+          @case (Boolean(this.errors()?.['mustMatch'])) {
+            {{ this.errors()?.['mustMatch'] }}
+          }
+          @case (Boolean(this.errors()?.['mustUnmatch'])) {
+            {{ this.errors()?.['mustUnmatch'] }}
+          }
+          @case (Boolean(this.errors()?.['isDocument'])) {
+            {{ this.errors()?.['isDocument'] }}
+          }
+          @case (Boolean(this.errors()?.['isFormSelectItem'])) {
+            {{ this.errors()?.['isFormSelectItem'] }}
+          }
+          @case (Boolean(this.errors()?.['isLicensePlate'])) {
+            {{ this.errors()?.['isLicensePlate'] }}
+          }
+          @default {
+            empty error message
+          }
+        }
+      </ng-content>
+    </ng-content>
+  </span>
+</section>

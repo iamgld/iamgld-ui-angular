@@ -1,0 +1,9 @@
+@use './setting' as setting;
+@use './tools' as tools;
+
+/*
+  En esta capa estarán:
+    1. Patrones de diseños, elementos reutilizables
+    2. No cosméticos, ni colores, ni tipografías
+    3. Exclusivamente se usaran selectores de clase
+*/

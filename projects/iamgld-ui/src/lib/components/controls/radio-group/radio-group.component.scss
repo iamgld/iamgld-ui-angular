@@ -1,0 +1,33 @@
+.radio {
+  --gld-color: var(--gld-darkblue);
+  --gld-color--disabled: var(--gld-gray-transparent--060);
+
+  margin-bottom: var(--gld-spacing--xxxs);
+
+  &__label {
+    margin-bottom: var(--gld-spacing--xxxs);
+    color: var(--gld-color);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &--disabled &__label {
+    --gld-color: var(--gld-color--disabled);
+    pointer-events: none;
+  }
+
+  &__items {
+    display: flex;
+    gap: var(--gld-spacing--xxs);
+
+    &--horizontal {
+      align-items: center;
+    }
+
+    &--vertical {
+      flex-direction: column;
+    }
+  }
+}
