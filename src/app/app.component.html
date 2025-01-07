@@ -11,41 +11,69 @@
 </section>
 
 <h2>controls</h2>
-<section [formGroup]="form">
-  <!--Name-->
+<section class="grid grid--3" [formGroup]="form">
+  <!-- First Name -->
   <gld-input
-    [control]="form.controls.name"
-    formControlName="name"
-    name="name"
+    [control]="form.controls.firstName"
+    formControlName="firstName"
+    name="firstName"
     label="Nombre"
-    placeholder="john doe">
+    placeholder="john">
+    <gld-input-hint>hint example</gld-input-hint>
   </gld-input>
+  <!-- Last Name -->
+  <gld-input
+    [control]="form.controls.lastName"
+    formControlName="lastName"
+    name="lastName"
+    label="Apellido"
+    placeholder="doe">
+  </gld-input>
+  <!-- Date -->
+  <gld-input-date
+    [control]="form.controls.date"
+    formControlName="date"
+    name="date"
+    label="Fecha"
+    placeholder="00/00/0000">
+  </gld-input-date>
   <!--  Comments -->
-  <!--  <gld-textarea-->
-  <!--    [control]="form.controls.howDidItHappenInformation.controls.accidentDescription"-->
-  <!--    formControlName="accidentDescription"-->
-  <!--    label=""-->
-  <!--    name="accidentDescription"-->
-  <!--    placeholder="Detalla cómo ocurrió el incidente. ¿Hubo personas lesionadas? Si tu vehículo sufrió daños, indícanos en qué partes.">-->
-  <!--				<span-->
-  <!--          inputSuffix-->
-  <!--          class="utils&#45;&#45;pill"-->
-  <!--          [class.color&#45;&#45;graydark]="-->
-  <!--						!Boolean(-->
-  <!--							form.controls.howDidItHappenInformation.controls.accidentDescription.invalid &&-->
-  <!--								(form.controls.howDidItHappenInformation.controls.accidentDescription.touched ||-->
-  <!--									form.controls.howDidItHappenInformation.controls.accidentDescription.dirty)-->
-  <!--						)-->
-  <!--					"-->
-  <!--          [class.color&#45;&#45;red]="-->
-  <!--						Boolean(-->
-  <!--							form.controls.howDidItHappenInformation.controls.accidentDescription.invalid &&-->
-  <!--								(form.controls.howDidItHappenInformation.controls.accidentDescription.touched ||-->
-  <!--									form.controls.howDidItHappenInformation.controls.accidentDescription.dirty)-->
-  <!--						)-->
-  <!--					">-->
-  <!--					{{ form.controls.howDidItHappenInformation.controls.accidentDescription.value.length }} - -->
-  <!--          {{ accidentDescriptionMaxLength() }}-->
-  <!--				</span>-->
-  <!--  </gld-textarea>-->
+  <gld-textarea
+    suffix
+    [control]="form.controls.comments"
+    formControlName="comments"
+    label="Comentarios"
+    name="comments"
+    placeholder="Comentarios">
+  </gld-textarea>
+  <!-- Agree -->
+  <gld-radio-group
+    [control]="form.controls.agree"
+    formControlName="agree"
+    label="Estas de acuerdo?"
+    name="agree"
+    direction="horizontal">
+    <gld-radio-button value="Si"> Si </gld-radio-button>
+    <gld-radio-button value="No"> No </gld-radio-button>
+  </gld-radio-group>
+
+  <gld-select
+    [control]="form.controls.gender"
+    formControlName="gender"
+    name="gender"
+    label="Genero"
+    placeholder="Selecciona"
+    [transform]="transformSelect">
+    @for (gender of genders(); track gender.value) {
+      <gld-select-option [value]="gender">
+        {{ gender.label }}
+      </gld-select-option>
+    } @empty {
+      <gld-select-option disabled value="no-hay-opciones"> no hay opciones </gld-select-option>
+    }
+  </gld-select>
+
+  <section class="grid--span-3">
+    <gld-button name="button" color="green" (clicked)="submit()">submit</gld-button>
+  </section>
 </section>

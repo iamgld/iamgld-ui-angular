@@ -1,10 +1,36 @@
 // Angular Imports
-import { Component, inject } from '@angular/core'
-import { FormControl, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms'
+import { Component, inject, signal } from '@angular/core'
+import {
+  FormControl,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms'
 // @iamgld/ui  Imports
-import { ButtonComponent, InputComponent, SelectComponent, SelectOptionComponent } from '@iamgld/ui'
+import {
+  ButtonComponent,
+  InputComponent,
+  InputHintComponent,
+  InputDateComponent,
+  TextareaComponent,
+  isDateValidator,
+  RadioGroupComponent,
+  RadioButtonComponent,
+  SelectComponent,
+  SelectOptionComponent,
+} from '@iamgld/ui'
 
-const components = [ButtonComponent, InputComponent, SelectComponent, SelectOptionComponent]
+const components = [
+  ButtonComponent,
+  InputComponent,
+  InputHintComponent,
+  InputDateComponent,
+  TextareaComponent,
+  RadioGroupComponent,
+  RadioButtonComponent,
+  SelectComponent,
+  SelectOptionComponent,
+]
 
 @Component({
   selector: 'gld-root',
@@ -16,12 +42,44 @@ export class AppComponent {
   readonly #fb = inject(NonNullableFormBuilder)
 
   readonly form = this.#fb.group<Form>({
-    name: this.#fb.control(''),
-    comments: this.#fb.control(''),
+    firstName: this.#fb.control('', { validators: [Validators.required] }),
+    lastName: this.#fb.control('', { validators: [Validators.required] }),
+    date: this.#fb.control('', { validators: [Validators.required, isDateValidator()] }),
+    comments: this.#fb.control('', { validators: [Validators.required] }),
+    agree: this.#fb.control({ value: '', disabled: false }, { validators: [Validators.required] }),
+    gender: this.#fb.control('', { validators: [Validators.required] }),
   })
+
+  readonly genders = signal<FormSelectOption[]>([
+    { label: 'Masculino', value: 'male' },
+    { label: 'Femenino', value: 'female' },
+  ])
+
+  transformSelect(value: unknown): string {
+    const formSelectOption = value as FormSelectOption
+    return String(formSelectOption.label)
+  }
+
+  submit() {
+    if (this.form.valid) {
+      console.log(this.form.value)
+    } else {
+      this.form.markAllAsTouched()
+      this.form.markAsDirty()
+    }
+  }
 }
 
 interface Form {
-  name: FormControl<string>
+  firstName: FormControl<string>
+  lastName: FormControl<string>
+  date: FormControl<string>
   comments: FormControl<string>
+  agree: FormControl<string>
+  gender: FormControl<string>
+}
+
+export interface FormSelectOption {
+  value: string
+  label: string
 }
