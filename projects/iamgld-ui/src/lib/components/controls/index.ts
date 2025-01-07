@@ -1,3 +1,4 @@
+export * from './input-date/input-date.component'
 export * from './input-error/input-error.component'
 export * from './input-hint/input-hint.component'
 export * from './input/input.component'
