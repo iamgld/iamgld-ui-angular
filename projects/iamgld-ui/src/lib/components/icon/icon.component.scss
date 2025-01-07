@@ -1,41 +1,39 @@
-@use 'styles' as styles;
-
 :host {
-	color: inherit;
-	display: inline-flex;
+  color: inherit;
+  display: inline-flex;
 
-	&:has(.Icon--left) {
-		margin-left: var(--spacing--xxxs);
-	}
+  &:has(.Icon--left) {
+    margin-left: var(--gld-spacing--xxxs);
+  }
 
-	&:has(.Icon--right) {
-		margin-right: var(--spacing--xxxs);
-	}
+  &:has(.Icon--right) {
+    margin-right: var(--gld-spacing--xxxs);
+  }
 }
 
 .Icon {
-	--icon-size: var(--icon-size--normal);
+  --gld-icon-size: var(--gld-icon-size--normal);
 
-	position: relative;
-	color: inherit;
-	font-weight: normal;
-	width: var(--icon-size);
-	height: var(--icon-size);
-	margin: auto;
+  position: relative;
+  color: inherit;
+  font-weight: normal;
+  width: var(--gld-icon-size);
+  height: var(--gld-icon-size);
+  margin: auto;
 
-	&--tiny {
-		--icon-size: var(--icon-size--tiny);
-	}
+  &--tiny {
+    --gld-icon-size: var(--gld-icon-size--tiny);
+  }
 
-	&--small {
-		--icon-size: var(--icon-size--small);
-	}
+  &--small {
+    --gld-icon-size: var(--gld-icon-size--small);
+  }
 
-	&--medium {
-		--icon-size: var(--icon-size--medium);
-	}
+  &--medium {
+    --gld-icon-size: var(--gld-icon-size--medium);
+  }
 
-	&--large {
-		--icon-size: var(--icon-size--large);
-	}
+  &--large {
+    --gld-icon-size: var(--gld-icon-size--large);
+  }
 }
