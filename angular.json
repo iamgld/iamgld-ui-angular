@@ -46,21 +46,15 @@
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "optimization": {
-              "scripts": true,
-              "styles": {
-                "minify": true,
-                "inlineCritical": true
-              },
-              "fonts": true
-            },
+            "crossOrigin": "anonymous",
+            "optimization": true,
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
-            "styles": ["./projects/iamgld-ui/public/styles/styles.scss", "src/styles.scss"],
+            "styles": ["./projects/iamgld-ui/public/styles/styles.scss", "src/index.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["./src/app/styles"]
             },
@@ -133,6 +127,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "hmr": false
+          },
           "configurations": {
             "local": {
               "buildTarget": "app:build:local"
