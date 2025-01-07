@@ -119,10 +119,10 @@
   }
 
   &--disable {
-    --gld-color: var(--gld-gray-transparent--075);
-    --gld-border-color: var(--gld-gray-transparent--075);
-    --gld-background: var(--gld-gray-transparent--015);
-    --gld-background--hover: var(--gld-gray-transparent--015);
+    --gld-color: var(--gld-gray-transparent--060);
+    --gld-border-color: var(--gld-gray-transparent--060);
+    --gld-background: var(--gld-gray-transparent--010);
+    --gld-background--hover: var(--gld-gray-transparent--010);
     pointer-events: none;
     cursor: not-allowed;
   }
