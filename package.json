@@ -26,8 +26,7 @@
     "eslint": "ng lint",
     "eslint:fix": "ng lint --fix",
     "linter": "npm run prettier:fix && npm run eslint:fix && npm run stylelint:fix",
-    "lintstaged": "npx lint-staged",
-    "postinstall": "npx husky"
+    "lintstaged": "npx lint-staged"
   },
   "dependencies": {
     "@angular/animations": "19.0.1",
