@@ -89,6 +89,7 @@
   --gld-pink-transparent--020: #{rgba(#ec4899, 0.2)};
   --gld-pink-transparent--030: #{rgba(#ec4899, 0.3)};
   --gld-gray: #b5b5b5;
+  --gld-gray-transparent--010: #{rgba(#b5b5b5, 0.1)};
   --gld-gray-transparent--015: #{rgba(#b5b5b5, 0.15)};
   --gld-gray-transparent--050: #{rgba(#b5b5b5, 0.5)};
   --gld-gray-transparent--075: #{rgba(#b5b5b5, 0.75)};
@@ -105,9 +106,10 @@
   --gld-darkblue-transparent--070: #{rgba(#101827, 0.7)};
   --gld-darkblue-transparent--060: #{rgba(#101827, 0.6)};
   --gld-darkblue-transparent--030: #{rgba(#101827, 0.3)};
+  --gld-darkblue-transparent--010: #{rgba(#101827, 0.1)};
 
   // Borders
-  --gld-border-size: 1px;
+  --gld-border-size: 2px;
 
   // Animations
   --gld-animation-time--150: 150ms;
