@@ -147,10 +147,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
   #detectSelectOptionChildren() {
     const selectOptionChildren = this.selectOptionChildren()
     const selectElement: HTMLElement | undefined = this.selectElement()?.nativeElement
-    selectElement?.style.setProperty('--option-items', String(selectOptionChildren.length))
+    selectElement?.style.setProperty('--gld-option-items', String(selectOptionChildren.length))
     const clientHeight: number | undefined =
       selectElement?.querySelector('gld-select-option')?.clientHeight
-    if (clientHeight) selectElement?.style.setProperty('--option-height', `${clientHeight}px`)
+    if (clientHeight) selectElement?.style.setProperty('--gld-option-height', `${clientHeight}px`)
 
     selectOptionChildren.map((selectOption) => {
       selectOption.selected.subscribe((value: InputValue) => {
