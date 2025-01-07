@@ -1,28 +1,29 @@
 // @use 'styles';
 
 .Button {
-  --color: initial;
-  --border-color: initial;
-  --border: var(--gld-border-size) solid var(--border-color);
-  --background: initial;
-  --background--hover: initial;
-  --box-shadow-size: 2px;
-  --box-shadow-size--hover: 0;
-  --padding: var(--gld-spacing--xxs) var(--gld-spacing--xs);
-  --radius: var(--gld-radius--xxs);
-  --font-size: var(--gld-font-size--normal);
-  --font: 600 var(--font-size) var(--gld-font--poppins);
+  --gld-color: initial;
+  --gld-border-color: initial;
+  --gld-border: var(--gld-border-size) solid var(--gld-border-color);
+  --gld-background: initial;
+  --gld-background--hover: initial;
+  --gld-box-shadow-size: 2px;
+  --gld-box-shadow-size--hover: 0;
+  --gld-padding: var(--gld-spacing--xxs) var(--gld-spacing--xs);
+  --gld-radius: var(--gld-radius--xxs);
+  --gld-font-size: var(--gld-font-size--normal);
 
   outline: none;
-  border: var(--border);
-  padding: var(--padding);
-  border-radius: var(--radius);
-  font: var(--font);
+  border: var(--gld-border);
+  padding: var(--gld-padding);
+  border-radius: var(--gld-radius);
+  font-family: var(--gld-font--poppins);
+  font-size: var(--gld-font-size);
+  font-weight: 600;
   cursor: pointer;
   width: inherit;
-  color: var(--color);
-  background: var(--background);
-  box-shadow: 0 var(--box-shadow-size) 0 0;
+  color: var(--gld-color);
+  background: var(--gld-background);
+  box-shadow: 0 var(--gld-box-shadow-size) 0 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -35,8 +36,8 @@
 
   &:hover,
   &:focus {
-    --background: var(--background--hover);
-    --box-shadow-size: var(--box-shadow-size--hover);
+    --gld-background: var(--gld-background--hover);
+    --gld-box-shadow-size: var(--gld-box-shadow-size--hover);
   }
 
   span {
@@ -45,83 +46,82 @@
   }
 
   &--pink {
-    --color: var(--gld-pink);
-    --border-color: var(--gld-pink);
-    --background: var(--gld-pink-transparent--010);
-    --background--hover: var(--gld-pink-transparent--020);
+    --gld-color: var(--gld-pink);
+    --gld-border-color: var(--gld-pink);
+    --gld-background: var(--gld-pink-transparent--010);
+    --gld-background--hover: var(--gld-pink-transparent--020);
   }
-
   &--purple {
-    --color: var(--gld-purple);
-    --border-color: var(--gld-purple);
-    --background: var(--gld-purple-transparent--010);
-    --background--hover: var(--gld-purple-transparent--020);
+    --gld-color: var(--gld-purple);
+    --gld-border-color: var(--gld-purple);
+    --gld-background: var(--gld-purple-transparent--010);
+    --gld-background--hover: var(--gld-purple-transparent--020);
   }
 
   &--mustard {
-    --color: var(--gld-mustard);
-    --border-color: var(--gld-mustard);
-    --background: var(--gld-mustard-transparent--010);
-    --background--hover: var(--gld-mustard-transparent--020);
+    --gld-color: var(--gld-mustard);
+    --gld-border-color: var(--gld-mustard);
+    --gld-background: var(--gld-mustard-transparent--010);
+    --gld-background--hover: var(--gld-mustard-transparent--020);
   }
 
   &--orange {
-    --color: var(--gld-orange);
-    --border-color: var(--gld-orange);
-    --background: var(--gld-orange-transparent--010);
-    --background--hover: var(--gld-orange-transparent--020);
+    --gld-color: var(--gld-orange);
+    --gld-border-color: var(--gld-orange);
+    --gld-background: var(--gld-orange-transparent--010);
+    --gld-background--hover: var(--gld-orange-transparent--020);
   }
 
   &--blue {
-    --color: var(--gld-blue);
-    --border-color: var(--gld-blue);
-    --background: var(--gld-blue-transparent--010);
-    --background--hover: var(--gld-blue-transparent--020);
+    --gld-color: var(--gld-blue);
+    --gld-border-color: var(--gld-blue);
+    --gld-background: var(--gld-blue-transparent--010);
+    --gld-background--hover: var(--gld-blue-transparent--020);
   }
 
   &--red {
-    --color: var(--gld-red);
-    --border-color: var(--gld-red);
-    --background: var(--gld-red-transparent--010);
-    --background--hover: var(--gld-red-transparent--020);
+    --gld-color: var(--gld-red);
+    --gld-border-color: var(--gld-red);
+    --gld-background: var(--gld-red-transparent--010);
+    --gld-background--hover: var(--gld-red-transparent--020);
   }
 
   &--green {
-    --color: var(--gld-green);
-    --border-color: var(--gld-green);
-    --background: var(--gld-green-transparent--010);
-    --background--hover: var(--gld-green-transparent--020);
+    --gld-color: var(--gld-green);
+    --gld-border-color: var(--gld-green);
+    --gld-background: var(--gld-green-transparent--010);
+    --gld-background--hover: var(--gld-green-transparent--020);
   }
 
   &--tiny {
-    --font-size: var(--gld-font-size--small);
-    --padding: var(--gld-spacing--xxxs) var(--gld-spacing--xxs);
+    --gld-font-size: var(--gld-font-size--small);
+    --gld-padding: var(--gld-spacing--xxxs) var(--gld-spacing--xxs);
   }
 
   &--small {
-    --font-size: var(--gld-font-size--small);
-    --padding: var(--gld-spacing--xxs);
+    --gld-font-size: var(--gld-font-size--small);
+    --gld-padding: var(--gld-spacing--xxs);
   }
 
   &--normal {
-    --font-size: var(--gld-font-size--normal);
-    --padding: var(--gld-spacing--xxs) var(--gld-spacing--xs);
+    --gld-font-size: var(--gld-font-size--normal);
+    --gld-padding: var(--gld-spacing--xxs) var(--gld-spacing--xs);
   }
 
   &--medium {
-    --padding: var(--gld-spacing--xs) var(--gld-spacing--m);
+    --gld-padding: var(--gld-spacing--xs) var(--gld-spacing--m);
   }
 
   &--large {
-    --font-size: var(--gld-font-size--heading-three);
-    --padding: var(--gld-spacing--xs) var(--gld-spacing--l);
+    --gld-font-size: var(--gld-font-size--heading-three);
+    --gld-padding: var(--gld-spacing--xs) var(--gld-spacing--l);
   }
 
   &--disable {
-    --color: var(--gld-gray-transparent--075);
-    --border-color: var(--gld-gray-transparent--075);
-    --background: var(--gld-gray-transparent--015);
-    --background--hover: var(--gld-gray-transparent--015);
+    --gld-color: var(--gld-gray-transparent--075);
+    --gld-border-color: var(--gld-gray-transparent--075);
+    --gld-background: var(--gld-gray-transparent--015);
+    --gld-background--hover: var(--gld-gray-transparent--015);
     pointer-events: none;
     cursor: not-allowed;
   }
