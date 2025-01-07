@@ -15,7 +15,7 @@
 <!-- Errors -->
 @if (errors) {
   <ng-content select="gld-input-error">
-    <gld-input-error [errors]="control().errors" />
+    <gld-input-error border [errors]="control().errors" />
   </ng-content>
 } @else {
   <!-- Hint -->

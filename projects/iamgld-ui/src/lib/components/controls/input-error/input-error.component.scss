@@ -1,9 +1,12 @@
 .error {
   --gld-color: var(--gld-red);
   --gld-background: var(--gld-red-transparent--010);
+  --gld-radius: var(--gld-radius--xxxs);
+  --gld-border-color: var(--gld-red);
 
   color: var(--gld-color);
   background: var(--gld-background);
+  border-radius: 0 0 var(--gld-radius) var(--gld-radius);
   padding: var(--gld-spacing--xxxs) var(--gld-spacing--xxs);
   display: flex;
   align-items: flex-start;
@@ -24,5 +27,9 @@
     &::first-letter {
       text-transform: uppercase;
     }
+  }
+
+  &--with-border {
+    border-top: var(--gld-border-size) solid var(--gld-border-color);
   }
 }

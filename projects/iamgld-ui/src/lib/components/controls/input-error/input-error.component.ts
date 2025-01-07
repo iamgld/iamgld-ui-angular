@@ -1,5 +1,5 @@
 // Angular Imports
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
 import { ValidationErrors } from '@angular/forms'
 
 @Component({
@@ -13,4 +13,5 @@ import { ValidationErrors } from '@angular/forms'
 export class InputErrorComponent {
   readonly Boolean = Boolean
   errors = input.required<ValidationErrors | null>()
+  border = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 }
