@@ -102,8 +102,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
   writeValue(value: unknown): void {
     // console.log('writeValue')
     if (value !== this.innerControl().value) {
-      const valueTransformed = this.#transformValue(value)
-      this.innerControl().setValue(valueTransformed)
+      // const valueTransformed = this.#transformValue(value)
+      this.innerControl().setValue(value)
     }
   }
 
