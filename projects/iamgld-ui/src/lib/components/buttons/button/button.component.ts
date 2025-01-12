@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component, booleanAttribute, input, output } f
 })
 export class ButtonComponent {
   name = input.required<string>()
-  disable = input<boolean, string | boolean>(false, { transform: booleanAttribute })
+  disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   // hasIcon = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   // icon = input<Icons>(Icons.addLine)
   // iconSize = input<keyof typeof IconsSize>(IconsSize.small)
@@ -21,7 +21,7 @@ export class ButtonComponent {
   clicked = output<void>()
 
   emitClick() {
-    if (!this.disable()) this.clicked.emit()
+    if (!this.disabled()) this.clicked.emit()
   }
 }
 
