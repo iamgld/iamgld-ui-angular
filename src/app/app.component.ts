@@ -19,7 +19,7 @@ import {
   RadioButtonComponent,
   SelectComponent,
   SelectOptionComponent,
-  SelectInputErrorMessageDirective,
+  InputErrorMessageDirective,
 } from '@iamgld/ui'
 
 const components = [
@@ -35,7 +35,7 @@ const components = [
   SelectOptionComponent,
 ]
 
-const directives = [SelectInputErrorMessageDirective]
+const directives = [InputErrorMessageDirective]
 
 @Component({
   selector: 'gld-root',

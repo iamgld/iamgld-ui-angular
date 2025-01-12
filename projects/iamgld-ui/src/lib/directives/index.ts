@@ -1,2 +1,2 @@
-export * from './select-input-error-message/select-input-error-message.directive'
+export * from './input-error-message/input-error-message.directive'
 
