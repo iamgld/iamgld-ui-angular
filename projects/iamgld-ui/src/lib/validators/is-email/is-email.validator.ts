@@ -11,7 +11,7 @@ export function isEmailValidator(): ValidatorFn {
 		if (!value) return null
 
 		if (EMAIL_REGEX.test(value)) return null
-		else return { email: 'Este campo debe ser un email valido!' }
+		 return { email: 'This field must be a valid email!' }
 	}
 }
 
