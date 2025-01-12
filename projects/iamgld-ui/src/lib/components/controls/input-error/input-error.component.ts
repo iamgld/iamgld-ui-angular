@@ -32,6 +32,8 @@ export class InputErrorComponent {
   hasContent = signal(false)
 
   constructor() {
-    effect(() => this.hasContent.set(this.content()?.length ? true : false))
+    effect(() => this.hasContent.set(this.content()?.length ? true : false), {
+      allowSignalWrites: true,
+    })
   }
 }
