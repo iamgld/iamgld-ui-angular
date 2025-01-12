@@ -13,7 +13,7 @@ export function isDateValidator(): ValidatorFn {
     if (!value) return null
 
     if (!ISO_DATE_REGEX.test(value))
-      return { isDate: 'Este campo debe ser una fecha valida con formato DD/MM/YYYY!' }
+      return { isDate: 'This field must be a valid date in the format YYYY-MM-DD!' }
 
     // Verify if the date is valid (additional logic)
     const [year, month, day] = value.split('-').map(Number)
@@ -22,7 +22,7 @@ export function isDateValidator(): ValidatorFn {
     // Verify if the date is logical and corresponds to the format
     if (date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day)
       return null
-    else return { isDate: 'Este campo debe ser una fecha valida!' }
+    return { isDate: 'This field must be a valid date!' }
   }
 }
 
