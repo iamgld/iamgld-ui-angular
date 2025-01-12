@@ -11,6 +11,7 @@ import {
   ButtonComponent,
   InputComponent,
   InputHintComponent,
+  InputErrorComponent,
   InputDateComponent,
   TextareaComponent,
   isDateValidator,
@@ -18,12 +19,14 @@ import {
   RadioButtonComponent,
   SelectComponent,
   SelectOptionComponent,
+  SelectInputErrorMessageDirective,
 } from '@iamgld/ui'
 
 const components = [
   ButtonComponent,
   InputComponent,
   InputHintComponent,
+  InputErrorComponent,
   InputDateComponent,
   TextareaComponent,
   RadioGroupComponent,
@@ -32,9 +35,11 @@ const components = [
   SelectOptionComponent,
 ]
 
+const directives = [SelectInputErrorMessageDirective]
+
 @Component({
   selector: 'gld-root',
-  imports: [ReactiveFormsModule, ...components],
+  imports: [ReactiveFormsModule, ...components, ...directives],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -54,6 +59,14 @@ export class AppComponent {
     { label: 'Masculino', value: 'male' },
     { label: 'Femenino', value: 'female' },
   ])
+
+  constructor() {
+    // console.log('date', this.form.controls.date)
+    // this.form.controls.date.statusChanges.subscribe((status) => {
+    //   console.log('status', status)
+    //   console.log('date', this.form.controls.date)
+    // })
+  }
 
   transformSelect(value: unknown): string {
     const formSelectOption = value as FormSelectOption

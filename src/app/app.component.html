@@ -36,6 +36,11 @@
     name="date"
     label="Fecha"
     placeholder="00/00/0000">
+    <gld-input-error [errors]="form.controls.date.errors">
+      @if (form.controls.date.hasError('required')) {
+        <span gldErrorMessage> Este campo es una fecha </span>
+      }
+    </gld-input-error>
   </gld-input-date>
   <!--  Comments -->
   <gld-textarea
