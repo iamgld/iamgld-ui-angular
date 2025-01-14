@@ -1,5 +1,7 @@
 // Angular Imports
 import { ChangeDetectionStrategy, Component, booleanAttribute, input, output } from '@angular/core'
+// This Module Imports
+import { ButtonColor, ButtonSize } from '../../../models'
 
 @Component({
   selector: 'gld-button',
@@ -24,6 +26,3 @@ export class ButtonComponent {
     if (!this.disabled()) this.clicked.emit()
   }
 }
-
-export type ButtonColor = 'pink' | 'purple' | 'mustard' | 'orange' | 'red' | 'blue' | 'green'
-export type ButtonSize = 'tiny' | 'small' | 'normal' | 'medium' | 'large'
