@@ -1,0 +1,82 @@
+@use 'styles';
+
+:host {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.Tile {
+  --gld-border-radius-inner: var(--gld-radius--xxs);
+  --gld-border-radius-outer: calc(var(--gld-radius--xxs) + var(--gld-border-size));
+  --gld-background: initial;
+  --gld-background--hover: initial;
+  --gld-border-color: transparent;
+  --gld-padding-size: var(--gld-spacing--s);
+  --gld-radius: var(--gld-radius--xxxs);
+
+  width: inherit;
+  height: inherit;
+  position: relative;
+  padding: var(--gld-padding-size);
+  background: var(--gld-background);
+  border: var(--gld-border-size) solid var(--gld-border-color);
+  border-radius: var(--gld-radius);
+  will-change: background;
+  transition: background var(--gld-animation-time--150);
+
+  &:hover,
+  &:focus {
+    background: var(--gld-background--hover);
+  }
+
+  &--blue {
+    --gld-border-color: var(--gld-blue);
+
+    &.Tile--background {
+      --gld-background: var(--gld-blue-transparent--010);
+      --gld-background--hover: var(--gld-blue-transparent--020);
+    }
+  }
+  &--green {
+    --gld-border-color: var(--gld-green);
+
+    &.Tile--background {
+      --gld-background: var(--gld-green-transparent--010);
+      --gld-background--hover: var(--gld-green-transparent--020);
+    }
+  }
+  &--purple {
+    --gld-border-color: var(--gld-purple);
+
+    &.Tile--background {
+      --gld-background: var(--gld-purple-transparent--010);
+      --gld-background--hover: var(--gld-purple-transparent--020);
+    }
+  }
+  &--mustard {
+    --gld-border-color: var(--gld-mustard);
+
+    &.Tile--background {
+      --gld-background: var(--gld-mustard-transparent--010);
+      --gld-background--hover: var(--gld-mustard-transparent--020);
+    }
+  }
+  &--orange {
+    --gld-border-color: var(--gld-orange);
+
+    &.Tile--background {
+      --gld-background: var(--gld-orange-transparent--010);
+      --gld-background--hover: var(--gld-orange-transparent--020);
+    }
+  }
+  &--pink {
+    --gld-border-color: var(--gld-pink);
+
+    &.Tile--background {
+      --gld-background: var(--gld-pink-transparent--010);
+      --gld-background--hover: var(--gld-pink-transparent--020);
+    }
+  }
+}
