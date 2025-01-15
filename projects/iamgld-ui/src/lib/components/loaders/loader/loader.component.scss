@@ -1,0 +1,67 @@
+@use 'styles' as styles;
+
+.loader {
+  --gld-color: var(--gld-darkblue);
+  --gld-background: var(--gld-whitelight-transparent--090);
+
+  position: relative;
+  color: var(--color);
+  background: var(--gld-background);
+
+  &--radius {
+    border-radius: var(--gld-spacing--xxxs);
+  }
+
+  &-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  &--background &-loading {
+    background: var(--gld-background);
+  }
+}
+
+// Circle Triangle loaders from https://uiball.com/loaders
+.container {
+  --uib-size: 40px;
+  --uib-color: var(--gld-orange);
+  --uib-speed: 0.8s;
+  --uib-bg-opacity: 0.1;
+
+  width: var(--uib-size);
+  height: var(--uib-size);
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+  will-change: transform;
+  overflow: visible;
+}
+
+.car {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 25, 75;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transition: stroke 0.5s ease;
+}
+
+.track {
+  fill: none;
+  stroke: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: stroke 0.5s ease;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
