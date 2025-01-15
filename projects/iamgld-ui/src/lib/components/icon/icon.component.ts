@@ -8,7 +8,7 @@ import {
   output,
 } from '@angular/core'
 // Shared Imports
-import { Icons, IconsSize } from '../../models'
+import { Icons, IconsSize, IconsSpace } from '../../models'
 
 @Component({
   selector: 'gld-icon',
@@ -22,7 +22,7 @@ export class IconComponent {
   readonly IconsSpace = IconsSpace
   readonly Icons = Icons
 
-  icon = input<Icons>(Icons.arrowDownSLine)
+  icon = input.required<Icons>()
   size = input<keyof typeof IconsSize>(IconsSize.normal)
   space = input<keyof typeof IconsSpace>(IconsSpace.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
@@ -37,10 +37,4 @@ export class IconComponent {
   keyup() {
     this.emitClick()
   }
-}
-
-enum IconsSpace {
-  left = 'left',
-  right = 'right',
-  none = 'none',
 }
