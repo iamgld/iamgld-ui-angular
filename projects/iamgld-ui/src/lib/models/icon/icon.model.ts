@@ -4,6 +4,10 @@ export enum Icons {
   checkboxCircleLine = 'checkbox-circle-line',
   checkboxBlankCircleLine = 'checkbox-blank-circle-line',
   loader4Fill = 'loader-4-fill',
+  logoutCircleLine = ' ri-logout-circle-line',
+  loginCircleLine = ' ri-login-circle-line',
+  gitRepositoryLine = ' ri-git-repository-line',
+  fileList3Line = ' ri-file-list-3-line',
 }
 
 export enum IconsSize {
@@ -12,4 +16,10 @@ export enum IconsSize {
   normal = 'normal',
   medium = 'medium',
   large = 'large',
+}
+
+export enum IconsSpace {
+  left = 'left',
+  right = 'right',
+  none = 'none',
 }

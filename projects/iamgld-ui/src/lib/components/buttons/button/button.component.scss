@@ -1,11 +1,11 @@
 // @use 'styles';
 
 .Button {
-  --gld-color: initial;
-  --gld-border-color: initial;
+  --gld-color: inherit;
+  --gld-border-color: inherit;
   --gld-border: var(--gld-border-size) solid var(--gld-border-color);
-  --gld-background: initial;
-  --gld-background--hover: initial;
+  --gld-background: transparent;
+  --gld-background--hover: transparent;
   --gld-box-shadow-size: 2px;
   --gld-box-shadow-size--hover: 0;
   --gld-padding: var(--gld-spacing--xxs) var(--gld-spacing--xs);

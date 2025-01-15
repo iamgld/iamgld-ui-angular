@@ -1,2 +1,6 @@
+export * from './buttons/button.model'
+export * from './controls/input.model'
+export * from './controls/radio.model'
+export * from './controls/select.model'
 export * from './icon/icon.model'
-export * from './controls'
+export * from './tiles/tile.model'

@@ -10,38 +10,84 @@
   <gld-button name="button" color="green">button</gld-button>
 </section>
 
+<h2>icon-buttons</h2>
+<section>
+  <gld-icon-button disabled [icon]="Icons.loader4Fill" name="button" color="green">
+    button
+  </gld-icon-button>
+  <gld-icon-button
+    background
+    [icon]="Icons.loader4Fill"
+    name="button"
+    color="pink"
+    size="tiny"
+    [moveTopToBottom]="-4">
+    button
+  </gld-icon-button>
+  <gld-icon-button [icon]="Icons.loader4Fill" name="button" color="purple" size="small">
+    button
+  </gld-icon-button>
+  <gld-icon-button
+    background
+    [icon]="Icons.loader4Fill"
+    name="button"
+    color="mustard"
+    size="normal">
+    button
+  </gld-icon-button>
+  <gld-icon-button background [icon]="Icons.loader4Fill" name="button" color="orange" size="medium">
+    button
+  </gld-icon-button>
+  <gld-icon-button background [icon]="Icons.loader4Fill" name="button" color="red" size="large">
+    button
+  </gld-icon-button>
+  <gld-icon-button background [icon]="Icons.loader4Fill" name="button" color="blue" size="normal">
+    button
+  </gld-icon-button>
+  <gld-icon-button [icon]="Icons.loader4Fill" name="button" color="green" size="normal">
+    button
+  </gld-icon-button>
+</section>
+
 <h2>controls</h2>
 <section class="grid grid--3" [formGroup]="form">
-  <!-- First Name -->
-  <gld-input
-    [control]="form.controls.firstName"
-    formControlName="firstName"
-    name="firstName"
-    label="Nombre"
-    placeholder="john">
-    <gld-input-hint>hint example</gld-input-hint>
-  </gld-input>
-  <!-- Last Name -->
-  <gld-input
-    [control]="form.controls.lastName"
-    formControlName="lastName"
-    name="lastName"
-    label="Apellido"
-    placeholder="doe">
-  </gld-input>
-  <!-- Date -->
-  <gld-input-date
-    [control]="form.controls.date"
-    formControlName="date"
-    name="date"
-    label="Fecha"
-    placeholder="00/00/0000">
-    <gld-input-error [errors]="form.controls.date.errors">
-      @if (form.controls.date.hasError('required')) {
-        <span gldErrorMessage> Este campo es una fecha </span>
-      }
-    </gld-input-error>
-  </gld-input-date>
+  <gld-tile background color="orange">
+    <article class="padding">
+      <!-- First Name -->
+      <gld-input
+        [control]="form.controls.firstName"
+        formControlName="firstName"
+        name="firstName"
+        label="Nombre"
+        placeholder="john">
+        <gld-input-hint>hint example</gld-input-hint>
+      </gld-input>
+      <!-- Last Name -->
+      <gld-input
+        [control]="form.controls.lastName"
+        formControlName="lastName"
+        name="lastName"
+        label="Apellido"
+        placeholder="doe">
+      </gld-input>
+    </article>
+  </gld-tile>
+  <gld-tile color="green">
+    <!-- Date -->
+    <gld-input-date
+      [control]="form.controls.date"
+      formControlName="date"
+      name="date"
+      label="Fecha"
+      placeholder="00/00/0000">
+      <gld-input-error [errors]="form.controls.date.errors">
+        @if (form.controls.date.hasError('required')) {
+          <span gldErrorMessage> Este campo es una fecha </span>
+        }
+      </gld-input-error>
+    </gld-input-date>
+  </gld-tile>
+
   <!--  Comments -->
   <gld-textarea
     suffix
