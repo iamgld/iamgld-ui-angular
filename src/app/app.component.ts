@@ -23,6 +23,7 @@ import {
   InputErrorMessageDirective,
   TileComponent,
   Icons,
+  LoaderComponent,
 } from '@iamgld/ui'
 
 const components = [
@@ -38,6 +39,7 @@ const components = [
   SelectComponent,
   SelectOptionComponent,
   TileComponent,
+  LoaderComponent,
 ]
 
 const directives = [InputErrorMessageDirective]
