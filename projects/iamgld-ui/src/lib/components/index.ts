@@ -1,6 +1,7 @@
 export * from './icon/icon.component'
 export * from './image/image.component'
 export * from './buttons/button/button.component'
+export * from './buttons/icon-button/icon-button.component'
 export * from './controls/input-date/input-date.component'
 export * from './controls/input-error/input-error.component'
 export * from './controls/input-hint/input-hint.component'
