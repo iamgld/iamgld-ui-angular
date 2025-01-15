@@ -88,15 +88,18 @@
     </gld-input-date>
   </gld-tile>
 
-  <!--  Comments -->
-  <gld-textarea
-    suffix
-    [control]="form.controls.comments"
-    formControlName="comments"
-    label="Comentarios"
-    name="comments"
-    placeholder="Comentarios">
-  </gld-textarea>
+  <gld-loader loading background minHeight="auto">
+    <!--  Comments -->
+    <gld-textarea
+      suffix
+      [control]="form.controls.comments"
+      formControlName="comments"
+      label="Comentarios"
+      name="comments"
+      placeholder="Comentarios">
+    </gld-textarea>
+  </gld-loader>
+
   <!-- Agree -->
   <gld-radio-group
     [control]="form.controls.agree"
