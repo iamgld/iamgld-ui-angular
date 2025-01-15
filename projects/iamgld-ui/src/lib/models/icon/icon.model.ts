@@ -8,6 +8,7 @@ export enum Icons {
   loginCircleLine = ' ri-login-circle-line',
   gitRepositoryLine = ' ri-git-repository-line',
   fileList3Line = ' ri-file-list-3-line',
+  menuLine = ' ri-menu-line',
 }
 
 export enum IconsSize {
