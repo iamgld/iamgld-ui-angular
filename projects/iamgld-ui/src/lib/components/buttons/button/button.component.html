@@ -3,7 +3,8 @@
   attr.aria-label="{{ name() }}"
   class="Button Button--{{ color() }} Button--{{ size() }}"
   [class.Button--disabled]="disabled()"
-  (click)="emitClick()">
+  (click)="emitClick()"
+  (keyup.enter)="keyup()">
   <span>
     <ng-content />
   </span>

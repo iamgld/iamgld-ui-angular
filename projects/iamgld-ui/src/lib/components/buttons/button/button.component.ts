@@ -12,17 +12,16 @@ import { ButtonColor, ButtonSize } from '../../../models'
 })
 export class ButtonComponent {
   name = input.required<string>()
-  disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
-  // hasIcon = input<boolean, string | boolean>(false, { transform: booleanAttribute })
-  // icon = input<Icons>(Icons.addLine)
-  // iconSize = input<keyof typeof IconsSize>(IconsSize.small)
-  // iconMoveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
-  // iconMoveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   color = input<ButtonColor>('pink')
   size = input<ButtonSize>('normal')
+  disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   clicked = output<void>()
 
   emitClick() {
     if (!this.disabled()) this.clicked.emit()
+  }
+
+  keyup() {
+    this.emitClick()
   }
 }
