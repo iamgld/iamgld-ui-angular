@@ -11,7 +11,7 @@ import {
 } from '@angular/core'
 import { ValidationErrors } from '@angular/forms'
 // This Module Imports
-import { SelectInputErrorMessageDirective } from '../../../directives'
+import { InputErrorMessageDirective } from '../../../directives'
 
 @Component({
   selector: 'gld-input-error',
@@ -25,7 +25,7 @@ export class InputErrorComponent {
   readonly Boolean = Boolean
   errors = input.required<ValidationErrors | null>()
   border = input<boolean, boolean | string>(false, { transform: booleanAttribute })
-  content = contentChildren(SelectInputErrorMessageDirective, {
+  content = contentChildren(InputErrorMessageDirective, {
     descendants: true,
   })
 

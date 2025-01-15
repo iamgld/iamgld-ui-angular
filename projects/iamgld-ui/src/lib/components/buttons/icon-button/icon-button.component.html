@@ -1,0 +1,16 @@
+<button
+  id="{{ name() }}"
+  attr.aria-label="{{ name() }}"
+  class="Button Button--{{ color() }}"
+  [class.Button--disabled]="disabled()"
+  [class.Button--background]="background()"
+  (click)="emitClick()"
+  (keyup.enter)="keyup()">
+  <gld-icon
+    [icon]="icon()"
+    [size]="size()"
+    [space]="space()"
+    [moveTopToBottom]="moveTopToBottom()"
+    [moveLeftToRight]="moveLeftToRight()"
+    [disabled]="disabled()" />
+</button>
