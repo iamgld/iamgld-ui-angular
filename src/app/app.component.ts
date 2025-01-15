@@ -9,6 +9,7 @@ import {
 // @iamgld/ui  Imports
 import {
   ButtonComponent,
+  IconButtonComponent,
   InputComponent,
   InputHintComponent,
   InputErrorComponent,
@@ -20,10 +21,13 @@ import {
   SelectComponent,
   SelectOptionComponent,
   InputErrorMessageDirective,
+  TileComponent,
+  Icons,
 } from '@iamgld/ui'
 
 const components = [
   ButtonComponent,
+  IconButtonComponent,
   InputComponent,
   InputHintComponent,
   InputErrorComponent,
@@ -33,6 +37,7 @@ const components = [
   RadioButtonComponent,
   SelectComponent,
   SelectOptionComponent,
+  TileComponent,
 ]
 
 const directives = [InputErrorMessageDirective]
@@ -45,6 +50,7 @@ const directives = [InputErrorMessageDirective]
 })
 export class AppComponent {
   readonly #fb = inject(NonNullableFormBuilder)
+  readonly Icons = Icons
 
   readonly form = this.#fb.group<Form>({
     firstName: this.#fb.control('', { validators: [Validators.required] }),
