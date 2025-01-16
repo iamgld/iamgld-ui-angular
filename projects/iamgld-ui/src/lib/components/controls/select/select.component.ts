@@ -77,7 +77,13 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
 
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
-      .subscribe((value) => this.onChange(value))
+      .subscribe((value) => {
+        this.onChange(value)
+        if (value !== null || value !== undefined) {
+          const valueTransformed = this.#transformValue(value)
+          this.innerControl().setValue(valueTransformed, { emitEvent: false })
+        }
+      })
   }
 
   ngOnInit(): void {
