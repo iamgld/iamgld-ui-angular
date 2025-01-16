@@ -9,6 +9,12 @@ export enum Icons {
   gitRepositoryLine = ' ri-git-repository-line',
   fileList3Line = ' ri-file-list-3-line',
   menuLine = ' ri-menu-line',
+  sunLine = ' ri-sun-line',
+  moonClearLine = ' ri-moon-clear-line',
+  englishInput = ' ri-english-input',
+  translate = ' ri-translate',
+  user4Line = ' ri-user-4-line',
+  shapesLine = ' ri-shapes-line',
 }
 
 export enum IconsSize {
