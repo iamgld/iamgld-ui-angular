@@ -22,6 +22,7 @@ export enum Icons {
   githubFill = ' ri-github-fill',
   instagramFill = ' ri-instagram-fill',
   twitterXFill = ' ri-twitter-x-fill',
+  downloadCloud2Line = ' ri-download-cloud-2-line',
 }
 
 export enum IconsSize {
