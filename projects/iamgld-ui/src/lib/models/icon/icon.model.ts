@@ -15,6 +15,7 @@ export enum Icons {
   translate = ' ri-translate',
   user4Line = ' ri-user-4-line',
   shapesLine = ' ri-shapes-line',
+  closeLine = ' ri-close-line',
 }
 
 export enum IconsSize {
