@@ -16,6 +16,12 @@ export enum Icons {
   user4Line = ' ri-user-4-line',
   shapesLine = ' ri-shapes-line',
   closeLine = ' ri-close-line',
+  eyeLine = ' ri-eye-line',
+  eyeCloseLine = ' ri-eye-close-line',
+  linkedinBoxFill = ' ri-linkedin-box-fill',
+  githubFill = ' ri-github-fill',
+  instagramFill = ' ri-instagram-fill',
+  twitterXFill = ' ri-twitter-x-fill',
 }
 
 export enum IconsSize {
