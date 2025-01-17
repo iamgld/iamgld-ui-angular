@@ -38,7 +38,7 @@
     --gld-color: var(--gld-pink);
     // --gld-border-color: var(--gld-pink);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-pink-transparent--010);
       --gld-background--hover: var(--gld-pink-transparent--020);
     }
@@ -47,7 +47,7 @@
     --gld-color: var(--gld-purple);
     // --gld-border-color: var(--gld-purple);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-purple-transparent--010);
       --gld-background--hover: var(--gld-purple-transparent--020);
     }
@@ -57,7 +57,7 @@
     --gld-color: var(--gld-mustard);
     // --gld-border-color: var(--gld-mustard);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-mustard-transparent--010);
       --gld-background--hover: var(--gld-mustard-transparent--020);
     }
@@ -67,7 +67,7 @@
     --gld-color: var(--gld-orange);
     // --gld-border-color: var(--gld-orange);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-orange-transparent--010);
       --gld-background--hover: var(--gld-orange-transparent--020);
     }
@@ -77,7 +77,7 @@
     --gld-color: var(--gld-blue);
     // --gld-border-color: var(--gld-blue);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-blue-transparent--010);
       --gld-background--hover: var(--gld-blue-transparent--020);
     }
@@ -87,7 +87,7 @@
     --gld-color: var(--gld-red);
     // --gld-border-color: var(--gld-red);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-red-transparent--010);
       --gld-background--hover: var(--gld-red-transparent--020);
     }
@@ -97,7 +97,7 @@
     --gld-color: var(--gld-green);
     // --gld-border-color: var(--gld-green);
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-green-transparent--010);
       --gld-background--hover: var(--gld-green-transparent--020);
     }
@@ -109,7 +109,7 @@
     pointer-events: none;
     cursor: not-allowed;
 
-    &.Button--background {
+    &.button--background {
       --gld-background: var(--gld-gray-transparent--010);
       --gld-background--hover: var(--gld-gray-transparent--020);
     }
