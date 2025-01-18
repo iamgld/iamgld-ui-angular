@@ -24,10 +24,12 @@ import {
   TileComponent,
   Icons,
   LoaderComponent,
+  LinkComponent,
 } from '@iamgld/ui'
 
 const components = [
   ButtonComponent,
+  LinkComponent,
   IconButtonComponent,
   InputComponent,
   InputHintComponent,
