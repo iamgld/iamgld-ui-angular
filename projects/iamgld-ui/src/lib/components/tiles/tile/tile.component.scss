@@ -3,7 +3,6 @@
   height: auto;
   position: relative;
   z-index: 1;
-  padding: inherit;
 }
 
 .tile {
@@ -12,7 +11,7 @@
   --gld-background: initial;
   --gld-background--hover: initial;
   --gld-border-color: transparent;
-  --gld-padding-size: var(inherit, --gld-spacing--xxxs);
+  --gld-padding-size: var(--gld-spacing--xxxs);
   --gld-radius: var(--gld-radius--xxxs);
 
   width: inherit;
