@@ -14,4 +14,5 @@ import { type TileColor } from '../../../models'
 export class TileComponent {
   color = input<TileColor>('blue')
   background = input<boolean, boolean | string>(false, { transform: booleanAttribute })
+  padding = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 }
