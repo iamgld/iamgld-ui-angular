@@ -77,4 +77,12 @@
       --gld-background--hover: var(--gld-pink-transparent--020);
     }
   }
+  &--red {
+    --gld-border-color: var(--gld-red);
+
+    &.Tile--background {
+      --gld-background: var(--gld-red-transparent--010);
+      --gld-background--hover: var(--gld-red-transparent--020);
+    }
+  }
 }
