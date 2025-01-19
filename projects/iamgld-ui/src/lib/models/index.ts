@@ -1,4 +1,5 @@
 export * from './buttons/button.model'
+export * from './buttons/link.model'
 export * from './controls/input.model'
 export * from './controls/radio.model'
 export * from './controls/select.model'

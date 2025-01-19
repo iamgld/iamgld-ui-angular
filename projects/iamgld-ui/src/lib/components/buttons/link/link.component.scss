@@ -1,0 +1,43 @@
+:host {
+  position: relative;
+  z-index: 1;
+}
+
+.link {
+  --gld-color: var(--gld-purple);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  font-family: var(--gld-font--poppins);
+  font-weight: 600;
+  font-size: inherit;
+  line-height: var(--gld-line-height);
+  color: var(--gld-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  will-change: color;
+  transition: color var(--gld-animation-time--150);
+
+  &--active,
+  &:active,
+  &:hover {
+    --gld-color: var(--gld-purple-transparent--080);
+    text-decoration: underline;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+}

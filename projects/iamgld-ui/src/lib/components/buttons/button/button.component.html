@@ -1,10 +1,21 @@
 <button
   id="{{ name() }}"
   attr.aria-label="{{ name() }}"
-  class="Button Button--{{ color() }} Button--{{ size() }}"
-  [class.Button--disabled]="disabled()"
+  class="button button--{{ color() }} button--{{ size() }}"
+  [class.button--disabled]="disabled()"
+  [class.button--full]="full()"
   (click)="emitClick()"
   (keyup.enter)="keyup()">
+  @let innerIcon = icon();
+  @if (innerIcon) {
+    <gld-icon
+      [moveTopToBottom]="moveTopToBottom()"
+      [moveLeftToRight]="moveLeftToRight()"
+      [icon]="innerIcon"
+      [size]="iconSize() ?? size()"
+      [disabled]="disabled()" />
+  }
+
   <span>
     <ng-content />
   </span>

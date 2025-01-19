@@ -2,16 +2,16 @@
   color: inherit;
   display: inline-flex;
 
-  &:has(.Icon--left) {
+  &:has(.icon--left) {
     margin-left: var(--gld-spacing--xxxs);
   }
 
-  &:has(.Icon--right) {
+  &:has(.icon--right) {
     margin-right: var(--gld-spacing--xxxs);
   }
 }
 
-.Icon {
+.icon {
   --gld-icon-size: var(--gld-icon-size--normal);
 
   position: relative;

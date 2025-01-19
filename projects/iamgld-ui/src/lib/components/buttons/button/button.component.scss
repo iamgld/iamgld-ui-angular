@@ -1,6 +1,10 @@
-// @use 'styles';
+:host {
+  &:has(.button--full) {
+    width: 100%;
+  }
+}
 
-.Button {
+.button {
   --gld-color: inherit;
   --gld-border-color: inherit;
   --gld-border: var(--gld-border-size) solid var(--gld-border-color);
