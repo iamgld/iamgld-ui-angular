@@ -11,7 +11,7 @@
   --gld-background: initial;
   --gld-background--hover: initial;
   --gld-border-color: transparent;
-  --gld-padding-size: var(--gld-spacing--xxxs);
+  --gld-padding-size: 0;
   --gld-radius: var(--gld-radius--xxxs);
 
   width: inherit;
@@ -36,9 +36,6 @@
       --gld-background: var(--gld-blue-transparent--010);
       --gld-background--hover: var(--gld-blue-transparent--020);
     }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
-    }
   }
   &--green {
     --gld-border-color: var(--gld-green);
@@ -46,9 +43,6 @@
     &.tile--background {
       --gld-background: var(--gld-green-transparent--010);
       --gld-background--hover: var(--gld-green-transparent--020);
-    }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
     }
   }
   &--purple {
@@ -58,9 +52,6 @@
       --gld-background: var(--gld-purple-transparent--010);
       --gld-background--hover: var(--gld-purple-transparent--020);
     }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
-    }
   }
   &--mustard {
     --gld-border-color: var(--gld-mustard);
@@ -68,9 +59,6 @@
     &.tile--background {
       --gld-background: var(--gld-mustard-transparent--010);
       --gld-background--hover: var(--gld-mustard-transparent--020);
-    }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
     }
   }
   &--orange {
@@ -80,9 +68,6 @@
       --gld-background: var(--gld-orange-transparent--010);
       --gld-background--hover: var(--gld-orange-transparent--020);
     }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
-    }
   }
   &--pink {
     --gld-border-color: var(--gld-pink);
@@ -90,9 +75,6 @@
     &.tile--background {
       --gld-background: var(--gld-pink-transparent--010);
       --gld-background--hover: var(--gld-pink-transparent--020);
-    }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
     }
   }
   &--red {
@@ -102,8 +84,21 @@
       --gld-background: var(--gld-red-transparent--010);
       --gld-background--hover: var(--gld-red-transparent--020);
     }
-    &.tile--padding {
-      --gld-padding-size: var(--gld-spacing--s);
-    }
+  }
+
+  &--tiny {
+    --gld-padding-size: var(--gld-spacing--xxxs);
+  }
+  &--small {
+    --gld-padding-size: var(--gld-spacing--xs);
+  }
+  &--normal {
+    --gld-padding-size: var(--gld-spacing--s);
+  }
+  &--medium {
+    --gld-padding-size: var(--gld-spacing--l);
+  }
+  &--large {
+    --gld-padding-size: var(--gld-spacing--xl);
   }
 }
