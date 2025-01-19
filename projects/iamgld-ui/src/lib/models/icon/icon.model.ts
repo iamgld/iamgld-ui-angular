@@ -25,6 +25,7 @@ export enum Icons {
   downloadCloud2Line = ' ri-download-cloud-2-line',
   globeLine = ' ri-globe-line',
   mailSendLine = ' ri-mail-send-line',
+  pagesLine = ' ri-pages-line',
 }
 
 export enum IconsSize {
