@@ -23,6 +23,8 @@ export enum Icons {
   instagramFill = ' ri-instagram-fill',
   twitterXFill = ' ri-twitter-x-fill',
   downloadCloud2Line = ' ri-download-cloud-2-line',
+  globeLine = ' ri-globe-line',
+  mailSendLine = ' ri-mail-send-line',
 }
 
 export enum IconsSize {
