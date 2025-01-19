@@ -21,13 +21,13 @@ import { IconComponent } from '../../icon/icon.component'
 export class IconButtonComponent {
   icon = input.required<Icons>()
   name = input.required<string>()
-  size = input<keyof typeof IconsSize>(IconsSize.normal)
+  iconSize = input<keyof typeof IconsSize>(IconsSize.normal)
   space = input<keyof typeof IconsSpace>(IconsSpace.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   background = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
-  color = input<ButtonColor>('pink')
+  color = input<keyof typeof ButtonColor>(ButtonColor.pink)
   clicked = output<void>()
 
   emitClick() {

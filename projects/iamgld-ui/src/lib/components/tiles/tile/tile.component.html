@@ -1,5 +1,7 @@
-<article class="Tile Tile--{{ color() }} " [class.Tile--background]="background()">
-  <section class="Tile-content">
+<article
+  class="tile tile--{{ color() }} tile--padding-{{ paddingSize() }}"
+  [class.tile--background]="background()">
+  <section class="tile-content">
     <ng-content />
   </section>
 </article>
