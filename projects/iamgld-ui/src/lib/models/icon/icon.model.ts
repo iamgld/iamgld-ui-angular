@@ -29,6 +29,7 @@ export enum Icons {
   gitForkLine = ' ri-git-fork-line',
   gitRepositoryPrivateLine = ' ri-git-repository-private-line',
   starLine = ' ri-star-line',
+  calendar2Line = ' ri-calendar-2-line',
 }
 
 export enum IconsSize {
