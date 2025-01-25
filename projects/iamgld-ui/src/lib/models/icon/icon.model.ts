@@ -26,6 +26,10 @@ export enum Icons {
   globeLine = ' ri-globe-line',
   mailSendLine = ' ri-mail-send-line',
   pagesLine = ' ri-pages-line',
+  gitForkLine = ' ri-git-fork-line',
+  gitRepositoryPrivateLine = ' ri-git-repository-private-line',
+  starLine = ' ri-star-line',
+  calendar2Line = ' ri-calendar-2-line',
 }
 
 export enum IconsSize {

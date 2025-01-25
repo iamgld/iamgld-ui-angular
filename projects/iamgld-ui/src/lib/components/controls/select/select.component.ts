@@ -62,7 +62,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
   selectElement = viewChild<ElementRef<HTMLElement>>('selectElement')
   selectOptionChildren = contentChildren<SelectOptionComponent>(SelectOptionComponent)
 
-  innerControl = signal(new FormControl<unknown>(''))
+  innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
   isMenuOpen = signal(false)
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
@@ -79,7 +79,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
         this.onChange(value)
-        if (value !== null || value !== undefined) {
+        if (value) {
           const valueTransformed = this.#transformValue(value)
           this.innerControl().setValue(valueTransformed, { emitEvent: false })
         }

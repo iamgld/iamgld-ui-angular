@@ -58,7 +58,7 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
   placeholder = input<string>('')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
-  innerControl = signal(new FormControl<string>('', { nonNullable: true }))
+  innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -69,8 +69,11 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
-        const valueTransformed = formatDateToISO(value)
-        this.onChange(valueTransformed)
+        this.onChange(value)
+        if (value && typeof value === 'string') {
+          const valueTransformed = formatDateFromISOToYYYYMMDD(formatDateToISO(value))
+          this.innerControl().setValue(valueTransformed, { emitEvent: false })
+        }
       })
   }
 
