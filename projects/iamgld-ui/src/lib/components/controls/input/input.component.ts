@@ -53,7 +53,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   type = input<InputType>('text')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
-  innerControl = signal(new FormControl<unknown>(''))
+  innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -64,8 +64,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
-        const valueTransformed = value
-        this.onChange(valueTransformed)
+        this.onChange(value)
+        if (value) this.innerControl().setValue(value, { emitEvent: false })
       })
   }
 

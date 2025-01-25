@@ -86,19 +86,19 @@
     }
   }
 
-  &--tiny {
+  &--padding-tiny {
     --gld-padding-size: var(--gld-spacing--xxxs);
   }
-  &--small {
+  &--padding-small {
     --gld-padding-size: var(--gld-spacing--xs);
   }
-  &--normal {
+  &--padding-normal {
     --gld-padding-size: var(--gld-spacing--s);
   }
-  &--medium {
+  &--padding-medium {
     --gld-padding-size: var(--gld-spacing--l);
   }
-  &--large {
+  &--padding-large {
     --gld-padding-size: var(--gld-spacing--xl);
   }
 }

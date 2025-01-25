@@ -15,7 +15,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
-import { RadioDirection, InputValue } from '../../../models'
+import { RadioDirection } from '../../../models'
 import { RadioButtonComponent } from '../radio-button/radio-button.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
 // Shared Imports
@@ -48,7 +48,7 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
   direction = input<keyof typeof RadioDirection>(RadioDirection.horizontal)
 
   radioButtonChildren = contentChildren<RadioButtonComponent>(RadioButtonComponent)
-  innerControl = signal(new FormControl<unknown>(''))
+  innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -59,8 +59,8 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
-        const valueTransformed = value
-        this.onChange(valueTransformed)
+        this.onChange(value)
+        if (value) this.updateCurrentInChildren(value)
       })
   }
 
@@ -85,7 +85,7 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
     })
   }
 
-  updateCurrentInChildren(value: InputValue) {
+  updateCurrentInChildren(value: unknown) {
     this.radioButtonChildren().map((radioButton: RadioButtonComponent, index: number) => {
       radioButton.current.set(value)
       // Set current one time

@@ -58,14 +58,14 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
-  innerControl = signal(new FormControl<unknown>(''))
+  innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
 
   constructor() {
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
       .subscribe((value) => {
-        const valueTransformed = value
-        this.onChange(valueTransformed)
+        this.onChange(value)
+        if (value) this.innerControl().setValue(value, { emitEvent: false })
       })
   }
 
