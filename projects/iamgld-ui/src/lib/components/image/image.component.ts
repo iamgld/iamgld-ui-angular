@@ -1,5 +1,5 @@
 // Angular Imports
-import { ChangeDetectionStrategy, Component, booleanAttribute, input } from '@angular/core'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
 import { NgOptimizedImage } from '@angular/common'
 
 @Component({
@@ -13,5 +13,7 @@ import { NgOptimizedImage } from '@angular/common'
 export class ImageComponent {
   src = input.required<string>()
   alt = input.required<string>()
+  // srcset = input<string>('')
+  // sizes = input<string>('')
   priority = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 }
