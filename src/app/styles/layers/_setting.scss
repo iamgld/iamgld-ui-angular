@@ -89,12 +89,9 @@
   --white-light-transparent--070: #{rgba(#f9fafb, 0.7)};
   --white-light-transparent--060: #{rgba(#f9fafb, 0.6)};
   --white-light-transparent--030: #{rgba(#f9fafb, 0.3)};
-  --gradient--blue-to-green: linear-gradient(to right, var(--blue), var(--green));
-  --gradient--purple-to-pink: linear-gradient(to right, var(--purple), var(--pink));
-  --gradient--orange-to-mustard: linear-gradient(to right, var(--orange), var(--mustard));
 
   // Borders
-  --border-size: 1px;
+  --border-size: 2px;
 
   // Animations
   --animation-time--150: 150ms;

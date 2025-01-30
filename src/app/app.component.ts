@@ -25,6 +25,7 @@ import {
   Icons,
   LoaderComponent,
   LinkComponent,
+  ImageComponent,
 } from '@iamgld/ui'
 
 const components = [
@@ -42,12 +43,13 @@ const components = [
   SelectOptionComponent,
   TileComponent,
   LoaderComponent,
+  ImageComponent,
 ]
 
 const directives = [InputErrorMessageDirective]
 
 @Component({
-  selector: 'gld-root',
+  selector: 'gld-app',
   imports: [ReactiveFormsModule, ...components, ...directives],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
