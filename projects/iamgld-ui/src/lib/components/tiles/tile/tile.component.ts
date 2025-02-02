@@ -15,4 +15,5 @@ export class TileComponent {
   color = input<keyof typeof TileColor>(TileColor.blue)
   paddingSize = input<keyof typeof TilePaddingSize>(TilePaddingSize.zero)
   background = input<boolean, boolean | string>(false, { transform: booleanAttribute })
+  hover = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 }

@@ -24,8 +24,8 @@
   will-change: background;
   transition: background var(--gld-animation-time--150);
 
-  &:hover,
-  &:focus {
+  &--hover:hover,
+  &--hover:focus {
     background: var(--gld-background--hover);
   }
 
@@ -33,56 +33,70 @@
     --gld-border-color: var(--gld-blue);
 
     &.tile--background {
-      --gld-background: var(--gld-blue-transparent--010);
-      --gld-background--hover: var(--gld-blue-transparent--020);
+      --gld-background: var(--gld-blue-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-blue-transparent--010);
     }
   }
   &--green {
     --gld-border-color: var(--gld-green);
 
     &.tile--background {
-      --gld-background: var(--gld-green-transparent--010);
-      --gld-background--hover: var(--gld-green-transparent--020);
+      --gld-background: var(--gld-green-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-green-transparent--010);
     }
   }
   &--purple {
     --gld-border-color: var(--gld-purple);
 
     &.tile--background {
-      --gld-background: var(--gld-purple-transparent--010);
-      --gld-background--hover: var(--gld-purple-transparent--020);
+      --gld-background: var(--gld-purple-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-purple-transparent--010);
     }
   }
   &--mustard {
     --gld-border-color: var(--gld-mustard);
 
     &.tile--background {
-      --gld-background: var(--gld-mustard-transparent--010);
-      --gld-background--hover: var(--gld-mustard-transparent--020);
+      --gld-background: var(--gld-mustard-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-mustard-transparent--010);
     }
   }
   &--orange {
     --gld-border-color: var(--gld-orange);
 
     &.tile--background {
-      --gld-background: var(--gld-orange-transparent--010);
-      --gld-background--hover: var(--gld-orange-transparent--020);
+      --gld-background: var(--gld-orange-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-orange-transparent--010);
     }
   }
   &--pink {
     --gld-border-color: var(--gld-pink);
 
     &.tile--background {
-      --gld-background: var(--gld-pink-transparent--010);
-      --gld-background--hover: var(--gld-pink-transparent--020);
+      --gld-background: var(--gld-pink-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-pink-transparent--010);
     }
   }
   &--red {
     --gld-border-color: var(--gld-red);
 
     &.tile--background {
-      --gld-background: var(--gld-red-transparent--010);
-      --gld-background--hover: var(--gld-red-transparent--020);
+      --gld-background: var(--gld-red-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-red-transparent--010);
     }
   }
 
