@@ -30,7 +30,7 @@
   }
 
   &--blue {
-    --gld-border-color: var(--gld-blue);
+    --gld-border-color: var(--gld-blue-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-blue-transparent--005);
@@ -40,7 +40,7 @@
     }
   }
   &--green {
-    --gld-border-color: var(--gld-green);
+    --gld-border-color: var(--gld-green-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-green-transparent--005);
@@ -50,7 +50,7 @@
     }
   }
   &--purple {
-    --gld-border-color: var(--gld-purple);
+    --gld-border-color: var(--gld-purple-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-purple-transparent--005);
@@ -60,7 +60,7 @@
     }
   }
   &--mustard {
-    --gld-border-color: var(--gld-mustard);
+    --gld-border-color: var(--gld-mustard-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-mustard-transparent--005);
@@ -70,7 +70,7 @@
     }
   }
   &--orange {
-    --gld-border-color: var(--gld-orange);
+    --gld-border-color: var(--gld-orange-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-orange-transparent--005);
@@ -80,7 +80,7 @@
     }
   }
   &--pink {
-    --gld-border-color: var(--gld-pink);
+    --gld-border-color: var(--gld-pink-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-pink-transparent--005);
@@ -90,7 +90,7 @@
     }
   }
   &--red {
-    --gld-border-color: var(--gld-red);
+    --gld-border-color: var(--gld-red-transparent--020);
 
     &.tile--background {
       --gld-background: var(--gld-red-transparent--005);
