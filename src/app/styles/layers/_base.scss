@@ -22,7 +22,9 @@ body {
 
 body {
   margin: 0;
-  background: var(--whitelight);
+  color-scheme: light dark;
+  background: light-dark(var(--whitelight), var(--darkblue));
+  color: light-dark(var(--darkblue), var(--whitelight));
 }
 
 h1,

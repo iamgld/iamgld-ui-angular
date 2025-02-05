@@ -1,9 +1,9 @@
 .input {
   --gld-color: var(--gld-darkblue);
-  --gld-color--disabled: var(--gld-gray-transparent--060);
+  --gld-color--disabled: var(--gld-gray);
   --gld-color--error: var(--gld-red);
-  --gld-placeholder-color: var(--gld-gray-transparent--060);
-  --gld-border-color: var(--gld-gray-transparent--060);
+  --gld-placeholder-color: var(--gld-gray);
+  --gld-border-color: var(--gld-gray);
   --gld-label-color: var(--gld-darkblue);
   --gld-height: 40px;
   --gld-min-with: 50px;
@@ -137,7 +137,7 @@
     grid-template-columns: 1fr;
     background: var(--gld-background);
     color: var(--gld-darkblue);
-    box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-gray-transparent--060);
+    box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-gray);
     border-radius: var(--gld-radius--xxs);
     min-width: 100%;
     max-width: 100%;
