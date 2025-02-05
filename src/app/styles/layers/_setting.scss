@@ -84,17 +84,14 @@
   --gray-transparent--050: #{rgba(#e5e7eb, 0.5)};
   --gray-transparent--075: #{rgba(#e5e7eb, 0.75)};
   --white: #fff;
-  --white-light: #f9fafb;
-  --white-light-transparent--080: #{rgba(#f9fafb, 0.8)};
-  --white-light-transparent--070: #{rgba(#f9fafb, 0.7)};
-  --white-light-transparent--060: #{rgba(#f9fafb, 0.6)};
-  --white-light-transparent--030: #{rgba(#f9fafb, 0.3)};
-  --gradient--blue-to-green: linear-gradient(to right, var(--blue), var(--green));
-  --gradient--purple-to-pink: linear-gradient(to right, var(--purple), var(--pink));
-  --gradient--orange-to-mustard: linear-gradient(to right, var(--orange), var(--mustard));
+  --whitelight: #f9fafb;
+  --whitelight-transparent--080: #{rgba(#f9fafb, 0.8)};
+  --whitelight-transparent--070: #{rgba(#f9fafb, 0.7)};
+  --whitelight-transparent--060: #{rgba(#f9fafb, 0.6)};
+  --whitelight-transparent--030: #{rgba(#f9fafb, 0.3)};
 
   // Borders
-  --border-size: 1px;
+  --border-size: 2px;
 
   // Animations
   --animation-time--150: 150ms;

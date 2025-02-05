@@ -61,37 +61,40 @@
 
   // Colors
   --gld-red: #ef4444;
+  --gld-red-transparent--005: #{rgba(#ef4444, 0.05)};
   --gld-red-transparent--010: #{rgba(#ef4444, 0.1)};
   --gld-red-transparent--020: #{rgba(#ef4444, 0.2)};
-  --gld-red-transparent--030: #{rgba(#ef4444, 0.3)};
   --gld-blue: #3c82f6;
+  --gld-blue-transparent--005: #{rgba(#3c82f6, 0.05)};
   --gld-blue-transparent--010: #{rgba(#3c82f6, 0.1)};
   --gld-blue-transparent--020: #{rgba(#3c82f6, 0.2)};
-  --gld-blue-transparent--030: #{rgba(#3c82f6, 0.3)};
   --gld-green: #12b981;
+  --gld-green-transparent--005: #{rgba(#12b981, 0.05)};
   --gld-green-transparent--010: #{rgba(#12b981, 0.1)};
   --gld-green-transparent--020: #{rgba(#12b981, 0.2)};
-  --gld-green-transparent--030: #{rgba(#12b981, 0.3)};
   --gld-purple: #a855f7;
+  --gld-purple-transparent--005: #{rgba(#a855f7, 0.05)};
   --gld-purple-transparent--010: #{rgba(#a855f7, 0.1)};
   --gld-purple-transparent--020: #{rgba(#a855f7, 0.2)};
-  --gld-purple-transparent--030: #{rgba(#a855f7, 0.3)};
   --gld-purple-transparent--080: #{rgba(#a855f7, 0.8)};
   --gld-mustard: #ebb305;
+  --gld-mustard-transparent--005: #{rgba(#ebb305, 0.05)};
   --gld-mustard-transparent--010: #{rgba(#ebb305, 0.1)};
   --gld-mustard-transparent--020: #{rgba(#ebb305, 0.2)};
-  --gld-mustard-transparent--030: #{rgba(#ebb305, 0.3)};
   --gld-orange: #f97315;
+  --gld-orange-transparent--005: #{rgba(#f97315, 0.05)};
   --gld-orange-transparent--010: #{rgba(#f97315, 0.1)};
   --gld-orange-transparent--020: #{rgba(#f97315, 0.2)};
-  --gld-orange-transparent--030: #{rgba(#f97315, 0.3)};
   --gld-pink: #ec4899;
+  --gld-pink-transparent--005: #{rgba(#ec4899, 0.05)};
   --gld-pink-transparent--010: #{rgba(#ec4899, 0.1)};
   --gld-pink-transparent--020: #{rgba(#ec4899, 0.2)};
-  --gld-pink-transparent--030: #{rgba(#ec4899, 0.3)};
   --gld-gray: #b5b5b5;
+  --gld-gray-transparent--005: #{rgba(#b5b5b5, 0.05)};
   --gld-gray-transparent--010: #{rgba(#b5b5b5, 0.1)};
   --gld-gray-transparent--020: #{rgba(#b5b5b5, 0.2)};
+  --gld-gray-transparent--030: #{rgba(#b5b5b5, 0.3)};
+  --gld-gray-transparent--040: #{rgba(#b5b5b5, 0.4)};
   --gld-gray-transparent--050: #{rgba(#b5b5b5, 0.5)};
   --gld-gray-transparent--060: #{rgba(#b5b5b5, 0.6)};
   --gld-white: #fff;
@@ -110,7 +113,7 @@
   --gld-darkblue-transparent--010: #{rgba(#101827, 0.1)};
 
   // Borders
-  --gld-border-size: 2px;
+  --gld-border-size: 1px;
 
   // Animations
   --gld-animation-time--150: 150ms;
