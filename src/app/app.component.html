@@ -1,3 +1,15 @@
+<h2>image</h2>
+<section class="grid grid--2">
+  <gld-image
+    style="width: 200px"
+    priority
+    src="https://assets.iamgld.dev/images/margarita/margarita-mobile.webp"
+    alt="margarita photo"></gld-image>
+</section>
+<!-- srcset="https://assets.iamgld.dev/images/margarita/margarita-mobile.webp 1x,
+  https://assets.iamgld.dev/images/margarita/margarita-tablet.webp 2x"
+  sizes="(min-width: 0) 100%, (min-width: 768px) 100%" -->
+
 <h2>buttons</h2>
 <section>
   <gld-button disabled name="button" color="pink">button</gld-button>
@@ -73,7 +85,7 @@
 
 <h2>controls</h2>
 <section class="grid grid--3" [formGroup]="form">
-  <gld-tile background color="orange">
+  <gld-tile background hover>
     <article class="padding">
       <!-- First Name -->
       <gld-input

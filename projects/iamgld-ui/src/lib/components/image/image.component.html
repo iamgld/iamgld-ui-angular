@@ -1,5 +1,25 @@
-@if (priority()) {
-	<img priority="true" [ngSrc]="src()" [alt]="alt()" [fill]="true" />
+<!-- @if (srcset() && sizes()) {
+  @if (priority()) {
+    <img fill priority alt="{{ alt() }}" [ngSrc]="src()" [ngSrcset]="srcset()" [sizes]="sizes()" />
+  } @else {
+    <img
+      fill
+      alt="{{ alt() }}"
+      [ngSrc]="src()"
+      [ngSrcset]="srcset()"
+      [sizes]="sizes()"
+      loading="lazy" />
+  }
 } @else {
-	<img loading="lazy" [ngSrc]="src()" [alt]="alt()" [fill]="true" />
+  @if (priority()) {
+    <img fill priority alt="{{ alt() }}" [ngSrc]="src()" />
+  } @else {
+    <img fill alt="{{ alt() }}" [ngSrc]="src()" loading="lazy" />
+  }
+} -->
+
+@if (priority()) {
+  <img fill priority alt="{{ alt() }}" [ngSrc]="src()" />
+} @else {
+  <img fill alt="{{ alt() }}" [ngSrc]="src()" loading="lazy" />
 }

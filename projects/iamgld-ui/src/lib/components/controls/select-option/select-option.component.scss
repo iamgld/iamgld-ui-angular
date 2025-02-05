@@ -4,7 +4,7 @@
 
 button {
   --gld-background: transparent;
-  --gld-background--hover: var(--gld-blue-transparent--010);
+  --gld-background--hover: var(--gld-gray-transparent--010);
   --gld-color: var(--gld-darkblue);
   --gld-color--hover: var(--gld-blue);
 
@@ -23,6 +23,7 @@ button {
   user-select: none;
   outline: none;
   border: none;
+  border-radius: 2px;
   cursor: pointer;
 
   &:hover,

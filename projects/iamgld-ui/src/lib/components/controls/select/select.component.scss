@@ -137,11 +137,13 @@
     grid-template-columns: 1fr;
     background: var(--gld-background);
     color: var(--gld-darkblue);
-    box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-gray-transparent--050);
+    box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-gray-transparent--060);
+    border-radius: var(--gld-radius--xxs);
     min-width: 100%;
     max-width: 100%;
     max-height: calc(var(--gld-option-height) * 5);
     overflow-y: auto;
+    will-change: height, padding;
     transition:
       var(--gld-animation-time) height ease-in-out,
       var(--gld-animation-time) padding ease-in-out;

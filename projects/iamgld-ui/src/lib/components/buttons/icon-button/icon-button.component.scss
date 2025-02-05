@@ -1,7 +1,5 @@
 .button {
   --gld-color: inherit;
-  // --gld-border-color: inherit;
-  // --gld-border: var(--gld-border-size) solid var(--gld-border-color);
   --gld-background: transparent;
   --gld-background--hover: transparent;
   --gld-radius: var(--gld-radius--xxxs);
@@ -27,16 +25,21 @@
   will-change: background, color;
   transition:
     background var(--gld-animation-time--150),
+    transform var(--gld-animation-time--150),
     color var(--gld-animation-time--150);
 
   &:hover,
   &:focus {
     background: var(--gld-background--hover);
+    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(1);
   }
 
   &--pink {
     --gld-color: var(--gld-pink);
-    // --gld-border-color: var(--gld-pink);
 
     &.button--background {
       --gld-background: var(--gld-pink-transparent--010);
@@ -45,7 +48,6 @@
   }
   &--purple {
     --gld-color: var(--gld-purple);
-    // --gld-border-color: var(--gld-purple);
 
     &.button--background {
       --gld-background: var(--gld-purple-transparent--010);
@@ -55,7 +57,6 @@
 
   &--mustard {
     --gld-color: var(--gld-mustard);
-    // --gld-border-color: var(--gld-mustard);
 
     &.button--background {
       --gld-background: var(--gld-mustard-transparent--010);
@@ -65,7 +66,6 @@
 
   &--orange {
     --gld-color: var(--gld-orange);
-    // --gld-border-color: var(--gld-orange);
 
     &.button--background {
       --gld-background: var(--gld-orange-transparent--010);
@@ -75,7 +75,6 @@
 
   &--blue {
     --gld-color: var(--gld-blue);
-    // --gld-border-color: var(--gld-blue);
 
     &.button--background {
       --gld-background: var(--gld-blue-transparent--010);
@@ -85,7 +84,6 @@
 
   &--red {
     --gld-color: var(--gld-red);
-    // --gld-border-color: var(--gld-red);
 
     &.button--background {
       --gld-background: var(--gld-red-transparent--010);
@@ -95,7 +93,6 @@
 
   &--green {
     --gld-color: var(--gld-green);
-    // --gld-border-color: var(--gld-green);
 
     &.button--background {
       --gld-background: var(--gld-green-transparent--010);
@@ -105,7 +102,6 @@
 
   &--disabled {
     --gld-color: var(--gld-gray-transparent--060);
-    // --gld-border-color: var(--gld-gray-transparent--060);
     pointer-events: none;
     cursor: not-allowed;
 
