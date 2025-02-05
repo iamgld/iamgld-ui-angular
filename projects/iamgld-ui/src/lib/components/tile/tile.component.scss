@@ -29,6 +29,20 @@
     background: var(--gld-background--hover);
   }
 
+  &.tile--hover {
+    cursor: pointer;
+  }
+
+  &--default {
+    --gld-border-color: var(--gld-gray-transparent--060);
+
+    &.tile--background {
+      --gld-background: var(--gld-gray-transparent--005);
+    }
+    &.tile--hover {
+      --gld-background--hover: var(--gld-gray-transparent--010);
+    }
+  }
   &--blue {
     --gld-border-color: var(--gld-blue-transparent--020);
 

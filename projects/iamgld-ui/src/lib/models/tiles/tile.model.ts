@@ -1,4 +1,5 @@
 export enum TileColor {
+  default = 'default',
   pink = 'pink',
   purple = 'purple',
   mustard = 'mustard',
