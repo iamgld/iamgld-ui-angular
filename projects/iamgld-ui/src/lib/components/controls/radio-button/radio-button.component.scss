@@ -8,9 +8,9 @@
 .radio {
   --gld-height: 26px;
   --gld-color: var(--gld-darkblue);
-  --gld-color--disabled: var(--gld-gray);
+  --gld-color--disabled: var(--gld-gray-transparent--060);
   --gld-dot-color: var(--gld-blue);
-  --gld-dot-color--outer: var(--gld-gray);
+  --gld-dot-color--outer: var(--gld-gray-transparent--060);
   --gld-dot-color--outer-hover: var(--gld-blue);
   --gld-dot-color--outer-selected: var(--gld-blue);
   --gld-dot-color--outer-error: var(--gld-red);

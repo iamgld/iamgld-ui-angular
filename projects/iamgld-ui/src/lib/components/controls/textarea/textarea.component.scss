@@ -1,9 +1,9 @@
 .input {
   --gld-color: var(--gld-darkblue);
-  --gld-color--disabled: var(--gld-gray);
+  --gld-color--disabled: var(--gld-gray-transparent--060);
   --gld-color--error: var(--gld-red);
-  --gld-placeholder-color: var(--gld-gray);
-  --gld-border-color: var(--gld-gray);
+  --gld-placeholder-color: var(--gld-gray-transparent--060);
+  --gld-border-color: var(--gld-gray-transparent--060);
   --gld-label-color: var(--gld-darkblue);
   --gld-min-height: 120px;
   --gld-max-height: 240px;
