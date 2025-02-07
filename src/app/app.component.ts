@@ -67,7 +67,6 @@ export class AppComponent {
     comments: this.#fb.control('', { validators: [Validators.required] }),
     agree: this.#fb.control({ value: '', disabled: false }, { validators: [Validators.required] }),
     gender: this.#fb.control('', { validators: [Validators.required] }),
-    toggle: this.#fb.control('en', { validators: [] }),
   })
 
   readonly genders = signal<FormSelectOption[]>([
@@ -77,10 +76,14 @@ export class AppComponent {
 
   constructor() {
     // console.log('date', this.form.controls.date)
-    this.form.controls.date.statusChanges.subscribe((status) => {
-      console.log('status', status)
-      console.log('toggle', this.form.controls.toggle)
-    })
+    // this.form.controls.date.statusChanges.subscribe((status) => {
+    //   console.log('status', status)
+    //   console.log('toggle', this.form.controls.toggle)
+    // })
+  }
+
+  logValue(value: unknown) {
+    console.log('Logged Value:', value)
   }
 
   transformSelect(value: unknown): string {
@@ -105,7 +108,6 @@ interface Form {
   comments: FormControl<string>
   agree: FormControl<string>
   gender: FormControl<string>
-  toggle: FormControl<string>
 }
 
 export interface FormSelectOption {
