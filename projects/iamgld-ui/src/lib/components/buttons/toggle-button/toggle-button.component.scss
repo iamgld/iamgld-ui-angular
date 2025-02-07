@@ -4,15 +4,12 @@
 
 .button {
   --gld-background: transparent;
-  --gld-background--hover: light-dark(
-    var(--gld-gray-transparent--040),
-    var(--gld-gray-transparent--020)
-  );
+  --gld-background--hover: var(--gld-blue-transparent--010);
   --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
   --gld-color--hover: var(--gld-blue);
   --gld-radius: var(--gld-radius--xxxs);
 
-  padding: var(--gld-spacing--xxs);
+  padding: var(--gld-spacing--xxxs);
   width: 100%;
   height: 100%;
   max-width: 100%;
