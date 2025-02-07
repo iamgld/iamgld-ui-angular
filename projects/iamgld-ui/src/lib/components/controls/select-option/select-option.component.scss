@@ -5,7 +5,7 @@
 button {
   --gld-background: transparent;
   --gld-background--hover: var(--gld-gray-transparent--010);
-  --gld-color: var(--gld-darkblue);
+  --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
   --gld-color--hover: var(--gld-blue);
 
   padding: var(--gld-spacing--xs) var(--gld-spacing--s);
