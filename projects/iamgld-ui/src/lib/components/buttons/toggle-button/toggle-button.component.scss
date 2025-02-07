@@ -1,0 +1,50 @@
+// :host {
+//   height: var(--gld-height);
+// }
+
+.button {
+  --gld-background: transparent;
+  --gld-background--hover: light-dark(
+    var(--gld-gray-transparent--040),
+    var(--gld-gray-transparent--020)
+  );
+  --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
+  --gld-color--hover: var(--gld-blue);
+  --gld-radius: var(--gld-radius--xxxs);
+
+  padding: var(--gld-spacing--xxs);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background: var(--gld-background);
+  color: var(--gld-color);
+  font-family: var(--gld-font--poppins);
+  font-size: var(--gld-font-size--normal);
+  font-weight: 400;
+  line-height: var(--gld-line-height);
+  user-select: none;
+  outline: none;
+  border: none;
+  border-radius: var(--gld-radius);
+  cursor: pointer;
+  will-change: background, transform, color;
+  transition:
+    background var(--gld-animation-time--150),
+    transform var(--gld-animation-time--150),
+    color var(--gld-animation-time--150);
+
+  &:hover,
+  &:focus {
+    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  &--selected {
+    --gld-background: var(--gld-background--hover);
+    --gld-color: var(--gld-color--hover);
+  }
+}
+
