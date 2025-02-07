@@ -123,6 +123,7 @@
   --gld-option-height: 40px;
   --gld-animation-time: var(--gld-animation-time--150);
   --gld-padding: var(--gld-spacing--xxxs);
+  --gld-radius: var(--gld-radius--xxs);
 
   position: relative;
   background: transparent;
@@ -130,7 +131,7 @@
   &-menu {
     position: absolute;
     z-index: 1;
-    top: calc(var(--gld-height) + 20px);
+    top: calc(var(--gld-height) + 22px);
     left: 0;
     height: 0;
     padding: 0;
@@ -138,7 +139,7 @@
     grid-template-columns: 1fr;
     background: var(--gld-background);
     box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-shadow);
-    border-radius: var(--gld-radius--xxs);
+    border-radius: var(--gld-radius);
     min-width: 100%;
     max-width: 100%;
     max-height: calc(var(--gld-option-height) * 5);
