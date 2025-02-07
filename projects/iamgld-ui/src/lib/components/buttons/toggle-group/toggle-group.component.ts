@@ -9,7 +9,6 @@ import {
   output,
 } from '@angular/core'
 // This Module Imports
-import { InputValue } from '../../../models'
 import { ToggleButtonComponent } from './../toggle-button/toggle-button.component'
 
 @Component({
@@ -21,8 +20,8 @@ import { ToggleButtonComponent } from './../toggle-button/toggle-button.componen
 })
 export class ToggleGroupComponent implements AfterContentInit {
   name = input.required<string>()
-  initialValue = input<InputValue>(null)
-  changeValue = output<InputValue>()
+  initialValue = input<unknown>(null)
+  changeValue = output<unknown>()
   changeFocus = output<boolean>()
 
   toggleButtonChildren = contentChildren<ToggleButtonComponent>(ToggleButtonComponent)
@@ -43,7 +42,7 @@ export class ToggleGroupComponent implements AfterContentInit {
     })
   }
 
-  updateCurrentInChildren(value: InputValue) {
+  updateCurrentInChildren(value: unknown) {
     this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent, index: number) => {
       toggleButton.current.set(value)
       // Set current one time
