@@ -29,7 +29,7 @@ export class ToggleGroupComponent implements AfterContentInit {
   constructor() {
     effect(() => {
       const initialValue = this.initialValue()
-      if (initialValue && this.toggleButtonChildren()) this.updateCurrentInChildren(initialValue)
+      if (initialValue) this.updateCurrentInChildren(initialValue)
     })
   }
 
