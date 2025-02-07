@@ -4,8 +4,9 @@
 
 .button {
   --gld-background: transparent;
-  --gld-background--hover: var(--gld-blue-transparent--010);
+  --gld-background--hover: var(--gld-pink-transparent--010);
   --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
+  --gld-color--selected: var(--gld-pink);
   --gld-color--hover: var(--gld-blue);
   --gld-radius: var(--gld-radius--xxxs);
 
@@ -30,9 +31,8 @@
     transform var(--gld-animation-time--150),
     color var(--gld-animation-time--150);
 
-  &:hover,
-  &:focus {
-    transform: scale(0.95);
+  &:hover {
+    --gld-color: var(--gld-color--hover);
   }
 
   &:active {
@@ -41,7 +41,12 @@
 
   &--selected {
     --gld-background: var(--gld-background--hover);
-    --gld-color: var(--gld-color--hover);
+    --gld-color: var(--gld-color--selected);
+
+    &:hover {
+      transform: scale(0.95);
+      --gld-color: var(--gld-color--selected);
+    }
   }
 }
 
