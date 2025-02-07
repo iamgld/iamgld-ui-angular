@@ -67,7 +67,7 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
 
   constructor() {
     this.innerControl()
-      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((value) => {
         this.onChange(value)
         if (value && typeof value === 'string') {

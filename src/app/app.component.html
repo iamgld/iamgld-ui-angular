@@ -12,7 +12,7 @@
 
 <h2>buttons</h2>
 <section [formGroup]="form">
-  <gld-toggle-group [control]="form.controls.toggle" formControlName="toggle" name="toggle">
+  <gld-toggle-group name="toggle" initialValue="es" (changeValue)="logValue($event)">
     <gld-toggle-button value="es">es</gld-toggle-button>
     <gld-toggle-button value="en">en</gld-toggle-button>
   </gld-toggle-group>

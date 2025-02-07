@@ -57,7 +57,7 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
 
   constructor() {
     this.innerControl()
-      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
+      .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((value) => {
         this.onChange(value)
         if (value) this.updateCurrentInChildren(value)
