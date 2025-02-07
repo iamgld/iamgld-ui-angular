@@ -1,0 +1,10 @@
+.toggle {
+  --gld-background: light-dark(var(--gld-gray-transparent--010), var(--gld-gray-transparent--010));
+  --gld-radius: var(--gld-radius--xxs);
+
+  padding: var(--gld-spacing--xxxs);
+  border-radius: var(--gld-radius);
+  background: var(--gld-background);
+  display: flex;
+}
+

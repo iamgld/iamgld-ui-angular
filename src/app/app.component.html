@@ -1,16 +1,22 @@
 <h2>image</h2>
 <section class="grid grid--2">
-  <gld-image
+  <!-- <gld-image
     style="width: 200px"
     priority
     src="https://assets.iamgld.dev/images/margarita/margarita-mobile.webp"
-    alt="margarita photo"></gld-image>
+    alt="margarita photo"></gld-image> -->
 </section>
 <!-- srcset="https://assets.iamgld.dev/images/margarita/margarita-mobile.webp 1x,
   https://assets.iamgld.dev/images/margarita/margarita-tablet.webp 2x"
   sizes="(min-width: 0) 100%, (min-width: 768px) 100%" -->
 
 <h2>buttons</h2>
+<section [formGroup]="form">
+  <gld-toggle-group [control]="form.controls.toggle" formControlName="toggle" name="toggle">
+    <gld-toggle-button value="es">es</gld-toggle-button>
+    <gld-toggle-button value="en">en</gld-toggle-button>
+  </gld-toggle-group>
+</section>
 <section>
   <gld-button disabled name="button" color="pink">button</gld-button>
   <gld-button name="button" color="pink" size="tiny" iconSize="tiny" [icon]="Icons.loader4Fill">

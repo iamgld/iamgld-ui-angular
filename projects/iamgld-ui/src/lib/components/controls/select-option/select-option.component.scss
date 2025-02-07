@@ -5,8 +5,9 @@
 button {
   --gld-background: transparent;
   --gld-background--hover: var(--gld-gray-transparent--010);
-  --gld-color: var(--gld-darkblue);
+  --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
   --gld-color--hover: var(--gld-blue);
+  --gld-radius: var(--gld-radius--xxxs);
 
   padding: var(--gld-spacing--xs) var(--gld-spacing--s);
   width: 100%;
@@ -23,7 +24,7 @@ button {
   user-select: none;
   outline: none;
   border: none;
-  border-radius: 2px;
+  border-radius: var(--gld-radius);
   cursor: pointer;
 
   &:hover,
