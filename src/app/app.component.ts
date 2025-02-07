@@ -25,7 +25,8 @@ import {
   Icons,
   LoaderComponent,
   LinkComponent,
-  ImageComponent,
+  ToggleGroupComponent,
+  ToggleButtonComponent,
 } from '@iamgld/ui'
 
 const components = [
@@ -43,7 +44,8 @@ const components = [
   SelectOptionComponent,
   TileComponent,
   LoaderComponent,
-  ImageComponent,
+  ToggleGroupComponent,
+  ToggleButtonComponent,
 ]
 
 const directives = [InputErrorMessageDirective]
@@ -65,6 +67,7 @@ export class AppComponent {
     comments: this.#fb.control('', { validators: [Validators.required] }),
     agree: this.#fb.control({ value: '', disabled: false }, { validators: [Validators.required] }),
     gender: this.#fb.control('', { validators: [Validators.required] }),
+    toggle: this.#fb.control('en', { validators: [] }),
   })
 
   readonly genders = signal<FormSelectOption[]>([
@@ -74,10 +77,10 @@ export class AppComponent {
 
   constructor() {
     // console.log('date', this.form.controls.date)
-    // this.form.controls.date.statusChanges.subscribe((status) => {
-    //   console.log('status', status)
-    //   console.log('date', this.form.controls.date)
-    // })
+    this.form.controls.date.statusChanges.subscribe((status) => {
+      console.log('status', status)
+      console.log('toggle', this.form.controls.toggle)
+    })
   }
 
   transformSelect(value: unknown): string {
@@ -102,6 +105,7 @@ interface Form {
   comments: FormControl<string>
   agree: FormControl<string>
   gender: FormControl<string>
+  toggle: FormControl<string>
 }
 
 export interface FormSelectOption {
