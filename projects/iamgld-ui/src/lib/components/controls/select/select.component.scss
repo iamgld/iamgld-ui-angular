@@ -116,12 +116,14 @@
 }
 
 .select {
-  --gld-background: var(--gld-whitelight);
+  --gld-background: light-dark(var(--gld-whitelight), var(--gld-darkblue));
+  --gld-shadow: light-dark(var(--gld-gray-transparent--040), var(--gld-gray-transparent--020));
   --gld-height: 40px;
   --gld-option-items: 0;
   --gld-option-height: 40px;
   --gld-animation-time: var(--gld-animation-time--150);
   --gld-padding: var(--gld-spacing--xxxs);
+  --gld-radius: var(--gld-radius--xxs);
 
   position: relative;
   background: transparent;
@@ -129,16 +131,15 @@
   &-menu {
     position: absolute;
     z-index: 1;
-    top: calc(var(--gld-height) + 20px);
+    top: calc(var(--gld-height) + 22px);
     left: 0;
     height: 0;
     padding: 0;
     display: grid;
     grid-template-columns: 1fr;
     background: var(--gld-background);
-    color: var(--gld-darkblue);
-    box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-gray-transparent--060);
-    border-radius: var(--gld-radius--xxs);
+    box-shadow: inset 0 0 0 var(--gld-border-size) var(--gld-shadow);
+    border-radius: var(--gld-radius);
     min-width: 100%;
     max-width: 100%;
     max-height: calc(var(--gld-option-height) * 5);

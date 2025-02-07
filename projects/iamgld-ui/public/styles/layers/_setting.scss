@@ -89,14 +89,16 @@
   --gld-pink-transparent--005: #{rgba(#ec4899, 0.05)};
   --gld-pink-transparent--010: #{rgba(#ec4899, 0.1)};
   --gld-pink-transparent--020: #{rgba(#ec4899, 0.2)};
-  --gld-gray: #b5b5b5;
-  --gld-gray-transparent--005: #{rgba(#b5b5b5, 0.05)};
-  --gld-gray-transparent--010: #{rgba(#b5b5b5, 0.1)};
-  --gld-gray-transparent--020: #{rgba(#b5b5b5, 0.2)};
-  --gld-gray-transparent--030: #{rgba(#b5b5b5, 0.3)};
-  --gld-gray-transparent--040: #{rgba(#b5b5b5, 0.4)};
-  --gld-gray-transparent--050: #{rgba(#b5b5b5, 0.5)};
-  --gld-gray-transparent--060: #{rgba(#b5b5b5, 0.6)};
+  --gld-gray: #c1c7e1;
+  --gld-gray-transparent--010: #{rgba(#c1c7e1, 0.1)};
+  --gld-gray-transparent--020: #{rgba(#c1c7e1, 0.2)};
+  --gld-gray-transparent--030: #{rgba(#c1c7e1, 0.3)};
+  --gld-gray-transparent--040: #{rgba(#c1c7e1, 0.4)};
+  --gld-gray-transparent--050: #{rgba(#c1c7e1, 0.5)};
+  --gld-gray-transparent--060: #{rgba(#c1c7e1, 0.6)};
+  --gld-gray-transparent--070: #{rgba(#c1c7e1, 0.7)};
+  --gld-gray-transparent--080: #{rgba(#c1c7e1, 0.8)};
+  --gld-gray-transparent--090: #{rgba(#c1c7e1, 0.9)};
   --gld-white: #fff;
   --gld-whitelight: #f9fafb;
   --gld-whitelight-transparent--090: #{rgba(#f9fafb, 0.9)};
@@ -121,6 +123,7 @@
   --gld-animation-time--10s: 10s;
 
   // General
+  --gld-line-height: 1.2;
   --gld-max-width: 1280px;
   --gld-navbar-height: 50px;
   --gld-sidebar-width: 250px;

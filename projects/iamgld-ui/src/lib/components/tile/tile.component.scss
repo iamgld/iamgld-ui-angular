@@ -12,7 +12,7 @@
   --gld-background--hover: initial;
   --gld-border-color: transparent;
   --gld-padding-size: 0;
-  --gld-radius: var(--gld-radius--xxxs);
+  --gld-radius: var(--gld-radius--xxs);
 
   width: inherit;
   height: inherit;
@@ -21,6 +21,7 @@
   background: var(--gld-background);
   border: var(--gld-border-size) solid var(--gld-border-color);
   border-radius: var(--gld-radius);
+  overflow: hidden;
   will-change: background;
   transition: background var(--gld-animation-time--150);
 
@@ -34,13 +35,16 @@
   }
 
   &--default {
-    --gld-border-color: var(--gld-gray-transparent--060);
+    --gld-border-color: light-dark(
+      var(--gld-gray-transparent--040),
+      var(--gld-gray-transparent--020)
+    );
 
     &.tile--background {
-      --gld-background: var(--gld-gray-transparent--005);
+      --gld-background: var(--gld-gray-transparent--010);
     }
     &.tile--hover {
-      --gld-background--hover: var(--gld-gray-transparent--010);
+      --gld-background--hover: var(--gld-gray-transparent--020);
     }
   }
   &--blue {
