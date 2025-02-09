@@ -1,4 +1,9 @@
 :host {
+  position: relative;
+  display: inline-block;
+  height: inherit;
+  width: inherit;
+
   &:has(.button--full) {
     width: 100%;
   }
@@ -37,12 +42,10 @@
   &:hover,
   &:focus {
     --gld-background: var(--gld-background--hover);
-
-    transform: scale(0.95);
   }
 
   &:active {
-    transform: scale(1);
+    transform: scale(0.95);
   }
 
   span {

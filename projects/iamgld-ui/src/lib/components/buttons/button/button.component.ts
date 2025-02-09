@@ -11,11 +11,13 @@ import {
 import { ButtonColor, ButtonSize, Icons, IconsSize } from '../../../models'
 import { IconComponent } from '../../icon/icon.component'
 
+const components = [IconComponent]
+
 @Component({
   selector: 'gld-button',
+  imports: [...components],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  imports: [IconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
