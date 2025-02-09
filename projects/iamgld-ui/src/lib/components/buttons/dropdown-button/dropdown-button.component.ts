@@ -1,0 +1,47 @@
+// Angular Imports
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  numberAttribute,
+  output,
+  signal,
+} from '@angular/core'
+// This Module Imports
+import { DropdownDirection, Icons, IconsSize } from '../../../models'
+import { IconComponent } from '../../icon/icon.component'
+
+const components = [IconComponent]
+
+@Component({
+  selector: 'gld-dropdown-button',
+  imports: [...components],
+  templateUrl: './dropdown-button.component.html',
+  styleUrl: './dropdown-button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DropdownButtonComponent {
+  value = input.required<unknown>()
+  icon = input<Icons | null>(null)
+  iconSize = input<keyof typeof IconsSize>(IconsSize.normal)
+  moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
+  moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
+  direction = input<keyof typeof DropdownDirection>(DropdownDirection.left)
+
+  changeValue = output<unknown>()
+
+  current = signal<unknown>(null)
+  disabled = signal<boolean>(false)
+  error = signal<boolean>(false)
+  selected = computed(() => Boolean(this.current() === this.value()))
+
+  select(value: unknown) {
+    this.changeValue.emit(value)
+  }
+
+  keyup(value: unknown) {
+    this.select(value)
+  }
+}
+

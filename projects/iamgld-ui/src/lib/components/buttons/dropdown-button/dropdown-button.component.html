@@ -1,0 +1,22 @@
+<button
+  [tabindex]="disabled() ? '-1' : '0'"
+  class="button button--direction-{{ direction() }}"
+  [class.button--selected]="selected()"
+  (keyup.enter)="keyup(value())"
+  (click)="select(value())">
+  <!-- Icon -->
+  @let innerIcon = icon();
+  @if (innerIcon) {
+    <gld-icon
+      [moveTopToBottom]="moveTopToBottom()"
+      [moveLeftToRight]="moveLeftToRight()"
+      [icon]="innerIcon"
+      [size]="iconSize()"
+      [disabled]="disabled()" />
+  }
+  <!-- Content -->
+  <span>
+    <ng-content> no content </ng-content>
+  </span>
+</button>
+

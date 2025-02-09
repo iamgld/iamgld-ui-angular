@@ -1,3 +1,10 @@
+:host {
+  position: relative;
+  display: inline-block;
+  height: inherit;
+  width: inherit;
+}
+
 .button {
   --gld-color: inherit;
   --gld-background: transparent;
@@ -31,11 +38,10 @@
   &:hover,
   &:focus {
     background: var(--gld-background--hover);
-    transform: scale(0.95);
   }
 
   &:active {
-    transform: scale(1);
+    transform: scale(0.95);
   }
 
   &--pink {

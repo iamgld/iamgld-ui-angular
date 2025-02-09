@@ -1,7 +1,8 @@
+// Angular Imports
 import { Directive } from '@angular/core'
 
 @Directive({
-  selector: '[gldErrorMessage]',
+  selector: '[gldInputErrorMessage]',
 })
 export class InputErrorMessageDirective {}
 
