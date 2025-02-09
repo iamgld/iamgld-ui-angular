@@ -1,0 +1,43 @@
+<!-- Button -->
+@if (type() === DropdownType.button) {
+  <gld-button
+    [name]="name()"
+    [color]="color()"
+    [size]="size()"
+    [icon]="icon()"
+    [iconSize]="iconSize()"
+    [disabled]="disabled()"
+    [moveTopToBottom]="moveTopToBottom()"
+    [moveLeftToRight]="moveLeftToRight()"
+    [full]="full()">
+    <ng-content />
+
+    <ng-container gldDropdownMenuTemplate [ngTemplateOutlet]="dropdownMenu" />
+  </gld-button>
+} @else {
+  <!-- Icon Button -->
+  @let innerIcon = icon();
+  @if (innerIcon) {
+    <gld-icon-button
+      [name]="name()"
+      [color]="color()"
+      [icon]="innerIcon"
+      [iconSize]="iconSize() ?? size()"
+      [disabled]="disabled()"
+      [moveTopToBottom]="moveTopToBottom()"
+      [moveLeftToRight]="moveLeftToRight()"
+      [background]="background()">
+      <ng-container gldDropdownMenuTemplate [ngTemplateOutlet]="dropdownMenu" />
+    </gld-icon-button>
+  }
+}
+
+<ng-template #dropdownMenu>
+  <!-- Menu -->
+  <section
+    class="dropdown-menu dropdown-menu--{{ size() }} dropdown-menu--{{ type() }}
+      dropdown-menu--direction-{{ direction() }}">
+    <ng-content select="gld-dropdown-button">no button</ng-content>
+  </section>
+</ng-template>
+

@@ -6,6 +6,7 @@
   [class.button--background]="background()"
   (click)="emitClick()"
   (keyup.enter)="keyup()">
+  <!-- Icon -->
   <gld-icon
     [icon]="icon()"
     [size]="iconSize()"
@@ -14,3 +15,6 @@
     [moveLeftToRight]="moveLeftToRight()"
     [disabled]="disabled()" />
 </button>
+
+<!-- Only used by DropdownMenuComponent -->
+<ng-content select="[gldDropdownMenuTemplate]" />

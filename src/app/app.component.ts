@@ -27,6 +27,8 @@ import {
   LinkComponent,
   ToggleGroupComponent,
   ToggleButtonComponent,
+  DropdownMenuComponent,
+  DropdownButtonComponent,
 } from '@iamgld/ui'
 
 const components = [
@@ -46,6 +48,8 @@ const components = [
   LoaderComponent,
   ToggleGroupComponent,
   ToggleButtonComponent,
+  DropdownMenuComponent,
+  DropdownButtonComponent,
 ]
 
 const directives = [InputErrorMessageDirective]

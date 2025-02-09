@@ -3,10 +3,7 @@
   class="button"
   [class.button--selected]="selected()"
   (keyup.enter)="keyup(value())"
-  (click)="select(value())"
-  (focus)="onFocus()"
-  (blur)="onBlur()"
-  (keyup.escape)="onBlur()">
+  (click)="select(value())">
   <ng-content> empty button </ng-content>
 </button>
 

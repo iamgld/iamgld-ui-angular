@@ -11,23 +11,152 @@
   sizes="(min-width: 0) 100%, (min-width: 768px) 100%" -->
 
 <h2>buttons</h2>
+<!-- Dropdown -->
+<section class="display-flex">
+  <gld-dropdown-menu
+    name="dropdown button"
+    type="button"
+    size="tiny"
+    (changeValue)="logValue($event)">
+    <span>dropdown</span>
+    <gld-dropdown-button value="light" [icon]="Icons.sunLine" iconSize="tiny">
+      light
+    </gld-dropdown-button>
+    <gld-dropdown-button value="dark" [icon]="Icons.moonClearLine" iconSize="tiny">
+      dark
+    </gld-dropdown-button>
+    <gld-dropdown-button value="automatic" [icon]="Icons.macLine" iconSize="tiny">
+      automatic
+    </gld-dropdown-button>
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    name="dropdown button"
+    type="button"
+    size="small"
+    (changeValue)="logValue($event)">
+    <span>dropdown</span>
+    <gld-dropdown-button value="light" [icon]="Icons.sunLine" iconSize="tiny">
+      light
+    </gld-dropdown-button>
+    <gld-dropdown-button value="dark" [icon]="Icons.moonClearLine" iconSize="tiny">
+      dark
+    </gld-dropdown-button>
+    <gld-dropdown-button value="automatic" [icon]="Icons.macLine" iconSize="tiny">
+      automatic
+    </gld-dropdown-button>
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    name="dropdown button"
+    type="button"
+    size="normal"
+    (changeValue)="logValue($event)">
+    <span>dropdown</span>
+    <gld-dropdown-button value="light" [icon]="Icons.sunLine" iconSize="tiny">
+      light
+    </gld-dropdown-button>
+    <gld-dropdown-button value="dark" [icon]="Icons.moonClearLine" iconSize="tiny">
+      dark
+    </gld-dropdown-button>
+    <gld-dropdown-button value="automatic" [icon]="Icons.macLine" iconSize="tiny">
+      automatic
+    </gld-dropdown-button>
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    name="dropdown button"
+    type="button"
+    size="medium"
+    (changeValue)="logValue($event)">
+    <span>dropdown</span>
+    <gld-dropdown-button value="light" [icon]="Icons.sunLine" iconSize="tiny">
+      light
+    </gld-dropdown-button>
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    name="dropdown button"
+    type="button"
+    size="large"
+    direction="right"
+    (changeValue)="logValue($event)">
+    <span>dropdown</span>
+    <gld-dropdown-button value="light" [icon]="Icons.sunLine" iconSize="tiny">
+      light
+    </gld-dropdown-button>
+    <gld-dropdown-button value="dark" [icon]="Icons.moonClearLine" iconSize="tiny">
+      dark
+    </gld-dropdown-button>
+    <gld-dropdown-button value="automatic" [icon]="Icons.macLine" iconSize="tiny">
+      automatic
+    </gld-dropdown-button>
+  </gld-dropdown-menu>
+</section>
+<!-- Dropdown icon -->
+<section class="display-flex">
+  <gld-dropdown-menu
+    background
+    name="dropdown button 2"
+    type="iconButton"
+    size="tiny"
+    [icon]="Icons.loader4Fill">
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    background
+    name="dropdown button 2"
+    type="iconButton"
+    size="small"
+    [icon]="Icons.loader4Fill">
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    background
+    name="dropdown button 2"
+    type="iconButton"
+    size="normal"
+    [icon]="Icons.loader4Fill">
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    background
+    name="dropdown button 2"
+    type="iconButton"
+    size="medium"
+    [icon]="Icons.loader4Fill">
+  </gld-dropdown-menu>
+  <gld-dropdown-menu
+    background
+    name="dropdown button 2"
+    type="iconButton"
+    size="large"
+    direction="right"
+    initialValue="light"
+    [icon]="Icons.loader4Fill">
+    <gld-dropdown-button value="light" [icon]="Icons.sunLine" iconSize="tiny">
+      light
+    </gld-dropdown-button>
+    <gld-dropdown-button value="dark" [icon]="Icons.moonClearLine" iconSize="tiny">
+      dark
+    </gld-dropdown-button>
+    <gld-dropdown-button value="automatic" [icon]="Icons.macLine" iconSize="tiny">
+      automatic
+    </gld-dropdown-button>
+  </gld-dropdown-menu>
+</section>
+<!-- Toggle -->
 <section [formGroup]="form">
   <gld-toggle-group name="toggle" initialValue="es" (changeValue)="logValue($event)">
     <gld-toggle-button value="es">es</gld-toggle-button>
     <gld-toggle-button value="en">en</gld-toggle-button>
   </gld-toggle-group>
 </section>
+<!-- Buttons -->
 <section>
   <gld-button disabled name="button" color="pink">button</gld-button>
   <gld-button name="button" color="pink" size="tiny" iconSize="tiny" [icon]="Icons.loader4Fill">
     button
   </gld-button>
-  <gld-button name="button" color="purple" size="small" [icon]="Icons.loader4Fill"
-    >button</gld-button
-  >
-  <gld-button name="button" color="mustard" size="normal" [icon]="Icons.loader4Fill"
-    >button</gld-button
-  >
+  <gld-button name="button" color="purple" size="small" [icon]="Icons.loader4Fill">
+    button
+  </gld-button>
+  <gld-button name="button" color="mustard" size="normal" [icon]="Icons.loader4Fill">
+    button
+  </gld-button>
   <gld-button name="button" color="orange" size="medium">button</gld-button>
   <gld-button name="button" color="red" size="large">button</gld-button>
   <gld-button name="button" color="blue">button</gld-button>
@@ -122,7 +251,7 @@
       placeholder="00/00/0000">
       <gld-input-error [errors]="form.controls.date.errors">
         @if (form.controls.date.hasError('required')) {
-          <span gldErrorMessage> Este campo es una fecha </span>
+          <span gldInputErrorMessage> Este campo es una fecha </span>
         }
       </gld-input-error>
     </gld-input-date>

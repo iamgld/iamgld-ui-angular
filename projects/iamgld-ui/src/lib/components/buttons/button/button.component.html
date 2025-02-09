@@ -6,6 +6,7 @@
   [class.button--full]="full()"
   (click)="emitClick()"
   (keyup.enter)="keyup()">
+  <!-- Icon -->
   @let innerIcon = icon();
   @if (innerIcon) {
     <gld-icon
@@ -15,8 +16,11 @@
       [size]="iconSize() ?? size()"
       [disabled]="disabled()" />
   }
-
+  <!-- Content -->
   <span>
-    <ng-content />
+    <ng-content>no content</ng-content>
   </span>
 </button>
+
+<!-- Only used by DropdownMenuComponent -->
+<ng-content select="[gldDropdownMenuTemplate]" />
