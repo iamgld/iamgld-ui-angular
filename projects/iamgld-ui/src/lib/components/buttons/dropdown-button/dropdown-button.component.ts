@@ -25,7 +25,7 @@ export class DropdownButtonComponent {
   value = input.required<unknown>()
   icon = input<Icons | null>(null)
   iconSize = input<keyof typeof IconsSize>(IconsSize.normal)
-  space = input<keyof typeof IconsSpace>(IconsSpace.none)
+  iconSpace = input<keyof typeof IconsSpace>(IconsSpace.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   direction = input<keyof typeof DropdownDirection>(DropdownDirection.left)
