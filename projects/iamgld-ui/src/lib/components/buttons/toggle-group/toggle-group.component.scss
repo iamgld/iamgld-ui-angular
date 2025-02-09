@@ -1,3 +1,10 @@
+:host {
+  position: relative;
+  display: inline-block;
+  height: inherit;
+  width: inherit;
+}
+
 .toggle {
   --gld-background: var(--gld-gray-transparent--010);
   --gld-border-color: light-dark(

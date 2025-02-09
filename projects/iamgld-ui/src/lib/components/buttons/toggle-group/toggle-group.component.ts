@@ -36,9 +36,6 @@ export class ToggleGroupComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent) => {
       toggleButton.changeValue.subscribe((value) => this.updateCurrentInChildren(value))
-      // toggleButton.changeFocus.subscribe((focus) => {
-      //   if (!focus) this.changeFocus.emit(focus)
-      // })
     })
   }
 
@@ -46,26 +43,13 @@ export class ToggleGroupComponent implements AfterContentInit {
     this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent, index: number) => {
       toggleButton.current.set(value)
       // Set current one time
-      if (index === 0) {
-        this.changeValue.emit(value)
-      }
+      if (index === 0) this.changeValue.emit(value)
     })
   }
 
   updateErrorInChildren(error: boolean) {
     this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent) =>
       toggleButton.error.set(error),
-    )
-  }
-
-  setDisabledState(disabled: boolean): void {
-    // console.log('setDisabledState')
-    this.#updateDisabledInChildren(disabled)
-  }
-
-  #updateDisabledInChildren(disabled: boolean) {
-    this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent) =>
-      toggleButton.disabled.set(disabled),
     )
   }
 }

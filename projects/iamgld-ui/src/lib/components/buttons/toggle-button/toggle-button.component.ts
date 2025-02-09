@@ -11,7 +11,6 @@ import { ChangeDetectionStrategy, Component, computed, input, output, signal } f
 export class ToggleButtonComponent {
   value = input.required<unknown>()
   changeValue = output<unknown>()
-  changeFocus = output<boolean>()
 
   current = signal<unknown>(null)
   disabled = signal<boolean>(false)
@@ -24,14 +23,6 @@ export class ToggleButtonComponent {
 
   keyup(value: unknown) {
     this.select(value)
-  }
-
-  onFocus() {
-    this.changeFocus.emit(true)
-  }
-
-  onBlur() {
-    this.changeFocus.emit(false)
   }
 }
 

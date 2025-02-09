@@ -1,6 +1,9 @@
-// :host {
-//   height: var(--gld-height);
-// }
+:host {
+  position: relative;
+  display: inline-block;
+  height: inherit;
+  width: inherit;
+}
 
 .button {
   --gld-background: transparent;
@@ -36,7 +39,7 @@
   }
 
   &:active {
-    transform: scale(1);
+    transform: scale(0.95);
   }
 
   &--selected {
@@ -44,7 +47,6 @@
     --gld-color: var(--gld-color--selected);
 
     &:hover {
-      transform: scale(0.95);
       --gld-color: var(--gld-color--selected);
     }
   }
