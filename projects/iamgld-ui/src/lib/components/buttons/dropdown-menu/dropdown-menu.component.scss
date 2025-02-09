@@ -1,10 +1,3 @@
-:host {
-  position: relative;
-  display: inline-block;
-  height: inherit;
-  width: inherit;
-}
-
 .dropdown-menu {
   --gld-background: light-dark(var(--gld-whitelight), var(--gld-darkblue));
   --gld-border-color: light-dark(

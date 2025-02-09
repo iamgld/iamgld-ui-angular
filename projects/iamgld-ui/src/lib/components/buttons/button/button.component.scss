@@ -1,9 +1,4 @@
 :host {
-  position: relative;
-  display: inline-block;
-  height: inherit;
-  width: inherit;
-
   &:has(.button--full) {
     width: 100%;
   }
