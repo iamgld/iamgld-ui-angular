@@ -1,3 +1,7 @@
+:host {
+  max-width: inherit;
+}
+
 .dropdown-menu {
   --gld-background: light-dark(var(--gld-whitelight), var(--gld-darkblue));
   --gld-border-color: light-dark(
@@ -17,6 +21,7 @@
   scale: 0;
   z-index: 1;
   min-width: var(--gld-dropdown-min-width);
+  max-width: inherit;
   // will-change: scale, display;
   // transition:
   //   scale var(--gld-animation-time--150) ease,
