@@ -1,14 +1,12 @@
 :host {
   position: relative;
-  display: inline-block;
-  // height: inherit;
   width: 100%;
 }
 
 .button {
   --gld-background: transparent;
   --gld-background--hover: var(--gld-gray-transparent--010);
-  --gld-background--selected: var(--gld-pink-transparent--010);
+  // --gld-background--selected: var(--gld-pink-transparent--010);
   --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
   --gld-color--selected: var(--gld-pink);
   --gld-color--hover: var(--gld-blue);
@@ -64,7 +62,7 @@
 
   &--selected {
     --gld-color: var(--gld-color--selected);
-    --gld-background: var(--gld-background--selected);
+    // --gld-background: var(--gld-background--selected);
 
     &:hover {
       --gld-color: var(--gld-color--selected);

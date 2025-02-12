@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core'
 // This Module Imports
-import { DropdownDirection, Icons, IconsSize } from '../../../models'
+import { DropdownDirection, Icons, IconsSize, IconsSpace } from '../../../models'
 import { IconComponent } from '../../icon/icon.component'
 
 const components = [IconComponent]
@@ -25,6 +25,7 @@ export class DropdownButtonComponent {
   value = input.required<unknown>()
   icon = input<Icons | null>(null)
   iconSize = input<keyof typeof IconsSize>(IconsSize.normal)
+  iconSpace = input<keyof typeof IconsSpace>(IconsSpace.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   direction = input<keyof typeof DropdownDirection>(DropdownDirection.left)
