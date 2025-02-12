@@ -1,8 +1,5 @@
 :host {
-  position: relative;
-  display: inline-block;
-  height: inherit;
-  width: inherit;
+  max-width: inherit;
 }
 
 .dropdown-menu {
@@ -24,6 +21,7 @@
   scale: 0;
   z-index: 1;
   min-width: var(--gld-dropdown-min-width);
+  max-width: inherit;
   // will-change: scale, display;
   // transition:
   //   scale var(--gld-animation-time--150) ease,
