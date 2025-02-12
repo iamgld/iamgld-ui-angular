@@ -4,7 +4,6 @@
 }
 
 .toggle {
-  --gld-background: var(--gld-gray-transparent--010);
   --gld-border-color: light-dark(
     var(--gld-gray-transparent--040),
     var(--gld-gray-transparent--020)
@@ -14,7 +13,6 @@
   padding: var(--gld-spacing--xxxs);
   border: var(--gld-border-size) solid var(--gld-border-color);
   border-radius: var(--gld-radius);
-  background: var(--gld-background);
   display: flex;
 }
 
