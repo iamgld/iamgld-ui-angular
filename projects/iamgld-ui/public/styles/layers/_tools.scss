@@ -90,25 +90,29 @@
 @mixin scrollbar {
   // Chrome, Edge y Safari.
   &::-webkit-scrollbar {
-    width: var(--spacing--xxs);
-    height: var(--spacing--xxs);
+    width: var(--gld-spacing--xxs);
+    height: var(--gld-spacing--xxs);
   }
 
   &::-webkit-scrollbar-track {
-    background-color: transparent; // color of the tracking area
+    background: transparent; // color of the tracking area
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--green); // color of the scroll thumb
-    border-radius: var(--radius--s); // roundness of the scroll thumb
+    background: light-dark(
+      var(--gray-transparent--040),
+      var(--gray-transparent--020)
+    ); // color of the scroll thumb
+    border-radius: var(--gld-radius--s); // roundness of the scroll thumb
     // border: 2px solid Palette(Primary); // creates padding around scroll thumb
   }
 
+  // Firefox
   overflow: auto;
   scrollbar-width: thin;
-
   // color of the scroll thumb, color of the tracking area
-  scrollbar-color: var(--green) transparent;
+  scrollbar-color: light-dark(var(--gray-transparent--040), var(--gray-transparent--020))
+    transparent;
   scroll-behavior: smooth;
 }
 
