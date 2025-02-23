@@ -103,8 +103,17 @@
       var(--gray-transparent--040),
       var(--gray-transparent--020)
     ); // color of the scroll thumb
+    will-change: background;
+    transition: background var(--gld-animation-time--150) ease;
     border-radius: var(--gld-radius--s); // roundness of the scroll thumb
     // border: 2px solid Palette(Primary); // creates padding around scroll thumb
+
+    &:hover {
+      background: light-dark(
+        var(--gray-transparent--060),
+        var(--gray-transparent--040)
+      ); // color of the scroll thumb on hover
+    }
   }
 
   // Firefox

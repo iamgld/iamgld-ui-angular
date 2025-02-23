@@ -21,9 +21,13 @@ import {
   TableColumnStructure,
   TableColumnToTableColumns,
 } from '../../../models'
-import { IconButtonComponent, LoaderComponent } from '../../../components'
+import {
+  DropdownButtonComponent,
+  DropdownMenuComponent,
+  LoaderComponent,
+} from '../../../components'
 
-const components = [IconButtonComponent, LoaderComponent]
+const components = [DropdownButtonComponent, DropdownMenuComponent, LoaderComponent]
 
 @Component({
   selector: 'gld-table',
@@ -57,13 +61,18 @@ export class TableComponent {
     })
   }
 
-  tableActionFunction({ tableColumnAction, tableColumns, index }: TableActionFunction) {
+  tableActionFunction({ tableColumnActionAsEvent, tableColumns, index }: TableActionFunction) {
+    const tableColumnAction = tableColumnActionAsEvent as TableColumnAction
     const object: unknown = this.#buildObjectFromTableColumn({ tableColumns, index })
     const event: TableColumnActionOutput = {
       tableColumnAction,
       object,
     }
     this.tableColumnAction.emit(event)
+  }
+
+  changeValue(event: unknown) {
+    console.log('event', event)
   }
 
   // We build each column and in case it doesn't exist or update it in case it already exists
@@ -185,7 +194,7 @@ export class TableComponent {
 }
 
 interface TableActionFunction {
-  tableColumnAction: TableColumnAction
+  tableColumnActionAsEvent: unknown
   tableColumns: TableColumn[]
   index: number
 }

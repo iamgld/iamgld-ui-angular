@@ -40,7 +40,6 @@ export interface TableColumnAction {
   icon: Icons
   type: TableColumnActionType
   showWhen: (dataStructure: unknown) => boolean
-  classToHover?: 'Menu-button-green' | 'Menu-button-pink'
 }
 
 export enum TableColumnActionType {

@@ -105,13 +105,37 @@
             (change)="onSelect($event, dragAndDropColumns(), index)" /> -->
           }
           @if (tableColumnActions()) {
-            <!-- Button Menu -->
-            <gld-icon-button
+            <!-- Dropdown Menu -->
+            <gld-dropdown-menu
+              background
+              name="more button of table cell"
+              type="iconButton"
+              iconSize="small"
+              direction="left"
+              initialValue=""
+              [icon]="Icons.more2Fill"
+              (changeValue)="
+                tableActionFunction({
+                  tableColumnActionAsEvent: $event,
+                  tableColumns: tableColumns(),
+                  index,
+                })
+              ">
+              @for (tableColumnAction of tableColumnActions(); track tableColumnAction.type) {
+                <gld-dropdown-button
+                  [value]="tableColumnAction"
+                  [icon]="tableColumnAction.icon"
+                  iconSize="tiny">
+                  {{ tableColumnAction.label }}
+                </gld-dropdown-button>
+              }
+            </gld-dropdown-menu>
+            <!-- <gld-icon-button
               background
               name="more button of table cell"
               iconSize="small"
-              [icon]="Icons.more2Fill">
-              <!-- <gld-tile color="blue-to-green"  class="Menu">
+              [icon]="Icons.more2Fill"> -->
+            <!-- <gld-tile color="blue-to-green"  class="Menu">
                   <section class="Menu-content">
                     @for (tableColumnAction of tableColumnActions(); track tableColumnAction.type) {
                       <button
@@ -132,7 +156,7 @@
                     }
                   </section>
                 </gld-tile> -->
-            </gld-icon-button>
+            <!-- </gld-icon-button> -->
           }
         </section>
       }
