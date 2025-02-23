@@ -1,0 +1,148 @@
+<!-- Search -->
+@if (search()) {
+  <section class="table-search">
+    <ng-content select="gld-table-search" />
+  </section>
+}
+
+<!-- Table -->
+<article
+  class="table"
+  [class.table--empty]="!tableColumnsToShow().length"
+  [style.height]="tableHeight()">
+  <!-- Table Content -->
+  <section
+    class="table-content"
+    [class.table-content--actions]="tableColumnActions().length"
+    [class.table-content--selects]="selects()">
+    <!-- Loading -->
+    @if (loading()) {
+      <gld-loader loading background minHeight="100px" />
+    } @else {
+      <!-- Table Columns -->
+      @for (tableColumn of tableColumnsToShow(); track tableColumn) {
+        <section
+          class="table-column"
+          [style.flexBasis]="tableColumn.width"
+          [style.flexShrink]="tableColumn.width === 'auto' ? '1' : '0'"
+          [style.flexGrow]="tableColumn.width === 'auto' ? '1' : '0'"
+          [style.minWidth]="tableColumn.minWidth"
+          [style.maxWidth]="tableColumn.maxWidth">
+          <section class="table-header">
+            <span class="table-header-ellipsis">{{ tableColumn.label }}</span>
+          </section>
+          @for (value of tableColumn.values; track $index) {
+            <section
+              class="table-cell"
+              [style.justifyContent]="tableColumn.justify"
+              [style.textAlign]="tableColumn.justify">
+              @if (tableColumn.transform(value) !== undefined) {
+                @switch (true) {
+                  @case (tableColumn.template !== undefined) {
+                    <ng-container
+                      [ngTemplateOutlet]="tableColumn.template"
+                      [ngTemplateOutletContext]="{ value: tableColumn.transform(value) }" />
+                  }
+                  @default {
+                    <span class="table-cell-ellipsis">{{ tableColumn.transform(value) }}</span>
+                  }
+                }
+              } @else {
+                <span>-</span>
+              }
+            </section>
+          }
+        </section>
+      } @empty {
+        <!-- Empty -->
+        <section class="table-empty">
+          <p>{{ emptyMessage() ? emptyMessage() : 'We have not data to show yet!' }}</p>
+        </section>
+      }
+    }
+  </section>
+
+  <!-- Table Actions -->
+  @if ((tableColumnActions().length || selects()) && !loading() && tableColumnsToShow().length) {
+    <section
+      class="table-column"
+      [class.table-column--actions]="tableColumnActions().length"
+      [class.table-column--selects]="selects()">
+      <!-- Header -->
+      <section
+        class="table-header"
+        [class.table-header--actions]="tableColumnActions().length"
+        [class.table-header--selects]="selects()">
+        <!-- Select All Checkbox -->
+        @if (selectsAll()) {
+          <!-- <mat-checkbox
+              color="primary"
+              matTooltip="Todo"
+              matTooltipClass="Tooltip"
+              class="Checkbox"
+              [checked]="
+                dragAndDropColumnSelected().length === dragAndDropColumns().at(0)?.values?.length
+              "
+              [indeterminate]="
+                !!dragAndDropColumnSelected().length &&
+                dragAndDropColumnSelected().length !== dragAndDropColumns().at(0)?.values?.length
+              "
+              (change)="onSelectOrUnselectAll($event, dragAndDropColumns())"
+            /> -->
+        }
+      </section>
+      @for (value of tableColumnsToShow().at(0)?.values; track $index; let index = $index) {
+        <!-- Cell -->
+        <section class="table-cell table-cell--actions">
+          <!-- Select Checkbox -->
+          @if (selects()) {
+            <!-- <mat-checkbox
+            color="primary"
+            class="Checkbox"
+            matTooltip="Seleccionar"
+            matTooltipClass="Tooltip"
+            [checked]="isSelected(dragAndDropColumns(), index)"
+            (change)="onSelect($event, dragAndDropColumns(), index)" /> -->
+          }
+          @if (tableColumnActions()) {
+            <!-- Button Menu -->
+            <gld-icon-button
+              background
+              name="more button of table cell"
+              iconSize="small"
+              [icon]="Icons.more2Fill">
+              <!-- <gld-tile color="blue-to-green"  class="Menu">
+                  <section class="Menu-content">
+                    @for (tableColumnAction of tableColumnActions(); track tableColumnAction.type) {
+                      <button
+                        class="Menu-button {{ tableColumnAction?.classToHover ?? '' }}"
+                        [class.Menu-button--hidden]="
+                          !tableColumnAction.showWhen(buildDataStructure({ index }))
+                        "
+                        (click)="
+                          tableActionFunction({
+                            tableColumnAction,
+                            tableColumns: tableColumns(),
+                            index,
+                          })
+                        ">
+                        <gld-icon size="tiny" [icon]="tableColumnAction.icon" />
+                        <span class="Menu-button-ellipsis">{{ tableColumnAction.label }}</span>
+                      </button>
+                    }
+                  </section>
+                </gld-tile> -->
+            </gld-icon-button>
+          }
+        </section>
+      }
+    </section>
+  }
+</article>
+
+<!-- Pagination -->
+@if (pagination()) {
+  <section class="table-pagination">
+    <ng-content select="gld-table-pagination" />
+  </section>
+}
