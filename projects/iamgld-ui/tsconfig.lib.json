@@ -3,13 +3,18 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "paths": {
+      // Shared Paths
+      // "@shared/*": ["src/app/shared/*"],
+      // "@iamgld/ui": ["projects/iamgld-ui/src/public-api.ts"]
+    }
   },
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+  "exclude": ["**/*.spec.ts"]
 }
+

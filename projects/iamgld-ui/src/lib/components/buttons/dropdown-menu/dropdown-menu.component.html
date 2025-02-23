@@ -1,6 +1,7 @@
 <!-- Button -->
 @if (type() === DropdownType.button) {
   <gld-button
+    #buttonChild
     [name]="name()"
     [color]="color()"
     [size]="size()"
@@ -19,6 +20,7 @@
   @let innerIcon = icon();
   @if (innerIcon) {
     <gld-icon-button
+      #buttonChild
       [name]="name()"
       [color]="color()"
       [icon]="innerIcon"
@@ -37,7 +39,7 @@
   <section
     class="dropdown-menu dropdown-menu--{{ type() }} dropdown-menu--{{ size() }}
       dropdown-menu--direction-{{ direction() }}">
-    <ng-content select="gld-dropdown-button">no button</ng-content>
+    <ng-content select="gld-dropdown-button">no buttons</ng-content>
   </section>
 </ng-template>
 

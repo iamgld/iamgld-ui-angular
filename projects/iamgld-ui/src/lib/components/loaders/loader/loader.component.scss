@@ -1,6 +1,13 @@
+:host {
+  width: 100%;
+}
+
 .loader {
-  --gld-color: var(--gld-darkblue);
-  --gld-background: var(--gld-whitelight-transparent--090);
+  --gld-color: light-dark(var(--darkblue), var(--whitelight));
+  --gld-background: light-dark(
+    var(--whitelight-transparent--080),
+    var(--darkblue-transparent--080)
+  );
 
   position: relative;
   color: var(--color);
