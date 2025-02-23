@@ -5,13 +5,16 @@
 }
 
 .table {
-  --gld-color: light-dark(var(--darkblue), var(--whitelight));
-  --gld-border-color: light-dark(var(--gray-transparent--040), var(--gray-transparent--020));
-  --gld-border-radius: var(--radius--xxs);
-  --gld-background: light-dark(var(--whitelight), var(--darkblue));
+  --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
+  --gld-border-color: light-dark(
+    var(--gld-gray-transparent--040),
+    var(--gld-gray-transparent--020)
+  );
+  --gld-border-radius: var(--gld-radius--xxs);
+  --gld-background: light-dark(var(--gld-whitelight), var(--gld-darkblue));
   --gld-background--with-transparent: light-dark(
-    var(--gray-transparent--020),
-    var(--gray-transparent--010)
+    var(--gld-gray-transparent--020),
+    var(--gld-gray-transparent--010)
   );
   --gld-column-actions-or-selects-width: 40px;
   --gld-column-actions-and-selects-width: 80px;
@@ -239,3 +242,4 @@
 //     z-index: var(--zindex--one);
 //   }
 // }
+
