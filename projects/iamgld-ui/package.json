@@ -1,6 +1,6 @@
 {
   "name": "@iamgld/ui",
-  "version": "1.19.10",
+  "version": "1.20.1",
   "publishConfig": {
     "access": "public"
   },

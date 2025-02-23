@@ -4,11 +4,11 @@ export function formatDateToISO(outerDate: string | Date): string | null {
 	else return null
 }
 
-// export function formatDateFromISOToDDMMYYYY(dateAsString: string): string | null {
-// 	const [year, month, day] = dateAsString.split('-')
-// 	if (year && month && day) return `${day}/${month}/${year}`
-// 	else return null
-// }
+export function formatDateFromISOToDDMMYYYY(dateAsString: string): string | null {
+	const [year, month, day] = dateAsString.split('-')
+	if (year && month && day) return `${day}/${month}/${year}`
+	else return null
+}
 
 export function formatDateFromISOToYYYYMMDD(dateAsString: string | null): string | null {
 	if (!dateAsString) return null

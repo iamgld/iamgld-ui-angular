@@ -48,8 +48,9 @@ export class DropdownMenuComponent implements AfterContentInit {
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   full = input<boolean, string | boolean>(false, { transform: booleanAttribute })
-  direction = input<keyof typeof DropdownDirection>(DropdownDirection.left)
+  direction = input<keyof typeof DropdownDirection>(DropdownDirection.right)
   background = input<boolean, boolean | string>(false, { transform: booleanAttribute })
+  selected = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   initialValue = input<unknown>(null)
   changeValue = output<unknown>()
   changeFocus = output<boolean>()
@@ -71,7 +72,7 @@ export class DropdownMenuComponent implements AfterContentInit {
 
   updateCurrentInChildren(value: unknown) {
     this.dropdownButtonChildren().map((dropdownButton: DropdownButtonComponent, index: number) => {
-      dropdownButton.current.set(value)
+      if (this.selected()) dropdownButton.current.set(value)
       // Set current one time
       if (index === 0) this.changeValue.emit(value)
     })

@@ -20,7 +20,7 @@ import {
 } from '@angular/forms'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
-import { InputType } from '../../../models/controls'
+import { InputType } from '../../../models'
 import { InputErrorComponent } from '../input-error/input-error.component'
 // Shared Imports
 import { debounceTime } from 'rxjs'

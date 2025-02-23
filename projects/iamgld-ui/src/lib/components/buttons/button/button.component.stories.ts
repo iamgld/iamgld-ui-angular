@@ -44,7 +44,7 @@ const meta: Meta<ButtonComponent> = {
         defaultValue: { summary: 'normal' },
       },
     },
-    disable: {
+    disabled: {
       control: {
         type: 'boolean',
         accept: 'boolean',
@@ -65,7 +65,7 @@ const meta: Meta<ButtonComponent> = {
     name: 'button',
     color: 'pink',
     size: 'normal',
-    disable: false,
+    disabled: false,
     clicked: fn(),
   },
   parameters: {},

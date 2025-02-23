@@ -3,10 +3,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   input,
   numberAttribute,
   output,
   signal,
+  viewChild,
 } from '@angular/core'
 // This Module Imports
 import { DropdownDirection, Icons, IconsSize, IconsSpace } from '../../../models'
@@ -29,7 +31,6 @@ export class DropdownButtonComponent {
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   direction = input<keyof typeof DropdownDirection>(DropdownDirection.left)
-
   changeValue = output<unknown>()
 
   current = signal<unknown>(null)
@@ -37,8 +38,11 @@ export class DropdownButtonComponent {
   error = signal<boolean>(false)
   selected = computed(() => Boolean(this.current() === this.value()))
 
+  buttonChild = viewChild('buttonChild', { read: ElementRef })
+
   select(value: unknown) {
     this.changeValue.emit(value)
+    this.buttonChild()?.nativeElement.blur()
   }
 
   keyup(value: unknown) {
