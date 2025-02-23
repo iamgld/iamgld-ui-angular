@@ -32,6 +32,8 @@ export enum Icons {
   calendar2Line = 'ri-calendar-2-line',
   macLine = 'ri-mac-line',
   more2Fill = 'ri-more-2-fill',
+  editLine = 'ri-edit-line',
+  deleteBinLine = 'ri-delete-bin-line',
 }
 
 export enum IconsSize {
