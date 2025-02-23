@@ -23,8 +23,8 @@ body {
 body {
   margin: 0;
   color-scheme: light dark;
-  background: light-dark(var(--whitelight), var(--darkblue));
-  color: light-dark(var(--darkblue), var(--whitelight));
+  background: light-dark(var(--gld-whitelight), var(--gld-darkblue));
+  color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
 }
 
 h1,
