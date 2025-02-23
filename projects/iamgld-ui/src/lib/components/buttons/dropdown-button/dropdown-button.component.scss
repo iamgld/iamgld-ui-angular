@@ -30,8 +30,7 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-
-  gap: var(--gld-spacing--xxxs);
+  gap: var(--gld-spacing--xxs);
   will-change: background, transform, color;
   transition:
     background var(--gld-animation-time--150),

@@ -27,13 +27,13 @@
   //   scale var(--gld-animation-time--150) ease,
   //   display var(--gld-animation-time--150) ease allow-discrete;
 
-  &--direction-left {
+  &--direction-right {
     left: 0;
     transform-origin: top left;
     transform: translateY(var(--gld-dropdown-bottom-position));
   }
 
-  &--direction-right {
+  &--direction-left {
     transform-origin: top right;
     transform: translate(-100%, var(--gld-dropdown-bottom-position));
   }
