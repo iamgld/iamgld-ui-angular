@@ -1,3 +1,17 @@
+<h2>table</h2>
+<section class="table">
+  <gld-table
+    search
+    pagination
+    emptyMessage="you have not yet added jobs to shows"
+    [tableColumns]="tableColumns()"
+    [loading]="loading()"
+    (tableColumnAction)="tableColumnAction($event)">
+    <!-- Pagination -->
+    <!-- <gld-table-pagination [pagination]="pagination()" [theme]="theme()" /> -->
+  </gld-table>
+</section>
+
 <h2>image</h2>
 <section class="grid grid--2">
   <!-- <gld-image
