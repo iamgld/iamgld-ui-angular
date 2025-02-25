@@ -29,7 +29,7 @@
   position: relative;
   border: var(--gld-border-size) solid var(--gld-border-color);
   border-radius: var(--gld-border-radius);
-  background: var(--background);
+  background: var(--gld-background);
   overflow: hidden;
 
   @include styles.scrollbar();
