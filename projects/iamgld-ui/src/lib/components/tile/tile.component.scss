@@ -6,8 +6,6 @@
 }
 
 .tile {
-  --gld-border-radius-inner: var(--gld-radius--xxs);
-  --gld-border-radius-outer: calc(var(--gld-radius--xxs) + var(--gld-border-size));
   --gld-background: initial;
   --gld-background--hover: initial;
   --gld-border-color: transparent;

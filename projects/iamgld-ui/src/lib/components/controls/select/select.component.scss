@@ -1,10 +1,12 @@
+@use '../../../../../public/styles/styles';
+
 .input {
-  --gld-color: var(--gld-darkblue);
+  --gld-color: var(--gld-foreground-color);
   --gld-color--disabled: var(--gld-gray-transparent--060);
   --gld-color--error: var(--gld-red);
   --gld-placeholder-color: var(--gld-gray-transparent--060);
   --gld-border-color: var(--gld-gray-transparent--060);
-  --gld-label-color: var(--gld-darkblue);
+  --gld-label-color: var(--gld-foreground-color);
   --gld-height: 40px;
   --gld-min-with: 50px;
   --gld-animation-time: var(--gld-animation-time--150);
@@ -148,6 +150,8 @@
     transition:
       var(--gld-animation-time) height ease-in-out,
       var(--gld-animation-time) padding ease-in-out;
+
+    @include styles.scrollbar();
 
     &--opened {
       height: calc(var(--gld-option-height) * var(--gld-option-items) + (var(--gld-padding) * 2));

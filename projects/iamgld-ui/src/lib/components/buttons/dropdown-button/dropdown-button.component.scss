@@ -7,7 +7,7 @@
   --gld-background: transparent;
   --gld-background--hover: var(--gld-gray-transparent--010);
   // --gld-background--selected: var(--gld-pink-transparent--010);
-  --gld-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
+  --gld-color: var(--gld-foreground-color);
   --gld-color--selected: var(--gld-pink);
   --gld-color--hover: var(--gld-blue);
   --gld-radius: var(--gld-radius--xxxs);

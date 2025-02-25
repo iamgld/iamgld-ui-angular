@@ -3,10 +3,10 @@
 }
 
 .loader {
-  --gld-color: light-dark(var(--darkblue), var(--whitelight));
+  --gld-color: var(--gld-foreground-color);
   --gld-background: light-dark(
-    var(--whitelight-transparent--080),
-    var(--darkblue-transparent--080)
+    var(--gld-whitelight-transparent--080),
+    var(--gld-darkblue-transparent--080)
   );
 
   position: relative;
