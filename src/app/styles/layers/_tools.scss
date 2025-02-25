@@ -110,8 +110,8 @@
 
     &:hover {
       background: light-dark(
-        var(--gray-transparent--060),
-        var(--gray-transparent--040)
+        var(--gld-gray-transparent--060),
+        var(--gld-gray-transparent--040)
       ); // color of the scroll thumb on hover
     }
   }
@@ -120,7 +120,7 @@
   overflow: auto;
   scrollbar-width: thin;
   // color of the scroll thumb, color of the tracking area
-  scrollbar-color: light-dark(var(--gray-transparent--040), var(--gray-transparent--020))
+  scrollbar-color: light-dark(var(--gld-gray-transparent--040), var(--gld-gray-transparent--020))
     transparent;
   scroll-behavior: smooth;
 }

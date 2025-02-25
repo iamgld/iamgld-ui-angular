@@ -1,9 +1,5 @@
 @use 'styles';
 
-:host {
-  @include styles.scrollbar;
-}
-
 section,
 h2 {
   padding: 1rem;
