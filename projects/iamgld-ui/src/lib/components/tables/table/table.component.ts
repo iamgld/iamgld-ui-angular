@@ -7,7 +7,6 @@ import {
   ChangeDetectionStrategy,
   signal,
   output,
-  effect,
 } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
 // Angular Material Imports
@@ -54,12 +53,6 @@ export class TableComponent {
     this.tableColumns().filter((column: TableColumn) => !column.hide),
   )
   tableColumnActions = signal<TableColumnAction[]>([])
-
-  constructor() {
-    effect(() => {
-      console.log('effect', this.loading())
-    })
-  }
 
   tableActionFunction({ tableColumnActionAsEvent, tableColumns, index }: TableActionFunction) {
     const tableColumnAction = tableColumnActionAsEvent as TableColumnAction
@@ -203,3 +196,4 @@ interface BuildObjectFromTableColumn {
   tableColumns: TableColumn[]
   index: number
 }
+

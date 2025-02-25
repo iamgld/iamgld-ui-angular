@@ -4,29 +4,25 @@
 }
 
 .link {
-  --gld-color: var(--gld-purple);
+  --gld-color: var(--gld-foreground-color);
 
   position: relative;
   display: inline-flex;
   align-items: center;
   padding: 0;
-  font-family: var(--gld-font--poppins);
-  font-weight: 600;
-  font-size: inherit;
-  line-height: var(--gld-line-height);
+  font: 600 var(--gld-font-size--normal) / var(--gld-line-height) var(--gld-font--poppins);
   color: var(--gld-color);
   background: none;
   border: none;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
   will-change: color;
   transition: color var(--gld-animation-time--150);
 
   &--active,
   &:active,
   &:hover {
-    --gld-color: var(--gld-purple-transparent--080);
-    text-decoration: underline;
+    --gld-color: var(--gld-purple);
   }
 
   &--left {
