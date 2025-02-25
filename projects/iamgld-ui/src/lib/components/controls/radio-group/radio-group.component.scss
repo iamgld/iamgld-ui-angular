@@ -1,12 +1,21 @@
 .radio {
-  --gld-color: var(--gld-darkblue);
+  --gld-color: var(--gld-foreground-color);
+  --gld-label-color: var(--gld-foreground-color);
   --gld-color--disabled: var(--gld-gray-transparent--060);
 
   margin-bottom: var(--gld-spacing--xxxs);
 
-  &__label {
+  label {
+    padding: 0;
+    font-family: var(--gld-font--poppins);
+    font-size: var(--gld-font-size--normal);
+    font-weight: 400;
+    line-height: var(--gld-line-height);
+    color: var(--gld-label-color);
+    will-change: color;
+    transition: color var(--gld-animation-time) ease;
+    cursor: text;
     margin-bottom: var(--gld-spacing--xxxs);
-    color: var(--gld-color);
 
     &::first-letter {
       text-transform: uppercase;

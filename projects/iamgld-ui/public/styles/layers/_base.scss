@@ -37,3 +37,20 @@ p {
   text-wrap: pretty;
   margin: 0;
 }
+
+// Themes
+body.theme--light {
+  color-scheme: light;
+  --gld-foreground-color: var(--gld-darkblue);
+  --gld-background-color: var(--gld-whitelight);
+}
+body.theme--dark {
+  color-scheme: dark;
+  --gld-foreground-color: var(--gld-whitelight);
+  --gld-background-color: var(--gld-darkblue);
+}
+body.theme--system {
+  color-scheme: light dark;
+  --gld-foreground-color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
+  --gld-background-color: light-dark(var(--gld-whitelight), var(--gld-darkblue));
+}
