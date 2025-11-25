@@ -1,0 +1,49 @@
+.Search {
+  margin-bottom: 24px;
+}
+
+.Input {
+  --radius: 100px;
+  --background: var(--whitelight);
+  --color: var(--darkblue);
+  --placeholder-color: var(--gray);
+  --border-color: var(--gray);
+  --outline-color: var(--blue);
+  --label-color: var(--darkblue);
+  --height: 40px;
+  --min-with: 350px;
+  --icon-size: 20px;
+  --animation-time: var(--animation-time--150);
+
+  position: relative;
+
+  input {
+    position: relative;
+    width: 100%;
+    min-width: var(--min-with);
+    height: var(--height);
+    padding: 12px 24px 12px calc(24px + var(--icon-size) + 12px);
+    font-size: 16px;
+    font-family: inherit;
+    color: var(--color);
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+
+    &:focus {
+      outline-color: var(--outline-color);
+    }
+
+    &::placeholder {
+      color: var(--color);
+    }
+  }
+
+  gld-icon {
+    position: absolute;
+    left: 24px;
+    top: calc(50% - 11px);
+    z-index: 1;
+    color: var(--border-color);
+  }
+}

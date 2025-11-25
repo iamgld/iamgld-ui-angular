@@ -1,0 +1,27 @@
+.Pagination {
+  --color: var(--darkblue);
+  --height: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing--s);
+  margin: var(--spacing--s) 0;
+  height: var(--height);
+  padding-left: var(--spacing--s);
+
+  &.Theme--dark {
+    --color: var(--whitelight);
+  }
+
+  &-label {
+    margin: 0;
+    font: 600 var(--font-size--normal) var(--font--poppins);
+    color: var(--color);
+  }
+
+  &-actions {
+    display: flex;
+    gap: var(--spacing--xxxs);
+  }
+}

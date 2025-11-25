@@ -1,0 +1,47 @@
+.button {
+  --gld-background: transparent;
+  --gld-background--hover: var(--gld-pink-transparent--010);
+  --gld-color: var(--gld-foreground-color);
+  --gld-color--selected: var(--gld-pink);
+  --gld-color--hover: var(--gld-blue);
+  --gld-radius: var(--gld-radius--xxxs);
+
+  padding: var(--gld-spacing--xxxs);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background: var(--gld-background);
+  color: var(--gld-color);
+  font-family: var(--gld-font--poppins);
+  font-size: var(--gld-font-size--normal);
+  font-weight: 400;
+  line-height: var(--gld-line-height);
+  user-select: none;
+  outline: none;
+  border: none;
+  border-radius: var(--gld-radius);
+  cursor: pointer;
+  will-change: background, transform, color;
+  transition:
+    background var(--gld-animation-time--150),
+    transform var(--gld-animation-time--150),
+    color var(--gld-animation-time--150);
+
+  &:hover {
+    --gld-color: var(--gld-color--hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &--selected {
+    --gld-background: var(--gld-background--hover);
+    --gld-color: var(--gld-color--selected);
+
+    &:hover {
+      --gld-color: var(--gld-color--selected);
+    }
+  }
+}
+

@@ -1,0 +1,61 @@
+@if (external()) {
+  <!-- It's external link -->
+  <ng-container
+    [ngTemplateOutlet]="buttonTemplate"
+    [ngTemplateOutletContext]="{ buttonType: 'anchor' }" />
+} @else {
+  <!-- It isn't external link -->
+  <ng-container
+    [ngTemplateOutlet]="buttonTemplate"
+    [ngTemplateOutletContext]="{ buttonType: 'button' }" />
+}
+
+<!-- Button Template -->
+<ng-template #buttonTemplate let-buttonType="buttonType">
+  @switch (buttonType) {
+    @case ('anchor') {
+      <a
+        id="{{ name() }}"
+        attr.aria-label="{{ name() }}"
+        class="link link--{{ align() }}"
+        [class.link--active]="active()"
+        [href]="redirect()"
+        (click)="emitClick()"
+        (keyup.enter)="keyup()"
+        target="_blank">
+        <ng-container [ngTemplateOutlet]="contentButtonTemplate" />
+      </a>
+    }
+    @case ('button') {
+      @if (redirect()) {
+        <!-- It has path to redirect -->
+        <button
+          id="{{ name() }}"
+          attr.aria-label="{{ name() }}"
+          class="link link--{{ align() }}"
+          [class.link--active]="active()"
+          (click)="emitClick()"
+          (keyup.enter)="keyup()"
+          [routerLink]="redirect()">
+          <ng-container [ngTemplateOutlet]="contentButtonTemplate" />
+        </button>
+      } @else {
+        <!-- It doesn't have path to redirect -->
+        <button
+          id="{{ name() }}"
+          attr.aria-label="{{ name() }}"
+          class="link link--{{ align() }}"
+          [class.link--active]="active()"
+          (click)="emitClick()"
+          (keyup.enter)="keyup()">
+          <ng-container [ngTemplateOutlet]="contentButtonTemplate" />
+        </button>
+      }
+    }
+  }
+</ng-template>
+
+<!-- Content Button Template -->
+<ng-template #contentButtonTemplate>
+  <ng-content />
+</ng-template>

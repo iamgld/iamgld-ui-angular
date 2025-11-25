@@ -1,0 +1,33 @@
+<article
+  class="loader"
+  [class.loader--loading]="loading()"
+  [class.loader--background]="background()"
+  [class.loader--radius]="radius()"
+  [style.minHeight]="minHeight()">
+  <!-- Content -->
+  <ng-content />
+
+  <!-- Loader -->
+  @if (loading()) {
+    <section class="loader-loading">
+      <svg class="container" viewBox="0 0 40 40" height="40" width="40">
+        <circle
+          class="track"
+          cx="20"
+          cy="20"
+          r="17.5"
+          pathlength="100"
+          stroke-width="5px"
+          fill="none" />
+        <circle
+          class="car"
+          cx="20"
+          cy="20"
+          r="17.5"
+          pathlength="100"
+          stroke-width="5px"
+          fill="none" />
+      </svg>
+    </section>
+  }
+</article>
