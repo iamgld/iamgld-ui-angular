@@ -20,7 +20,9 @@
 			"@app": ["src/app/index.ts"],
 			"@environment": ["src/environments/environment.local.ts"],
 			// Shared Paths
-			"@shared/*": ["src/app/shared/*"],
+      "@shared/*": ["src/app/shared/*"],
+			// Iamgld ui lib
+			"@iamgld/ui": ["projects/iamgld-ui-lib/src/public-api.ts"]
 		},
 	},
 	"angularCompilerOptions": {
@@ -31,11 +33,17 @@
 	},
 	"files": [],
 	"references": [
-		{
-			"path": "./tsconfig.app.json"
-		},
-		{
-			"path": "./tsconfig.spec.json"
-		}
-	]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/iamgld-ui-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/iamgld-ui-lib/tsconfig.spec.json"
+    }
+  ]
 }

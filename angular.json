@@ -4,7 +4,7 @@
   "cli": {
     "packageManager": "pnpm",
     "analytics": false,
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": []
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -148,6 +148,32 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "iamgld-ui-lib": {
+      "projectType": "library",
+      "root": "projects/iamgld-ui-lib",
+      "sourceRoot": "projects/iamgld-ui-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/iamgld-ui-lib/tsconfig.spec.json"
+          }
         }
       }
     }
