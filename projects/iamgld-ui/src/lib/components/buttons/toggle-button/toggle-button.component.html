@@ -1,9 +1,0 @@
-<button
-  [tabindex]="disabled() ? '-1' : '0'"
-  class="button"
-  [class.button--selected]="selected()"
-  (keyup.enter)="keyup(value())"
-  (click)="select(value())">
-  <ng-content> empty button </ng-content>
-</button>
-
