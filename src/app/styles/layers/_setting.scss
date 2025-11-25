@@ -5,9 +5,94 @@
     3. colores representativos de la marca o empresa
 */
 
-// :root {
-// General
-// --line-height: 1.25;
-// --navbar-height: 50px;
-// --footer-height: 200px;
-// }
+:root {
+	// Breakpoints
+	--break-point--zero: 0;
+	--break-point--mobile: 320px;
+	--break-point--landscape: 576px;
+	--break-point--tablet: 768px;
+	--break-point--desktop: 1080px;
+	--break-point--extra-desktop: 1280px;
+
+	// Fonts
+	--font-size--heading-one: 36px;
+	--font-size--heading-two: 26px;
+	--font-size--heading-three: 20px;
+	--font-size--normal: 16px;
+	--font-size--small: 12px;
+	--font-size--tiny: 8px;
+	--font--poppins: 'Poppins', sans-serif;
+
+	// Radius
+	--radius--z: 0;
+	--radius--xxxs: 4px;
+	--radius--xxs: 6px;
+	--radius--xs: 8px;
+	--radius--s: 12px;
+	--radius--m: 16px;
+	--radius--l: 24px;
+	--radius--xl: 32px;
+	--radius--xxl: 40px;
+
+	// Spacing
+	--spacing--z: 0;
+	--spacing--xxxs: 4px;
+	--spacing--xxs: 8px;
+	--spacing--xs: 12px;
+	--spacing--s: 16px;
+	--spacing--m: 24px;
+	--spacing--l: 32px;
+	--spacing--xl: 48px;
+	--spacing--xxl: 70px;
+
+	// Z Index
+	--zindex--one: 1000;
+	--zindex--two: 2000;
+	--zindex--three: 3000;
+	--zindex--four: 4000;
+	--zindex--five: 5000;
+
+	// Icons Size
+	--icon-size--large: 48px;
+	--icon-size--medium: 40px;
+	--icon-size--normal: 32px;
+	--icon-size--small: 24px;
+	--icon-size--tiny: 16px;
+
+	// Colors
+	--red: #ef4444;
+	--blue: #3c82f6;
+	--darkblue: #101827;
+	--darkblue-transparent--080: #{rgba(#101827, 0.8)};
+	--darkblue-transparent--070: #{rgba(#101827, 0.7)};
+	--darkblue-transparent--060: #{rgba(#101827, 0.6)};
+	--green: #12b981;
+	--purple: #a855f7;
+	--mustard: #ebb305;
+	--orange: #f97315;
+	--pink: #ec4899;
+	--gray: #e5e7eb;
+	--gray-transparent--015: #{rgba(#e5e7eb, 0.15)};
+	--gray-transparent--050: #{rgba(#e5e7eb, 0.5)};
+	--gray-transparent--075: #{rgba(#e5e7eb, 0.75)};
+	--white: #fff;
+	--white-light: #f9fafb;
+	--white-light-transparent--080: #{rgba(#f9fafb, 0.8)};
+	--gradient--blue-to-green: linear-gradient(to right, var(--blue), var(--green));
+	--gradient--purple-to-pink: linear-gradient(to right, var(--purple), var(--pink));
+	--gradient--orange-to-mustard: linear-gradient(to right, var(--orange), var(--mustard));
+
+	// Borders
+	--border-size: 2px;
+	// Animations
+	--animation-time--150: 150ms;
+	--animation-time--200: 200ms;
+	--animation-time--250: 250ms;
+	--animation-time--10s: 10s;
+
+	// General
+	--max-width: 1280px;
+	--line-height: 1.2;
+	--navbar-height: 50px;
+	--footer-height: 200px;
+}

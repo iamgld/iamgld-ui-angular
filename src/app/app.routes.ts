@@ -1,10 +1,3 @@
-// Angular Imports
-import { Routes } from '@angular/router'
+import type { Routes } from '@angular/router'
 
-export const routes: Routes = [
-  // {
-  //   path: '**',
-  //   redirectTo: '/',
-  //   pathMatch: 'full',
-  // }
-]
+export const routes: Routes = []

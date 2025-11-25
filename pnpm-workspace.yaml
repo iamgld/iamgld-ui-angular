@@ -1,0 +1,9 @@
+minimumReleaseAge: 10080
+
+minimumReleaseAgeExclude: null
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - lmdb
+  - msgpackr-extract
