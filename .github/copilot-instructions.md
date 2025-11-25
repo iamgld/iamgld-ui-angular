@@ -1,47 +1,115 @@
-You are an expert in TypeScript, Angular, and scalable web application development. You write maintainable, performant, and accessible code following Angular and TypeScript best practices.
+# Copilot Instructions for iamgld-ui
 
-## TypeScript Best Practices
+Expert in TypeScript, Angular 21, and scalable web application development. Write maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
-- Use strict type checking
-- Prefer type inference when the type is obvious
-- Avoid the `any` type; use `unknown` when type is uncertain
+## Project Architecture
 
-## Angular Best Practices
+This is a **monorepo** with two main parts:
+- **`src/`** - Demo/showcase application (`iamgld.dev`)
+- **`projects/iamgld-ui/`** - Publishable UI component library (`@iamgld/ui` on npm)
 
-- Always use standalone components over NgModules
-- Must NOT set `standalone: true` inside Angular decorators. It's the default.
-- Use signals for state management
-- Implement lazy loading for feature routes
-- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
-- Use `NgOptimizedImage` for all static images.
-  - `NgOptimizedImage` does not work for inline base64 images.
+### Component Library (`projects/iamgld-ui/`)
+- Entry point: `src/public-api.ts` - exports all public APIs
+- Components: `src/lib/components/` - organized by category (buttons, controls, tables, etc.)
+- Models: `src/lib/models/` - TypeScript enums and types (e.g., `ButtonColor`, `ButtonSize`)
+- Validators: `src/lib/validators/` - Custom form validators (e.g., `isEmailValidator()`)
+- Directives: `src/lib/directives/` - Reusable directives
+- Utils: `src/lib/utils/` - Date and string utilities
 
-## Components
+### Path Aliases
+- `@app` → `src/app/index.ts`
+- `@environment` → `src/environments/environment.local.ts`
+- `@shared/*` → `src/app/shared/*`
 
-- Keep components small and focused on a single responsibility
-- Use `input()` and `output()` functions instead of decorators
-- Use `computed()` for derived state
-- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
-- Prefer inline templates for small components
-- Prefer Reactive forms instead of Template-driven ones
-- Do NOT use `ngClass`, use `class` bindings instead
-- Do NOT use `ngStyle`, use `style` bindings instead
+## Component Patterns
+
+```typescript
+// Standard component structure - see projects/iamgld-ui/src/lib/components/buttons/button/
+@Component({
+  selector: 'gld-button',  // Always use 'gld-' prefix
+  imports: [...components],
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ButtonComponent {
+  // Required inputs first
+  name = input.required<string>()
+  // Optional inputs with defaults and transforms
+  disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
+  // Outputs
+  clicked = output<void>()
+}
+```
+
+**Key Rules:**
+- Selector prefix: `gld-` for library components
+- Do NOT set `standalone: true` - it's the default in Angular 21
+- Use `input()` and `output()` functions, never decorators
+- Use `booleanAttribute` and `numberAttribute` transforms for HTML attribute compatibility
+- Use `host` object in decorator instead of `@HostBinding`/`@HostListener`
+- Prefer enums for type-safe options (see `models/buttons/button.model.ts`)
+
+## Forms & Validators
+
+- Always use Reactive Forms with typed `FormControl<T>`
+- Form controls implement `ControlValueAccessor` (see `input.component.ts`)
+- Custom validators return `ValidatorFn` (see `validators/is-email/`)
+
+## Styling (ITCSS Architecture)
+
+Styles use ITCSS layers in `styles/layers/`:
+- `_setting.scss` - CSS custom properties (use `--gld-` prefix in library)
+- `_tools.scss` - Mixins and functions
+- `_base.scss` - Element defaults
+- `_objects.scss` - Layout patterns
+- `_trumps.scss` - Utilities and overrides
+
+## Developer Workflows
+
+```bash
+pnpm start          # Local dev server (http://localhost:4200)
+pnpm test           # Run Vitest unit tests
+pnpm build          # Production build
+pnpm linters        # Run stylelint + biome (format + lint)
+pnpm biome:check    # Check formatting and linting
+```
+
+## Testing
+
+Uses **Vitest** (not Karma/Jest). Test files use `.spec.ts` suffix.
+
+```typescript
+import { TestBed } from '@angular/core/testing'
+// Simple component test pattern
+beforeEach(() => {
+  TestBed.configureTestingModule({ imports: [ButtonComponent] })
+  fixture = TestBed.createComponent(ButtonComponent)
+})
+```
+
+## Code Quality
+
+- **Biome** for formatting and linting (not ESLint/Prettier for app code)
+- **Stylelint** with BEM pattern for SCSS
+- **Commitlint** with conventional commits (via Husky)
 
 ## State Management
 
-- Use signals for local component state
-- Use `computed()` for derived state
-- Keep state transformations pure and predictable
-- Do NOT use `mutate` on signals, use `update` or `set` instead
+- Local state: Angular signals (`signal()`, `computed()`)
+- Global state: `@ngrx/signals` (prepared in `src/app/shared/store/`)
+- Never use `mutate()` on signals - use `update()` or `set()`
 
-## Templates
+## SSR Support
 
-- Keep templates simple and avoid complex logic
-- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
-- Use the async pipe to handle observables
+App supports Server-Side Rendering:
+- `main.server.ts` - Server bootstrap
+- `app.config.server.ts` - Server providers
+- `server.ts` - Express server entry
 
-## Services
+## Template Syntax
 
-- Design services around a single responsibility
-- Use the `providedIn: 'root'` option for singleton services
-- Use the `inject()` function instead of constructor injection
+- Use native control flow: `@if`, `@for`, `@switch`
+- Use `class` bindings, not `ngClass`
+- Use `style` bindings, not `ngStyle`
+- Use `async` pipe for observables
