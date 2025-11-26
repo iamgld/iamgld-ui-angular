@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// This Component Imports
 
-import { DropdownButtonComponent } from './dropdown-button.component';
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+// This Module Imports
+import { IconComponent } from '../../icon/icon.component'
+import { DropdownButtonComponent } from './dropdown-button.component'
 
 describe('DropdownButtonComponent', () => {
-  let component: DropdownButtonComponent;
-  let fixture: ComponentFixture<DropdownButtonComponent>;
+  let spectator: Spectator<DropdownButtonComponent>
+  const createComponent = createComponentFactory({
+    component: DropdownButtonComponent,
+    imports: [IconComponent],
+  })
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DropdownButtonComponent]
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        value: 'value',
+      },
     })
-    .compileComponents();
+  })
 
-    fixture = TestBed.createComponent(DropdownButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
+})

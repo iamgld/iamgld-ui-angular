@@ -1,15 +1,14 @@
 // Angular Imports
 import {
+  ChangeDetectionStrategy,
   Component,
-  signal,
-  input,
-  output,
   computed,
   effect,
-  ChangeDetectionStrategy,
+  input,
+  output,
+  signal,
 } from '@angular/core'
-// Shared Imports
-// import { IconButtonComponent } from '../../../components'
+// This Module Imports
 import { Icons, TablePagination } from '../../../models'
 
 @Component({

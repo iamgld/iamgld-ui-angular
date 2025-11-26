@@ -1,22 +1,42 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+// Angular Imports
 
+import { NgTemplateOutlet } from '@angular/common'
+import { forwardRef } from '@angular/core'
+import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+// This Module Imports
+import { InputErrorComponent } from '../input-error/input-error.component'
+// This Component Imports
 import { InputComponent } from './input.component'
 
+const components = [InputErrorComponent]
+
 describe('InputComponent', () => {
-	let component: InputComponent
-	let fixture: ComponentFixture<InputComponent>
+  let spectator: Spectator<InputComponent>
+  const createComponent = createComponentFactory({
+    component: InputComponent,
+    imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => InputComponent),
+        multi: true,
+      },
+    ],
+  })
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [InputComponent],
-		}).compileComponents()
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        control: new FormControl(),
+        name: 'input',
+        id: 'input',
+      },
+    })
+  })
 
-		fixture = TestBed.createComponent(InputComponent)
-		component = fixture.componentInstance
-		fixture.detectChanges()
-	})
-
-	it('should create', () => {
-		expect(component).toBeTruthy()
-	})
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
 })

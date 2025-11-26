@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// This Component Imports
 
-import { ToggleButtonComponent } from './toggle-button.component';
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { ToggleButtonComponent } from './toggle-button.component'
 
 describe('ToggleButtonComponent', () => {
-  let component: ToggleButtonComponent;
-  let fixture: ComponentFixture<ToggleButtonComponent>;
+  let spectator: Spectator<ToggleButtonComponent>
+  const createComponent = createComponentFactory({
+    component: ToggleButtonComponent,
+    imports: [],
+  })
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ToggleButtonComponent]
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        value: 'value',
+      },
     })
-    .compileComponents();
+  })
 
-    fixture = TestBed.createComponent(ToggleButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
+})

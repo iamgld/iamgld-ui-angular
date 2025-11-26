@@ -9,7 +9,7 @@ import {
   output,
 } from '@angular/core'
 // This Module Imports
-import { ToggleButtonComponent } from './../toggle-button/toggle-button.component'
+import { ToggleButtonComponent } from '../toggle-button/toggle-button.component'
 
 @Component({
   selector: 'gld-toggle-group',
@@ -19,7 +19,12 @@ import { ToggleButtonComponent } from './../toggle-button/toggle-button.componen
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleGroupComponent implements AfterContentInit {
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `toggle-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `toggle-name-${value.trim().split(' ').join('-')}`,
+  })
   initialValue = input<unknown>(null)
   changeValue = output<unknown>()
   changeFocus = output<boolean>()
@@ -53,4 +58,3 @@ export class ToggleGroupComponent implements AfterContentInit {
     )
   }
 }
-

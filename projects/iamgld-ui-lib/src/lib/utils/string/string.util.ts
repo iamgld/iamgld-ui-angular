@@ -1,5 +1,4 @@
-export function capitalizeFirstLetter(str: string): string {
-	if (!str) return str // Maneja el caso de string vacío
-	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+export function capitalizeFirstLetter(value: string): string {
+  if (!value) return value // Catch when the value is empty
+  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
 }
-

@@ -10,8 +10,8 @@ import {
   signal,
   viewChild,
 } from '@angular/core'
-// This Module Imports
 import { DropdownDirection, Icons, IconsSize, IconsSpace } from '../../../models'
+// This Module Imports
 import { IconComponent } from '../../icon/icon.component'
 
 const components = [IconComponent]
@@ -49,4 +49,3 @@ export class DropdownButtonComponent {
     this.select(value)
   }
 }
-

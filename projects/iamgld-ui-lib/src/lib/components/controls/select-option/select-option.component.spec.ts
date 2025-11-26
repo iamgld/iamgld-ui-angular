@@ -1,22 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+// This Component Imports
 
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 import { SelectOptionComponent } from './select-option.component'
 
 describe('SelectOptionComponent', () => {
-	let component: SelectOptionComponent
-	let fixture: ComponentFixture<SelectOptionComponent>
+  let spectator: Spectator<SelectOptionComponent>
+  const createComponent = createComponentFactory({
+    component: SelectOptionComponent,
+    imports: [],
+  })
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [SelectOptionComponent],
-		}).compileComponents()
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        value: 'select-option',
+      },
+    })
+  })
 
-		fixture = TestBed.createComponent(SelectOptionComponent)
-		component = fixture.componentInstance
-		fixture.detectChanges()
-	})
-
-	it('should create', () => {
-		expect(component).toBeTruthy()
-	})
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
 })

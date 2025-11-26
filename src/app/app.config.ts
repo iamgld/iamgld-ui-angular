@@ -1,4 +1,6 @@
 // Angular Imports
+
+import { provideHttpClient, withFetch } from '@angular/common/http'
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core'
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser'
 import {
@@ -7,7 +9,6 @@ import {
   withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router'
-import { provideHttpClient, withFetch } from '@angular/common/http'
 // This Module Imports
 import { routes } from './app.routes'
 

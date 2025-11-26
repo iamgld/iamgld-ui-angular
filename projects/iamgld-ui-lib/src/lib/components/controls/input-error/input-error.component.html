@@ -9,38 +9,41 @@
 </section>
 
 <ng-template #errorsMessageDefault>
-  @switch (true) {
-    @case (Boolean(this.errors()?.['required'])) {
+  @switch (firstErrorKey()) {
+    @case ('required') {
       This field is required!
     }
-    @case (Boolean(this.errors()?.['email'])) {
+    @case ('email') {
       {{ this.errors()?.['email'] }}
     }
-    @case (Boolean(this.errors()?.['maxlength'])) {
+    @case ('maxlength') {
       This field must have a maximum of
       {{ this.errors()?.['maxlength'].requiredLength }}
       characters!
     }
-    @case (Boolean(this.errors()?.['minlength'])) {
+    @case ('minlength') {
       This field must have a minimum of
       {{ this.errors()?.['minlength'].requiredLength }}
       characters!
     }
-    @case (Boolean(this.errors()?.['isDate'])) {
+    @case ('isDate') {
       {{ this.errors()?.['isDate'] }}
     }
-    @case (Boolean(this.errors()?.['minimumAge'])) {
+    @case ('minimumAge') {
       This field must meet the minimum age requirement of
       {{ this.errors()?.['minimumAge'].requiredAge }} years
     }
-    @case (Boolean(this.errors()?.['naturalNumber'])) {
-      {{ this.errors()?.['naturalNumber'] }}
+    @case ('isNaturalNumber') {
+      {{ this.errors()?.['isNaturalNumber'] }}
     }
-    @case (Boolean(this.errors()?.['mustMatch'])) {
+    @case ('mustMatch') {
       {{ this.errors()?.['mustMatch'] }}
     }
-    @case (Boolean(this.errors()?.['mustUnmatch'])) {
+    @case ('mustUnmatch') {
       {{ this.errors()?.['mustUnmatch'] }}
+    }
+    @case ('isString') {
+      {{ this.errors()?.['isString'] }}
     }
     @default {
       empty error message

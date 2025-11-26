@@ -4,19 +4,23 @@
 <section class="input" [class.input--disabled]="disabled" [class.input--error]="errors">
   <!-- Label -->
   @if (label()) {
-    <label [for]="name()">
-      {{ label() }}
+    <label for="{{ id() }}">
+      <span>{{ label() }}</span>
+      @if (hasValidators().required) {
+        <span>*</span>
+      }
     </label>
   }
 
   <!-- Input -->
   <input
-    id="input-{{ name() }}"
+    id="{{ id() }}"
+    name="{{ name() }}"
     [tabindex]="disabled ? '-1' : '0'"
-    [name]="name()"
     [type]="type()"
     [placeholder]="placeholder()"
     [formControl]="innerControl()"
+    [attr.maxlength]="hasValidators().maxLength"
     (focus)="onFocus()"
     (blur)="onTouched()"
     (keyup.escape)="onBlur()" />
