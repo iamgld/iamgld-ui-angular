@@ -15,7 +15,7 @@
     "start:prod": "ng serve --configuration production",
     "test": "ng test",
     "test:watch": "ng test",
-    "build": "npm run build:prod",
+    "build": "pnpm run build:prod",
     "build:dev": "ng build --configuration development --progress",
     "build:stag": "ng build --configuration staging --progress",
     "build:prod": "ng build --configuration production --progress",
@@ -26,7 +26,8 @@
     "biome:check": "pnpm exec biome check --write src/",
     "biome:format": "pnpm exec biome format --write src/",
     "biome:lint": "pnpm exec biome lint --write src/",
-    "linters": " npm run stylelint:fix && npm run biome:format && npm run biome:lint",
+    "linters": " pnpm stylelint:fix && pnpm biome:format && pnpm biome:lint",
+    "npm:publish": "pnpm build:iamgld-ui-lib && cd dist/iamgld-ui-lib && npm publish",
     "postinstall": "npx husky"
   },
   "dependencies": {
