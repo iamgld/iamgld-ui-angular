@@ -1,63 +1,25 @@
-# IamgldUiLib
+# @iamgld/ui
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+[![npm version](https://badge.fury.io/js/%40iamgld%2Fui.svg)](https://badge.fury.io/js/%40iamgld%2Fui)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Code scaffolding
+## Descripción
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+`@iamgld/ui` es una librería de componentes de Angular diseñada para facilitar la creación de interfaces de usuario modernas y responsivas.
 
-```bash
-ng generate component component-name
+## Instalación
+
+Puedes instalar la librería usando npm o pnpm:
+
+```sh
+pnpm i @iamgld/ui
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Documentación
+Para más detalles sobre cómo usar los componentes, consulta la documentación completa.
 
-```bash
-ng generate --help
-```
+Contribuciones
+Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request en el repositorio de GitHub.
 
-## Building
-
-To build the library, run:
-
-```bash
-ng build iamgld-ui-lib
-```
-
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/iamgld-ui-lib
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Licencia
+Este proyecto está licenciado bajo la Licencia Apache 2.0. Consulta el archivo LICENSE para más detalles.
