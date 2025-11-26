@@ -1,5 +1,5 @@
 {
-  "name": "iamgld-ui-lib",
+  "name": "@iamgld/ui",
   "version": "21.0.0",
   "peerDependencies": {
     "@angular/common": "21.0.1",
