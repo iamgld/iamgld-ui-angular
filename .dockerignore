@@ -1,0 +1,16 @@
+# Angular
+node_modules
+.pnpm-store
+dist
+coverage
+.env
+.env.*.local
+.git
+.gitignore
+Dockerfile
+README.md
+.vscode
+.idea
+*.log
+*.swp
+*.tmp
