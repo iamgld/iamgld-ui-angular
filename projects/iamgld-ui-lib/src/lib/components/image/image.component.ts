@@ -1,6 +1,7 @@
 // Angular Imports
-import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
+
 import { NgOptimizedImage } from '@angular/common'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
 
 @Component({
   selector: 'gld-image',

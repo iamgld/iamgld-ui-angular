@@ -1,11 +1,14 @@
 @let errors = control().invalid && (control().dirty || control().touched);
 @let disabled = control().disabled || (control().pending && control().disabled);
 
-<article class="radio" [class.radio--disabled]="disabled" [attr.name]="name()">
+<article class="radio" [class.radio--disabled]="disabled" id="{{ id() }}" [attr.name]="name()">
   <!-- Label -->
   @if (label()) {
-    <label [for]="name()">
-      {{ label() }}
+    <label for="{{ id() }}">
+      <span>{{ label() }}</span>
+      @if (hasValidators().required) {
+        <span>*</span>
+      }
     </label>
   }
   <section class="radio__items radio__items--{{ direction() }}">

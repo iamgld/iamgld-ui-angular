@@ -25,4 +25,3 @@ export class ToggleButtonComponent {
     this.select(value)
   }
 }
-

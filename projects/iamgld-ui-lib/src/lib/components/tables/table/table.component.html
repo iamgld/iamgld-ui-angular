@@ -17,7 +17,7 @@
     [class.table-content--selects]="selects()">
     <!-- Loading -->
     @if (loading()) {
-      <gld-loader loading background minHeight="100px" />
+      <gld-circle-loader loading background minHeight="100px" />
     } @else {
       <!-- Table Columns -->
       @for (tableColumn of tableColumnsToShow(); track tableColumn) {
@@ -108,6 +108,7 @@
             <!-- Dropdown Menu -->
             <gld-dropdown-menu
               background
+              id="more button of table cell"
               name="more button of table cell"
               type="iconButton"
               color="blue"
@@ -170,4 +171,3 @@
     <ng-content select="gld-table-pagination" />
   </section>
 }
-

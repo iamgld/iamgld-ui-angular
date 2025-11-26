@@ -1,27 +1,30 @@
 // Angular Imports
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
-  booleanAttribute,
   input,
   numberAttribute,
   output,
 } from '@angular/core'
-// This Module Imports
 import { ButtonColor, ButtonSize, Icons, IconsSize } from '../../../models'
+// This Module Imports
 import { IconComponent } from '../../icon/icon.component'
-
-const components = [IconComponent]
 
 @Component({
   selector: 'gld-button',
-  imports: [...components],
+  imports: [IconComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `button-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `button-name-${value.trim().split(' ').join('-')}`,
+  })
   color = input<keyof typeof ButtonColor>(ButtonColor.pink)
   size = input<keyof typeof ButtonSize>(ButtonSize.normal)
   icon = input<Icons | null>(null)

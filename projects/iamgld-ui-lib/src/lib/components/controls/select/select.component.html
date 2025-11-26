@@ -1,70 +1,73 @@
-
 @let errors = control().invalid && (control().dirty || control().touched);
 @let disabled = control().disabled || (control().pending && control().disabled);
 
 <section #selectElement class="select">
-	<section class="input" [class.input--disabled]="disabled" [class.input--error]="errors">
-		<!-- Label -->
-		@if (label()) {
-			<label [for]="name()">
-				{{ label() }}
-			</label>
-		}
-		<!-- Input -->
-		<input
-			type="text"
-			id="input-select-{{ name() }}"
-			[tabindex]="disabled ? '-1' : '0'"
-			[name]="name()"
-			[placeholder]="placeholder()"
-			[formControl]="innerControl()"
-			(focus)="onFocus()"
-			(blur)="onBlur()"
-			(keyup.escape)="onBlur()" />
+  <section class="input" [class.input--disabled]="disabled" [class.input--error]="errors">
+    <!-- Label -->
+    @if (label()) {
+      <label for="{{ id() }}">
+        <span>{{ label() }}</span>
+        @if (hasValidators().required) {
+          <span>*</span>
+        }
+      </label>
+    }
+    <!-- Input -->
+    <input
+      type="text"
+      id="{{ id() }}"
+      name="{{ name() }}"
+      [tabindex]="disabled ? '-1' : '0'"
+      [placeholder]="placeholder()"
+      [formControl]="innerControl()"
+      [attr.maxlength]="hasValidators().maxLength"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (keyup.escape)="onBlur()" />
 
-		<!-- Suffix -->
-		<ng-container [ngTemplateOutlet]="suffixTemplate" />
+    <!-- Suffix -->
+    <ng-container [ngTemplateOutlet]="suffixTemplate" />
 
-		<!-- Menu -->
-		<ng-container [ngTemplateOutlet]="menuTemplate" />
-	</section>
-	<!-- Errors -->
-	@if (errors) {
-		<ng-content select="gld-input-error">
-			<gld-input-error [errors]="control().errors" />
-		</ng-content>
-	} @else {
-		<!-- Hint -->
-		<ng-content select="gld-input-hint" />
-	}
+    <!-- Menu -->
+    <ng-container [ngTemplateOutlet]="menuTemplate" />
+  </section>
+  <!-- Errors -->
+  @if (errors) {
+    <ng-content select="gld-input-error">
+      <gld-input-error [errors]="control().errors" />
+    </ng-content>
+  } @else {
+    <!-- Hint -->
+    <ng-content select="gld-input-hint" />
+  }
 </section>
 
 <!-- Menu Template -->
 <ng-template #menuTemplate>
-	<section class="select-menu" [class.select-menu--opened]="isMenuOpen()">
-		<ng-content select="gld-select-option" />
-	</section>
+  <section class="select-menu" [class.select-menu--opened]="isMenuOpen()">
+    <ng-content select="gld-select-option" />
+  </section>
 </ng-template>
 
 <!-- Suffix Template -->
 <ng-template #suffixTemplate>
-	@if (control().pending) {
-		<gld-icon
-			size="small"
-			class="input-icon input-icon--animated"
-			[class.input-icon--error]="errors"
-			[icon]="Icons.loader4Fill"
-			[disabled]="disabled" />
-	} @else {
-		<gld-icon
-			size="small"
-			class="input-icon"
-			[class.input-icon--rotated]="isMenuOpen()"
-			[class.input-icon--error]="errors"
-			[icon]="Icons.arrowDownSLine"
-			[disabled]="disabled"
-			(clicked)="arrowIconClicked()" />
-	}
+  @if (control().pending) {
+    <gld-icon
+      size="small"
+      class="input-icon input-icon--animated"
+      [class.input-icon--error]="errors"
+      [icon]="Icons.loader4Fill"
+      [disabled]="disabled" />
+  } @else {
+    <gld-icon
+      size="small"
+      class="input-icon"
+      [class.input-icon--rotated]="isMenuOpen()"
+      [class.input-icon--error]="errors"
+      [icon]="Icons.arrowDownSLine"
+      [disabled]="disabled"
+      (clicked)="arrowIconClicked()" />
+  }
 </ng-template>
 
 <!-- <h3>Debugging</h3> -->
@@ -76,14 +79,15 @@
 <!-- <section>disable: {{ control().disabled }}</section> -->
 <!-- <section>status: {{ control().status }}</section> -->
 
+<!-- FIXME: Verify why this element is here -->
 <!-- Suffix Template -->
-<ng-template #suffixTemplate>
-	<gld-icon
-		size="small"
-		class="input-icon"
-		[class.input-icon--error]="errors"
-		[icon]="Icons.arrowDownSLine" />
-</ng-template>
+<!-- <ng-template #suffixTemplate>
+  <gld-icon
+    size="small"
+    class="input-icon"
+    [class.input-icon--error]="errors"
+    [icon]="Icons.arrowDownSLine" />
+</ng-template> -->
 
 <!-- <h3>Debugging</h3> -->
 <!-- <section>errors: {{ control().errors | json }}</section> -->

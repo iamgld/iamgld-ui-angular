@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// This Component Imports
 
-import { ToggleGroupComponent } from './toggle-group.component';
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { ToggleGroupComponent } from './toggle-group.component'
 
 describe('ToggleGroupComponent', () => {
-  let component: ToggleGroupComponent;
-  let fixture: ComponentFixture<ToggleGroupComponent>;
+  let spectator: Spectator<ToggleGroupComponent>
+  const createComponent = createComponentFactory({
+    component: ToggleGroupComponent,
+    imports: [],
+  })
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ToggleGroupComponent]
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        name: 'toggle-group',
+      },
     })
-    .compileComponents();
+  })
 
-    fixture = TestBed.createComponent(ToggleGroupComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
+})

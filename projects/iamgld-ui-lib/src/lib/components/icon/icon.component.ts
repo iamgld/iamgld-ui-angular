@@ -7,7 +7,7 @@ import {
   numberAttribute,
   output,
 } from '@angular/core'
-// Shared Imports
+// This Module Imports
 import { Icons, IconsSize, IconsSpace } from '../../models'
 
 @Component({

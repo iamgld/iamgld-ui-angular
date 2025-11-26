@@ -5,4 +5,3 @@ import { Directive } from '@angular/core'
   selector: '[gldDropdownMenuTemplate]',
 })
 export class DropdownMenuTemplateDirective {}
-

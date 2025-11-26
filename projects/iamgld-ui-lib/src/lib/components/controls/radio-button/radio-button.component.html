@@ -1,17 +1,17 @@
 <button
-	[tabindex]="disabled() ? '-1' : '0'"
-	(keyup.enter)="keyup(value())"
-	(click)="select(value())"
-	class="radio"
-	[class.radio--selected]="selected()"
-	[class.radio--disabled]="disabled()"
-	[class.radio--error]="error()"
-	(focus)="onFocus()"
-	(blur)="onBlur()"
-	(keyup.escape)="onBlur()">
-	<span class="radio__icon" [class.radio__icon--selected]="selected()"></span>
+  class="radio"
+  [tabindex]="disabled() ? '-1' : '0'"
+  [class.radio--selected]="selected()"
+  [class.radio--disabled]="disabled()"
+  [class.radio--error]="error()"
+  (blur)="onBlur()"
+  (focus)="onFocus()"
+  (keyup.enter)="keyup(value())"
+  (keyup.escape)="onBlur()"
+  (click)="select(value())">
+  <span class="radio__icon" [class.radio__icon--selected]="selected()"></span>
 
-	<span class="radio__label">
-		<ng-content>empty radio button</ng-content>
-	</span>
+  <span class="radio__label">
+    <ng-content>empty radio button</ng-content>
+  </span>
 </button>

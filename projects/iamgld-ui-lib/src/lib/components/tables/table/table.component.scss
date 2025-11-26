@@ -1,5 +1,3 @@
-@use '../../../../../public/styles/styles';
-
 :host {
   width: 100%;
 }
@@ -12,10 +10,10 @@
   );
   --gld-border-radius: var(--gld-radius--xxs);
   --gld-background: var(--gld-background-color);
-  --gld-background--with-transparent: light-dark(
-    var(--gld-gray-transparent--020),
-    var(--gld-gray-transparent--010)
-  );
+  // --gld-background--with-transparent: light-dark(
+  //   var(--gld-gray-transparent--020),
+  //   var(--gld-gray-transparent--010)
+  // );
   --gld-column-actions-or-selects-width: 40px;
   --gld-column-actions-and-selects-width: 80px;
   --gld-header-height: 40px;
@@ -32,13 +30,15 @@
   background: var(--gld-background);
   overflow: hidden;
 
-  @include styles.scrollbar();
+  // TODO: Review to resolve the styles import
+  // @include styles.scrollbar();
 
   &-content {
     display: flex;
     flex-wrap: nowrap;
 
-    @include styles.scrollbar();
+    // TODO: Review to resolve the styles import
+    // @include styles.scrollbar();
   }
 
   &-header,
@@ -64,7 +64,7 @@
     align-items: center;
     font: 600 var(--gld-font-size--small) / var(--gld-line-height) var(--gld-font--poppins);
     height: var(--gld-header-height);
-    background: var(--gld-background--with-transparent);
+    // background: var(--gld-background--with-transparent);
 
     &#{&}--actions,
     &#{&}--selects {
@@ -83,7 +83,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: var(--gld-background--with-transparent);
+        // background: var(--gld-background--with-transparent);
       }
     }
   }
@@ -150,7 +150,7 @@
     width: 100%;
     display: flex;
     color: var(--gld-color);
-    background: var(--gld-background--with-transparent);
+    // background: var(--gld-background--with-transparent);
     padding: var(--gld-spacing--xs);
 
     p {
@@ -242,4 +242,3 @@
 //     z-index: var(--zindex--one);
 //   }
 // }
-

@@ -1,35 +1,38 @@
 // Angular Imports
-import {
-  ChangeDetectionStrategy,
-  Component,
-  contentChildren,
-  AfterContentInit,
-  ElementRef,
-  forwardRef,
-  input,
-  viewChild,
-  effect,
-  OnInit,
-  inject,
-  DestroyRef,
-  ChangeDetectorRef,
-  signal,
-} from '@angular/core'
+
 import { NgTemplateOutlet } from '@angular/common'
 import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  contentChildren,
+  DestroyRef,
+  ElementRef,
+  effect,
+  forwardRef,
+  inject,
+  input,
+  OnInit,
+  signal,
+  viewChild,
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import {
   ControlValueAccessor,
+  FormControl,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
-  FormControl,
 } from '@angular/forms'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+// Thirdparty Imports
+import { debounceTime } from 'rxjs'
+import { Icons, InputValue } from '../../../models'
+import { updateValueWithMask } from '../../../utils'
+import { STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
 import { IconComponent } from '../../icon/icon.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
 import { SelectOptionComponent } from '../select-option/select-option.component'
-import { Icons, InputValue } from '../../../models'
-// Shared Imports
-import { debounceTime } from 'rxjs'
 
 const components = [IconComponent, InputErrorComponent]
 
@@ -54,20 +57,30 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
   readonly Icons = Icons
 
   control = input.required<FormControl<unknown>>()
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `input-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
+  })
   label = input<string>('')
   placeholder = input<string>('')
+  mask = input<string>('')
   transform = input<(value: unknown) => string>((value: unknown) => String(value))
 
   selectElement = viewChild<ElementRef<HTMLElement>>('selectElement')
   selectOptionChildren = contentChildren<SelectOptionComponent>(SelectOptionComponent)
 
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
+  hasValidators = signal({
+    required: false,
+    naturalNumber: false,
+    string: false,
+    maxLength: null as number | null,
+  })
   isMenuOpen = signal(false)
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
   constructor() {
@@ -78,18 +91,48 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((value) => {
-        this.onChange(value)
-        if (value) {
-          const valueTransformed = this.#transformValue(value)
+        let _value = value
+
+        /**
+         * Removes all non-letter and non-space characters from the input value string.
+         * This sanitizes the value input by keeping only letters (a-z, A-Z, with accents like á, é, í, ó, ú, ñ) and spaces.
+         * Numbers, special characters, and symbols are removed.
+         *
+         * @example
+         * // Input: "Juan123@García#456 Pérez$"
+         * // Output: "JuanGarcía Pérez"
+         */
+        if (String(value) && this.hasValidators().string) {
+          _value = String(value).replaceAll(STRING_REGEX_TO_CLEAN, '')
+          this.innerControl().markAsUntouched()
+        }
+
+        // Apply mask depends on the mask input
+        const valueTransformed: string = this.#transformValue(_value) ?? ''
+        if (value && Boolean(this.mask())) {
+          const mask = updateValueWithMask({ value: valueTransformed, mask: this.mask() })
+          this.innerControl().setValue(mask, { emitEvent: false })
+        } else {
           this.innerControl().setValue(valueTransformed, { emitEvent: false })
         }
+
+        // Emit value
+        this.onChange(value)
       })
   }
 
   ngOnInit(): void {
+    // Initialize validators cache
+    this.#updateHasValidators()
+
+    // Update validators when then changed in control
+    this.control()
+      .statusChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(() => this.#updateHasValidators())
+
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(10))
       .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
@@ -173,5 +216,38 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
         }
       })
     })
+  }
+
+  #updateHasValidators(): void {
+    const control = this.control()
+    const validatorFn = control.validator
+    const maskSpacers = this.mask()
+      .split('')
+      .filter((char) => char !== '0').length
+
+    // It isn't validators
+    if (validatorFn === null) {
+      this.hasValidators.set({
+        required: false,
+        naturalNumber: false,
+        string: false,
+        maxLength: null,
+      })
+      return
+    }
+
+    // Detect all validators
+    const requiredErrors = validatorFn(new FormControl(''))
+    const typeErrors = validatorFn(new FormControl('abc123'))
+    const maxLengthErrors = validatorFn(new FormControl({ length: Infinity }))
+    const maxLength: number = maxLengthErrors?.['maxlength']?.['requiredLength']
+
+    this.hasValidators.set({
+      required: Boolean(requiredErrors?.['required']),
+      naturalNumber: Boolean(typeErrors?.['isNaturalNumber']),
+      string: Boolean(typeErrors?.['isString']),
+      maxLength: maxLength ? maxLength + maskSpacers : null,
+    })
+    // console.log('hasValidators', this.hasValidators())
   }
 }
