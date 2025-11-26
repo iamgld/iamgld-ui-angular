@@ -1,5 +1,5 @@
-@use './setting' as setting;
-@use './tools' as tools;
+@use './setting';
+@use './tools';
 
 /*
   En esta capa estarán:
@@ -10,22 +10,23 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  min-width: 0;
+	box-sizing: border-box;
+	min-width: 0;
 }
 
 html,
 body {
-  min-height: 100dvh;
-  font-family: var(--font--poppins);
+	min-height: 100dvh;
+	font-family: var(--font--poppins);
 }
 
 body {
-  margin: 0;
-  color-scheme: light dark;
-  background: light-dark(var(--gld-whitelight), var(--gld-darkblue));
-  color: light-dark(var(--gld-darkblue), var(--gld-whitelight));
+	margin: 0;
 }
+
+// html {
+// 	color-scheme: light dark;
+// }
 
 h1,
 h2,
@@ -33,9 +34,9 @@ h3,
 h4,
 h5,
 h6 {
-  text-wrap: balance;
+	text-wrap: balance;
 }
 
 p {
-  text-wrap: pretty;
+	text-wrap: pretty;
 }
