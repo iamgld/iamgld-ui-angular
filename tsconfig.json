@@ -1,37 +1,49 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "bundler",
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "paths": {
-      // App Paths
-      "@app": ["src/app/index.ts"],
-      "@environment": ["src/environments/environment.local.ts"],
-      // Shared Paths
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"strict": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "ES2022",
+		"module": "preserve",
+		"paths": {
+			// App Paths
+			"@app": ["src/app/index.ts"],
+			"@environment": ["src/environments/environment.local.ts"],
+			// Shared Paths
       "@shared/*": ["src/app/shared/*"],
-      "@iamgld/ui": ["projects/iamgld-ui/src/public-api.ts"]
+			// Iamgld ui lib
+			"@iamgld/ui": ["projects/iamgld-ui-lib/src/public-api.ts"]
+		},
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true
+	},
+	"files": [],
+	"references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/iamgld-ui-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/iamgld-ui-lib/tsconfig.spec.json"
     }
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  ]
 }
-

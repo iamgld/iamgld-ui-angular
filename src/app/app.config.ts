@@ -1,22 +1,26 @@
 // Angular Imports
-import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core'
-import { provideRouter } from '@angular/router'
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core'
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser'
 import {
-  provideClientHydration,
-  withEventReplay,
-  withIncrementalHydration,
-} from '@angular/platform-browser'
-import { provideAnimations } from '@angular/platform-browser/animations'
+  provideRouter,
+  withComponentInputBinding,
+  withInMemoryScrolling,
+  withViewTransitions,
+} from '@angular/router'
 import { provideHttpClient, withFetch } from '@angular/common/http'
-// This Component Imports
+// This Module Imports
 import { routes } from './app.routes'
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
-    provideRouter(routes),
-    provideClientHydration(withEventReplay(), withIncrementalHydration()),
+    provideBrowserGlobalErrorListeners(),
+    provideClientHydration(withEventReplay()),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withViewTransitions(),
+      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'top' }),
+    ),
     provideHttpClient(withFetch()),
-    provideAnimations(),
   ],
 }

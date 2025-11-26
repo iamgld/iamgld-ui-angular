@@ -1,0 +1,9 @@
+<button
+  [tabindex]="disabled() ? '-1' : '0'"
+  (keyup.enter)="keyup()"
+  (click)="select()"
+  (focus)="onFocus()"
+  (blur)="onBlur()"
+  (keyup.escape)="onBlur()">
+  <span><ng-content> an option </ng-content></span>
+</button>

@@ -1,0 +1,12 @@
+{
+  "name": "iamgld-ui-lib",
+  "version": "21.0.0",
+  "peerDependencies": {
+    "@angular/common": "21.0.1",
+    "@angular/core": "21.0.1"
+  },
+  "dependencies": {
+    "tslib": "2.8.1"
+  },
+  "sideEffects": false
+}
