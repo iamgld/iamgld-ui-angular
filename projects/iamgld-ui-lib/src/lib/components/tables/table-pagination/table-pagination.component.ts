@@ -1,15 +1,15 @@
 // Angular Imports
 import {
+  ChangeDetectionStrategy,
   Component,
-  signal,
-  input,
-  output,
   computed,
   effect,
-  ChangeDetectionStrategy,
+  input,
+  output,
+  signal,
 } from '@angular/core'
-// Shared Imports
-import { Icons, TablePagination } from '@ui/models'
+// This Module Imports
+import { Icons, TablePagination } from '../../../models'
 
 @Component({
   selector: 'gld-table-pagination',

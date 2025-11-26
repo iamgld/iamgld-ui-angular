@@ -1,7 +1,8 @@
 // This Component Imports
-import { CircleLoaderComponent } from './circle-loader.component'
+
 // Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { CircleLoaderComponent } from './circle-loader.component'
 
 describe('CircleLoaderComponent', () => {
   let spectator: Spectator<CircleLoaderComponent>

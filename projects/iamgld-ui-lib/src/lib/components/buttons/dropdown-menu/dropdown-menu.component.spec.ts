@@ -1,14 +1,14 @@
 // Angular Imports
 import { NgTemplateOutlet } from '@angular/common'
-// This Component Imports
-import { DropdownMenuComponent } from './dropdown-menu.component'
+// Thirdparty Imports
+// import { Icons } from '../../../models'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { DropdownMenuTemplateDirective } from '../../../directives'
 // This Module Imports
 import { ButtonComponent } from '../button/button.component'
 import { IconButtonComponent } from '../icon-button/icon-button.component'
-// Thirdparty Imports
-// import { Icons } from '@ui/models'
-import { DropdownMenuTemplateDirective } from '@ui/directives'
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+// This Component Imports
+import { DropdownMenuComponent } from './dropdown-menu.component'
 
 const components = [ButtonComponent, IconButtonComponent]
 

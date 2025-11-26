@@ -26,6 +26,6 @@ export const mockRenderer: Renderer2 = {
 }
 
 export const mockRendererFactory: Partial<jest.Mocked<RendererFactory2>> = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // biome-ignore lint/suspicious/noExplicitAny: Mock type flexibility required for testing
   createRenderer: jest.fn((_hostElement: any, _type: any) => mockRenderer),
 }

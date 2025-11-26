@@ -1,9 +1,10 @@
 // Angular Imports
+
+import { HttpHandlerFn, HttpInterceptorFn, HttpParams, HttpRequest } from '@angular/common/http'
 import { inject } from '@angular/core'
-import { HttpInterceptorFn, HttpHandlerFn, HttpRequest, HttpParams } from '@angular/common/http'
-// Thirdparty Imports
-import { TranslocoLanguageKey, TranslocoLanguageName } from '@ui/models'
-import { TranslocoService } from '@ui/services'
+// This Module Imports
+import { TranslocoLanguageKey, TranslocoLanguageName } from '../../models'
+import { TranslocoService } from '../../services'
 
 export const changeLanguageInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,

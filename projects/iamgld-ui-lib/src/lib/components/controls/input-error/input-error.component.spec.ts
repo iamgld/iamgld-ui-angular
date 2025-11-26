@@ -1,9 +1,9 @@
 // Angular Imports
 import { ValidationErrors } from '@angular/forms'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 // This Component Imports
 import { InputErrorComponent } from './input-error.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('InputErrorComponent', () => {
   let spectator: Spectator<InputErrorComponent>

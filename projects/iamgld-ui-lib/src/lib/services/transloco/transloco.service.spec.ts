@@ -1,14 +1,13 @@
 // Angular Imports
 import { HttpClient } from '@angular/common/http'
-// This Component Imports
-import { TranslocoService } from './transloco.service'
-import { TranslocoHttpLoader } from './transloco.service'
-// Thirdparty Imports
-import { TranslocoLanguageKey } from '@ui/models'
-import { mockHttpClient } from '@ui/tests'
-import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
 import { TranslocoService as JsverseTranslocoService, Translation } from '@jsverse/transloco'
+// Thirdparty Imports
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
 import { of } from 'rxjs'
+import { TranslocoLanguageKey } from '../../models'
+import { mockHttpClient } from '../../tests'
+// This Component Imports
+import { TranslocoHttpLoader, TranslocoService } from './transloco.service'
 
 describe('TranslocoService', () => {
   let spectator: SpectatorService<TranslocoService>

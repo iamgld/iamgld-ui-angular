@@ -4,14 +4,14 @@ import {
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
-  input,
   contentChildren,
-  signal,
   effect,
+  input,
+  signal,
 } from '@angular/core'
 import { ValidationErrors } from '@angular/forms'
-// Shared Imports
-import { InputErrorMessageDirective } from '@ui/directives'
+// This Module Imports
+import { InputErrorMessageDirective } from '../../../directives'
 
 @Component({
   selector: 'gld-input-error',

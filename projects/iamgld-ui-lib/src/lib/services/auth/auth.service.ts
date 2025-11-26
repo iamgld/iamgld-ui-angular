@@ -1,14 +1,14 @@
 // Angular Imports
 import { HttpClient } from '@angular/common/http'
-import { computed, inject, Injectable } from '@angular/core'
+import { computed, Injectable, inject } from '@angular/core'
 import { Router } from '@angular/router'
+// Thirdparty Imports
+import { catchError, map, Observable, throwError } from 'rxjs'
+import { Environment } from '../../models'
+import { AuthStore } from '../../stores'
 // This Module Imports
 import { SERVICES_ENVIRONMENT } from '../services-environment.token'
-import { SigninResponse, RefreshAccessTokenResponse } from './auth.adapter'
-// Thirdparty Imports
-import { Environment } from '@ui/models'
-import { AuthStore } from '@ui/stores'
-import { catchError, map, Observable, throwError } from 'rxjs'
+import { RefreshAccessTokenResponse, SigninResponse } from './auth.adapter'
 
 @Injectable()
 export class AuthService {

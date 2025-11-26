@@ -8,9 +8,9 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals'
-// Thirdparty Imports
-import { Icons, UiTheme } from '@ui/models'
-import { UiService } from '@ui/services'
+// This Module Imports
+import { Icons, UiTheme } from '../../models'
+import { UiService } from '../../services'
 
 export interface UiState {
   theme: UiTheme

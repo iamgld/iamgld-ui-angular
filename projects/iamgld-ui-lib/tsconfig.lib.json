@@ -8,20 +8,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "inlineSources": true,
-    "types": [],
-    "baseUrl": ".",
-    "paths": {
-      "@ui/components": ["src/lib/components/index.ts"],
-      "@ui/models": ["src/lib/models/index.ts"],
-      "@ui/services": ["src/lib/services/index.ts"],
-      "@ui/utils": ["src/lib/utils/index.ts"],
-      "@ui/guards": ["src/lib/guards/index.ts"],
-      "@ui/interceptors": ["src/lib/interceptors/index.ts"],
-      "@ui/directives": ["src/lib/directives/index.ts"],
-      "@ui/validators": ["src/lib/validators/index.ts"],
-      "@ui/stores": ["src/lib/stores/index.ts"],
-      "@ui/tests": ["src/lib/tests/index.ts"]
-    }
+    "types": []
   },
   "include": [
     "src/**/*.ts"

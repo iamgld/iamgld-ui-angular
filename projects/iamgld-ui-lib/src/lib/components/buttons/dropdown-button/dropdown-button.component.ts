@@ -10,10 +10,9 @@ import {
   signal,
   viewChild,
 } from '@angular/core'
+import { DropdownDirection, Icons, IconsSize, IconsSpace } from '../../../models'
 // This Module Imports
 import { IconComponent } from '../../icon/icon.component'
-// Shared Imports
-import { DropdownDirection, Icons, IconsSize, IconsSpace } from '@ui/models'
 
 const components = [IconComponent]
 

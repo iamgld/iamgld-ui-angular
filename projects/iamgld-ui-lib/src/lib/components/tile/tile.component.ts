@@ -1,7 +1,7 @@
 // Angular Imports
-import { ChangeDetectionStrategy, Component, booleanAttribute, input } from '@angular/core'
-// Shared Imports
-import { TileColor, TilePaddingSize } from '@ui/models'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
+// This Module Imports
+import { TileColor, TilePaddingSize } from '../../models'
 
 @Component({
   selector: 'gld-tile',

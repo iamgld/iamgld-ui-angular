@@ -1,13 +1,13 @@
 // Angular Imports
 import { NgTemplateOutlet } from '@angular/common'
-// This Component Imports
-import { TableComponent } from './table.component'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 // This Module Imports
 import { DropdownButtonComponent } from '../../buttons/dropdown-button/dropdown-button.component'
 import { DropdownMenuComponent } from '../../buttons/dropdown-menu/dropdown-menu.component'
 import { CircleLoaderComponent } from '../../loaders/circle-loader/circle-loader.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+// This Component Imports
+import { TableComponent } from './table.component'
 
 const components = [DropdownButtonComponent, DropdownMenuComponent, CircleLoaderComponent]
 

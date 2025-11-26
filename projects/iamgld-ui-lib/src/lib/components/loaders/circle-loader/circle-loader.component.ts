@@ -1,5 +1,5 @@
 // Angular Imports
-import { ChangeDetectionStrategy, Component, booleanAttribute, input } from '@angular/core'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
 
 @Component({
   standalone: true,

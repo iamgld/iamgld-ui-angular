@@ -1,9 +1,8 @@
 // Angular Imports
-import { inject, Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
+import { Environment, EnvironmentType } from '../../models'
 // This Module Imports
 import { SERVICES_ENVIRONMENT } from '../services-environment.token'
-// Thirdparty Imports
-import { Environment, EnvironmentType } from '@ui/models'
 
 @Injectable()
 export class EnvironmentsService {

@@ -1,8 +1,9 @@
 // Angular Imports
+
+import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http'
 import { computed, inject } from '@angular/core'
-import { HttpInterceptorFn, HttpHandlerFn, HttpRequest } from '@angular/common/http'
-// Thirdparty Imports
-import { AuthStore } from '@ui/stores'
+// This Module Imports
+import { AuthStore } from '../../stores'
 
 export const addTokenInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,

@@ -1,6 +1,6 @@
 // Angular Imports
 import { Injectable } from '@angular/core'
-import { Route, PreloadingStrategy } from '@angular/router'
+import { PreloadingStrategy, Route } from '@angular/router'
 // Thirdparty Imports
 import { Observable, of } from 'rxjs'
 

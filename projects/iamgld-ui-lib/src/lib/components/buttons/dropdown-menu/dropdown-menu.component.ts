@@ -1,30 +1,30 @@
 // Angular Imports
+
+import { NgTemplateOutlet } from '@angular/common'
 import {
+  AfterContentInit,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   contentChildren,
+  effect,
   input,
   numberAttribute,
   output,
-  AfterContentInit,
-  effect,
 } from '@angular/core'
-import { NgTemplateOutlet } from '@angular/common'
-// This Component Imports
-import { ButtonComponent } from '../button/button.component'
-import { IconButtonComponent } from '../icon-button/icon-button.component'
-import { DropdownButtonComponent } from '../dropdown-button/dropdown-button.component'
-// Shared Imports
+import { DropdownMenuTemplateDirective } from '../../../directives'
 import {
   ButtonColor,
   ButtonSize,
+  DropdownDirection,
+  DropdownType,
   Icons,
   IconsSize,
-  DropdownType,
-  DropdownDirection,
-} from '@ui/models'
-import { DropdownMenuTemplateDirective } from '@ui/directives'
+} from '../../../models'
+// This Component Imports
+import { ButtonComponent } from '../button/button.component'
+import { DropdownButtonComponent } from '../dropdown-button/dropdown-button.component'
+import { IconButtonComponent } from '../icon-button/icon-button.component'
 
 const components = [ButtonComponent, IconButtonComponent]
 const directives = [DropdownMenuTemplateDirective]

@@ -1,10 +1,10 @@
 // Angular Imports
 import { NgTemplateOutlet } from '@angular/common'
 import { RouterLink } from '@angular/router'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 // This Component Imports
 import { LinkComponent } from './link.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('LinkComponent', () => {
   let spectator: Spectator<LinkComponent>

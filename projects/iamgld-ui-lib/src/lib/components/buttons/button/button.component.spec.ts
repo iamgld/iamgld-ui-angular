@@ -1,9 +1,10 @@
 // This Component Imports
-import { ButtonComponent } from './button.component'
+
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 // This Module Imports
 import { IconComponent } from '../../icon/icon.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+import { ButtonComponent } from './button.component'
 
 describe('ButtonComponent', () => {
   let spectator: Spectator<ButtonComponent>

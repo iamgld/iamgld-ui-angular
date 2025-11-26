@@ -12,15 +12,14 @@ import {
   OnInit,
   signal,
 } from '@angular/core'
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-// This Module Imports
-import { RadioButtonComponent } from '../radio-button/radio-button.component'
-import { InputErrorComponent } from '../input-error/input-error.component'
-// Shared Imports
-import { RadioDirection } from '@ui/models'
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
+import { RadioDirection } from '../../../models'
+import { InputErrorComponent } from '../input-error/input-error.component'
+// This Module Imports
+import { RadioButtonComponent } from '../radio-button/radio-button.component'
 
 const components = [InputErrorComponent]
 
@@ -59,9 +58,7 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
     required: false,
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
   constructor() {

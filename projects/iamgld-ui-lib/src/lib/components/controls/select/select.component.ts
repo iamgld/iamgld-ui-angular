@@ -1,38 +1,38 @@
 // Angular Imports
-import {
-  ChangeDetectionStrategy,
-  Component,
-  contentChildren,
-  AfterContentInit,
-  ElementRef,
-  forwardRef,
-  input,
-  viewChild,
-  effect,
-  OnInit,
-  inject,
-  DestroyRef,
-  ChangeDetectorRef,
-  signal,
-} from '@angular/core'
+
 import { NgTemplateOutlet } from '@angular/common'
 import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  contentChildren,
+  DestroyRef,
+  ElementRef,
+  effect,
+  forwardRef,
+  inject,
+  input,
+  OnInit,
+  signal,
+  viewChild,
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import {
   ControlValueAccessor,
+  FormControl,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
-  FormControl,
 } from '@angular/forms'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+// Thirdparty Imports
+import { debounceTime } from 'rxjs'
+import { Icons, InputValue } from '../../../models'
+import { updateValueWithMask } from '../../../utils'
+import { STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
 import { IconComponent } from '../../icon/icon.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
 import { SelectOptionComponent } from '../select-option/select-option.component'
-// Shared Imports
-import { Icons, InputValue } from '@ui/models'
-import { STRING_REGEX_TO_CLEAN } from '@ui/validators'
-import { updateValueWithMask } from '@ui/utils'
-// Thirdparty Imports
-import { debounceTime } from 'rxjs'
 
 const components = [IconComponent, InputErrorComponent]
 
@@ -80,9 +80,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, AfterConte
   })
   isMenuOpen = signal(false)
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
   constructor() {

@@ -1,32 +1,32 @@
 // Angular Imports
+
+import { NgTemplateOutlet } from '@angular/common'
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  OnInit,
-  booleanAttribute,
   forwardRef,
   inject,
   input,
+  OnInit,
   signal,
 } from '@angular/core'
-import {
-  ReactiveFormsModule,
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormControl,
-} from '@angular/forms'
-import { NgTemplateOutlet } from '@angular/common'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-// This Module Imports
-import { InputErrorComponent } from '../input-error/input-error.component'
-// Shared Imports
-import { InputType } from '@ui/models'
-import { updateValueWithMask } from '@ui/utils'
-import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '@ui/validators'
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
+import { InputType } from '../../../models'
+import { updateValueWithMask } from '../../../utils'
+import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
+// This Module Imports
+import { InputErrorComponent } from '../input-error/input-error.component'
 
 const components = [InputErrorComponent]
 
@@ -70,9 +70,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     maxLength: null as number | null,
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
   constructor() {

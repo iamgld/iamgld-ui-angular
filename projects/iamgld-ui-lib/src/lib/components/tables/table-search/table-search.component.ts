@@ -1,10 +1,10 @@
 // Angular Imports
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core'
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms'
-// Shared Imports
-import { Icons, TableSearchAction, TableSearchOutput } from '@ui/models'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
+// This Module Imports
+import { Icons, TableSearchAction, TableSearchOutput } from '../../../models'
 
 @Component({
   selector: 'gld-table-search',
@@ -29,8 +29,9 @@ export class TableSearchComponent {
     this.control.valueChanges
       .pipe(debounceTime(this.debounceTime()))
       .subscribe((value: string | null) => {
-        const action: TableSearchAction =
-          value?.length ? TableSearchAction.searching : TableSearchAction.cleared
+        const action: TableSearchAction = value?.length
+          ? TableSearchAction.searching
+          : TableSearchAction.cleared
         const searching: string = value?.length ? value : ''
 
         this.searching.emit({

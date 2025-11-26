@@ -1,8 +1,9 @@
 // This Component Imports
-import { IconComponent } from './icon.component'
+
 // Thirdparty Imports
-import { Icons } from '@ui/models'
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { Icons } from '../../models'
+import { IconComponent } from './icon.component'
 
 describe('IconComponent', () => {
   let spectator: Spectator<IconComponent>

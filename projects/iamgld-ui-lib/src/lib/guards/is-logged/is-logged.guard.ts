@@ -2,9 +2,10 @@
 import { inject } from '@angular/core'
 import { CanActivateFn, Router } from '@angular/router'
 // Thirdparty Imports
-import { CookiesKeys } from '@ui/models'
-import { AuthStore } from '@ui/stores'
 import { CookieService } from 'ngx-cookie-service'
+// This Module Imports
+import { CookiesKeys } from '../../models'
+import { AuthStore } from '../../stores'
 
 export const isLoggedGuard: CanActivateFn = () => {
   // console.log('[Guard] isLoggedGuard')

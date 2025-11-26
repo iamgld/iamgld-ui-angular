@@ -1,7 +1,8 @@
 // This Component Imports
-import { SelectOptionComponent } from './select-option.component'
+
 // Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { SelectOptionComponent } from './select-option.component'
 
 describe('SelectOptionComponent', () => {
   let spectator: Spectator<SelectOptionComponent>

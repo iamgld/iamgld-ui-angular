@@ -1,16 +1,15 @@
 // Angular Imports
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
-  booleanAttribute,
   input,
   numberAttribute,
   output,
 } from '@angular/core'
+import { ButtonColor, ButtonSize, Icons, IconsSize } from '../../../models'
 // This Module Imports
 import { IconComponent } from '../../icon/icon.component'
-// Shared Imports
-import { ButtonColor, ButtonSize, Icons, IconsSize } from '@ui/models'
 
 @Component({
   selector: 'gld-button',

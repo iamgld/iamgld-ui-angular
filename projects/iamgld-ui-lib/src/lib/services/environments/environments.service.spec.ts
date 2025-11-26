@@ -1,9 +1,10 @@
 // This Component Imports
-import { EnvironmentsService } from './environments.service'
-import { SERVICES_ENVIRONMENT } from '../services-environment.token'
+
 // Thirdparty Imports
-import { mockEnvironment } from '@ui/tests'
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
+import { mockEnvironment } from '../../tests'
+import { SERVICES_ENVIRONMENT } from '../services-environment.token'
+import { EnvironmentsService } from './environments.service'
 
 describe('EnvironmentsService', () => {
   let spectator: SpectatorService<EnvironmentsService>

@@ -1,11 +1,11 @@
 // Angular Imports
 import { RendererFactory2 } from '@angular/core'
+// Thirdparty Imports
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
+import { UiTheme } from '../../models'
+import { mockRendererFactory } from '../../tests'
 // This Component Imports
 import { UiService } from './ui.service'
-// Thirdparty Imports
-import { UiTheme } from '@ui/models'
-import { mockRendererFactory } from '@ui/tests'
-import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
 
 describe('UiService', () => {
   let spectator: SpectatorService<UiService>

@@ -1,10 +1,10 @@
 // Angular Imports
 import { Route } from '@angular/router'
-// This Component Imports
-import { CustomPreloadingStrategyService } from './custom-preload-strategy.service'
 // Thirdparty Imports
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
 import { of } from 'rxjs'
+// This Component Imports
+import { CustomPreloadingStrategyService } from './custom-preload-strategy.service'
 
 describe('CustomPreloadingStrategyService', () => {
   let spectator: SpectatorService<CustomPreloadingStrategyService>

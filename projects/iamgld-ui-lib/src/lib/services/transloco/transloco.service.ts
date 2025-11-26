@@ -1,13 +1,15 @@
 // Shared Imports
-import { Injectable, inject } from '@angular/core'
+
 import { HttpClient } from '@angular/common/http'
+import { Injectable, inject } from '@angular/core'
 // Thirdparty Imports
-import type { TranslocoLanguageKey } from '@ui/models'
 import {
   TranslocoService as JsverseTranslocoService,
   type Translation,
   type TranslocoLoader,
 } from '@jsverse/transloco'
+// This Module Imports
+import type { TranslocoLanguageKey } from '../../models'
 
 @Injectable()
 export class TranslocoService {

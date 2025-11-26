@@ -1,5 +1,5 @@
-// Thirdparty Imports
-import { EnvironmentType } from '@ui/models'
+// This Module Imports
+import { EnvironmentType } from '../../../../models'
 
 interface EnvironmentsServiceMock {
   getEnvironment: jest.Mock

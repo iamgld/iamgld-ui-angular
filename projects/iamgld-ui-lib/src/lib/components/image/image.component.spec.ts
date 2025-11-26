@@ -1,9 +1,9 @@
 // Angular Imports
 import { NgOptimizedImage } from '@angular/common'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 // This Component Imports
 import { ImageComponent } from './image.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('ImageComponent', () => {
   let spectator: Spectator<ImageComponent>

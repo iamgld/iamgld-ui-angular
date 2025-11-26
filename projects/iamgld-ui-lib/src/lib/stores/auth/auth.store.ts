@@ -2,8 +2,9 @@
 import { inject } from '@angular/core'
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals'
 // Thirdparty Imports
-import { CookiesKeys } from '@ui/models'
 import { CookieService } from 'ngx-cookie-service'
+// This Module Imports
+import { CookiesKeys } from '../../models'
 
 export interface AuthState {
   logged: boolean

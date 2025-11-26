@@ -1,14 +1,14 @@
 // Angular Imports
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
-// This Component Imports
-import { AuthService } from './auth.service'
-import { AuthStore } from '../../stores/auth/auth.store'
-import { SERVICES_ENVIRONMENT } from '../services-environment.token'
 // Thirdparty Imports
-import { mockAuthStore, mockEnvironment, mockHttpClient, mockRouter } from '@ui/tests'
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest'
 import { of, throwError } from 'rxjs'
+import { AuthStore } from '../../stores/auth/auth.store'
+import { mockAuthStore, mockEnvironment, mockHttpClient, mockRouter } from '../../tests'
+import { SERVICES_ENVIRONMENT } from '../services-environment.token'
+// This Component Imports
+import { AuthService } from './auth.service'
 
 describe('AuthService', () => {
   let spectator: SpectatorService<AuthService>

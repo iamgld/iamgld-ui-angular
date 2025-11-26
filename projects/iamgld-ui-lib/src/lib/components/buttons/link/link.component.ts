@@ -1,9 +1,10 @@
 // Angular Imports
-import { Component, ChangeDetectionStrategy, input, output, booleanAttribute } from '@angular/core'
+
 import { NgTemplateOutlet } from '@angular/common'
+import { booleanAttribute, ChangeDetectionStrategy, Component, input, output } from '@angular/core'
 import { RouterLink } from '@angular/router'
-// Shared Imports
-import { LinkType, LinkAlign } from '@ui/models'
+// This Module Imports
+import { LinkAlign, LinkType } from '../../../models'
 
 @Component({
   selector: 'gld-link',

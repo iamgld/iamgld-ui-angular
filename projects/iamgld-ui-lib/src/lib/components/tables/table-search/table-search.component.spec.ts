@@ -1,9 +1,9 @@
 // Angular Imports
 import { ReactiveFormsModule } from '@angular/forms'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
 // This Component Imports
 import { TableSearchComponent } from './table-search.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('TableSearchComponent', () => {
   let spectator: Spectator<TableSearchComponent>

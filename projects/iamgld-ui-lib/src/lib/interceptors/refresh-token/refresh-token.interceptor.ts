@@ -1,10 +1,11 @@
 // Angular Imports
-import { HttpEvent, HttpRequest, HttpInterceptorFn, HttpHandlerFn } from '@angular/common/http'
+import { HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http'
 import { computed, inject, signal } from '@angular/core'
 // Thirdparty Imports
-import { AuthService } from '@ui/services'
-import { AuthStore } from '@ui/stores'
-import { Observable, Subject, catchError, switchMap, throwError } from 'rxjs'
+import { catchError, Observable, Subject, switchMap, throwError } from 'rxjs'
+// This Module Imports
+import { AuthService } from '../../services'
+import { AuthStore } from '../../stores'
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,

@@ -1,7 +1,8 @@
 // This Component Imports
-import { InputHintComponent } from './input-hint.component'
+
 // Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { InputHintComponent } from './input-hint.component'
 
 describe('InputHintComponent', () => {
   let spectator: Spectator<InputHintComponent>

@@ -1,19 +1,15 @@
 // Angular Imports
+
+import { NgTemplateOutlet } from '@angular/common'
 import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
   Component,
   computed,
   input,
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  signal,
   output,
+  signal,
 } from '@angular/core'
-import { NgTemplateOutlet } from '@angular/common'
-// This Module Imports
-import { DropdownButtonComponent } from '../../buttons/dropdown-button/dropdown-button.component'
-import { DropdownMenuComponent } from '../../buttons/dropdown-menu/dropdown-menu.component'
-import { CircleLoaderComponent } from '../../loaders/circle-loader/circle-loader.component'
-// Shared Imports
 import {
   Icons,
   TableColumn,
@@ -21,7 +17,11 @@ import {
   TableColumnActionOutput,
   TableColumnStructure,
   TableColumnToTableColumns,
-} from '@ui/models'
+} from '../../../models'
+// This Module Imports
+import { DropdownButtonComponent } from '../../buttons/dropdown-button/dropdown-button.component'
+import { DropdownMenuComponent } from '../../buttons/dropdown-menu/dropdown-menu.component'
+import { CircleLoaderComponent } from '../../loaders/circle-loader/circle-loader.component'
 
 const components = [DropdownButtonComponent, DropdownMenuComponent, CircleLoaderComponent]
 
@@ -80,7 +80,6 @@ export class TableComponent {
     tableColumnStructures.map((column: TableColumnStructure) => {
       structures.map((dataItem: T) => {
         // We check if the property we pass it exists within the object we receive
-        // eslint-disable-next-line no-prototype-builtins
         if (dataItem?.hasOwnProperty(column.name)) {
           const propertyValue = dataItem[column.name as keyof T] as T
           // We check if a column already exists in our array with the name of that property
@@ -102,9 +101,8 @@ export class TableComponent {
               hide: column.hide ?? false,
               template: column.template ?? undefined,
               justify: column.justify ? column.justify : 'left',
-              transform:
-                column.transform ?
-                  column.transform
+              transform: column.transform
+                ? column.transform
                 : (value: unknown) => {
                     if (typeof value === 'string' || typeof value === 'number') return value
                     else return String(value)

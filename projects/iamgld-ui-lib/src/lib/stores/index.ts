@@ -1,3 +1,3 @@
-export { type AuthState, initialAuthState, AuthStore } from './auth/auth.store'
+export { type AuthState, AuthStore, initialAuthState } from './auth/auth.store'
 export { STORES_ENVIRONMENT } from './stores-environment.token'
-export { type UiState, initialUiState, UiStore } from './ui/ui.store'
+export { initialUiState, type UiState, UiStore } from './ui/ui.store'

@@ -1,7 +1,7 @@
 // Angular Imports
-import { Injectable, type Renderer2, RendererFactory2, inject } from '@angular/core'
-// Shared Imports
-import { UiTheme } from '@ui/models'
+import { Injectable, inject, type Renderer2, RendererFactory2 } from '@angular/core'
+// This Module Imports
+import { UiTheme } from '../../models'
 
 @Injectable()
 export class UiService {

@@ -1,4 +1,6 @@
 // Angular Imports
+
+import { NgTemplateOutlet } from '@angular/common'
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -11,21 +13,19 @@ import {
   OnInit,
   signal,
 } from '@angular/core'
-import { NgTemplateOutlet } from '@angular/common'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import {
   ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
   FormControl,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-// This Module Imports
-import { InputErrorComponent } from '../input-error/input-error.component'
-// Shared Imports
-import { InputType } from '@ui/models'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
-import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '@ui/validators'
+import { InputType } from '../../../models'
+import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
+// This Module Imports
+import { InputErrorComponent } from '../input-error/input-error.component'
 
 const components = [InputErrorComponent]
 
@@ -60,9 +60,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   type = input<InputType>('text')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = () => {}
 
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))

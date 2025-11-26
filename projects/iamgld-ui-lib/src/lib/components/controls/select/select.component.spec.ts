@@ -1,12 +1,12 @@
 // Angular Imports
 import { NgTemplateOutlet } from '@angular/common'
+import { forwardRef } from '@angular/core'
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms'
+// Thirdparty Imports
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest'
+import { InputErrorComponent } from '../input-error/input-error.component'
 // This Component Imports
 import { SelectComponent } from './select.component'
-import { InputErrorComponent } from '../input-error/input-error.component'
-// Thirdparty Imports
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
-import { forwardRef } from '@angular/core'
 
 const components = [InputErrorComponent]
 
