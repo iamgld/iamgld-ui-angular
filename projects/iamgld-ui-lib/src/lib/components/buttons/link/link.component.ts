@@ -2,8 +2,8 @@
 import { Component, ChangeDetectionStrategy, input, output, booleanAttribute } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
 import { RouterLink } from '@angular/router'
-// This Module Imports
-import { LinkType, LinkAlign } from '../../../models'
+// Shared Imports
+import { LinkType, LinkAlign } from '@ui/models'
 
 @Component({
   selector: 'gld-link',
@@ -16,7 +16,12 @@ import { LinkType, LinkAlign } from '../../../models'
 export class LinkComponent {
   readonly LinkType = LinkType
 
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `input-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
+  })
   redirect = input<string>('')
   active = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   external = input<boolean, boolean | string>(false, { transform: booleanAttribute })

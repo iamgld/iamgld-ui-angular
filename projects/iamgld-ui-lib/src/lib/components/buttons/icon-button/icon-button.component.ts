@@ -8,8 +8,9 @@ import {
   output,
 } from '@angular/core'
 // This Module Imports
-import { ButtonColor, Icons, IconsSize, IconsSpace } from '../../../models'
 import { IconComponent } from '../../icon/icon.component'
+// Shared Imports
+import { ButtonColor, Icons, IconsSize, IconsSpace } from '@ui/models'
 
 @Component({
   selector: 'gld-icon-button',
@@ -20,7 +21,12 @@ import { IconComponent } from '../../icon/icon.component'
 })
 export class IconButtonComponent {
   icon = input.required<Icons>()
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `button-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `button-name-${value.trim().split(' ').join('-')}`,
+  })
   iconSize = input<keyof typeof IconsSize>(IconsSize.normal)
   space = input<keyof typeof IconsSpace>(IconsSpace.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })

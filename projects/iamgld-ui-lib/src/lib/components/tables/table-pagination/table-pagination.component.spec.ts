@@ -1,22 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-
+// This Component Imports
 import { TablePaginationComponent } from './table-pagination.component'
+// Thirdparty Imports
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('TablePaginationComponent', () => {
-  let component: TablePaginationComponent
-  let fixture: ComponentFixture<TablePaginationComponent>
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TablePaginationComponent],
-    }).compileComponents()
-
-    fixture = TestBed.createComponent(TablePaginationComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+  let spectator: Spectator<TablePaginationComponent>
+  const createComponent = createComponentFactory({
+    component: TablePaginationComponent,
+    imports: [],
   })
 
-  it('should create', () => {
-    expect(component).toBeTruthy()
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        pagination: {
+          itemsPerPage: 10,
+          maxItems: 100,
+          initialPage: 1,
+        },
+      },
+    })
+  })
+
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
   })
 })

@@ -1,11 +1,12 @@
 // Angular Imports
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms'
 // Shared Imports
-import { formatDateFromISOToYYYYMMDD } from '../../utils'
+// import { formatDateFromISOToYYYYMMDD } from '@ui/utils'
 
 export function minimumAgeValidator({ minAge }: { minAge: number }): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const value = formatDateFromISOToYYYYMMDD(control.value)
+    // const value = formatDateFromISOToYYYYMMDD(control.value)
+    const value = control.value
 
     if (!value) return null
 
@@ -27,4 +28,3 @@ export function minimumAgeValidator({ minAge }: { minAge: number }): ValidatorFn
     return isValidAge ? null : { minimumAge: { requiredAge: minAge, actualAge: age } }
   }
 }
-

@@ -5,13 +5,12 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms'
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
 export function isEmailValidator(): ValidatorFn {
-	return (control: AbstractControl): ValidationErrors | null => {
-		const value = control.value
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value
 
-		if (!value) return null
+    if (!value) return null
 
-		if (EMAIL_REGEX.test(value)) return null
-		 return { email: 'This field must be a valid email!' }
-	}
+    if (EMAIL_REGEX.test(value)) return null
+    return { email: 'This field must be a valid email!' }
+  }
 }
-

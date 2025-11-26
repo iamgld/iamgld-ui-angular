@@ -10,8 +10,8 @@ import {
   effect,
 } from '@angular/core'
 import { ValidationErrors } from '@angular/forms'
-// This Module Imports
-import { InputErrorMessageDirective } from '../../../directives'
+// Shared Imports
+import { InputErrorMessageDirective } from '@ui/directives'
 
 @Component({
   selector: 'gld-input-error',
@@ -30,8 +30,16 @@ export class InputErrorComponent {
   })
 
   hasContent = signal(false)
+  firstErrorKey = signal<string | null>(null)
 
   constructor() {
-    effect(() => this.hasContent.set(this.content()?.length ? true : false))
+    effect(() => this.hasContent.set(this.content()?.length ? true : false), {
+      allowSignalWrites: true,
+    })
+    effect(() => this.#resolveFirstErrorKey(this.errors()), { allowSignalWrites: true })
+  }
+
+  #resolveFirstErrorKey(errors: ValidationErrors | null): void {
+    this.firstErrorKey.set(Object.keys(errors || {})[0] ?? null)
   }
 }

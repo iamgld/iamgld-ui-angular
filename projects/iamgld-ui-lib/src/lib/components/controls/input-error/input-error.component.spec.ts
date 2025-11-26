@@ -1,22 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-
+// Angular Imports
+import { ValidationErrors } from '@angular/forms'
+// This Component Imports
 import { InputErrorComponent } from './input-error.component'
+// Thirdparty Imports
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('InputErrorComponent', () => {
-	let component: InputErrorComponent
-	let fixture: ComponentFixture<InputErrorComponent>
+  let spectator: Spectator<InputErrorComponent>
+  const createComponent = createComponentFactory({
+    component: InputErrorComponent,
+    imports: [],
+  })
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [InputErrorComponent],
-		}).compileComponents()
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        errors: {} as ValidationErrors,
+      },
+    })
+  })
 
-		fixture = TestBed.createComponent(InputErrorComponent)
-		component = fixture.componentInstance
-		fixture.detectChanges()
-	})
-
-	it('should create', () => {
-		expect(component).toBeTruthy()
-	})
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
 })

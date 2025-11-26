@@ -12,6 +12,10 @@ import {
 } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
 // This Component Imports
+import { ButtonComponent } from '../button/button.component'
+import { IconButtonComponent } from '../icon-button/icon-button.component'
+import { DropdownButtonComponent } from '../dropdown-button/dropdown-button.component'
+// Shared Imports
 import {
   ButtonColor,
   ButtonSize,
@@ -19,11 +23,8 @@ import {
   IconsSize,
   DropdownType,
   DropdownDirection,
-} from '../../../models'
-import { DropdownMenuTemplateDirective } from '../../../directives'
-import { ButtonComponent } from '../button/button.component'
-import { IconButtonComponent } from '../icon-button/icon-button.component'
-import { DropdownButtonComponent } from '../dropdown-button/dropdown-button.component'
+} from '@ui/models'
+import { DropdownMenuTemplateDirective } from '@ui/directives'
 
 const components = [ButtonComponent, IconButtonComponent]
 const directives = [DropdownMenuTemplateDirective]
@@ -38,7 +39,12 @@ const directives = [DropdownMenuTemplateDirective]
 export class DropdownMenuComponent implements AfterContentInit {
   readonly DropdownType = DropdownType
 
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `dropdown-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `dropdown-name-${value.trim().split(' ').join('-')}`,
+  })
   type = input.required<keyof typeof DropdownType>()
   color = input<keyof typeof ButtonColor>(ButtonColor.pink)
   size = input<keyof typeof ButtonSize>(ButtonSize.normal)
@@ -84,4 +90,3 @@ export class DropdownMenuComponent implements AfterContentInit {
     )
   }
 }
-

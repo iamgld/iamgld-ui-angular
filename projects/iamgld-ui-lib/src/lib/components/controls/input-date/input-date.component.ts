@@ -21,7 +21,8 @@ import {
 import { NgTemplateOutlet } from '@angular/common'
 // This Module Imports
 import { InputErrorComponent } from '../input-error/input-error.component'
-import { formatDateToISO, formatDateFromISOToYYYYMMDD } from '../../../utils'
+// Shared Imports
+import { formatISODateToDDMMYYYY, formatDDMMYYYYToISODate, updateValueWithMask } from '@ui/utils'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
 
@@ -47,18 +48,30 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
   control = input.required<FormControl<unknown>>()
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `input-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
+  })
   label = input<string>('')
   min = input<string | null, string>('', {
-    transform: (value: string) => formatDateFromISOToYYYYMMDD(value),
+    transform: (value: string) => formatISODateToDDMMYYYY({ date: value }),
   })
   max = input<string | null, string>('', {
-    transform: (value: string) => formatDateFromISOToYYYYMMDD(value),
+    transform: (value: string) => formatISODateToDDMMYYYY({ date: value }),
   })
   placeholder = input<string>('')
+  mask = input<string>('')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
+  hasValidators = signal({
+    required: false,
+    naturalNumber: false,
+    string: false,
+    maxLength: null as number | null,
+  })
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -69,18 +82,41 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((value) => {
-        this.onChange(value)
-        if (value && typeof value === 'string') {
-          const valueTransformed = formatDateFromISOToYYYYMMDD(formatDateToISO(value))
-          this.innerControl().setValue(valueTransformed, { emitEvent: false })
+        /**
+         * Removes all non-digit and non-slash characters from the input value string.
+         * This sanitizes the date input by keeping only numbers (0-9) and forward slashes (/)
+         * which are typically used in date formats like MM/DD/YYYY or DD/MM/YYYY.
+         *
+         * @example
+         * // Input: "12/34/abcd2023!@_"
+         * // Output: "12/34/2023"
+         */
+        const _value = String(value).replaceAll(/[^\d/]/g, '')
+
+        if (String(value) && Boolean(this.mask())) {
+          const masked: string = updateValueWithMask({ value: _value, mask: this.mask() })
+          this.innerControl().setValue(masked, { emitEvent: false })
         }
+
+        const valueTransformed: string | null = formatDDMMYYYYToISODate({
+          date: _value,
+        })
+        this.onChange(valueTransformed ?? 'Invalid Date')
       })
   }
 
   ngOnInit(): void {
+    // Initialize validators cache
+    this.#updateHasValidators()
+
+    // Update validators when then changed in control
+    this.control()
+      .statusChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(() => this.#updateHasValidators())
+
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(10))
       .subscribe(() => this.#changeDetectorRef.detectChanges())
   }
 
@@ -98,5 +134,46 @@ export class InputDateComponent implements ControlValueAccessor, OnInit {
     // console.log('registerOnTouched')
     this.onTouched = onTouched
   }
-}
 
+  onFocus() {
+    // this.isMenuOpen.set(true)
+  }
+
+  onBlur() {
+    this.onTouched()
+    // this.isMenuOpen.set(false)
+  }
+
+  #updateHasValidators(): void {
+    const control = this.control()
+    const validatorFn = control.validator
+    const maskSpacers = this.mask()
+      .split('')
+      .filter((char) => char !== '0').length
+
+    // It isn't validators
+    if (validatorFn === null) {
+      this.hasValidators.set({
+        required: false,
+        naturalNumber: false,
+        string: false,
+        maxLength: null,
+      })
+      return
+    }
+
+    // Detect all validators
+    const requiredErrors = validatorFn(new FormControl(''))
+    const typeErrors = validatorFn(new FormControl('abc123'))
+    const maxLengthErrors = validatorFn(new FormControl({ length: Infinity }))
+    const maxLength: number = maxLengthErrors?.['maxlength']?.['requiredLength']
+
+    this.hasValidators.set({
+      required: Boolean(requiredErrors?.['required']),
+      naturalNumber: Boolean(typeErrors?.['isNaturalNumber']),
+      string: Boolean(typeErrors?.['isString']),
+      maxLength: maxLength ? maxLength + maskSpacers : null,
+    })
+    // console.log('hasValidators', this.hasValidators())
+  }
+}

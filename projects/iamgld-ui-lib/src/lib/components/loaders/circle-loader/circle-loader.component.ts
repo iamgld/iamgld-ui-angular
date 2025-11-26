@@ -1,0 +1,17 @@
+// Angular Imports
+import { ChangeDetectionStrategy, Component, booleanAttribute, input } from '@angular/core'
+
+@Component({
+  standalone: true,
+  selector: 'gld-circle-loader',
+  imports: [],
+  templateUrl: './circle-loader.component.html',
+  styleUrl: './circle-loader.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CircleLoaderComponent {
+  loading = input<boolean, string | boolean>(false, { transform: booleanAttribute })
+  background = input<boolean, string | boolean>(false, { transform: booleanAttribute })
+  radius = input<boolean, string | boolean>(false, { transform: booleanAttribute })
+  minHeight = input<string>('auto')
+}

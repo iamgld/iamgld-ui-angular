@@ -1,22 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-
+// This Component Imports
 import { RadioButtonComponent } from './radio-button.component'
+// Thirdparty Imports
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest'
 
 describe('RadioButtonComponent', () => {
-	let component: RadioButtonComponent
-	let fixture: ComponentFixture<RadioButtonComponent>
+  let spectator: Spectator<RadioButtonComponent>
+  const createComponent = createComponentFactory({
+    component: RadioButtonComponent,
+    imports: [],
+  })
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [RadioButtonComponent],
-		}).compileComponents()
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        value: 'radio-button',
+      },
+    })
+  })
 
-		fixture = TestBed.createComponent(RadioButtonComponent)
-		component = fixture.componentInstance
-		fixture.detectChanges()
-	})
-
-	it('should create', () => {
-		expect(component).toBeTruthy()
-	})
+  test('should render the component when created', () => {
+    expect(spectator).toBeTruthy()
+  })
 })

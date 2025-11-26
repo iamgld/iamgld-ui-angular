@@ -1,7 +1,7 @@
 // Angular Imports
 import { booleanAttribute, ChangeDetectionStrategy, Component, input, output } from '@angular/core'
 // This Module Imports
-import { InputValue } from '../../../models'
+import { InputValue } from '@ui/models'
 
 @Component({
   selector: 'gld-select-option',

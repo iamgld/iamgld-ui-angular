@@ -9,8 +9,10 @@ import {
   output,
 } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
-// Angular Material Imports
-// import { CdkMenuModule } from '@angular/cdk/menu'
+// This Module Imports
+import { DropdownButtonComponent } from '../../buttons/dropdown-button/dropdown-button.component'
+import { DropdownMenuComponent } from '../../buttons/dropdown-menu/dropdown-menu.component'
+import { CircleLoaderComponent } from '../../loaders/circle-loader/circle-loader.component'
 // Shared Imports
 import {
   Icons,
@@ -19,14 +21,9 @@ import {
   TableColumnActionOutput,
   TableColumnStructure,
   TableColumnToTableColumns,
-} from '../../../models'
-import {
-  DropdownButtonComponent,
-  DropdownMenuComponent,
-  LoaderComponent,
-} from '../../../components'
+} from '@ui/models'
 
-const components = [DropdownButtonComponent, DropdownMenuComponent, LoaderComponent]
+const components = [DropdownButtonComponent, DropdownMenuComponent, CircleLoaderComponent]
 
 @Component({
   selector: 'gld-table',
@@ -64,8 +61,9 @@ export class TableComponent {
     this.tableColumnAction.emit(event)
   }
 
-  changeValue(event: unknown) {
-    console.log('event', event)
+  changeValue() {
+    // event: unknown
+    // console.log('event', event)
   }
 
   // We build each column and in case it doesn't exist or update it in case it already exists
@@ -196,4 +194,3 @@ interface BuildObjectFromTableColumn {
   tableColumns: TableColumn[]
   index: number
 }
-

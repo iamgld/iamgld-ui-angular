@@ -15,10 +15,11 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 // This Module Imports
-import { RadioDirection } from '../../../models'
 import { RadioButtonComponent } from '../radio-button/radio-button.component'
 import { InputErrorComponent } from '../input-error/input-error.component'
 // Shared Imports
+import { RadioDirection } from '@ui/models'
+// Thirdparty Imports
 import { debounceTime } from 'rxjs'
 
 const components = [InputErrorComponent]
@@ -43,12 +44,20 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
   control = input.required<FormControl<unknown>>()
-  name = input.required<string>()
+  id = input.required<string, string>({
+    transform: (value: string) => `input-id-${value.trim().split(' ').join('-')}`,
+  })
+  name = input.required<string, string>({
+    transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
+  })
   label = input<string>('')
   direction = input<keyof typeof RadioDirection>(RadioDirection.horizontal)
 
   radioButtonChildren = contentChildren<RadioButtonComponent>(RadioButtonComponent)
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
+  hasValidators = signal({
+    required: false,
+  })
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
   onChange = (value: unknown) => {}
@@ -65,9 +74,17 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
   }
 
   ngOnInit(): void {
+    // Initialize validators cache
+    this.#updateHasValidators()
+
+    // Update validators when then changed in control
+    this.control()
+      .statusChanges.pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(() => this.#updateHasValidators())
+
     // Subscribes to the form control's events and triggers change detection to update the view accordingly.
     this.control()
-      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(100))
+      .events.pipe(takeUntilDestroyed(this.#destroyRef), debounceTime(10))
       .subscribe(() => {
         this.updateErrorInChildren(
           this.control().invalid && (this.control().dirty || this.control().touched),
@@ -125,5 +142,26 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterC
     this.radioButtonChildren().map((radioButton: RadioButtonComponent) =>
       radioButton.disabled.set(disabled),
     )
+  }
+
+  #updateHasValidators(): void {
+    const control = this.control()
+    const validatorFn = control.validator
+
+    // It isn't validators
+    if (validatorFn === null) {
+      this.hasValidators.set({
+        required: false,
+      })
+      return
+    }
+
+    // Detect all validators
+    const requiredErrors = validatorFn(new FormControl(''))
+
+    this.hasValidators.set({
+      required: Boolean(requiredErrors?.['required']),
+    })
+    // console.log('hasValidators', this.hasValidators())
   }
 }

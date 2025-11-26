@@ -4,17 +4,22 @@
 <section class="input" [class.input--disabled]="disabled" [class.input--error]="errors">
   <!-- Label -->
   @if (label()) {
-    <label [for]="name()">
-      {{ label() }}
+    <label for="{{ id() }}">
+      <span>{{ label() }}</span>
+      @if (hasValidators().required) {
+        <span>*</span>
+      }
     </label>
   }
 
   <!-- Input -->
   <textarea
-    id="input-textarea-{{ name() }}"
-    [name]="name()"
+    id="{{ id() }}"
+    name="{{ name() }}"
+    [tabindex]="disabled ? '-1' : '0'"
     [placeholder]="placeholder()"
     [formControl]="innerControl()"
+    [attr.maxlength]="hasValidators().maxLength"
     (focus)="onFocus()"
     (blur)="onTouched()"
     (keyup.escape)="onBlur()"></textarea>

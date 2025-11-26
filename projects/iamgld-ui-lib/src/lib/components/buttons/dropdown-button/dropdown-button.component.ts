@@ -11,8 +11,9 @@ import {
   viewChild,
 } from '@angular/core'
 // This Module Imports
-import { DropdownDirection, Icons, IconsSize, IconsSpace } from '../../../models'
 import { IconComponent } from '../../icon/icon.component'
+// Shared Imports
+import { DropdownDirection, Icons, IconsSize, IconsSpace } from '@ui/models'
 
 const components = [IconComponent]
 
@@ -49,4 +50,3 @@ export class DropdownButtonComponent {
     this.select(value)
   }
 }
-

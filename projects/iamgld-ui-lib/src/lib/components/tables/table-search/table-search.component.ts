@@ -2,8 +2,7 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core'
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms'
 // Shared Imports
-// import { IconComponent } from '../../../components'
-import { Icons, TableSearchAction, TableSearchOutput } from '../../../models'
+import { Icons, TableSearchAction, TableSearchOutput } from '@ui/models'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
 

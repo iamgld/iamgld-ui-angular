@@ -9,8 +9,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core'
 // Shared Imports
-// import { IconButtonComponent } from '../../../components'
-import { Icons, TablePagination } from '../../../models'
+import { Icons, TablePagination } from '@ui/models'
 
 @Component({
   selector: 'gld-table-pagination',

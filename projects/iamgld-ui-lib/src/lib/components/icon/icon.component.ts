@@ -8,7 +8,7 @@ import {
   output,
 } from '@angular/core'
 // Shared Imports
-import { Icons, IconsSize, IconsSpace } from '../../models'
+import { Icons, IconsSize, IconsSpace } from '@ui/models'
 
 @Component({
   selector: 'gld-icon',
