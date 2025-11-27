@@ -6,20 +6,27 @@ Expert in TypeScript, Angular 21, and scalable web application development. Writ
 
 This is a **monorepo** with two main parts:
 - **`src/`** - Demo/showcase application (`iamgld.dev`)
-- **`projects/iamgld-ui/`** - Publishable UI component library (`@iamgld/ui` on npm)
+- **`projects/iamgld-ui-lib/`** - Publishable UI component library (`@iamgld/ui` on npm, v21.1.3+)
 
-### Component Library (`projects/iamgld-ui/`)
+### Component Library (`projects/iamgld-ui-lib/`)
 - Entry point: `src/public-api.ts` - exports all public APIs
-- Components: `src/lib/components/` - organized by category (buttons, controls, tables, etc.)
-- Models: `src/lib/models/` - TypeScript enums and types (e.g., `ButtonColor`, `ButtonSize`)
-- Validators: `src/lib/validators/` - Custom form validators (e.g., `isEmailValidator()`)
+- Components: `src/lib/components/` - organized by category (buttons, controls, tables, icon, image, loaders, tile)
+- Models: `src/lib/models/` - TypeScript enums and types (e.g., `ButtonColor`, `Icons`, `TableColumn`)
+- Validators: `src/lib/validators/` - Custom form validators (e.g., `isEmailValidator()`, `isDateValidator()`, `minimumAgeValidator()`)
 - Directives: `src/lib/directives/` - Reusable directives
 - Utils: `src/lib/utils/` - Date and string utilities
+- **Services**: `src/lib/services/` - AuthService, EnvironmentsService, TranslocoService, UiService
+- **Stores**: `src/lib/stores/` - Signal stores with @ngrx/signals (AuthStore, UiStore)
+- **Guards**: `src/lib/guards/` - Route guards (e.g., `isLoggedGuard`)
+- **Interceptors**: `src/lib/interceptors/` - HTTP interceptors (addToken, refreshToken, changeLanguage)
+- **Tests**: `src/lib/tests/mocks/` - Reusable test mocks
 
-### Path Aliases
+### Path Aliases (Demo App Only)
 - `@app` → `src/app/index.ts`
 - `@environment` → `src/environments/environment.local.ts`
 - `@shared/*` → `src/app/shared/*`
+
+> **Important:** The library uses **relative imports only** (no path aliases). This ensures npm package compatibility.
 
 ## Component Patterns
 
@@ -97,7 +104,8 @@ beforeEach(() => {
 ## State Management
 
 - Local state: Angular signals (`signal()`, `computed()`)
-- Global state: `@ngrx/signals` (prepared in `src/app/shared/store/`)
+- Global state: `@ngrx/signals` with SignalStore (see `stores/auth/auth.store.ts`)
+- Use `patchState()` for store updates
 - Never use `mutate()` on signals - use `update()` or `set()`
 
 ## SSR Support
@@ -113,3 +121,12 @@ App supports Server-Side Rendering:
 - Use `class` bindings, not `ngClass`
 - Use `style` bindings, not `ngStyle`
 - Use `async` pipe for observables
+
+## Library Publishing
+
+```bash
+pnpm build:iamgld-ui-lib  # Build library
+pnpm npm:publish          # Build and publish to npm
+```
+
+> **Note:** Library uses relative imports only. Path aliases don't work in published npm packages.
