@@ -12,5 +12,8 @@
         "copilot/gemini-3-pro-preview"
       ]
     }
-  }
+  },
+  "cSpell.words": [
+    "jsverse"
+  ]
 }
