@@ -22,6 +22,7 @@
   --gld-font-size--small: 12px;
   --gld-font-size--tiny: 8px;
   --gld-font--poppins: 'Poppins', sans-serif;
+  --gld-font--megrim: 'Megrim', serif;
 
   // Radius
   --gld-radius--z: 0;
@@ -181,5 +182,7 @@
   --gld-line-height: 1.2;
   --gld-max-width: 1280px;
   --gld-navbar-height: 50px;
-  --gld-sidebar-width: 250px;
+  --gld-footer-height: 200px;
+  --gld-sidebar-width: 56px;
+  --gld-sidebar-width--opened: 260px;
 }

@@ -7,8 +7,8 @@
   4. Se pueden añadir o eliminar capaz de ser necesario
 */
 
-@forward './layers/_setting';
-@forward './layers/_tools';
-@forward './layers/_base';
-@forward './layers/_objects';
-@forward './layers/_trumps';
+@forward 'layers/setting';
+@forward 'layers/tools';
+@forward 'layers/base';
+@forward 'layers/objects';
+@forward 'layers/trumps';
