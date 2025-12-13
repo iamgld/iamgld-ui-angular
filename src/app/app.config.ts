@@ -1,8 +1,17 @@
 // Angular Imports
 
 import { provideHttpClient, withFetch } from '@angular/common/http'
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core'
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser'
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core'
+import {
+  provideClientHydration,
+  withEventReplay,
+  withHttpTransferCacheOptions,
+  withIncrementalHydration,
+} from '@angular/platform-browser'
 import {
   provideRouter,
   withComponentInputBinding,
@@ -15,7 +24,12 @@ import { routes } from './app.routes'
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay()),
+    provideZonelessChangeDetection(),
+    provideClientHydration(
+      withEventReplay(),
+      withIncrementalHydration(),
+      withHttpTransferCacheOptions({ includePostRequests: true }),
+    ),
     provideRouter(
       routes,
       withComponentInputBinding(),
