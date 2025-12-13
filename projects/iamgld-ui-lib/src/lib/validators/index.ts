@@ -1,17 +1,17 @@
-export { isDateValidator } from './is-date/is-date.validator'
-export { isDocumentValidator } from './is-document/is-document.validator'
-export { isEmailValidator } from './is-email/is-email.validator'
-export { isFormSelectItemValidator } from './is-form-select-item/is-form-select-item.validator'
+export { isDate } from './is-date/is-date'
+export { isDocument } from './is-document/is-document'
+export { isEmail } from './is-email/is-email'
+export { isFormSelectItem } from './is-form-select-item/is-form-select-item'
 export {
-  isNaturalNumberValidator,
+  isNaturalNumber,
   NATURAL_NUMBER_REGEX,
   NATURAL_NUMBER_REGEX_TO_CLEAN,
-} from './is-natural-number/is-natural-number.validator'
+} from './is-natural-number/is-natural-number'
 export {
-  isStringValidator,
+  isString,
   STRING_REGEX,
   STRING_REGEX_TO_CLEAN,
-} from './is-string/is-string.validator'
-export { minimumAgeValidator } from './minimum-age/minimum-age.validator'
-export { mustMatchValidator } from './must-match/must-match.validator'
-export { mustUnmatchValidator } from './must-unmatch/must-unmatch.validator'
+} from './is-string/is-string'
+export { minimumAge } from './minimum-age/minimum-age'
+export { mustMatch } from './must-match/must-match'
+export { mustUnmatch } from './must-unmatch/must-unmatch'

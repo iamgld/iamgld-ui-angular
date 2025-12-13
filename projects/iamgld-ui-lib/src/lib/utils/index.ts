@@ -1,4 +1,4 @@
-export { updateValueWithMask } from './controls/control.util'
+export { updateValueWithMask } from './controls/control'
 export {
   addDaysToISODate,
   addYearsToISODate,
@@ -11,5 +11,5 @@ export {
   MIN_DAY,
   MIN_MONTH,
   YEAR_LENGTH,
-} from './date/date.util'
-export { capitalizeFirstLetter } from './string/string.util'
+} from './date/date'
+export { capitalizeFirstLetter } from './string/string'

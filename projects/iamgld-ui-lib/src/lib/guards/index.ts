@@ -1,1 +1,1 @@
-export { isLoggedGuard } from './is-logged/is-logged.guard'
+export { isLogged } from './is-logged/is-logged'
