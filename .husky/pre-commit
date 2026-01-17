@@ -1,1 +1,22 @@
-echo "[hook pre-commit] Running linters - stylelint, formatting and linting..." && npm run linters
+#!/usr/bin/env sh
+set -e
+
+echo "[hook pre-commit] Running linters - linting, formatting and stylelint..."
+
+# Ensure Node is available in Git Bash (fnm-managed Node)
+if command -v fnm >/dev/null 2>&1; then
+	eval "$(fnm env --use-on-cd)"
+	fnm use --install-if-missing >/dev/null 2>&1 || true
+fi
+
+# Prefer pnpm if available, then fallback to npm or yarn
+if command -v pnpm >/dev/null 2>&1; then
+	pnpm run linters
+elif command -v npm >/dev/null 2>&1; then
+	npm run linters
+elif command -v yarn >/dev/null 2>&1; then
+	yarn linters
+else
+	echo "husky: No package manager found (pnpm/npm/yarn). Add Node.js to PATH or install a package manager." >&2
+	exit 127
+fi
