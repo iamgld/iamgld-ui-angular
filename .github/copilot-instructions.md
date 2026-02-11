@@ -78,8 +78,7 @@ Styles use ITCSS layers in `styles/layers/`:
 pnpm start          # Local dev server (http://localhost:4200)
 pnpm test           # Run Vitest unit tests
 pnpm build          # Production build
-pnpm linters        # Run stylelint + biome (format + lint)
-pnpm biome:check    # Check formatting and linting
+pnpm linters        # Run stylelint
 ```
 
 ## Testing
@@ -97,7 +96,6 @@ beforeEach(() => {
 
 ## Code Quality
 
-- **Biome** for formatting and linting (not ESLint/Prettier for app code)
 - **Stylelint** with BEM pattern for SCSS
 - **Commitlint** with conventional commits (via Husky)
 

@@ -4,7 +4,8 @@
   "cli": {
     "packageManager": "pnpm",
     "analytics": false,
-    "schematicCollections": []
+		"schematicCollections": ["angular-eslint"]
+
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -148,7 +149,13 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
-        }
+        },
+        "lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+					}
+				}
       }
     },
     "iamgld-ui-lib": {
@@ -174,7 +181,13 @@
           "options": {
             "tsConfig": "projects/iamgld-ui-lib/tsconfig.spec.json"
           }
-        }
+        },
+        "lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": ["projects/iamgld-ui-lib/src/**/*.ts", "projects/iamgld-ui-lib/src/**/*.html"]
+					}
+				}
       }
     }
   }
