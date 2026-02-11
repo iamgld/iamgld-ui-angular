@@ -1,5 +1,5 @@
 ## Build stage
-FROM node:24-alpine AS build
+FROM node:24.13.0-alpine AS build
 WORKDIR /app
 # Copy package files first for better caching
 COPY package.json pnpm-lock.yaml ./
@@ -15,7 +15,7 @@ ENV GLD_ENVIRONMENT=${GLD_ENVIRONMENT}
 RUN pnpm build:${GLD_ENVIRONMENT}
 
 ## Runtime stage
-FROM node:24-alpine AS runtime
+FROM node:24.13.0-alpine AS runtime
 ARG PORT=3000
 ENV PORT=${PORT}
 WORKDIR /app
