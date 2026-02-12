@@ -1,1 +1,24 @@
-echo "[hook commit-msg] Running Commintlint..." && pnpm exec commitlint --edit $1
+#!/usr/bin/env sh
+set -eu
+
+[ "${HUSKY:-1}" = "0" ] && exit 0
+
+echo "[hook commit-msg] Running commitlint..."
+
+# Ensure Node is available in Git Bash (fnm-managed Node)
+if command -v fnm >/dev/null 2>&1; then
+	eval "$(fnm env --use-on-cd)"
+	fnm use --install-if-missing >/dev/null 2>&1 || true
+fi
+
+# Prefer pnpm (local bin), then npx (no install), then yarn
+if command -v pnpm >/dev/null 2>&1; then
+	pnpm exec commitlint --edit "$1"
+elif command -v npx >/dev/null 2>&1; then
+	npx --no-install commitlint --edit "$1"
+elif command -v yarn >/dev/null 2>&1; then
+	yarn commitlint --edit "$1"
+else
+	echo "husky: No package runner found (pnpm/npx/yarn)." >&2
+	exit 127
+fi

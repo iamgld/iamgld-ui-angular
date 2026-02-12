@@ -1,0 +1,57 @@
+export const ICONS = {
+  arrowDownSLine: 'arrow-down-s-line',
+  arrowUpSLine: 'arrow-up-s-line',
+  checkboxCircleLine: 'checkbox-circle-line',
+  checkboxBlankCircleLine: 'checkbox-blank-circle-line',
+  loader4Fill: 'loader-4-fill',
+  logoutCircleLine: 'ri-logout-circle-line',
+  loginCircleLine: 'ri-login-circle-line',
+  gitRepositoryLine: 'ri-git-repository-line',
+  fileList3Line: 'ri-file-list-3-line',
+  menuLine: 'ri-menu-line',
+  sunLine: 'ri-sun-line',
+  moonClearLine: 'ri-moon-clear-line',
+  englishInput: 'ri-english-input',
+  translate: 'ri-translate',
+  user4Line: 'ri-user-4-line',
+  shapesLine: 'ri-shapes-line',
+  closeLine: 'ri-close-line',
+  eyeLine: 'ri-eye-line',
+  eyeCloseLine: 'ri-eye-close-line',
+  linkedinBoxFill: 'ri-linkedin-box-fill',
+  githubFill: 'ri-github-fill',
+  instagramFill: 'ri-instagram-fill',
+  twitterXFill: 'ri-twitter-x-fill',
+  downloadCloud2Line: 'ri-download-cloud-2-line',
+  globeLine: 'ri-globe-line',
+  mailSendLine: 'ri-mail-send-line',
+  pagesLine: 'ri-pages-line',
+  gitForkLine: 'ri-git-fork-line',
+  gitRepositoryPrivateLine: 'ri-git-repository-private-line',
+  starLine: 'ri-star-line',
+  calendar2Line: 'ri-calendar-2-line',
+  macLine: 'ri-mac-line',
+  more2Fill: 'ri-more-2-fill',
+  editLine: 'ri-edit-line',
+  deleteBinLine: 'ri-delete-bin-line',
+} as const;
+
+export type Icons = typeof ICONS[keyof typeof ICONS];
+
+export const ICONS_SIZES = {
+  tiny: 'tiny',
+  small: 'small',
+  normal: 'normal',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+export type IconsSize = typeof ICONS_SIZES[keyof typeof ICONS_SIZES];
+
+export const ICONS_SPACES = {
+  left: 'left',
+  right: 'right',
+  none: 'none',
+} as const;
+
+export type IconsSpace = typeof ICONS_SPACES[keyof typeof ICONS_SPACES];

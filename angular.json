@@ -4,7 +4,8 @@
   "cli": {
     "packageManager": "pnpm",
     "analytics": false,
-    "schematicCollections": []
+		"schematicCollections": ["angular-eslint"]
+
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -16,16 +17,30 @@
         },
         "@schematics/angular:component": {
           "style": "scss",
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "type": "component"
         },
-        "@schematics/angular:service": {},
+        "@schematics/angular:service": {
+          "type": "service"
+        },
         "@schematics/angular:class": {
           "type": "class"
         },
-        "@schematics/angular:guard": {},
-        "@schematics/angular:pipe": {},
-        "@schematics/angular:directive": {},
-        "@schematics/angular:resolver": {},
+        "@schematics/angular:guard": {
+          "type": "guard"
+        },
+        "@schematics/angular:pipe": {
+          "type": "pipe"
+        },
+        "@schematics/angular:directive": {
+          "type": "directive"
+        },
+        "@schematics/angular:resolver": {
+          "type": "resolver"
+        },
+        "@schematics/angular:interceptor": {
+          "type": "interceptor"
+        },
         "@schematics/angular:interface": {
           "type": "model"
         },
@@ -148,11 +163,51 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
-        }
+        },
+        "lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+					}
+				}
       }
     },
     "iamgld-ui-lib": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "type": "component"
+        },
+        "@schematics/angular:service": {
+          "type": "service"
+        },
+        "@schematics/angular:class": {
+          "type": "class"
+        },
+        "@schematics/angular:guard": {
+          "type": "guard"
+        },
+        "@schematics/angular:pipe": {
+          "type": "pipe"
+        },
+        "@schematics/angular:directive": {
+          "type": "directive"
+        },
+        "@schematics/angular:resolver": {
+          "type": "resolver"
+        },
+        "@schematics/angular:interceptor": {
+          "type": "interceptor"
+        },
+        "@schematics/angular:interface": {
+          "type": "model"
+        },
+        "@schematics/angular:enum": {
+          "type": "model"
+        }
+      },
       "root": "projects/iamgld-ui-lib",
       "sourceRoot": "projects/iamgld-ui-lib/src",
       "prefix": "lib",
@@ -174,7 +229,13 @@
           "options": {
             "tsConfig": "projects/iamgld-ui-lib/tsconfig.spec.json"
           }
-        }
+        },
+        "lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": ["projects/iamgld-ui-lib/src/**/*.ts", "projects/iamgld-ui-lib/src/**/*.html"]
+					}
+				}
       }
     }
   }

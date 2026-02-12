@@ -4,7 +4,7 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals'
 // Thirdparty Imports
 import { CookieService } from 'ngx-cookie-service'
 // This Module Imports
-import { CookiesKeys } from '../../models'
+import { COOKIES_KEYS } from '../../models'
 
 export interface AuthenticationState {
   logged: boolean
@@ -29,8 +29,8 @@ export const AuthenticationStore = signalStore(
       const { accessToken, refreshToken, saveCookie = true } = parameters
 
       if (saveCookie) {
-        cookiesService.set(CookiesKeys.accessToken, accessToken)
-        cookiesService.set(CookiesKeys.refreshToken, refreshToken)
+        cookiesService.set(COOKIES_KEYS.accessToken, accessToken)
+        cookiesService.set(COOKIES_KEYS.refreshToken, refreshToken)
       }
 
       patchState(store, (previous: AuthenticationState) => ({
@@ -41,8 +41,8 @@ export const AuthenticationStore = signalStore(
       }))
     },
     signout: (): void => {
-      cookiesService.delete(CookiesKeys.accessToken)
-      cookiesService.delete(CookiesKeys.refreshToken)
+      cookiesService.delete(COOKIES_KEYS.accessToken)
+      cookiesService.delete(COOKIES_KEYS.refreshToken)
 
       patchState(store, (previous: AuthenticationState) => ({
         ...previous,

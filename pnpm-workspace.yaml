@@ -1,4 +1,4 @@
-minimumReleaseAge: 10080
+minimumReleaseAge: 0
 
 minimumReleaseAgeExclude: null
 
@@ -7,3 +7,9 @@ onlyBuiltDependencies:
   - esbuild
   - lmdb
   - msgpackr-extract
+
+pnpm:
+  overrides:
+    undici: '>=7.18.2'
+    qs: '>=6.14.1'
+    tar: '>=7.5.3'

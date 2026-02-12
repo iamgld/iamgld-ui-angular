@@ -2,11 +2,11 @@ import { Component, signal } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+	selector: 'gld-root',
+	imports: [RouterOutlet],
+	templateUrl: './app.html',
+	styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('iamgld.dev')
+	protected readonly title = signal('iamgld.dev')
 }

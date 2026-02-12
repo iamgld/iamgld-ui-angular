@@ -1,4 +1,34 @@
 {
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
-	"recommendations": ["angular.ng-template"]
+	"recommendations": [
+		"angular.ng-template",                      
+		"enochndika.vscode-auto-barrel",           
+		"streetsidesoftware.code-spell-checker",   
+		"streetsidesoftware.code-spell-checker-spanish",
+		"dbaeumer.vscode-eslint",                  
+		"esbenp.prettier-vscode",                  
+		"stylelint.vscode-stylelint",              
+		"mikael.angular-beastcode",
+		"imgildev.vscode-auto-barrel",
+		"midudev.better-svg",
+		"vivaxy.vscode-conventional-commits",
+		"vunguyentuan.vscode-css-variables",
+		"usernamehw.errorlens",
+		"mhutchie.git-graph",
+		"github.copilot-chat",
+		"kisstkondoros.vscode-gutter-preview",
+		"davidanson.vscode-markdownlint",
+		"iancovski.new-angular-schematic",
+		"christian-kohler.path-intellisense",
+		"yoavbls.pretty-ts-errors",
+		"kruemelkatze.vscode-dashboard",
+		"tomwhite007.rename-angular-component",
+		"mrmlnc.vscode-scss",
+		"meganrogge.template-string-converter",
+		"gruntfuggly.todo-tree",
+		"shardulm94.trailing-spaces",
+		"pflannery.vscode-versionlens",
+		"catppuccin.catppuccin-vsc-icons",
+		"catppuccin.catppuccin-vsc",
+		"ms-azuretools.vscode-docker"
+	],
 }
