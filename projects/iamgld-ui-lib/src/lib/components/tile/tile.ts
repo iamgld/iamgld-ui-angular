@@ -1,7 +1,7 @@
 // Angular Imports
 import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core'
 // This Module Imports
-import { TileColor, TilePaddingSize } from '../../models'
+import  { TILE_COLORS, type TileColor, TILE_PADDING_SIZES, type TilePaddingSize } from '../../models'
 
 @Component({
   selector: 'gld-tile',
@@ -11,8 +11,8 @@ import { TileColor, TilePaddingSize } from '../../models'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Tile {
-  color = input<keyof typeof TileColor>(TileColor.default)
-  paddingSize = input<keyof typeof TilePaddingSize>(TilePaddingSize.zero)
+  color = input<TileColor>(TILE_COLORS.default)
+  paddingSize = input<TilePaddingSize>(TILE_PADDING_SIZES.zero)
   background = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   hover = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 }

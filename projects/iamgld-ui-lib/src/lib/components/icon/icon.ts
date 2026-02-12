@@ -8,7 +8,7 @@ import {
   output,
 } from '@angular/core'
 // This Module Imports
-import { Icons, IconsSize, IconsSpace } from '../../models'
+import { ICONS, Icons, ICONS_SIZES, IconsSize, ICONS_SPACES, IconsSpace } from '../../models'
 
 @Component({
   selector: 'gld-icon',
@@ -19,12 +19,12 @@ import { Icons, IconsSize, IconsSpace } from '../../models'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Icon {
-  readonly IconsSpace = IconsSpace
-  readonly Icons = Icons
+  readonly ICONS_SPACES = ICONS_SPACES
+  readonly ICONS = ICONS
 
   icon = input.required<Icons>()
-  size = input<keyof typeof IconsSize>(IconsSize.normal)
-  space = input<keyof typeof IconsSpace>(IconsSpace.none)
+  size = input<IconsSize>(ICONS_SIZES.normal)
+  space = input<IconsSpace>(ICONS_SPACES.none)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })

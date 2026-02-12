@@ -1,14 +1,14 @@
 // Angular Imports
 import { Injectable, inject, type Renderer2, RendererFactory2 } from '@angular/core'
 // This Module Imports
-import { UiTheme } from '../../models'
+import { UiTheme, UI_THEMES } from '../../models'
 
 @Injectable()
 export class Theme {
   private readonly rendererFactory = inject(RendererFactory2)
 
   private renderer: Renderer2
-  private allThemes: UiTheme[] = [UiTheme.dark, UiTheme.light, UiTheme.system]
+  private allThemes: UiTheme[] = [UI_THEMES.dark, UI_THEMES.light, UI_THEMES.system]
 
   constructor() {
     this.renderer = this.rendererFactory.createRenderer(null, null)

@@ -13,6 +13,7 @@ export interface TableColumn {
   template: TemplateRef<unknown> | undefined
   justify: 'left' | 'center' | 'right'
   hide: boolean
+  // eslint-disable-next-line no-unused-vars
   transform: (value: unknown) => string | number
   values: unknown[]
 }
@@ -26,6 +27,7 @@ export interface TableColumnStructure {
   template?: TemplateRef<unknown>
   justify?: 'left' | 'center' | 'right'
   hide?: boolean
+  // eslint-disable-next-line no-unused-vars
   transform?: (value: unknown) => string | number
 }
 
@@ -39,15 +41,18 @@ export interface TableColumnAction {
   label: string
   icon: Icons
   type: TableColumnActionType
+  // eslint-disable-next-line no-unused-vars
   showWhen: (dataStructure: unknown) => boolean
 }
 
-export enum TableColumnActionType {
-  show = 'show',
-  open = 'open',
-  update = 'update',
-  delete = 'delete',
-}
+export const TABLE_COLUMN_ACTION_TYPES = {
+  show: 'show',
+  open: 'open',
+  update: 'update',
+  delete: 'delete',
+} as const;
+
+export type TableColumnActionType = typeof TABLE_COLUMN_ACTION_TYPES[keyof typeof TABLE_COLUMN_ACTION_TYPES];
 
 export interface TableColumnActionOutput {
   tableColumnAction: TableColumnAction
@@ -60,10 +65,12 @@ export interface TableSearchOutput {
   searching: string
 }
 
-export enum TableSearchAction {
-  searching = 'searching',
-  cleared = 'cleared',
-}
+export const TABLE_SEARCH_ACTIONS = {
+  searching: 'searching',
+  cleared: 'cleared',
+} as const;
+
+export type TableSearchAction = typeof TABLE_SEARCH_ACTIONS[keyof typeof TABLE_SEARCH_ACTIONS];
 
 // Table Pagination
 export interface TablePaginationConfig {

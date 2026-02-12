@@ -11,7 +11,7 @@ import {
   signal,
 } from '@angular/core'
 import {
-  Icons,
+  ICONS,
   TableColumn,
   TableColumnAction,
   TableColumnActionOutput,
@@ -33,7 +33,7 @@ const components = [DropdownButton, DropdownMenu, CircleLoader]
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Table {
-  readonly Icons = Icons
+  readonly ICONS = ICONS
 
   tableColumns = input.required<TableColumn[]>()
   emptyMessage = input<string>('')
@@ -79,6 +79,7 @@ export class Table {
     tableColumnStructures.map((column: TableColumnStructure) => {
       structures.map((dataItem: T) => {
         // We check if the property we pass it exists within the object we receive
+        // eslint-disable-next-line no-prototype-builtins
         if (dataItem?.hasOwnProperty(column.name)) {
           const propertyValue = dataItem[column.name as keyof T] as T
           // We check if a column already exists in our array with the name of that property

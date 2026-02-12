@@ -4,7 +4,7 @@ import { CanActivateFn, Router } from '@angular/router'
 // Thirdparty Imports
 import { CookieService } from 'ngx-cookie-service'
 // This Module Imports
-import { CookiesKeys } from '../../models'
+import { COOKIES_KEYS } from '../../models'
 import { AuthenticationStore } from '../../stores'
 
 export const isLogged: CanActivateFn = () => {
@@ -17,8 +17,8 @@ export const isLogged: CanActivateFn = () => {
   const isBrowser = typeof window !== 'undefined'
   if (!isBrowser) return false
 
-  const accessToken: string = cookiesService.get(CookiesKeys.accessToken)
-  const refreshToken: string = cookiesService.get(CookiesKeys.refreshToken)
+  const accessToken: string = cookiesService.get(COOKIES_KEYS.accessToken)
+  const refreshToken: string = cookiesService.get(COOKIES_KEYS.refreshToken)
 
   if (accessToken && refreshToken) {
     if (!authenticationStore.logged()) {

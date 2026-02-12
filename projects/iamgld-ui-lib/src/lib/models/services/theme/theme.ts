@@ -1,13 +1,15 @@
-import { Icons } from '../../components/icon/icon'
+import { ICONS, Icons } from '../../components/icon/icon'
 
-export enum UiTheme {
-  dark = 'theme--dark',
-  light = 'theme--light',
-  system = 'theme--system',
-}
+export const UI_THEMES = {
+  dark: 'theme--dark',
+  light: 'theme--light',
+  system: 'theme--system',
+} as const;
+
+export type UiTheme = typeof UI_THEMES[keyof typeof UI_THEMES];
 
 export interface ThemeOption {
-  icon: Icons.sunLine | Icons.moonClearLine | Icons.macLine
+  icon: Icons
   label: string
   value: UiTheme
 }
@@ -15,17 +17,17 @@ export interface ThemeOption {
 export const THEMES: ThemeOption[] = [
   {
     label: 'light',
-    icon: Icons.sunLine,
-    value: UiTheme.light,
+    icon: ICONS.sunLine,
+    value: UI_THEMES.light,
   },
   {
     label: 'dark',
-    icon: Icons.moonClearLine,
-    value: UiTheme.dark,
+    icon: ICONS.moonClearLine,
+    value: UI_THEMES.dark,
   },
   {
     label: 'system',
-    icon: Icons.macLine,
-    value: UiTheme.system,
+    icon: ICONS.macLine,
+    value: UI_THEMES.system,
   },
 ]

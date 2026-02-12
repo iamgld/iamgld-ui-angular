@@ -59,6 +59,7 @@ export class Textarea implements ControlValueAccessor, OnInit {
   type = input<InputType>('text')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
+  // eslint-disable-next-line no-unused-vars
   onChange = (value: unknown) => {}
   onTouched = () => {}
 
@@ -129,6 +130,7 @@ export class Textarea implements ControlValueAccessor, OnInit {
     if (value !== this.innerControl().value) this.innerControl().setValue(value)
   }
 
+  // eslint-disable-next-line no-unused-vars
   registerOnChange(onChange: (value: unknown) => void): void {
     // console.log('registerOnChange')
     this.onChange = onChange

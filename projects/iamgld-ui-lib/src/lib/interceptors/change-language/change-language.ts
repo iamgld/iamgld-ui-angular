@@ -3,7 +3,7 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpParams, HttpRequest } from '@angular/common/http'
 import { inject } from '@angular/core'
 // This Module Imports
-import { TranslocoLanguageKey, TranslocoLanguageName } from '../../models'
+import { TRANSLOCO_LANGUAGE_KEYS, TRANSLOCO_LANGUAGE_NAMES, TranslocoLanguageName } from '../../models'
 import { Transloco } from '../../services'
 
 export const changeLanguage: HttpInterceptorFn = (
@@ -16,17 +16,17 @@ export const changeLanguage: HttpInterceptorFn = (
 
   if (request.headers.has('Language')) {
     if (request.method.toLowerCase() === 'get') {
-      let language = TranslocoLanguageName.english
+      let language: TranslocoLanguageName = TRANSLOCO_LANGUAGE_NAMES.english
 
       switch (transloco.getLanguage()) {
-        case TranslocoLanguageKey.english:
-          language = TranslocoLanguageName.english
+        case TRANSLOCO_LANGUAGE_KEYS.english:
+          language = TRANSLOCO_LANGUAGE_NAMES.english
           break
-        case TranslocoLanguageKey.spanish:
-          language = TranslocoLanguageName.spanish
+        case TRANSLOCO_LANGUAGE_KEYS.spanish:
+          language = TRANSLOCO_LANGUAGE_NAMES.spanish
           break
         default:
-          language = TranslocoLanguageName.english
+          language = TRANSLOCO_LANGUAGE_NAMES.english
           break
       }
 

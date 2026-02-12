@@ -76,6 +76,7 @@ export class InputDate implements ControlValueAccessor, OnInit {
     maxLength: null as number | null,
   })
 
+  // eslint-disable-next-line no-unused-vars
   onChange = (value: unknown) => {}
   onTouched = () => {}
 
@@ -126,6 +127,7 @@ export class InputDate implements ControlValueAccessor, OnInit {
     if (value !== this.innerControl().value) this.innerControl().setValue(String(value))
   }
 
+  // eslint-disable-next-line no-unused-vars
   registerOnChange(onChange: (value: unknown) => void): void {
     // console.log('registerOnChange')
     this.onChange = onChange

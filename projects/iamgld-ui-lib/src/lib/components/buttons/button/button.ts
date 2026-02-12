@@ -7,7 +7,7 @@ import {
   numberAttribute,
   output,
 } from '@angular/core'
-import { ButtonColor, ButtonSize, Icons, IconsSize } from '../../../models'
+import { BUTTON_COLORS, ButtonColor, BUTTON_SIZES, ButtonSize, Icons, ICONS_SIZES, IconsSize } from '../../../models'
 // This Module Imports
 import { Icon } from '../../icon/icon'
 
@@ -25,10 +25,10 @@ export class Button {
   name = input.required<string, string>({
     transform: (value: string) => `button-name-${value.trim().split(' ').join('-')}`,
   })
-  color = input<keyof typeof ButtonColor>(ButtonColor.pink)
-  size = input<keyof typeof ButtonSize>(ButtonSize.normal)
+  color = input<ButtonColor>(BUTTON_COLORS.pink)
+  size = input<ButtonSize>(BUTTON_SIZES.normal)
   icon = input<Icons | null>(null)
-  iconSize = input<keyof typeof IconsSize>()
+  iconSize = input<IconsSize>(ICONS_SIZES.normal)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })

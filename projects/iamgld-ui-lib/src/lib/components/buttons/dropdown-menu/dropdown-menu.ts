@@ -14,11 +14,16 @@ import {
 } from '@angular/core'
 import { DropdownMenuTemplate } from '../../../directives'
 import {
+  BUTTON_COLORS,
   ButtonColor,
+  BUTTON_SIZES,
   ButtonSize,
+  DROPDOWN_DIRECTIONS,
   DropdownDirection,
+  DROPDOWN_TYPES,
   DropdownType,
   Icons,
+  ICONS_SIZES,
   IconsSize,
 } from '../../../models'
 // This Component Imports
@@ -37,7 +42,7 @@ const directives = [DropdownMenuTemplate]
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownMenu implements AfterContentInit {
-  readonly DropdownType = DropdownType
+  readonly DROPDOWN_TYPES = DROPDOWN_TYPES
 
   id = input.required<string, string>({
     transform: (value: string) => `dropdown-id-${value.trim().split(' ').join('-')}`,
@@ -45,16 +50,16 @@ export class DropdownMenu implements AfterContentInit {
   name = input.required<string, string>({
     transform: (value: string) => `dropdown-name-${value.trim().split(' ').join('-')}`,
   })
-  type = input.required<keyof typeof DropdownType>()
-  color = input<keyof typeof ButtonColor>(ButtonColor.pink)
-  size = input<keyof typeof ButtonSize>(ButtonSize.normal)
+  type = input.required<DropdownType>()
+  color = input<ButtonColor>(BUTTON_COLORS.pink)
+  size = input<ButtonSize>(BUTTON_SIZES.normal)
   icon = input<Icons | null>(null)
-  iconSize = input<keyof typeof IconsSize>()
+  iconSize = input<IconsSize>(ICONS_SIZES.normal)
   moveTopToBottom = input<number, string | number>(0, { transform: numberAttribute })
   moveLeftToRight = input<number, string | number>(0, { transform: numberAttribute })
   disabled = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   full = input<boolean, string | boolean>(false, { transform: booleanAttribute })
-  direction = input<keyof typeof DropdownDirection>(DropdownDirection.right)
+  direction = input<DropdownDirection>(DROPDOWN_DIRECTIONS.right)
   background = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   selected = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   initialValue = input<unknown>(null)

@@ -26,7 +26,7 @@ import {
 } from '@angular/forms'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
-import { Icons, InputValue } from '../../../models'
+import { ICONS, InputValue } from '../../../models'
 import { updateValueWithMask } from '../../../utils'
 import { STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
@@ -53,7 +53,7 @@ const components = [Icon, InputError]
 export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
-  readonly Icons = Icons
+  readonly ICONS = ICONS
 
   control = input.required<FormControl<unknown>>()
   id = input.required<string, string>({
@@ -65,6 +65,7 @@ export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
   label = input<string>('')
   placeholder = input<string>('')
   mask = input<string>('')
+  // eslint-disable-next-line no-unused-vars
   transform = input<(value: unknown) => string>((value: unknown) => String(value))
 
   selectElement = viewChild<ElementRef<HTMLElement>>('selectElement')
@@ -79,6 +80,7 @@ export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
   })
   isMenuOpen = signal(false)
 
+  // eslint-disable-next-line no-unused-vars
   onChange = (value: unknown) => {}
   onTouched = () => {}
 
@@ -155,6 +157,7 @@ export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   registerOnChange(onChange: (value: unknown) => void): void {
     // console.log('registerOnChange')
     this.onChange = onChange

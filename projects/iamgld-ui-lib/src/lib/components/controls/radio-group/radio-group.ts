@@ -16,7 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
-import { RadioDirection } from '../../../models'
+import { RADIO_DIRECTIONS, RadioDirection } from '../../../models'
 import { InputError } from '../input-error/input-error'
 // This Module Imports
 import { RadioButton } from '../radio-button/radio-button'
@@ -49,7 +49,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
     transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
   })
   label = input<string>('')
-  direction = input<keyof typeof RadioDirection>(RadioDirection.horizontal)
+  direction = input<RadioDirection>(RADIO_DIRECTIONS.horizontal)
 
   radioButtonChildren = contentChildren<RadioButton>(RadioButton)
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
@@ -57,6 +57,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
     required: false,
   })
 
+  // eslint-disable-next-line no-unused-vars
   onChange = (value: unknown) => {}
   onTouched = () => {}
 
@@ -119,6 +120,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   registerOnChange(onChange: (value: unknown) => void): void {
     // console.log('registerOnChange')
     this.onChange = onChange

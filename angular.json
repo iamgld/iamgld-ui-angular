@@ -17,16 +17,30 @@
         },
         "@schematics/angular:component": {
           "style": "scss",
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "type": "component"
         },
-        "@schematics/angular:service": {},
+        "@schematics/angular:service": {
+          "type": "service"
+        },
         "@schematics/angular:class": {
           "type": "class"
         },
-        "@schematics/angular:guard": {},
-        "@schematics/angular:pipe": {},
-        "@schematics/angular:directive": {},
-        "@schematics/angular:resolver": {},
+        "@schematics/angular:guard": {
+          "type": "guard"
+        },
+        "@schematics/angular:pipe": {
+          "type": "pipe"
+        },
+        "@schematics/angular:directive": {
+          "type": "directive"
+        },
+        "@schematics/angular:resolver": {
+          "type": "resolver"
+        },
+        "@schematics/angular:interceptor": {
+          "type": "interceptor"
+        },
         "@schematics/angular:interface": {
           "type": "model"
         },
@@ -160,6 +174,40 @@
     },
     "iamgld-ui-lib": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "type": "component"
+        },
+        "@schematics/angular:service": {
+          "type": "service"
+        },
+        "@schematics/angular:class": {
+          "type": "class"
+        },
+        "@schematics/angular:guard": {
+          "type": "guard"
+        },
+        "@schematics/angular:pipe": {
+          "type": "pipe"
+        },
+        "@schematics/angular:directive": {
+          "type": "directive"
+        },
+        "@schematics/angular:resolver": {
+          "type": "resolver"
+        },
+        "@schematics/angular:interceptor": {
+          "type": "interceptor"
+        },
+        "@schematics/angular:interface": {
+          "type": "model"
+        },
+        "@schematics/angular:enum": {
+          "type": "model"
+        }
+      },
       "root": "projects/iamgld-ui-lib",
       "sourceRoot": "projects/iamgld-ui-lib/src",
       "prefix": "lib",
