@@ -22,29 +22,31 @@ import {
 } from '@angular/forms'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
-import { InputType } from '../../../models'
-import { updateValueWithMask } from '../../../utils'
-import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
+import {
+  formatDDMMYYYYToISODate,
+  formatISODateToDDMMYYYY,
+  updateValueWithMask,
+} from '../../../utils'
 // This Module Imports
-import { InputError } from '../input-error/input-error'
+import { InputError } from '../input-error/input-error.component'
 
 const components = [InputError]
 
 @Component({
-  selector: 'gld-input',
+  selector: 'gld-input-date',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './input.html',
-  styleUrl: './input.scss',
+  templateUrl: './input-date.html',
+  styleUrl: './input-date.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Input),
+      useExisting: forwardRef(() => InputDate),
       multi: true,
     },
   ],
 })
-export class Input implements ControlValueAccessor, OnInit {
+export class InputDate implements ControlValueAccessor, OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -56,8 +58,13 @@ export class Input implements ControlValueAccessor, OnInit {
     transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
   })
   label = input<string>('')
+  min = input<string | null, string>('', {
+    transform: (value: string) => formatISODateToDDMMYYYY({ date: value }),
+  })
+  max = input<string | null, string>('', {
+    transform: (value: string) => formatISODateToDDMMYYYY({ date: value }),
+  })
   placeholder = input<string>('')
-  type = input<InputType>('text')
   mask = input<string>('')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
 
@@ -77,44 +84,26 @@ export class Input implements ControlValueAccessor, OnInit {
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((value) => {
-        let _value = value
-
         /**
-         * Removes all non-digit characters from the input value string.
-         * This sanitizes the value input by keeping only numbers (0-9)
+         * Removes all non-digit and non-slash characters from the input value string.
+         * This sanitizes the date input by keeping only numbers (0-9) and forward slashes (/)
+         * which are typically used in date formats like MM/DD/YYYY or DD/MM/YYYY.
          *
          * @example
          * // Input: "12/34/abcd2023!@_"
-         * // Output: "12342023"
+         * // Output: "12/34/2023"
          */
+        const _value = String(value).replaceAll(/[^\d/]/g, '')
 
-        if (String(value) && this.hasValidators().naturalNumber) {
-          _value = String(value).replaceAll(NATURAL_NUMBER_REGEX_TO_CLEAN, '')
-          this.innerControl().markAsUntouched()
+        if (String(value) && Boolean(this.mask())) {
+          const masked: string = updateValueWithMask({ value: _value, mask: this.mask() })
+          this.innerControl().setValue(masked, { emitEvent: false })
         }
 
-        /**
-         * Removes all non-letter and non-space characters from the input value string.
-         * This sanitizes the value input by keeping only letters (a-z, A-Z, with accents like á, é, í, ó, ú, ñ) and spaces.
-         * Numbers, special characters, and symbols are removed.
-         *
-         * @example
-         * // Input: "Juan123@García#456 Pérez$"
-         * // Output: "JuanGarcía Pérez"
-         */
-        if (String(value) && this.hasValidators().string) {
-          _value = String(value).replaceAll(STRING_REGEX_TO_CLEAN, '')
-          this.innerControl().markAsUntouched()
-        }
-
-        // Apply mask depends on the mask input
-        if (value && Boolean(this.mask())) {
-          const mask = updateValueWithMask({ value: String(_value), mask: this.mask() })
-          this.innerControl().setValue(mask, { emitEvent: false })
-        }
-
-        // Emit value
-        this.onChange(_value)
+        const valueTransformed: string | null = formatDDMMYYYYToISODate({
+          date: _value,
+        })
+        this.onChange(valueTransformed ?? 'Invalid Date')
       })
   }
 
@@ -135,7 +124,7 @@ export class Input implements ControlValueAccessor, OnInit {
 
   writeValue(value: unknown): void {
     // console.log('writeValue')
-    if (value !== this.innerControl().value) this.innerControl().setValue(value)
+    if (value !== this.innerControl().value) this.innerControl().setValue(String(value))
   }
 
   // eslint-disable-next-line no-unused-vars

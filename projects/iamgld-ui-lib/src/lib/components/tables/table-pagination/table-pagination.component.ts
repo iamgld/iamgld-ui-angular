@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core'
 // This Module Imports
-import { Icons, TablePaginationConfig } from '../../../models'
+import { ICONS, TablePaginationConfig } from '../../../models'
 
 @Component({
   selector: 'gld-table-pagination',
@@ -19,7 +19,7 @@ import { Icons, TablePaginationConfig } from '../../../models'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablePagination {
-  readonly Icons = Icons
+  readonly Icons = ICONS
 
   pagination = input.required<TablePaginationConfig>()
   page = output<number>()

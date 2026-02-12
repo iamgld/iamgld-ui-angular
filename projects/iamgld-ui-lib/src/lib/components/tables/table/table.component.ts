@@ -19,9 +19,9 @@ import {
   TableColumnToTableColumns,
 } from '../../../models'
 // This Module Imports
-import { DropdownButton } from '../../buttons/dropdown-button/dropdown-button'
-import { DropdownMenu } from '../../buttons/dropdown-menu/dropdown-menu'
-import { CircleLoader } from '../../loaders/circle-loader/circle-loader'
+import { DropdownButton } from '../../buttons/dropdown-button/dropdown-button.component'
+import { DropdownMenu } from '../../buttons/dropdown-menu/dropdown-menu.component'
+import { CircleLoader } from '../../loaders/circle-loader/circle-loader.component'
 
 const components = [DropdownButton, DropdownMenu, CircleLoader]
 

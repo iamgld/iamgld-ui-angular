@@ -30,9 +30,9 @@ import { ICONS, InputValue } from '../../../models'
 import { updateValueWithMask } from '../../../utils'
 import { STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
-import { Icon } from '../../icon/icon'
-import { InputError } from '../input-error/input-error'
-import { SelectOption } from '../select-option/select-option'
+import { Icon } from '../../icon/icon.component'
+import { InputError } from '../input-error/input-error.component'
+import { SelectOption } from '../select-option/select-option.component'
 
 const components = [Icon, InputError]
 

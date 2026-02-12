@@ -9,7 +9,7 @@ import {
   output,
 } from '@angular/core'
 // This Module Imports
-import { ToggleButton } from '../toggle-button/toggle-button'
+import { ToggleButton } from '../toggle-button/toggle-button.component'
 
 @Component({
   selector: 'gld-toggle-group',

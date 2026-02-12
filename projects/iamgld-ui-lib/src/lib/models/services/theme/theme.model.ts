@@ -1,4 +1,4 @@
-import { ICONS, Icons } from '../../components/icon/icon'
+import { ICONS, Icons } from '../../components/icon/icon.model'
 
 export const UI_THEMES = {
   dark: 'theme--dark',

@@ -23,27 +23,28 @@ import {
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
 import { InputType } from '../../../models'
+import { updateValueWithMask } from '../../../utils'
 import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
-import { InputError } from '../input-error/input-error'
+import { InputError } from '../input-error/input-error.component'
 
 const components = [InputError]
 
 @Component({
-  selector: 'gld-textarea',
+  selector: 'gld-input',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './textarea.html',
-  styleUrl: './textarea.scss',
+  templateUrl: './input.html',
+  styleUrl: './input.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Textarea),
+      useExisting: forwardRef(() => Input),
       multi: true,
     },
   ],
 })
-export class Textarea implements ControlValueAccessor, OnInit {
+export class Input implements ControlValueAccessor, OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -57,11 +58,8 @@ export class Textarea implements ControlValueAccessor, OnInit {
   label = input<string>('')
   placeholder = input<string>('')
   type = input<InputType>('text')
+  mask = input<string>('')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
-
-  // eslint-disable-next-line no-unused-vars
-  onChange = (value: unknown) => {}
-  onTouched = () => {}
 
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
   hasValidators = signal({
@@ -70,6 +68,10 @@ export class Textarea implements ControlValueAccessor, OnInit {
     string: false,
     maxLength: null as number | null,
   })
+
+  // eslint-disable-next-line no-unused-vars
+  onChange = (value: unknown) => {}
+  onTouched = () => {}
 
   constructor() {
     this.innerControl()
@@ -103,6 +105,12 @@ export class Textarea implements ControlValueAccessor, OnInit {
         if (String(value) && this.hasValidators().string) {
           _value = String(value).replaceAll(STRING_REGEX_TO_CLEAN, '')
           this.innerControl().markAsUntouched()
+        }
+
+        // Apply mask depends on the mask input
+        if (value && Boolean(this.mask())) {
+          const mask = updateValueWithMask({ value: String(_value), mask: this.mask() })
+          this.innerControl().setValue(mask, { emitEvent: false })
         }
 
         // Emit value
@@ -153,6 +161,9 @@ export class Textarea implements ControlValueAccessor, OnInit {
   #updateHasValidators(): void {
     const control = this.control()
     const validatorFn = control.validator
+    const maskSpacers = this.mask()
+      .split('')
+      .filter((char) => char !== '0').length
 
     // It isn't validators
     if (validatorFn === null) {
@@ -175,7 +186,7 @@ export class Textarea implements ControlValueAccessor, OnInit {
       required: Boolean(requiredErrors?.['required']),
       naturalNumber: Boolean(typeErrors?.['isNaturalNumber']),
       string: Boolean(typeErrors?.['isString']),
-      maxLength: maxLength ? maxLength : null,
+      maxLength: maxLength ? maxLength + maskSpacers : null,
     })
     // console.log('hasValidators', this.hasValidators())
   }

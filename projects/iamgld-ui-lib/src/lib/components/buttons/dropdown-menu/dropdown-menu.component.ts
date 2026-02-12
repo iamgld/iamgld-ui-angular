@@ -27,9 +27,9 @@ import {
   IconsSize,
 } from '../../../models'
 // This Component Imports
-import { Button } from '../button/button'
-import { DropdownButton } from '../dropdown-button/dropdown-button'
-import { IconButton } from '../icon-button/icon-button'
+import { Button } from '../button/button.component'
+import { DropdownButton } from '../dropdown-button/dropdown-button.component'
+import { IconButton } from '../icon-button/icon-button.component'
 
 const components = [Button, IconButton]
 const directives = [DropdownMenuTemplate]

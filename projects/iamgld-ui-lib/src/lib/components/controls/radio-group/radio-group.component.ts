@@ -17,9 +17,9 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
 import { RADIO_DIRECTIONS, RadioDirection } from '../../../models'
-import { InputError } from '../input-error/input-error'
+import { InputError } from '../input-error/input-error.component'
 // This Module Imports
-import { RadioButton } from '../radio-button/radio-button'
+import { RadioButton } from '../radio-button/radio-button.component'
 
 const components = [InputError]
 

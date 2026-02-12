@@ -12,7 +12,7 @@ import {
 } from '@angular/core'
 import { DROPDOWN_DIRECTIONS, DropdownDirection, Icons, ICONS_SIZES, IconsSize, ICONS_SPACES, IconsSpace } from '../../../models'
 // This Module Imports
-import { Icon } from '../../icon/icon'
+import { Icon } from '../../icon/icon.component'
 
 const components = [Icon]
 

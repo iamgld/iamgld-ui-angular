@@ -9,7 +9,7 @@ import {
 } from '@angular/core'
 import { BUTTON_COLORS, ButtonColor, BUTTON_SIZES, ButtonSize, Icons, ICONS_SIZES, IconsSize } from '../../../models'
 // This Module Imports
-import { Icon } from '../../icon/icon'
+import { Icon } from '../../icon/icon.component'
 
 @Component({
   selector: 'gld-button',

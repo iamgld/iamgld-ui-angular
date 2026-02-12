@@ -1,7 +1,7 @@
 // Angular Imports
 import { TemplateRef } from '@angular/core'
 // This Module Imports
-import { Icons } from '../icon/icon'
+import { Icons } from '../icon/icon.model'
 
 // Table
 export interface TableColumn {

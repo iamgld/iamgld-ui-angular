@@ -22,31 +22,28 @@ import {
 } from '@angular/forms'
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
-import {
-  formatDDMMYYYYToISODate,
-  formatISODateToDDMMYYYY,
-  updateValueWithMask,
-} from '../../../utils'
+import { InputType } from '../../../models'
+import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
-import { InputError } from '../input-error/input-error'
+import { InputError } from '../input-error/input-error.component'
 
 const components = [InputError]
 
 @Component({
-  selector: 'gld-input-date',
+  selector: 'gld-textarea',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './input-date.html',
-  styleUrl: './input-date.scss',
+  templateUrl: './textarea.html',
+  styleUrl: './textarea.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputDate),
+      useExisting: forwardRef(() => Textarea),
       multi: true,
     },
   ],
 })
-export class InputDate implements ControlValueAccessor, OnInit {
+export class Textarea implements ControlValueAccessor, OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -58,15 +55,13 @@ export class InputDate implements ControlValueAccessor, OnInit {
     transform: (value: string) => `input-name-${value.trim().split(' ').join('-')}`,
   })
   label = input<string>('')
-  min = input<string | null, string>('', {
-    transform: (value: string) => formatISODateToDDMMYYYY({ date: value }),
-  })
-  max = input<string | null, string>('', {
-    transform: (value: string) => formatISODateToDDMMYYYY({ date: value }),
-  })
   placeholder = input<string>('')
-  mask = input<string>('')
+  type = input<InputType>('text')
   suffix = input<boolean, boolean | string>(false, { transform: booleanAttribute })
+
+  // eslint-disable-next-line no-unused-vars
+  onChange = (value: unknown) => {}
+  onTouched = () => {}
 
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
   hasValidators = signal({
@@ -76,34 +71,42 @@ export class InputDate implements ControlValueAccessor, OnInit {
     maxLength: null as number | null,
   })
 
-  // eslint-disable-next-line no-unused-vars
-  onChange = (value: unknown) => {}
-  onTouched = () => {}
-
   constructor() {
     this.innerControl()
       .valueChanges.pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe((value) => {
+        let _value = value
+
         /**
-         * Removes all non-digit and non-slash characters from the input value string.
-         * This sanitizes the date input by keeping only numbers (0-9) and forward slashes (/)
-         * which are typically used in date formats like MM/DD/YYYY or DD/MM/YYYY.
+         * Removes all non-digit characters from the input value string.
+         * This sanitizes the value input by keeping only numbers (0-9)
          *
          * @example
          * // Input: "12/34/abcd2023!@_"
-         * // Output: "12/34/2023"
+         * // Output: "12342023"
          */
-        const _value = String(value).replaceAll(/[^\d/]/g, '')
 
-        if (String(value) && Boolean(this.mask())) {
-          const masked: string = updateValueWithMask({ value: _value, mask: this.mask() })
-          this.innerControl().setValue(masked, { emitEvent: false })
+        if (String(value) && this.hasValidators().naturalNumber) {
+          _value = String(value).replaceAll(NATURAL_NUMBER_REGEX_TO_CLEAN, '')
+          this.innerControl().markAsUntouched()
         }
 
-        const valueTransformed: string | null = formatDDMMYYYYToISODate({
-          date: _value,
-        })
-        this.onChange(valueTransformed ?? 'Invalid Date')
+        /**
+         * Removes all non-letter and non-space characters from the input value string.
+         * This sanitizes the value input by keeping only letters (a-z, A-Z, with accents like á, é, í, ó, ú, ñ) and spaces.
+         * Numbers, special characters, and symbols are removed.
+         *
+         * @example
+         * // Input: "Juan123@García#456 Pérez$"
+         * // Output: "JuanGarcía Pérez"
+         */
+        if (String(value) && this.hasValidators().string) {
+          _value = String(value).replaceAll(STRING_REGEX_TO_CLEAN, '')
+          this.innerControl().markAsUntouched()
+        }
+
+        // Emit value
+        this.onChange(_value)
       })
   }
 
@@ -124,7 +127,7 @@ export class InputDate implements ControlValueAccessor, OnInit {
 
   writeValue(value: unknown): void {
     // console.log('writeValue')
-    if (value !== this.innerControl().value) this.innerControl().setValue(String(value))
+    if (value !== this.innerControl().value) this.innerControl().setValue(value)
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -150,9 +153,6 @@ export class InputDate implements ControlValueAccessor, OnInit {
   #updateHasValidators(): void {
     const control = this.control()
     const validatorFn = control.validator
-    const maskSpacers = this.mask()
-      .split('')
-      .filter((char) => char !== '0').length
 
     // It isn't validators
     if (validatorFn === null) {
@@ -175,7 +175,7 @@ export class InputDate implements ControlValueAccessor, OnInit {
       required: Boolean(requiredErrors?.['required']),
       naturalNumber: Boolean(typeErrors?.['isNaturalNumber']),
       string: Boolean(typeErrors?.['isString']),
-      maxLength: maxLength ? maxLength + maskSpacers : null,
+      maxLength: maxLength ? maxLength : null,
     })
     // console.log('hasValidators', this.hasValidators())
   }
