@@ -26,20 +26,8 @@
         "@schematics/angular:class": {
           "type": "class"
         },
-        "@schematics/angular:guard": {
-          "type": "guard"
-        },
-        "@schematics/angular:pipe": {
-          "type": "pipe"
-        },
         "@schematics/angular:directive": {
           "type": "directive"
-        },
-        "@schematics/angular:resolver": {
-          "type": "resolver"
-        },
-        "@schematics/angular:interceptor": {
-          "type": "interceptor"
         },
         "@schematics/angular:interface": {
           "type": "model"
@@ -186,20 +174,8 @@
         "@schematics/angular:class": {
           "type": "class"
         },
-        "@schematics/angular:guard": {
-          "type": "guard"
-        },
-        "@schematics/angular:pipe": {
-          "type": "pipe"
-        },
         "@schematics/angular:directive": {
           "type": "directive"
-        },
-        "@schematics/angular:resolver": {
-          "type": "resolver"
-        },
-        "@schematics/angular:interceptor": {
-          "type": "interceptor"
         },
         "@schematics/angular:interface": {
           "type": "model"
