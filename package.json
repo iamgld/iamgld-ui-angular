@@ -25,6 +25,7 @@
     "build:prod": "ng build -c production --progress",
     "build:iamgld-ui-lib": "ng build --project=iamgld-ui-lib",
     "server:ssr": "node dist/iamgld.dev/server/server.mjs",
+    "npm:publish": "pnpm build:iamgld-ui-lib && cd dist/iamgld-ui-lib && npm publish",
     "prettier:": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --check --config .prettierrc",
 		"prettier:fix": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --write --config .prettierrc",
 		"stylelint": "stylelint  src/**/*.{css,scss}",
@@ -32,7 +33,6 @@
 		"eslint": "ng lint",
 		"eslint:fix": "ng lint --fix",
 		"linter": "npm run prettier:fix && npm run eslint:fix && npm run stylelint:fix",
-    "npm:publish": "pnpm build:iamgld-ui-lib && cd dist/iamgld-ui-lib && npm publish",
     "postinstall": "npx husky"
   },
   "dependencies": {
