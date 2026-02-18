@@ -4,8 +4,8 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@an
 @Component({
   selector: 'gld-circle-loader',
   imports: [],
-  templateUrl: './circle-loader.html',
-  styleUrl: './circle-loader.scss',
+  templateUrl: './circle-loader.component.html',
+  styleUrl: './circle-loader.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CircleLoader {

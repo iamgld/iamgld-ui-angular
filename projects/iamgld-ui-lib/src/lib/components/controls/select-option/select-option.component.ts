@@ -6,8 +6,8 @@ import { InputValue } from '../../../models'
 @Component({
   selector: 'gld-select-option',
   imports: [],
-  templateUrl: './select-option.html',
-  styleUrl: './select-option.scss',
+  templateUrl: './select-option.component.html',
+  styleUrl: './select-option.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectOption {

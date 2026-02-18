@@ -33,8 +33,8 @@ const components = [InputError]
 @Component({
   selector: 'gld-input',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './input.html',
-  styleUrl: './input.scss',
+  templateUrl: './input.component.html',
+  styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

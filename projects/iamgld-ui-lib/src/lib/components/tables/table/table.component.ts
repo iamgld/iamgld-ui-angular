@@ -28,8 +28,8 @@ const components = [DropdownButton, DropdownMenu, CircleLoader]
 @Component({
   selector: 'gld-table',
   imports: [NgTemplateOutlet, ...components],
-  templateUrl: './table.html',
-  styleUrl: './table.scss',
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Table {

@@ -14,8 +14,8 @@ import { ICONS, Icons, ICONS_SIZES, IconsSize, ICONS_SPACES, IconsSpace } from '
   selector: 'gld-icon',
   standalone: true,
   imports: [],
-  templateUrl: './icon.html',
-  styleUrl: './icon.scss',
+  templateUrl: './icon.component.html',
+  styleUrl: './icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Icon {

@@ -19,8 +19,8 @@ const components = [Icon]
 @Component({
   selector: 'gld-dropdown-button',
   imports: [...components],
-  templateUrl: './dropdown-button.html',
-  styleUrl: './dropdown-button.scss',
+  templateUrl: './dropdown-button.component.html',
+  styleUrl: './dropdown-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownButton {

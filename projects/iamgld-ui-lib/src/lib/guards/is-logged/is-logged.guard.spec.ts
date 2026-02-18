@@ -1,0 +1,62 @@
+import { TestBed } from '@angular/core/testing'
+import { Router } from '@angular/router'
+import { CookieService } from 'ngx-cookie-service'
+import { AuthenticationStore } from '../../stores'
+import { isLogged } from './is-logged.guard'
+
+describe('isLogged guard', () => {
+  const routerMock = { navigate: vi.fn() }
+  const cookieServiceMock = { get: vi.fn() }
+  const authenticationStoreMock = {
+    logged: vi.fn(),
+    signin: vi.fn(),
+    signout: vi.fn(),
+  }
+
+  beforeEach(() => {
+    vi.clearAllMocks()
+
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: Router, useValue: routerMock },
+        { provide: CookieService, useValue: cookieServiceMock },
+        { provide: AuthenticationStore, useValue: authenticationStoreMock },
+      ],
+    })
+  })
+
+  it('returns true when tokens are present', () => {
+    cookieServiceMock.get.mockImplementation((key: string) =>
+      key.includes('access') ? 'access-token' : 'refresh-token',
+    )
+    authenticationStoreMock.logged.mockReturnValue(false)
+
+    const result = TestBed.runInInjectionContext(() => isLogged({} as never, {} as never))
+
+    expect(result).toBe(true)
+    expect(authenticationStoreMock.signin).toHaveBeenCalledWith({
+      accessToken: 'access-token',
+      refreshToken: 'refresh-token',
+    })
+  })
+
+  it('returns false and redirects when tokens are missing', () => {
+    cookieServiceMock.get.mockReturnValue('')
+    authenticationStoreMock.logged.mockReturnValue(true)
+
+    const result = TestBed.runInInjectionContext(() => isLogged({} as never, {} as never))
+
+    expect(result).toBe(false)
+    expect(authenticationStoreMock.signout).toHaveBeenCalledTimes(1)
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/signin'])
+  })
+
+  it('returns false in non-browser execution', () => {
+    vi.stubGlobal('window', undefined)
+
+    const result = TestBed.runInInjectionContext(() => isLogged({} as never, {} as never))
+
+    expect(result).toBe(false)
+    vi.unstubAllGlobals()
+  })
+})

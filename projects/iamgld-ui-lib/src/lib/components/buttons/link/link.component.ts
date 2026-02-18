@@ -9,8 +9,8 @@ import { LinkType, LINK_TYPES, LinkAlign, LINK_ALIGNS } from '../../../models'
 @Component({
 	selector: 'gld-link',
 	imports: [NgTemplateOutlet, RouterLink],
-	templateUrl: './link.html',
-	styleUrl: './link.scss',
+	templateUrl: './link.component.html',
+	styleUrl: './link.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Link {

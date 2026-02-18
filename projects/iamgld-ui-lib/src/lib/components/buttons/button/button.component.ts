@@ -14,8 +14,8 @@ import { Icon } from '../../icon/icon.component'
 @Component({
   selector: 'gld-button',
   imports: [Icon],
-  templateUrl: './button.html',
-  styleUrl: './button.scss',
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Button {

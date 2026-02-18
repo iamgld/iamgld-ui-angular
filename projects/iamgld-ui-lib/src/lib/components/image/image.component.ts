@@ -6,8 +6,8 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@an
 @Component({
   selector: 'gld-image',
   imports: [NgOptimizedImage],
-  templateUrl: './image.html',
-  styleUrl: './image.scss',
+  templateUrl: './image.component.html',
+  styleUrl: './image.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Image {

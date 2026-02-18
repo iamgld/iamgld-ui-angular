@@ -14,8 +14,8 @@ import { ToggleButton } from '../toggle-button/toggle-button.component'
 @Component({
   selector: 'gld-toggle-group',
   imports: [],
-  templateUrl: './toggle-group.html',
-  styleUrl: './toggle-group.scss',
+  templateUrl: './toggle-group.component.html',
+  styleUrl: './toggle-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleGroup implements AfterContentInit {

@@ -6,8 +6,8 @@ import  { TILE_COLORS, type TileColor, TILE_PADDING_SIZES, type TilePaddingSize 
 @Component({
   selector: 'gld-tile',
   imports: [],
-  templateUrl: './tile.html',
-  styleUrl: './tile.scss',
+  templateUrl: './tile.component.html',
+  styleUrl: './tile.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Tile {

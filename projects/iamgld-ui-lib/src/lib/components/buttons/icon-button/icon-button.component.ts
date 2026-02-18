@@ -13,8 +13,8 @@ import { Icon } from '../../icon/icon.component'
 
 @Component({
   selector: 'gld-icon-button',
-  templateUrl: './icon-button.html',
-  styleUrl: './icon-button.scss',
+  templateUrl: './icon-button.component.html',
+  styleUrl: './icon-button.component.scss',
   imports: [Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

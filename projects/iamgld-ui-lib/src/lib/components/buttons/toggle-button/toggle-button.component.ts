@@ -4,8 +4,8 @@ import { ChangeDetectionStrategy, Component, computed, input, output, signal } f
 @Component({
   selector: 'gld-toggle-button',
   imports: [],
-  templateUrl: './toggle-button.html',
-  styleUrl: './toggle-button.scss',
+  templateUrl: './toggle-button.component.html',
+  styleUrl: './toggle-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleButton {

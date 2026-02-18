@@ -39,8 +39,8 @@ const components = [Icon, InputError]
 @Component({
   selector: 'gld-select',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './select.html',
-  styleUrl: './select.scss',
+  templateUrl: './select.component.html',
+  styleUrl: './select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

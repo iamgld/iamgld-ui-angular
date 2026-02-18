@@ -32,8 +32,8 @@ const components = [InputError]
 @Component({
   selector: 'gld-textarea',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './textarea.html',
-  styleUrl: './textarea.scss',
+  templateUrl: './textarea.component.html',
+  styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

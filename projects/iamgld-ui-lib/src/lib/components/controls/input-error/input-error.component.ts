@@ -16,8 +16,8 @@ import { InputErrorMessage } from '../../../directives'
 @Component({
   selector: 'gld-input-error',
   imports: [NgTemplateOutlet],
-  templateUrl: './input-error.html',
-  styleUrl: './input-error.scss',
+  templateUrl: './input-error.component.html',
+  styleUrl: './input-error.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputError {

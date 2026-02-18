@@ -37,8 +37,8 @@ const directives = [DropdownMenuTemplate]
 @Component({
   selector: 'gld-dropdown-menu',
   imports: [NgTemplateOutlet, ...components, directives],
-  templateUrl: './dropdown-menu.html',
-  styleUrl: './dropdown-menu.scss',
+  templateUrl: './dropdown-menu.component.html',
+  styleUrl: './dropdown-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownMenu implements AfterContentInit {

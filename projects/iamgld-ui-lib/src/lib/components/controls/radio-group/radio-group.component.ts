@@ -26,8 +26,8 @@ const components = [InputError]
 @Component({
   selector: 'gld-radio-group',
   imports: [...components],
-  templateUrl: './radio-group.html',
-  styleUrl: './radio-group.scss',
+  templateUrl: './radio-group.component.html',
+  styleUrl: './radio-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

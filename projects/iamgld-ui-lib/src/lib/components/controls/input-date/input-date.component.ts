@@ -35,8 +35,8 @@ const components = [InputError]
 @Component({
   selector: 'gld-input-date',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './input-date.html',
-  styleUrl: './input-date.scss',
+  templateUrl: './input-date.component.html',
+  styleUrl: './input-date.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

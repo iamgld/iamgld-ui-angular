@@ -14,8 +14,8 @@ import { ICONS, TablePaginationConfig } from '../../../models'
 @Component({
   selector: 'gld-table-pagination',
   imports: [],
-  templateUrl: './table-pagination.html',
-  styleUrl: './table-pagination.scss',
+  templateUrl: './table-pagination.component.html',
+  styleUrl: './table-pagination.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablePagination {
