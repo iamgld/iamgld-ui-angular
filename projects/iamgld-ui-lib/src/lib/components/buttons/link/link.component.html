@@ -22,6 +22,7 @@
         [href]="redirect()"
         (click)="emitClick()"
         (keyup.enter)="keyup()"
+        rel="noopener noreferrer"
         target="_blank">
         <ng-container [ngTemplateOutlet]="contentButtonTemplate" />
       </a>

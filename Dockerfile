@@ -26,7 +26,7 @@ FROM base AS runner
 WORKDIR /app
 
 # Copy only the compiled dist and minimal package files
-COPY --from=builder /app/dist/iamgld-dev /app/dist/iamgld-dev
+COPY --from=builder /app/dist/iamgld-ui /app/dist/iamgld-ui
 COPY --from=builder /app/package.json /app/package.json
 COPY --from=builder /app/pnpm-lock.yaml /app/pnpm-lock.yaml
 

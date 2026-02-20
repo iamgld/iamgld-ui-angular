@@ -12,115 +12,426 @@ import {
 } from './index'
 
 describe('validators', () => {
-  it('isEmail validates valid and invalid emails', () => {
-    const validator = isEmail()
-    expect(validator(new FormControl('user@mail.com'))).toBeNull()
-    expect(validator(new FormControl('invalid-email'))).toEqual({
-      email: 'This field must be a valid email!',
-    })
-    expect(validator(new FormControl(''))).toBeNull()
-  })
+  describe('isEmail', () => {
+    it('should validate valid emails (Given/When/Then)', () => {
+      // Given
+      const validator = isEmail()
+      const control = new FormControl('user@mail.com')
 
-  it('isString validates letters, spaces and accents', () => {
-    const validator = isString()
-    expect(validator(new FormControl('Árbol ñandú'))).toBeNull()
-    expect(validator(new FormControl('abc123'))).toEqual({
-      isString: 'Debes ingresar solo caracteres.',
-    })
-    expect(validator(new FormControl(null))).toBeNull()
-  })
+      // When
+      const result = validator(control)
 
-  it('isNaturalNumber validates integers >= 0', () => {
-    const validator = isNaturalNumber()
-    expect(validator(new FormControl('0'))).toBeNull()
-    expect(validator(new FormControl('12345'))).toBeNull()
-    expect(validator(new FormControl('12.3'))).toEqual({
-      isNaturalNumber: 'Debes ingresar solo números.',
-    })
-  })
-
-  it('isDate validates ISO format and logical date', () => {
-    const validator = isDate()
-    expect(validator(new FormControl('2024-12-25'))).toBeNull()
-    expect(validator(new FormControl('25-12-2024'))).toEqual({
-      isDate: 'This field must be a valid date in the format YYYY-MM-DD!',
-    })
-    expect(validator(new FormControl('2024-02-31'))).toEqual({
-      isDate: 'This field must be a valid date!',
-    })
-  })
-
-  it('isDocument validates by document type', () => {
-    expect(isDocument({ documentType: 'DNI' })(new FormControl('12345678'))).toBeNull()
-    expect(isDocument({ documentType: 'DNI' })(new FormControl('1234'))).toEqual({
-      isDocument: 'Este campo debe contener entre 7 y 8 dígitos!',
+      // Then
+      expect(result).toBeNull()
     })
 
-    expect(isDocument({ documentType: 'CT' })(new FormControl('12345678901'))).toBeNull()
-    expect(isDocument({ documentType: 'CL' })(new FormControl('ABC'))).toEqual({
-      isDocument: 'Este campo debe contener solo números!',
+    it('should return error for invalid emails (Given/When/Then)', () => {
+      // Given
+      const validator = isEmail()
+      const control = new FormControl('invalid-email')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({ email: 'This field must be a valid email!' })
+    })
+
+    it('should return null for empty value (Given/When/Then)', () => {
+      // Given
+      const validator = isEmail()
+      const control = new FormControl('')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toBeNull()
+    })
+
+    it('should return null for null/undefined value (Given/When/Then)', () => {
+      // Given
+      const validator = isEmail()
+
+      // When & Then
+      expect(validator(new FormControl(null))).toBeNull()
+      expect(validator(new FormControl(undefined))).toBeNull()
     })
   })
 
-  it('isFormSelectItem validates expected object shape', () => {
-    const validator = isFormSelectItem()
-    expect(validator(new FormControl({ value: '1', label: 'One' }))).toBeNull()
-    expect(validator(new FormControl('1'))).toEqual({
-      isFormSelectItem: 'Este campo debe ser una opción valida!',
+  describe('isString', () => {
+    it('should validate letters, spaces and accents (Given/When/Then)', () => {
+      // Given
+      const validator = isString()
+      const control = new FormControl('Árbol ñandú')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toBeNull()
     })
-    expect(validator(new FormControl([]))).toEqual({
-      isFormSelectItem: 'Este campo debe ser una opción valida!',
+
+    it('should return error for values with numbers (Given/When/Then)', () => {
+      // Given
+      const validator = isString()
+      const control = new FormControl('abc123')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({ isString: 'Debes ingresar solo caracteres.' })
+    })
+
+    it('should return null for null value (Given/When/Then)', () => {
+      // Given
+      const validator = isString()
+      const control = new FormControl(null)
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toBeNull()
     })
   })
 
-  it('mustMatch validates matching controls', () => {
-    const form = new FormGroup({
-      password: new FormControl('secret'),
-      repeat: new FormControl('different'),
+  describe('isNaturalNumber', () => {
+    it('should validate integers >= 0 (Given/When/Then)', () => {
+      // Given
+      const validator = isNaturalNumber()
+
+      // When & Then
+      expect(validator(new FormControl('0'))).toBeNull()
+      expect(validator(new FormControl('12345'))).toBeNull()
     })
 
-    const validator = mustMatch({
-      controlName: 'password',
-      mustMatchControlName: 'repeat',
-      errorMessage: 'must match',
+    it('should return error for decimal numbers (Given/When/Then)', () => {
+      // Given
+      const validator = isNaturalNumber()
+      const control = new FormControl('12.3')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({ isNaturalNumber: 'Debes ingresar solo números.' })
     })
 
-    expect(validator(form)).toEqual({ mustMatch: 'must match' })
-    form.patchValue({ repeat: 'secret' })
-    expect(validator(form)).toBeNull()
+    it('should return error for negative numbers (Given/When/Then)', () => {
+      // Given
+      const validator = isNaturalNumber()
+      const control = new FormControl('-5')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({ isNaturalNumber: 'Debes ingresar solo números.' })
+    })
   })
 
-  it('mustUnmatch validates different controls', () => {
-    const form = new FormGroup({
-      currentPassword: new FormControl('same'),
-      newPassword: new FormControl('same'),
+  describe('isDate', () => {
+    it('should validate ISO format and logical date (Given/When/Then)', () => {
+      // Given
+      const validator = isDate()
+      const control = new FormControl('2024-12-25')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toBeNull()
     })
 
-    const validator = mustUnmatch({
-      controlName: 'currentPassword',
-      mustUnmatchControlName: 'newPassword',
-      errorMessage: 'must unmatch',
+    it('should return error for wrong format (Given/When/Then)', () => {
+      // Given
+      const validator = isDate()
+      const control = new FormControl('25-12-2024')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({
+        isDate: 'This field must be a valid date in the format YYYY-MM-DD!',
+      })
     })
 
-    expect(validator(form)).toEqual({ mustUnmatch: 'must unmatch' })
-    form.patchValue({ newPassword: 'different' })
-    expect(validator(form)).toBeNull()
+    it('should return error for illogical dates (Given/When/Then)', () => {
+      // Given
+      const validator = isDate()
+      const control = new FormControl('2024-02-31')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({ isDate: 'This field must be a valid date!' })
+    })
   })
 
-  it('minimumAge validates boundary and under-limit values', () => {
-    const now = new Date()
-    const year = now.getFullYear() - 18
-    const month = String(now.getMonth() + 1).padStart(2, '0')
-    const day = String(now.getDate()).padStart(2, '0')
+  describe('isDocument', () => {
+    it('should validate DNI (Given/When/Then)', () => {
+      // Given
+      const validator = isDocument({ documentType: 'DNI' })
 
-    const boundaryBirthDate = `${year}-${month}-${day}`
-    const underAgeBirthDate = `${year + 1}-${month}-${day}`
+      // When & Then
+      expect(validator(new FormControl('12345678'))).toBeNull()
+      expect(validator(new FormControl('1234'))).toEqual({
+        isDocument: 'Este campo debe contener entre 7 y 8 dígitos!',
+      })
+    })
 
-    const validator = minimumAge({ minAge: 18 })
-    expect(validator(new FormControl(boundaryBirthDate))).toBeNull()
-    expect(validator(new FormControl(underAgeBirthDate))).toEqual(
-      expect.objectContaining({ minimumAge: expect.any(Object) }),
-    )
-    expect(validator(new FormControl(''))).toBeNull()
+    it('should validate CT (Given/When/Then)', () => {
+      // Given
+      const validator = isDocument({ documentType: 'CT' })
+
+      // When & Then
+      expect(validator(new FormControl('12345678901'))).toBeNull()
+      expect(validator(new FormControl('1234567890'))).toEqual({
+        isDocument: 'Este campo debe contener 11 dígitos!',
+      })
+    })
+
+    it('should validate CL (Given/When/Then)', () => {
+      // Given
+      const validator = isDocument({ documentType: 'CL' })
+
+      // When & Then
+      expect(validator(new FormControl('12345678901'))).toBeNull()
+      expect(validator(new FormControl('ABC'))).toEqual({
+        isDocument: 'Este campo debe contener solo números!',
+      })
+    })
+  })
+
+  describe('isFormSelectItem', () => {
+    it('should validate expected object shape (Given/When/Then)', () => {
+      // Given
+      const validator = isFormSelectItem()
+      const control = new FormControl({ value: '1', label: 'One' })
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toBeNull()
+    })
+
+    it('should return error for simple string (Given/When/Then)', () => {
+      // Given
+      const validator = isFormSelectItem()
+      const control = new FormControl('1')
+
+      // When
+      const result = validator(control)
+
+      // Then
+      expect(result).toEqual({ isFormSelectItem: 'Este campo debe ser una opción valida!' })
+    })
+
+    it('should return error for empty array or invalid object (Given/When/Then)', () => {
+      // Given
+      const validator = isFormSelectItem()
+
+      // When & Then
+      expect(validator(new FormControl([]))).toEqual({
+        isFormSelectItem: 'Este campo debe ser una opción valida!',
+      })
+      expect(validator(new FormControl({ foo: 'bar' }))).toEqual({
+        isFormSelectItem: 'Este campo debe ser una opción valida!',
+      })
+    })
+
+    it('should return null for empty value (Given/When/Then)', () => {
+      // Given
+      const validator = isFormSelectItem()
+
+      // When & Then
+      expect(validator(new FormControl(null))).toBeNull()
+      expect(validator(new FormControl(''))).toBeNull()
+    })
+  })
+
+  describe('mustMatch', () => {
+    it('should validate matching controls (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({
+        password: new FormControl('secret'),
+        repeat: new FormControl('different'),
+      })
+
+      const validator = mustMatch({
+        controlName: 'password',
+        mustMatchControlName: 'repeat',
+        errorMessage: 'must match',
+      })
+
+      // When
+      const resultBefore = validator(form)
+      form.patchValue({ repeat: 'secret' })
+      const resultAfter = validator(form)
+
+      // Then
+      expect(resultBefore).toEqual({ mustMatch: 'must match' })
+      expect(resultAfter).toBeNull()
+    })
+
+    it('should return null if controls are missing (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({})
+      const validator = mustMatch({
+        controlName: 'password',
+        mustMatchControlName: 'repeat',
+        errorMessage: 'must match',
+      })
+
+      // When
+      const result = validator(form)
+
+      // Then
+      expect(result).toBeNull()
+    })
+
+    it('should return null if first control value is empty (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({
+        password: new FormControl(''),
+        repeat: new FormControl('secret'),
+      })
+      const validator = mustMatch({
+        controlName: 'password',
+        mustMatchControlName: 'repeat',
+        errorMessage: 'must match',
+      })
+
+      // When
+      const result = validator(form)
+
+      // Then
+      expect(result).toBeNull()
+    })
+
+    it('should use default true error if errorMessage is missing (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({
+        password: new FormControl('secret'),
+        repeat: new FormControl('different'),
+      })
+      const validator = mustMatch({
+        controlName: 'password',
+        mustMatchControlName: 'repeat',
+        errorMessage: undefined as any,
+      })
+
+      // When
+      const result = validator(form)
+
+      // Then
+      expect(result).toEqual({ mustMatch: true })
+    })
+  })
+
+  describe('mustUnmatch', () => {
+    it('should validate different controls (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({
+        currentPassword: new FormControl('same'),
+        newPassword: new FormControl('same'),
+      })
+
+      const validator = mustUnmatch({
+        controlName: 'currentPassword',
+        mustUnmatchControlName: 'newPassword',
+        errorMessage: 'must be different',
+      })
+
+      // When
+      const resultBefore = validator(form)
+      form.patchValue({ newPassword: 'different' })
+      const resultAfter = validator(form)
+
+      // Then
+      expect(resultBefore).toEqual({ mustUnmatch: 'must be different' })
+      expect(resultAfter).toBeNull()
+    })
+
+    it('should return null if controls are missing (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({})
+      const validator = mustUnmatch({
+        controlName: 'currentPassword',
+        mustUnmatchControlName: 'newPassword',
+        errorMessage: 'must be different',
+      })
+
+      // When
+      const result = validator(form)
+
+      // Then
+      expect(result).toBeNull()
+    })
+
+    it('should return null if first control value is empty (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({
+        currentPassword: new FormControl(''),
+        newPassword: new FormControl('secret'),
+      })
+      const validator = mustUnmatch({
+        controlName: 'currentPassword',
+        mustUnmatchControlName: 'newPassword',
+        errorMessage: 'must be different',
+      })
+
+      // When
+      const result = validator(form)
+
+      // Then
+      expect(result).toBeNull()
+    })
+
+    it('should use default true error if errorMessage is missing (Given/When/Then)', () => {
+      // Given
+      const form = new FormGroup({
+        currentPassword: new FormControl('same'),
+        newPassword: new FormControl('same'),
+      })
+      const validator = mustUnmatch({
+        controlName: 'currentPassword',
+        mustUnmatchControlName: 'newPassword',
+        errorMessage: undefined as any,
+      })
+
+      // When
+      const result = validator(form)
+
+      // Then
+      expect(result).toEqual({ mustUnmatch: true })
+    })
+  })
+
+  describe('minimumAge', () => {
+    it('should validate 18+ correctly (Given/When/Then)', () => {
+      // Given
+      const now = new Date()
+      const year = now.getFullYear() - 18
+      const month = String(now.getMonth() + 1).padStart(2, '0')
+      const day = String(now.getDate()).padStart(2, '0')
+
+      const boundaryBirthDate = `${year}-${month}-${day}`
+      const underAgeBirthDate = `${year + 1}-${month}-${day}`
+
+      const validator = minimumAge({ minAge: 18 })
+
+      // When & Then
+      expect(validator(new FormControl(boundaryBirthDate))).toBeNull()
+      expect(validator(new FormControl(underAgeBirthDate))).toEqual(
+        expect.objectContaining({ minimumAge: expect.any(Object) }),
+      )
+      expect(validator(new FormControl(''))).toBeNull()
+    })
   })
 })

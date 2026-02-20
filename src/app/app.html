@@ -253,7 +253,7 @@
 				link: 'https://angular.dev/tools/cli' }, { title: 'Angular Language Service', link:
 				'https://angular.dev/tools/language-service' }, { title: 'Angular DevTools', link:
 				'https://angular.dev/tools/devtools' }, ]; track item.title) {
-				<a class="pill" [href]="item.link" target="_blank" rel="noopener">
+				<a class="pill" [href]="item.link" target="_blank" rel="noopener noreferrer">
 					<span>{{ item.title }}</span>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +274,7 @@
 					href="https://github.com/angular/angular"
 					aria-label="Github"
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 				>
 					<svg
 						width="25"
@@ -289,7 +289,12 @@
 						/>
 					</svg>
 				</a>
-				<a href="https://twitter.com/angular" aria-label="Twitter" target="_blank" rel="noopener">
+				<a
+					href="https://twitter.com/angular"
+					aria-label="Twitter"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<svg
 						width="24"
 						height="24"
@@ -307,7 +312,7 @@
 					href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
 					aria-label="Youtube"
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 				>
 					<svg
 						width="29"

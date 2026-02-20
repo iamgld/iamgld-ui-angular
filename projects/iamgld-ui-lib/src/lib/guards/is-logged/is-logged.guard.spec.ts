@@ -25,14 +25,17 @@ describe('isLogged guard', () => {
     })
   })
 
-  it('returns true when tokens are present', () => {
+  it('should return true when tokens are present (Given/When/Then)', () => {
+    // Given
     cookieServiceMock.get.mockImplementation((key: string) =>
       key.includes('access') ? 'access-token' : 'refresh-token',
     )
     authenticationStoreMock.logged.mockReturnValue(false)
 
+    // When
     const result = TestBed.runInInjectionContext(() => isLogged({} as never, {} as never))
 
+    // Then
     expect(result).toBe(true)
     expect(authenticationStoreMock.signin).toHaveBeenCalledWith({
       accessToken: 'access-token',
@@ -40,22 +43,28 @@ describe('isLogged guard', () => {
     })
   })
 
-  it('returns false and redirects when tokens are missing', () => {
+  it('should return false and redirect when tokens are missing (Given/When/Then)', () => {
+    // Given
     cookieServiceMock.get.mockReturnValue('')
     authenticationStoreMock.logged.mockReturnValue(true)
 
+    // When
     const result = TestBed.runInInjectionContext(() => isLogged({} as never, {} as never))
 
+    // Then
     expect(result).toBe(false)
     expect(authenticationStoreMock.signout).toHaveBeenCalledTimes(1)
     expect(routerMock.navigate).toHaveBeenCalledWith(['/signin'])
   })
 
-  it('returns false in non-browser execution', () => {
+  it('should return false in non-browser execution (Given/When/Then)', () => {
+    // Given
     vi.stubGlobal('window', undefined)
 
+    // When
     const result = TestBed.runInInjectionContext(() => isLogged({} as never, {} as never))
 
+    // Then
     expect(result).toBe(false)
     vi.unstubAllGlobals()
   })
