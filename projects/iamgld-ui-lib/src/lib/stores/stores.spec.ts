@@ -6,7 +6,7 @@ import { AuthenticationStore } from './authentication/authentication-store'
 import { ThemeStore } from './theme/theme-store'
 
 describe('stores', () => {
-  it('AuthenticationStore signin/signout updates state and cookies', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     const cookieServiceMock = {
       set: vi.fn(),
       delete: vi.fn(),
@@ -33,7 +33,7 @@ describe('stores', () => {
     expect(store.logged()).toBe(false)
   })
 
-  it('AuthenticationStore does not write cookies when saveCookie is false', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     const cookieServiceMock = {
       set: vi.fn(),
       delete: vi.fn(),
@@ -50,7 +50,7 @@ describe('stores', () => {
     expect(store.logged()).toBe(true)
   })
 
-  it('ThemeStore changeTheme updates state and delegates to Theme service', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     const themeServiceMock = {
       changeTheme: vi.fn(),
     }

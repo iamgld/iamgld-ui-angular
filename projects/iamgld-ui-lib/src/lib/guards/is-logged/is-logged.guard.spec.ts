@@ -25,7 +25,7 @@ describe('isLogged guard', () => {
     })
   })
 
-  it('should return true when tokens are present (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     // Given
     cookieServiceMock.get.mockImplementation((key: string) =>
       key.includes('access') ? 'access-token' : 'refresh-token',
@@ -43,7 +43,7 @@ describe('isLogged guard', () => {
     })
   })
 
-  it('should return false and redirect when tokens are missing (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     // Given
     cookieServiceMock.get.mockReturnValue('')
     authenticationStoreMock.logged.mockReturnValue(true)
@@ -57,7 +57,7 @@ describe('isLogged guard', () => {
     expect(routerMock.navigate).toHaveBeenCalledWith(['/signin'])
   })
 
-  it('should return false in non-browser execution (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     // Given
     vi.stubGlobal('window', undefined)
 

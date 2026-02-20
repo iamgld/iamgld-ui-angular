@@ -13,7 +13,7 @@ import {
 
 describe('validators', () => {
   describe('isEmail', () => {
-    it('should validate valid emails (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isEmail()
       const control = new FormControl('user@mail.com')
@@ -25,7 +25,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return error for invalid emails (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isEmail()
       const control = new FormControl('invalid-email')
@@ -37,7 +37,7 @@ describe('validators', () => {
       expect(result).toEqual({ email: 'This field must be a valid email!' })
     })
 
-    it('should return null for empty value (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isEmail()
       const control = new FormControl('')
@@ -49,7 +49,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return null for null/undefined value (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isEmail()
 
@@ -60,7 +60,7 @@ describe('validators', () => {
   })
 
   describe('isString', () => {
-    it('should validate letters, spaces and accents (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isString()
       const control = new FormControl('Árbol ñandú')
@@ -72,7 +72,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return error for values with numbers (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isString()
       const control = new FormControl('abc123')
@@ -84,7 +84,7 @@ describe('validators', () => {
       expect(result).toEqual({ isString: 'Debes ingresar solo caracteres.' })
     })
 
-    it('should return null for null value (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isString()
       const control = new FormControl(null)
@@ -98,7 +98,7 @@ describe('validators', () => {
   })
 
   describe('isNaturalNumber', () => {
-    it('should validate integers >= 0 (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isNaturalNumber()
 
@@ -107,7 +107,7 @@ describe('validators', () => {
       expect(validator(new FormControl('12345'))).toBeNull()
     })
 
-    it('should return error for decimal numbers (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isNaturalNumber()
       const control = new FormControl('12.3')
@@ -119,7 +119,7 @@ describe('validators', () => {
       expect(result).toEqual({ isNaturalNumber: 'Debes ingresar solo números.' })
     })
 
-    it('should return error for negative numbers (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isNaturalNumber()
       const control = new FormControl('-5')
@@ -133,7 +133,7 @@ describe('validators', () => {
   })
 
   describe('isDate', () => {
-    it('should validate ISO format and logical date (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isDate()
       const control = new FormControl('2024-12-25')
@@ -145,7 +145,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return error for wrong format (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isDate()
       const control = new FormControl('25-12-2024')
@@ -159,7 +159,7 @@ describe('validators', () => {
       })
     })
 
-    it('should return error for illogical dates (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isDate()
       const control = new FormControl('2024-02-31')
@@ -173,7 +173,7 @@ describe('validators', () => {
   })
 
   describe('isDocument', () => {
-    it('should validate DNI (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isDocument({ documentType: 'DNI' })
 
@@ -184,7 +184,7 @@ describe('validators', () => {
       })
     })
 
-    it('should validate CT (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isDocument({ documentType: 'CT' })
 
@@ -195,7 +195,7 @@ describe('validators', () => {
       })
     })
 
-    it('should validate CL (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isDocument({ documentType: 'CL' })
 
@@ -208,7 +208,7 @@ describe('validators', () => {
   })
 
   describe('isFormSelectItem', () => {
-    it('should validate expected object shape (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isFormSelectItem()
       const control = new FormControl({ value: '1', label: 'One' })
@@ -220,7 +220,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return error for simple string (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isFormSelectItem()
       const control = new FormControl('1')
@@ -232,7 +232,7 @@ describe('validators', () => {
       expect(result).toEqual({ isFormSelectItem: 'Este campo debe ser una opción valida!' })
     })
 
-    it('should return error for empty array or invalid object (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isFormSelectItem()
 
@@ -245,7 +245,7 @@ describe('validators', () => {
       })
     })
 
-    it('should return null for empty value (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const validator = isFormSelectItem()
 
@@ -256,7 +256,7 @@ describe('validators', () => {
   })
 
   describe('mustMatch', () => {
-    it('should validate matching controls (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({
         password: new FormControl('secret'),
@@ -279,7 +279,7 @@ describe('validators', () => {
       expect(resultAfter).toBeNull()
     })
 
-    it('should return null if controls are missing (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({})
       const validator = mustMatch({
@@ -295,7 +295,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return null if first control value is empty (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({
         password: new FormControl(''),
@@ -314,7 +314,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should use default true error if errorMessage is missing (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({
         password: new FormControl('secret'),
@@ -335,7 +335,7 @@ describe('validators', () => {
   })
 
   describe('mustUnmatch', () => {
-    it('should validate different controls (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({
         currentPassword: new FormControl('same'),
@@ -358,7 +358,7 @@ describe('validators', () => {
       expect(resultAfter).toBeNull()
     })
 
-    it('should return null if controls are missing (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({})
       const validator = mustUnmatch({
@@ -374,7 +374,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should return null if first control value is empty (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({
         currentPassword: new FormControl(''),
@@ -393,7 +393,7 @@ describe('validators', () => {
       expect(result).toBeNull()
     })
 
-    it('should use default true error if errorMessage is missing (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const form = new FormGroup({
         currentPassword: new FormControl('same'),
@@ -414,7 +414,7 @@ describe('validators', () => {
   })
 
   describe('minimumAge', () => {
-    it('should validate 18+ correctly (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const now = new Date()
       const year = now.getFullYear() - 18

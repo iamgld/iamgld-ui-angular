@@ -48,7 +48,7 @@ describe('Authentication service', () => {
   })
 
   describe('signin', () => {
-    it('stores tokens when API response is valid', async () => {
+    it('Given a valid signin response, When signin is called, Then tokens are stored', async () => {
       httpMock.post.mockReturnValue(
         of({ accessToken: 'access-token', refreshToken: 'refresh-token' }),
       )
@@ -72,7 +72,7 @@ describe('Authentication service', () => {
       })
     })
 
-    it('throws when API response is malformed', async () => {
+    it('Given a malformed signin response, When signin is called, Then an error is thrown', async () => {
       httpMock.post.mockReturnValue(of({ accessToken: 'access-token' }))
 
       await expect(
@@ -87,7 +87,7 @@ describe('Authentication service', () => {
       expect(authenticationStoreMock.signin).not.toHaveBeenCalled()
     })
 
-    it('propagates HTTP errors', async () => {
+    it('Given an HTTP error, When signin is called, Then the error is propagated', async () => {
       httpMock.post.mockReturnValue(
         throwError(() => ({ status: 500, message: 'unexpected-error' })),
       )
@@ -104,7 +104,7 @@ describe('Authentication service', () => {
   })
 
   describe('refreshAccessToken', () => {
-    it('stores tokens without cookies when response is valid', async () => {
+    it('Given a valid refresh response, When refreshAccessToken is called, Then tokens are stored without cookies', async () => {
       httpMock.post.mockReturnValue(
         of({ accessToken: 'new-access-token', refreshToken: 'new-refresh-token' }),
       )
@@ -130,7 +130,7 @@ describe('Authentication service', () => {
       expect(routerMock.navigate).not.toHaveBeenCalled()
     })
 
-    it('logs out and redirects when jwt is expired', async () => {
+    it('Given an expired JWT error, When refreshAccessToken is called, Then it signs out and redirects', async () => {
       httpMock.post.mockReturnValue(
         throwError(() => ({
           error: {
@@ -153,7 +153,7 @@ describe('Authentication service', () => {
       expect(routerMock.navigate).toHaveBeenCalledWith(['/signin'])
     })
 
-    it('propagates non-auth errors', async () => {
+    it('Given a non-auth server error, When refreshAccessToken is called, Then the error is propagated', async () => {
       httpMock.post.mockReturnValue(
         throwError(() => ({
           error: {
@@ -180,7 +180,7 @@ describe('Authentication service', () => {
       expect(authenticationStoreMock.signout).not.toHaveBeenCalled()
     })
 
-    it('logs out and redirects when response body is empty', async () => {
+    it('Given an empty refresh response, When refreshAccessToken is called, Then it signs out and redirects', async () => {
       httpMock.post.mockReturnValue(of(undefined))
 
       await expect(

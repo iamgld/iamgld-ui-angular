@@ -14,7 +14,7 @@ import { refreshToken } from './refresh-token/refresh-token.interceptor'
 
 describe('interceptors', () => {
   describe('addToken', () => {
-    it('should inject Authorization value when logged and header exists (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const storeMock = {
         logged: vi.fn().mockReturnValue(true),
@@ -45,7 +45,7 @@ describe('interceptors', () => {
   })
 
   describe('changeLanguage', () => {
-    it('should map Language header to query param for GET requests (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const translocoMock = {
         getLanguage: vi.fn().mockReturnValue(TRANSLOCO_LANGUAGE_KEYS.spanish as TranslocoLanguageKey),
@@ -74,7 +74,7 @@ describe('interceptors', () => {
   })
 
   describe('refreshToken', () => {
-    it('should retry request on 401 when logged (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const storeMock = {
         logged: vi.fn().mockReturnValue(true),
@@ -112,7 +112,7 @@ describe('interceptors', () => {
       expect(authMock.refreshAccessToken).toHaveBeenCalledWith({ refreshToken: 'refresh-token' })
     })
 
-    it('should forward non-401 errors (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const storeMock = {
         logged: vi.fn().mockReturnValue(true),

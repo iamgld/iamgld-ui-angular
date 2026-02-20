@@ -1,7 +1,7 @@
 import { capitalizeFirstLetter } from './string'
 
 describe('capitalizeFirstLetter', () => {
-  it('should capitalize first character and lowercase the rest (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     // Given
     const input = 'hELLO'
 
@@ -12,7 +12,7 @@ describe('capitalizeFirstLetter', () => {
     expect(result).toBe('Hello')
   })
 
-  it('should return the same value for empty-like inputs (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     // Given
     const emptyString = ''
     const undefinedValue = undefined as unknown as string

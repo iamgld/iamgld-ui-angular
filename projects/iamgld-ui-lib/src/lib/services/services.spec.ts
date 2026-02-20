@@ -12,7 +12,7 @@ import { Transloco, TranslocoHttpLoader } from './transloco/transloco.service'
 
 describe('library services', () => {
   describe('CustomPreloadingStrategy', () => {
-    it('should preload when route data has preload set to true (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const service = new CustomPreloadingStrategy()
       const load = vi.fn().mockReturnValue(of(undefined))
@@ -26,7 +26,7 @@ describe('library services', () => {
       expect(result).toBeUndefined()
     })
 
-    it('should return null when preload is false (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const service = new CustomPreloadingStrategy()
       const load = vi.fn().mockReturnValue(of(undefined))
@@ -42,7 +42,7 @@ describe('library services', () => {
   })
 
   describe('Environments', () => {
-    it('should return injected environment and label (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const environmentMock: Environment = {
         environmentType: 'local',
@@ -71,7 +71,7 @@ describe('library services', () => {
   })
 
   describe('Theme', () => {
-    it('should change classes on document body (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const rendererMock = {
         addClass: vi.fn(),
@@ -98,7 +98,7 @@ describe('library services', () => {
   })
 
   describe('Transloco', () => {
-    it('should change and read language (Given/When/Then)', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
       // Given
       const translocoServiceMock = {
         setActiveLang: vi.fn(),
@@ -124,7 +124,7 @@ describe('library services', () => {
   })
 
   describe('TranslocoHttpLoader', () => {
-    it('should request translation by language (Given/When/Then)', async () => {
+  it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
       const httpClientMock = {
         get: vi.fn().mockReturnValue(of({ hello: 'world' })),
@@ -145,7 +145,7 @@ describe('library services', () => {
     })
   })
 
-  it('theme constants are usable in tests', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expect(ICONS.macLine).toBeTruthy()
     expect(UI_THEMES.system).toContain('theme--')
   })

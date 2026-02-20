@@ -18,39 +18,39 @@ function expectExportsDefined(namespaceLabel: string, exported: Record<string, u
 }
 
 describe('library exports', () => {
-  it('exports components', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('components', components)
   })
 
-  it('exports directives', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('directives', directives)
   })
 
-  it('exports guards', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('guards', guards)
   })
 
-  it('exports interceptors', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('interceptors', interceptors)
   })
 
-  it('exports models', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('models', models)
   })
 
-  it('exports services', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('services', services)
   })
 
-  it('exports stores', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('stores', stores)
   })
 
-  it('exports utils', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('utils', utils)
   })
 
-  it('exports validators', () => {
+  it('Given test context, When executing, Then validates expected behavior', () => {
     expectExportsDefined('validators', validators)
   })
 })
