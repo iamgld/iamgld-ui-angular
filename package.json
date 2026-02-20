@@ -28,7 +28,7 @@
 		"build:dev": "ng build -c development --progress",
 		"build:stag": "ng build -c staging --progress",
 		"build:prod": "ng build -c production --progress",
-		"build:iamgld-ui": "ng build --project=iamgld-ui-lib",
+		"build:iamgld-ui-lib": "ng build --project=iamgld-ui-lib",
 		"server:ssr": "node dist/iamgld-ui/server/server.mjs",
 		"npm:publish": "pnpm build:iamgld-ui-lib && cd dist/iamgld-ui-lib && npm publish",
 		"prettier:": "prettier \"src/**/*.{ts,html,scss,css,js,json,md}\" --check --config .prettierrc",
