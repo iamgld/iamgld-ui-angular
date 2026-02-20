@@ -9,16 +9,16 @@ import {
   output,
 } from '@angular/core'
 // This Module Imports
-import { ToggleButton } from '../toggle-button/toggle-button.component'
+import { ToggleButtonComponent } from '../toggle-button/toggle-button.component'
 
 @Component({
   selector: 'gld-toggle-group',
   imports: [],
-  templateUrl: './toggle-group.html',
-  styleUrl: './toggle-group.scss',
+  templateUrl: './toggle-group.component.html',
+  styleUrl: './toggle-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleGroup implements AfterContentInit {
+export class ToggleGroupComponent implements AfterContentInit {
   id = input.required<string, string>({
     transform: (value: string) => `toggle-id-${value.trim().split(' ').join('-')}`,
   })
@@ -29,7 +29,7 @@ export class ToggleGroup implements AfterContentInit {
   changeValue = output<unknown>()
   changeFocus = output<boolean>()
 
-  toggleButtonChildren = contentChildren<ToggleButton>(ToggleButton)
+  toggleButtonChildren = contentChildren<ToggleButtonComponent>(ToggleButtonComponent)
 
   constructor() {
     effect(() => {
@@ -39,13 +39,13 @@ export class ToggleGroup implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.toggleButtonChildren().map((toggleButton: ToggleButton) => {
+    this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent) => {
       toggleButton.changeValue.subscribe((value) => this.updateCurrentInChildren(value))
     })
   }
 
   updateCurrentInChildren(value: unknown) {
-    this.toggleButtonChildren().map((toggleButton: ToggleButton, index: number) => {
+    this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent, index: number) => {
       toggleButton.current.set(value)
       // Set current one time
       if (index === 0) this.changeValue.emit(value)
@@ -53,7 +53,7 @@ export class ToggleGroup implements AfterContentInit {
   }
 
   updateErrorInChildren(error: boolean) {
-    this.toggleButtonChildren().map((toggleButton: ToggleButton) =>
+    this.toggleButtonChildren().map((toggleButton: ToggleButtonComponent) =>
       toggleButton.error.set(error),
     )
   }

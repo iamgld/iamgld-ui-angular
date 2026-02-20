@@ -26,25 +26,25 @@ import { InputType } from '../../../models'
 import { updateValueWithMask } from '../../../utils'
 import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
-import { InputError } from '../input-error/input-error.component'
+import { InputErrorComponent } from '../input-error/input-error.component'
 
-const components = [InputError]
+const components = [InputErrorComponent]
 
 @Component({
   selector: 'gld-input',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './input.html',
-  styleUrl: './input.scss',
+  templateUrl: './input.component.html',
+  styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Input),
+      useExisting: forwardRef(() => InputComponent),
       multi: true,
     },
   ],
 })
-export class Input implements ControlValueAccessor, OnInit {
+export class InputComponent implements ControlValueAccessor, OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -84,7 +84,7 @@ export class Input implements ControlValueAccessor, OnInit {
          * This sanitizes the value input by keeping only numbers (0-9)
          *
          * @example
-         * // Input: "12/34/abcd2023!@_"
+         * // InputComponent: "12/34/abcd2023!@_"
          * // Output: "12342023"
          */
 
@@ -99,7 +99,7 @@ export class Input implements ControlValueAccessor, OnInit {
          * Numbers, special characters, and symbols are removed.
          *
          * @example
-         * // Input: "Juan123@García#456 Pérez$"
+         * // InputComponent: "Juan123@García#456 Pérez$"
          * // Output: "JuanGarcía Pérez"
          */
         if (String(value) && this.hasValidators().string) {

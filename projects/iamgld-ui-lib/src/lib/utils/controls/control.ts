@@ -1,6 +1,5 @@
 export function updateValueWithMask({ mask, value }: { mask: string; value: string }): string {
   if (!value) return value
-  if (!value.length) return value
 
   let accumulate = 0
   const maskApplied: string[] = []

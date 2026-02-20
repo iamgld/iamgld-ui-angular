@@ -25,25 +25,25 @@ import { debounceTime } from 'rxjs'
 import { InputType } from '../../../models'
 import { NATURAL_NUMBER_REGEX_TO_CLEAN, STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
-import { InputError } from '../input-error/input-error.component'
+import { InputErrorComponent } from '../input-error/input-error.component'
 
-const components = [InputError]
+const components = [InputErrorComponent]
 
 @Component({
   selector: 'gld-textarea',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './textarea.html',
-  styleUrl: './textarea.scss',
+  templateUrl: './textarea.component.html',
+  styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Textarea),
+      useExisting: forwardRef(() => TextareaComponent),
       multi: true,
     },
   ],
 })
-export class Textarea implements ControlValueAccessor, OnInit {
+export class TextareaComponent implements ControlValueAccessor, OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -82,7 +82,7 @@ export class Textarea implements ControlValueAccessor, OnInit {
          * This sanitizes the value input by keeping only numbers (0-9)
          *
          * @example
-         * // Input: "12/34/abcd2023!@_"
+         * // InputComponent: "12/34/abcd2023!@_"
          * // Output: "12342023"
          */
 
@@ -97,7 +97,7 @@ export class Textarea implements ControlValueAccessor, OnInit {
          * Numbers, special characters, and symbols are removed.
          *
          * @example
-         * // Input: "Juan123@García#456 Pérez$"
+         * // InputComponent: "Juan123@García#456 Pérez$"
          * // Output: "JuanGarcía Pérez"
          */
         if (String(value) && this.hasValidators().string) {

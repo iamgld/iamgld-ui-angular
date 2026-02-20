@@ -1,242 +1,223 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "pnpm",
-    "analytics": false,
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"cli": {
+		"packageManager": "pnpm",
+		"analytics": false,
 		"schematicCollections": ["angular-eslint"]
-
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "iamgld-ui": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        },
-        "@schematics/angular:component": {
-          "style": "scss",
-          "changeDetection": "OnPush",
-          "type": "component"
-        },
-        "@schematics/angular:service": {
-          "type": "service"
-        },
-        "@schematics/angular:class": {
-          "type": "class"
-        },
-        "@schematics/angular:guard": {
-          "type": "guard"
-        },
-        "@schematics/angular:pipe": {
-          "type": "pipe"
-        },
-        "@schematics/angular:directive": {
-          "type": "directive"
-        },
-        "@schematics/angular:resolver": {
-          "type": "resolver"
-        },
-        "@schematics/angular:interceptor": {
-          "type": "interceptor"
-        },
-        "@schematics/angular:interface": {
-          "type": "model"
-        },
-        "@schematics/angular:enum": {
-          "type": "model"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "gld",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
-          "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": ["src/styles.scss"],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            },
-            "stylePreprocessorOptions": {
-              "includePaths": ["./src/app/styles"]
-            },
-            "scripts": []
-          },
-          "configurations": {
-            "local": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.local.ts",
-                  "with": "src/environments/environment.local.ts"
-                }
-              ],
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            },
-            "development": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.local.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ],
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            },
-            "staging": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.local.ts",
-                  "with": "src/environments/environment.staging.ts"
-                }
-              ],
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.local.ts",
-                  "with": "src/environments/environment.production.ts"
-                }
-              ],
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "local": {
-              "buildTarget": "iamgld-ui:build:local"
-            },
-            "development": {
-              "buildTarget": "iamgld-ui:build:development"
-            },
-            "staging": {
-              "buildTarget": "iamgld-ui:build:staging"
-            },
-            "production": {
-              "buildTarget": "iamgld-ui:build:production"
-            }
-          },
-          "defaultConfiguration": "local"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test"
-        },
-        "lint": {
+	},
+	"newProjectRoot": "projects",
+	"projects": {
+		"iamgld-ui": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:application": {
+					"strict": true
+				},
+				"@schematics/angular:component": {
+					"style": "scss",
+					"changeDetection": "OnPush",
+					"type": "component"
+				},
+				"@schematics/angular:service": {
+					"type": "service"
+				},
+				"@schematics/angular:class": {
+					"type": "class"
+				},
+				"@schematics/angular:directive": {
+					"type": "directive"
+				},
+				"@schematics/angular:interface": {
+					"type": "model"
+				},
+				"@schematics/angular:enum": {
+					"type": "model"
+				}
+			},
+			"root": "",
+			"sourceRoot": "src",
+			"prefix": "gld",
+			"architect": {
+				"build": {
+					"builder": "@angular/build:application",
+					"options": {
+						"browser": "src/main.ts",
+						"tsConfig": "tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "public"
+							}
+						],
+						"styles": ["src/styles.scss"],
+						"server": "src/main.server.ts",
+						"outputMode": "server",
+						"ssr": {
+							"entry": "src/server.ts"
+						},
+						"stylePreprocessorOptions": {
+							"includePaths": ["./src/app/styles"]
+						},
+						"scripts": []
+					},
+					"configurations": {
+						"local": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.local.ts",
+									"with": "src/environments/environment.local.ts"
+								}
+							],
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						},
+						"development": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.local.ts",
+									"with": "src/environments/environment.development.ts"
+								}
+							],
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						},
+						"staging": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.local.ts",
+									"with": "src/environments/environment.staging.ts"
+								}
+							],
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"production": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.local.ts",
+									"with": "src/environments/environment.production.ts"
+								}
+							],
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular/build:dev-server",
+					"configurations": {
+						"local": {
+							"buildTarget": "iamgld-ui:build:local"
+						},
+						"development": {
+							"buildTarget": "iamgld-ui:build:development"
+						},
+						"staging": {
+							"buildTarget": "iamgld-ui:build:staging"
+						},
+						"production": {
+							"buildTarget": "iamgld-ui:build:production"
+						}
+					},
+					"defaultConfiguration": "local"
+				},
+				"test": {
+					"builder": "@angular/build:unit-test"
+				},
+				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
 						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
 					}
 				}
-      }
-    },
-    "iamgld-ui-lib": {
-      "projectType": "library",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "changeDetection": "OnPush",
-          "type": "component"
-        },
-        "@schematics/angular:service": {
-          "type": "service"
-        },
-        "@schematics/angular:class": {
-          "type": "class"
-        },
-        "@schematics/angular:guard": {
-          "type": "guard"
-        },
-        "@schematics/angular:pipe": {
-          "type": "pipe"
-        },
-        "@schematics/angular:directive": {
-          "type": "directive"
-        },
-        "@schematics/angular:resolver": {
-          "type": "resolver"
-        },
-        "@schematics/angular:interceptor": {
-          "type": "interceptor"
-        },
-        "@schematics/angular:interface": {
-          "type": "model"
-        },
-        "@schematics/angular:enum": {
-          "type": "model"
-        }
-      },
-      "root": "projects/iamgld-ui-lib",
-      "sourceRoot": "projects/iamgld-ui-lib/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": {
-            "tsConfig": "projects/iamgld-ui-lib/tsconfig.spec.json"
-          }
-        },
-        "lint": {
+			}
+		},
+		"iamgld-ui-lib": {
+			"projectType": "library",
+			"schematics": {
+				"@schematics/angular:application": {
+					"strict": true
+				},
+				"@schematics/angular:component": {
+					"style": "scss",
+					"changeDetection": "OnPush",
+					"type": "component"
+				},
+				"@schematics/angular:service": {
+					"type": "service"
+				},
+				"@schematics/angular:class": {
+					"type": "class"
+				},
+				"@schematics/angular:directive": {
+					"type": "directive"
+				},
+				"@schematics/angular:interface": {
+					"type": "model"
+				},
+				"@schematics/angular:enum": {
+					"type": "model"
+				}
+			},
+			"root": "projects/iamgld-ui-lib",
+			"sourceRoot": "projects/iamgld-ui-lib/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular/build:ng-packagr",
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular/build:unit-test",
+					"options": {
+						"tsConfig": "projects/iamgld-ui-lib/tsconfig.spec.json"
+					}
+				},
+				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": ["projects/iamgld-ui-lib/src/**/*.ts", "projects/iamgld-ui-lib/src/**/*.html"]
+						"lintFilePatterns": [
+							"projects/iamgld-ui-lib/src/**/*.ts",
+							"projects/iamgld-ui-lib/src/**/*.html"
+						]
 					}
 				}
-      }
-    }
-  }
+			}
+		}
+	}
 }

@@ -26,9 +26,7 @@ export const isLogged: CanActivateFn = () => {
     }
     return true
   } else {
-    console.error(
-      `The value of the accessToken (${accessToken}) and the refreshToken (${refreshToken}) is not a valid one`,
-    )
+    console.error('Authentication tokens are missing or invalid.')
 
     if (authenticationStore.logged()) {
       authenticationStore.signout()

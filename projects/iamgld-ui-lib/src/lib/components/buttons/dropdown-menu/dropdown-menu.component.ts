@@ -27,21 +27,21 @@ import {
   IconsSize,
 } from '../../../models'
 // This Component Imports
-import { Button } from '../button/button.component'
-import { DropdownButton } from '../dropdown-button/dropdown-button.component'
-import { IconButton } from '../icon-button/icon-button.component'
+import { ButtonComponent } from '../button/button.component'
+import { DropdownButtonComponent } from '../dropdown-button/dropdown-button.component'
+import { IconButtonComponent } from '../icon-button/icon-button.component'
 
-const components = [Button, IconButton]
+const components = [ButtonComponent, IconButtonComponent]
 const directives = [DropdownMenuTemplate]
 
 @Component({
   selector: 'gld-dropdown-menu',
   imports: [NgTemplateOutlet, ...components, directives],
-  templateUrl: './dropdown-menu.html',
-  styleUrl: './dropdown-menu.scss',
+  templateUrl: './dropdown-menu.component.html',
+  styleUrl: './dropdown-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownMenu implements AfterContentInit {
+export class DropdownMenuComponent implements AfterContentInit {
   readonly DROPDOWN_TYPES = DROPDOWN_TYPES
 
   id = input.required<string, string>({
@@ -66,7 +66,7 @@ export class DropdownMenu implements AfterContentInit {
   changeValue = output<unknown>()
   changeFocus = output<boolean>()
 
-  dropdownButtonChildren = contentChildren<DropdownButton>(DropdownButton)
+  dropdownButtonChildren = contentChildren<DropdownButtonComponent>(DropdownButtonComponent)
 
   constructor() {
     effect(() => {
@@ -76,13 +76,13 @@ export class DropdownMenu implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.dropdownButtonChildren().map((dropdownButton: DropdownButton) => {
+    this.dropdownButtonChildren().map((dropdownButton: DropdownButtonComponent) => {
       dropdownButton.changeValue.subscribe((value) => this.updateCurrentInChildren(value))
     })
   }
 
   updateCurrentInChildren(value: unknown) {
-    this.dropdownButtonChildren().map((dropdownButton: DropdownButton, index: number) => {
+    this.dropdownButtonChildren().map((dropdownButton: DropdownButtonComponent, index: number) => {
       if (this.selected()) dropdownButton.current.set(value)
       // Set current one time
       if (index === 0) this.changeValue.emit(value)
@@ -90,7 +90,7 @@ export class DropdownMenu implements AfterContentInit {
   }
 
   updateErrorInChildren(error: boolean) {
-    this.dropdownButtonChildren().map((dropdownButton: DropdownButton) =>
+    this.dropdownButtonChildren().map((dropdownButton: DropdownButtonComponent) =>
       dropdownButton.error.set(error),
     )
   }

@@ -6,11 +6,57 @@ import {
 	writeResponseToNodeResponse,
 } from '@angular/ssr/node'
 import express from 'express'
+import helmet from 'helmet'
+import rateLimit from 'express-rate-limit'
 
 const browserDistFolder = join(import.meta.dirname, '../browser')
 
 const app = express()
 const angularApp = new AngularNodeAppEngine()
+
+/**
+ * Security headers via Helmet.
+ */
+app.use(headersHelmet())
+
+/**
+ * Rate limiting — protects SSR rendering from DoS abuse.
+ * 100 requests per minute per IP.
+ */
+app.use(
+	rateLimit({
+		windowMs: 60_000,
+		max: 100,
+		standardHeaders: true,
+		legacyHeaders: false,
+	}),
+)
+
+function headersHelmet() {
+	return helmet({
+		contentSecurityPolicy: {
+			directives: {
+				defaultSrc: ["'self'"],
+				scriptSrc: ["'self'"],
+				styleSrc: ["'self'", "'unsafe-inline'"],
+				fontSrc: ["'self'"],
+				imgSrc: ["'self'", 'data:'],
+				connectSrc: ["'self'"],
+				frameSrc: ["'none'"],
+				objectSrc: ["'none'"],
+				baseUri: ["'self'"],
+				formAction: ["'self'"],
+				upgradeInsecureRequests: [],
+			},
+		},
+		referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+		hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
+		frameguard: { action: 'deny' },
+		noSniff: true,
+		xssFilter: true,
+		permittedCrossDomainPolicies: false,
+	})
+}
 
 /**
  * Example Express Rest API endpoints can be defined here.

@@ -8,8 +8,19 @@ onlyBuiltDependencies:
   - lmdb
   - msgpackr-extract
 
-pnpm:
-  overrides:
-    undici: '>=7.18.2'
-    qs: '>=6.14.1'
-    tar: '>=7.5.3'
+overrides:
+  # GHSA-r2rv-9791-xxxx — Prototype Pollution in lodash
+  lodash: '4.17.23'
+  # GHSA-w7fw-mjwx-w883 — qs arrayLimit bypass DoS
+  qs: '6.14.2'
+  # GHSA-83g3-92jg-28cx — Arbitrary File Read/Write via Hardlink in node-tar
+  tar: '7.5.9'
+  # GHSA-g9mf-h72j-4rw9 — Undici unbounded decompression chain (resource exhaustion)
+  undici: '7.22.0'
+  # GHSA-2g4f-4pwh-qvx6 — ajv ReDoS with $data option
+  # eslint>ajv cannot be overridden: eslint@9 uses ajv v6 API (incompatible with v8)
+  # This CVE is not exploitable in this project (ESLint does not enable $data in schemas)
+  '@angular-devkit/core>ajv': '8.18.0'
+  'schema-utils>ajv': '8.18.0'
+  # GHSA-345p-7cg4-v4c7 — @modelcontextprotocol/sdk cross-client data leak
+  '@modelcontextprotocol/sdk': '1.26.0'

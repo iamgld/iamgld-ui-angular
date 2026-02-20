@@ -9,11 +9,11 @@ import { LinkType, LINK_TYPES, LinkAlign, LINK_ALIGNS } from '../../../models'
 @Component({
 	selector: 'gld-link',
 	imports: [NgTemplateOutlet, RouterLink],
-	templateUrl: './link.html',
-	styleUrl: './link.scss',
+	templateUrl: './link.component.html',
+	styleUrl: './link.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Link {
+export class LinkComponent {
 	id = input.required<string, string>({
 		transform: (value: string) => `input-id-${value.trim().split(' ').join('-')}`,
 	})

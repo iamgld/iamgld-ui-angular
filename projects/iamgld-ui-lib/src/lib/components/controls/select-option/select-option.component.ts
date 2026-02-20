@@ -6,11 +6,11 @@ import { InputValue } from '../../../models'
 @Component({
   selector: 'gld-select-option',
   imports: [],
-  templateUrl: './select-option.html',
-  styleUrl: './select-option.scss',
+  templateUrl: './select-option.component.html',
+  styleUrl: './select-option.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectOption {
+export class SelectOptionComponent {
   value = input.required<InputValue>()
   disabled = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   selected = output<InputValue>()

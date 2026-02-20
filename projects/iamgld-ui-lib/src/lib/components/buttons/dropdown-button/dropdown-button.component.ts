@@ -12,18 +12,18 @@ import {
 } from '@angular/core'
 import { DROPDOWN_DIRECTIONS, DropdownDirection, Icons, ICONS_SIZES, IconsSize, ICONS_SPACES, IconsSpace } from '../../../models'
 // This Module Imports
-import { Icon } from '../../icon/icon.component'
+import { IconComponent } from '../../icon/icon.component'
 
-const components = [Icon]
+const components = [IconComponent]
 
 @Component({
   selector: 'gld-dropdown-button',
   imports: [...components],
-  templateUrl: './dropdown-button.html',
-  styleUrl: './dropdown-button.scss',
+  templateUrl: './dropdown-button.component.html',
+  styleUrl: './dropdown-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownButton {
+export class DropdownButtonComponent {
   value = input.required<unknown>()
   icon = input<Icons | null>(null)
   iconSize = input<IconsSize>(ICONS_SIZES.normal)

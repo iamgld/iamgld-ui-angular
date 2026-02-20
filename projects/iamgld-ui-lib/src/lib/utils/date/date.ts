@@ -7,28 +7,28 @@ export const MAX_DAY = 31
 export function formatDateToISODate(options: { date: string | Date }): string | null {
   const { date } = options
 
-  const isValidDate = !Number.isNaN(new Date(date).getTime())
-
-  // It isn't a valid date
-  if (!isValidDate) return null
-
   // If it's a numeric string (timestamp in seconds)
   if (typeof date === 'string' && /^\d+$/.test(date)) {
     // If it has 10 digits, it's a timestamp in seconds
     if (date.length === 10) {
       const ms = Number.parseInt(date, 10) * 1000
       const _date = new Date(ms)
-      if (!Number.isNaN(_date.getTime())) return _date.toISOString().split('T')[0]
-      else return null
+      return _date.toISOString().split('T')[0]
     }
     // If it has 13 digits, it's a timestamp in milliseconds
     if (date.length === 13 || date.length === 12) {
       const ms = Number.parseInt(date, 10)
       const _date = new Date(ms)
-      if (!Number.isNaN(_date.getTime())) return _date.toISOString().split('T')[0]
-      else return null
+      return _date.toISOString().split('T')[0]
     }
+
+    return null
   }
+
+  const isValidDate = !Number.isNaN(new Date(date).getTime())
+
+  // It isn't a valid date
+  if (!isValidDate) return null
 
   // If it's a Date or date string
   const _date = new Date(date)
@@ -69,9 +69,6 @@ export function formatDDMMYYYYToISODate(options: { date: string | null }): strin
     return null
   // Create the date and subtract 1 so that JavaScript interprets the month correctly
   const _date = new Date(Date.UTC(year, month - 1, day))
-  // It isn't a valid date
-  const isValidDate = !Number.isNaN(_date.getTime())
-  if (!isValidDate) return null
 
   return formatDateToISODate({ date: _date })
 }

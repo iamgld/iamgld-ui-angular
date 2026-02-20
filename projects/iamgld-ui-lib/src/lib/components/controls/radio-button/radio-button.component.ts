@@ -4,11 +4,11 @@ import { ChangeDetectionStrategy, Component, computed, input, output, signal } f
 @Component({
   selector: 'gld-radio-button',
   imports: [],
-  templateUrl: './radio-button.html',
-  styleUrl: './radio-button.scss',
+  templateUrl: './radio-button.component.html',
+  styleUrl: './radio-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RadioButton {
+export class RadioButtonComponent {
   value = input.required<unknown>()
   changeValue = output<unknown>()
   changeFocus = output<boolean>()

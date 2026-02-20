@@ -30,27 +30,27 @@ import { ICONS, InputValue } from '../../../models'
 import { updateValueWithMask } from '../../../utils'
 import { STRING_REGEX_TO_CLEAN } from '../../../validators'
 // This Module Imports
-import { Icon } from '../../icon/icon.component'
-import { InputError } from '../input-error/input-error.component'
-import { SelectOption } from '../select-option/select-option.component'
+import { IconComponent } from '../../icon/icon.component'
+import { InputErrorComponent } from '../input-error/input-error.component'
+import { SelectOptionComponent } from '../select-option/select-option.component'
 
-const components = [Icon, InputError]
+const components = [IconComponent, InputErrorComponent]
 
 @Component({
   selector: 'gld-select',
   imports: [ReactiveFormsModule, NgTemplateOutlet, ...components],
-  templateUrl: './select.html',
-  styleUrl: './select.scss',
+  templateUrl: './select.component.html',
+  styleUrl: './select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Select),
+      useExisting: forwardRef(() => SelectComponent),
       multi: true,
     },
   ],
 })
-export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
+export class SelectComponent implements ControlValueAccessor, OnInit, AfterContentInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
   readonly ICONS = ICONS
@@ -69,7 +69,7 @@ export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
   transform = input<(value: unknown) => string>((value: unknown) => String(value))
 
   selectElement = viewChild<ElementRef<HTMLElement>>('selectElement')
-  selectOptionChildren = contentChildren<SelectOption>(SelectOption)
+  selectOptionChildren = contentChildren<SelectOptionComponent>(SelectOptionComponent)
 
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
   hasValidators = signal({
@@ -100,7 +100,7 @@ export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
          * Numbers, special characters, and symbols are removed.
          *
          * @example
-         * // Input: "Juan123@García#456 Pérez$"
+         * // InputComponent: "Juan123@García#456 Pérez$"
          * // Output: "JuanGarcía Pérez"
          */
         if (String(value) && this.hasValidators().string) {
@@ -140,7 +140,7 @@ export class Select implements ControlValueAccessor, OnInit, AfterContentInit {
   ngAfterContentInit(): void {
     this.#detectSelectOptionChildren()
 
-    this.selectOptionChildren().map((selectOption: SelectOption) => {
+    this.selectOptionChildren().map((selectOption: SelectOptionComponent) => {
       selectOption.changeFocus.subscribe((focus) => {
         // console.log('focus', focus)
         if (focus) this.onFocus()
