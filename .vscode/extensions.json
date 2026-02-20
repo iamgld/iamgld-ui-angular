@@ -27,8 +27,6 @@
 		"gruntfuggly.todo-tree",
 		"shardulm94.trailing-spaces",
 		"pflannery.vscode-versionlens",
-		"catppuccin.catppuccin-vsc-icons",
-		"catppuccin.catppuccin-vsc",
 		"ms-azuretools.vscode-docker"
 	],
 }
