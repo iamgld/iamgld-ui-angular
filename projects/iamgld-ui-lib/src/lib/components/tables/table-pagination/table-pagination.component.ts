@@ -18,7 +18,7 @@ import { ICONS, TablePaginationConfig } from '../../../models'
   styleUrl: './table-pagination.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TablePagination {
+export class TablePaginationComponent {
   readonly Icons = ICONS
 
   pagination = input.required<TablePaginationConfig>()

@@ -1,7 +1,7 @@
-import { CircleLoader } from './circle-loader.component'
+import { CircleLoaderComponent } from './circle-loader.component'
 
-describe('CircleLoader', () => {
+describe('CircleLoaderComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(CircleLoader).toBeDefined()
+    expect(CircleLoaderComponent).toBeDefined()
   })
 })

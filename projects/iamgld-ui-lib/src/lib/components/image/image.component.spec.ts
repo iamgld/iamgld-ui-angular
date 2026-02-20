@@ -1,7 +1,7 @@
-import { Image } from './image.component'
+import { ImageComponent } from './image.component'
 
-describe('Image', () => {
+describe('ImageComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(Image).toBeDefined()
+    expect(ImageComponent).toBeDefined()
   })
 })

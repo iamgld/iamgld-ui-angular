@@ -8,4 +8,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   styleUrl: './input-hint.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputHint {}
+export class InputHintComponent {}

@@ -1,7 +1,7 @@
-import { Input } from './input.component'
+import { InputComponent } from './input.component'
 
-describe('Input', () => {
+describe('InputComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(Input).toBeDefined()
+    expect(InputComponent).toBeDefined()
   })
 })

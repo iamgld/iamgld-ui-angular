@@ -1,7 +1,7 @@
-import { Textarea } from './textarea.component'
+import { TextareaComponent } from './textarea.component'
 
-describe('Textarea', () => {
+describe('TextareaComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(Textarea).toBeDefined()
+    expect(TextareaComponent).toBeDefined()
   })
 })

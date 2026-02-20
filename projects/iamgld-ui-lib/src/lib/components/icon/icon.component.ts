@@ -18,7 +18,7 @@ import { ICONS, Icons, ICONS_SIZES, IconsSize, ICONS_SPACES, IconsSpace } from '
   styleUrl: './icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Icon {
+export class IconComponent {
   readonly ICONS_SPACES = ICONS_SPACES
   readonly ICONS = ICONS
 

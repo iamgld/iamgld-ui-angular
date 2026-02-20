@@ -1,10 +1,10 @@
 import { signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { Icon } from './icon.component'
+import { IconComponent } from './icon.component'
 
-describe('Icon', () => {
-  const create = () => TestBed.runInInjectionContext(() => new Icon())
+describe('IconComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new IconComponent())
 
   it('Given disabled is false, When emitClick is called, Then clicked is emitted', () => {
     const component = create()

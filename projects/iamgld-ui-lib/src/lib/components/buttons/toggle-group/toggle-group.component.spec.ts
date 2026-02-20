@@ -1,7 +1,7 @@
-import { ToggleGroup } from './toggle-group.component'
+import { ToggleGroupComponent } from './toggle-group.component'
 
-describe('ToggleGroup', () => {
+describe('ToggleGroupComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(ToggleGroup).toBeDefined()
+    expect(ToggleGroupComponent).toBeDefined()
   })
 })

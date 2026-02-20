@@ -1,10 +1,10 @@
 import { signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { DropdownButton } from './dropdown-button.component'
+import { DropdownButtonComponent } from './dropdown-button.component'
 
-describe('DropdownButton', () => {
-  const create = () => TestBed.runInInjectionContext(() => new DropdownButton())
+describe('DropdownButtonComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new DropdownButtonComponent())
 
   it('Given an output spy, When select and keyup are called, Then changeValue emits both values', () => {
     const component = create()

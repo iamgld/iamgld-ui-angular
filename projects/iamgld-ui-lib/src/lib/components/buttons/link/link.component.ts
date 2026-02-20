@@ -13,7 +13,7 @@ import { LinkType, LINK_TYPES, LinkAlign, LINK_ALIGNS } from '../../../models'
 	styleUrl: './link.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Link {
+export class LinkComponent {
 	id = input.required<string, string>({
 		transform: (value: string) => `input-id-${value.trim().split(' ').join('-')}`,
 	})

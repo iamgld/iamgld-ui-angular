@@ -1,7 +1,7 @@
-import { Table } from './table.component'
+import { TableComponent } from './table.component'
 
-describe('Table', () => {
+describe('TableComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(Table).toBeDefined()
+    expect(TableComponent).toBeDefined()
   })
 })

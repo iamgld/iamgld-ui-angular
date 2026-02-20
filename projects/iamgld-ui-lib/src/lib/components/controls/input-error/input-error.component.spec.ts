@@ -1,7 +1,7 @@
-import { InputError } from './input-error.component'
+import { InputErrorComponent } from './input-error.component'
 
-describe('InputError', () => {
+describe('InputErrorComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(InputError).toBeDefined()
+    expect(InputErrorComponent).toBeDefined()
   })
 })

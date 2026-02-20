@@ -1,7 +1,7 @@
-import { InputHint } from './input-hint.component'
+import { InputHintComponent } from './input-hint.component'
 
-describe('InputHint', () => {
+describe('InputHintComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(InputHint).toBeDefined()
+    expect(InputHintComponent).toBeDefined()
   })
 })

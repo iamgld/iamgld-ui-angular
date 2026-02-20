@@ -19,11 +19,11 @@ import {
   TableColumnToTableColumns,
 } from '../../../models'
 // This Module Imports
-import { DropdownButton } from '../../buttons/dropdown-button/dropdown-button.component'
-import { DropdownMenu } from '../../buttons/dropdown-menu/dropdown-menu.component'
-import { CircleLoader } from '../../loaders/circle-loader/circle-loader.component'
+import { DropdownButtonComponent } from '../../buttons/dropdown-button/dropdown-button.component'
+import { DropdownMenuComponent } from '../../buttons/dropdown-menu/dropdown-menu.component'
+import { CircleLoaderComponent } from '../../loaders/circle-loader/circle-loader.component'
 
-const components = [DropdownButton, DropdownMenu, CircleLoader]
+const components = [DropdownButtonComponent, DropdownMenuComponent, CircleLoaderComponent]
 
 @Component({
   selector: 'gld-table',
@@ -32,7 +32,7 @@ const components = [DropdownButton, DropdownMenu, CircleLoader]
   styleUrl: './table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Table {
+export class TableComponent {
   readonly ICONS = ICONS
 
   tableColumns = input.required<TableColumn[]>()

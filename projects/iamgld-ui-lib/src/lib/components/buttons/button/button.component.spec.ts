@@ -1,10 +1,10 @@
 import { signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { Button } from './button.component'
+import { ButtonComponent } from './button.component'
 
-describe('Button', () => {
-  const create = () => TestBed.runInInjectionContext(() => new Button())
+describe('ButtonComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new ButtonComponent())
 
   it('Given disabled is false, When emitClick is called, Then clicked is emitted', () => {
     const component = create()

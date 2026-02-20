@@ -28,9 +28,9 @@ import {
   updateValueWithMask,
 } from '../../../utils'
 // This Module Imports
-import { InputError } from '../input-error/input-error.component'
+import { InputErrorComponent } from '../input-error/input-error.component'
 
-const components = [InputError]
+const components = [InputErrorComponent]
 
 @Component({
   selector: 'gld-input-date',
@@ -41,12 +41,12 @@ const components = [InputError]
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputDate),
+      useExisting: forwardRef(() => InputDateComponent),
       multi: true,
     },
   ],
 })
-export class InputDate implements ControlValueAccessor, OnInit {
+export class InputDateComponent implements ControlValueAccessor, OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -90,7 +90,7 @@ export class InputDate implements ControlValueAccessor, OnInit {
          * which are typically used in date formats like MM/DD/YYYY or DD/MM/YYYY.
          *
          * @example
-         * // Input: "12/34/abcd2023!@_"
+         * // InputComponent: "12/34/abcd2023!@_"
          * // Output: "12/34/2023"
          */
         const _value = String(value).replaceAll(/[^\d/]/g, '')

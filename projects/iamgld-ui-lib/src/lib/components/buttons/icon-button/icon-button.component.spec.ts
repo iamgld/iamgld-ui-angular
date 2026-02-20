@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing'
 
-import { IconButton } from './icon-button.component'
+import { IconButtonComponent } from './icon-button.component'
 
-describe('IconButton', () => {
-  const create = () => TestBed.runInInjectionContext(() => new IconButton())
+describe('IconButtonComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new IconButtonComponent())
 
   it('Given disabled is false, When keyup is called, Then clicked is emitted', () => {
     const component = create()

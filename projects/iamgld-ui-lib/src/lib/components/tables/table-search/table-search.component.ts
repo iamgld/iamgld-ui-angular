@@ -13,7 +13,7 @@ import { ICONS, TABLE_SEARCH_ACTIONS, TableSearchAction, TableSearchOutput } fro
 	styleUrl: './table-search.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableSearch {
+export class TableSearchComponent {
 	readonly #formBuilder = inject(FormBuilder)
 	readonly ICONS = ICONS
 

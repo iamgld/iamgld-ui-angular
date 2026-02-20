@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing'
 
-import { Link } from './link.component'
+import { LinkComponent } from './link.component'
 
-describe('Link', () => {
-  const create = () => TestBed.runInInjectionContext(() => new Link())
+describe('LinkComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new LinkComponent())
 
   it('Given a link instance, When emitClick and keyup are called, Then clicked is emitted each time', () => {
     const component = create()

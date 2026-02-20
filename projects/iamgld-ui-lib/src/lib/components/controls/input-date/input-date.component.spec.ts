@@ -1,7 +1,7 @@
-import { InputDate } from './input-date.component'
+import { InputDateComponent } from './input-date.component'
 
-describe('InputDate', () => {
+describe('InputDateComponent', () => {
   it('Given the symbol is imported, When the test runs, Then it is defined', () => {
-    expect(InputDate).toBeDefined()
+    expect(InputDateComponent).toBeDefined()
   })
 })

@@ -1,10 +1,10 @@
 import { signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { ToggleButton } from './toggle-button.component'
+import { ToggleButtonComponent } from './toggle-button.component'
 
-describe('ToggleButton', () => {
-  const create = () => TestBed.runInInjectionContext(() => new ToggleButton())
+describe('ToggleButtonComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new ToggleButtonComponent())
 
   it('Given an output spy, When select and keyup are called, Then changeValue emits both values', () => {
     const component = create()

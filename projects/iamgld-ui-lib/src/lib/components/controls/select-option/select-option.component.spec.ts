@@ -1,10 +1,10 @@
 import { signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { SelectOption } from './select-option.component'
+import { SelectOptionComponent } from './select-option.component'
 
-describe('SelectOption', () => {
-  const create = () => TestBed.runInInjectionContext(() => new SelectOption())
+describe('SelectOptionComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new SelectOptionComponent())
 
   it('Given disabled is false, When select is called, Then selected emits value', () => {
     const component = create()

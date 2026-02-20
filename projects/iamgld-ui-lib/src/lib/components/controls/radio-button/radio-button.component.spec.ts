@@ -1,10 +1,10 @@
 import { signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { RadioButton } from './radio-button.component'
+import { RadioButtonComponent } from './radio-button.component'
 
-describe('RadioButton', () => {
-  const create = () => TestBed.runInInjectionContext(() => new RadioButton())
+describe('RadioButtonComponent', () => {
+  const create = () => TestBed.runInInjectionContext(() => new RadioButtonComponent())
 
   it('Given an output spy, When select and keyup are called, Then changeValue emits both values', () => {
     const component = create()

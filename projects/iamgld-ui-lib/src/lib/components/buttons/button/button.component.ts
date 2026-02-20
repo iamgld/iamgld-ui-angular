@@ -9,16 +9,16 @@ import {
 } from '@angular/core'
 import { BUTTON_COLORS, ButtonColor, BUTTON_SIZES, ButtonSize, Icons, ICONS_SIZES, IconsSize } from '../../../models'
 // This Module Imports
-import { Icon } from '../../icon/icon.component'
+import { IconComponent } from '../../icon/icon.component'
 
 @Component({
   selector: 'gld-button',
-  imports: [Icon],
+  imports: [IconComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Button {
+export class ButtonComponent {
   id = input.required<string, string>({
     transform: (value: string) => `button-id-${value.trim().split(' ').join('-')}`,
   })

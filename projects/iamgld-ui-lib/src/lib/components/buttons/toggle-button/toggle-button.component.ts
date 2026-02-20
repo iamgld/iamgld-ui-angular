@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, computed, input, output, signal } f
   styleUrl: './toggle-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleButton {
+export class ToggleButtonComponent {
   value = input.required<unknown>()
   changeValue = output<unknown>()
 

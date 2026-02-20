@@ -20,7 +20,7 @@ import { InputErrorMessage } from '../../../directives'
   styleUrl: './input-error.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputError {
+export class InputErrorComponent {
   readonly Boolean = Boolean
   errors = input.required<ValidationErrors | null>()
   border = input<boolean, boolean | string>(false, { transform: booleanAttribute })

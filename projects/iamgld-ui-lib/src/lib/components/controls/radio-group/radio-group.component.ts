@@ -17,11 +17,11 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 // Thirdparty Imports
 import { debounceTime } from 'rxjs'
 import { RADIO_DIRECTIONS, RadioDirection } from '../../../models'
-import { InputError } from '../input-error/input-error.component'
+import { InputErrorComponent } from '../input-error/input-error.component'
 // This Module Imports
-import { RadioButton } from '../radio-button/radio-button.component'
+import { RadioButtonComponent } from '../radio-button/radio-button.component'
 
-const components = [InputError]
+const components = [InputErrorComponent]
 
 @Component({
   selector: 'gld-radio-group',
@@ -32,12 +32,12 @@ const components = [InputError]
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioGroup),
+      useExisting: forwardRef(() => RadioGroupComponent),
       multi: true,
     },
   ],
 })
-export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentInit {
+export class RadioGroupComponent implements ControlValueAccessor, OnInit, AfterContentInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #changeDetectorRef = inject(ChangeDetectorRef)
 
@@ -51,7 +51,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
   label = input<string>('')
   direction = input<RadioDirection>(RADIO_DIRECTIONS.horizontal)
 
-  radioButtonChildren = contentChildren<RadioButton>(RadioButton)
+  radioButtonChildren = contentChildren<RadioButtonComponent>(RadioButtonComponent)
   innerControl = signal(new FormControl<unknown>('', { nonNullable: true }))
   hasValidators = signal({
     required: false,
@@ -91,7 +91,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
   }
 
   ngAfterContentInit(): void {
-    this.radioButtonChildren().map((radioButton: RadioButton) => {
+    this.radioButtonChildren().map((radioButton: RadioButtonComponent) => {
       radioButton.changeValue.subscribe((value) => this.updateCurrentInChildren(value))
       radioButton.changeFocus.subscribe((focus) => {
         if (!focus) this.onTouched()
@@ -100,7 +100,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
   }
 
   updateCurrentInChildren(value: unknown) {
-    this.radioButtonChildren().map((radioButton: RadioButton, index: number) => {
+    this.radioButtonChildren().map((radioButton: RadioButtonComponent, index: number) => {
       radioButton.current.set(value)
       // Set current one time
       if (index === 0) this.onChange(value)
@@ -108,7 +108,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
   }
 
   updateErrorInChildren(error: boolean) {
-    this.radioButtonChildren().map((radioButton: RadioButton) =>
+    this.radioButtonChildren().map((radioButton: RadioButtonComponent) =>
       radioButton.error.set(error),
     )
   }
@@ -137,7 +137,7 @@ export class RadioGroup implements ControlValueAccessor, OnInit, AfterContentIni
   }
 
   #updateDisabledInChildren(disabled: boolean) {
-    this.radioButtonChildren().map((radioButton: RadioButton) =>
+    this.radioButtonChildren().map((radioButton: RadioButtonComponent) =>
       radioButton.disabled.set(disabled),
     )
   }

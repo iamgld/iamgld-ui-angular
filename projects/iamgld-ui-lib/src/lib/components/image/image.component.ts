@@ -10,7 +10,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@an
   styleUrl: './image.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Image {
+export class ImageComponent {
   src = input.required<string>()
   alt = input.required<string>()
   // srcset = input<string>('')

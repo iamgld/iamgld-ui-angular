@@ -10,7 +10,7 @@ import { InputValue } from '../../../models'
   styleUrl: './select-option.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectOption {
+export class SelectOptionComponent {
   value = input.required<InputValue>()
   disabled = input<boolean, boolean | string>(false, { transform: booleanAttribute })
   selected = output<InputValue>()

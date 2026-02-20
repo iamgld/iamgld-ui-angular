@@ -8,7 +8,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@an
   styleUrl: './circle-loader.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CircleLoader {
+export class CircleLoaderComponent {
   loading = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   background = input<boolean, string | boolean>(false, { transform: booleanAttribute })
   radius = input<boolean, string | boolean>(false, { transform: booleanAttribute })
