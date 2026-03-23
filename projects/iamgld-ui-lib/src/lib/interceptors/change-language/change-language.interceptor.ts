@@ -16,7 +16,7 @@ export const changeLanguage: HttpInterceptorFn = (
 
   if (request.headers.has('Language')) {
     if (request.method.toLowerCase() === 'get') {
-      let language: TranslocoLanguageName = TRANSLOCO_LANGUAGE_NAMES.english
+      let language: TranslocoLanguageName
 
       switch (transloco.getLanguage()) {
         case TRANSLOCO_LANGUAGE_KEYS.english:
