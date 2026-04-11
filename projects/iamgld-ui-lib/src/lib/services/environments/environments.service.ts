@@ -5,7 +5,7 @@ import { Environment, EnvironmentType } from '../../models'
 import { SERVICES_ENVIRONMENT_TOKEN } from '../services-environment-token'
 
 @Injectable()
-export class Environments {
+export class EnvironmentsService {
   private readonly environment = inject<Environment>(SERVICES_ENVIRONMENT_TOKEN)
 
   public getEnvironment(): Environment {

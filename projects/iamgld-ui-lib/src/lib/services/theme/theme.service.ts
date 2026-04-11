@@ -4,7 +4,7 @@ import { Injectable, inject, type Renderer2, RendererFactory2 } from '@angular/c
 import { UiTheme, UI_THEMES } from '../../models'
 
 @Injectable()
-export class Theme {
+export class ThemeService {
   private readonly rendererFactory = inject(RendererFactory2)
 
   private renderer: Renderer2

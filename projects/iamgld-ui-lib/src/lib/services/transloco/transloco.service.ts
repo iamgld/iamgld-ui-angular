@@ -12,7 +12,7 @@ import {
 import type { TranslocoLanguageKey } from '../../models'
 
 @Injectable()
-export class Transloco {
+export class TranslocoService {
   private readonly translocoService = inject(JsverseTranslocoService)
 
   public changeLanguage(language: TranslocoLanguageKey) {
@@ -25,7 +25,7 @@ export class Transloco {
 }
 
 @Injectable()
-export class TranslocoHttpLoader implements TranslocoLoader {
+export class TranslocoHttpLoaderService implements TranslocoLoader {
   private readonly httpClient = inject(HttpClient)
 
   public getTranslation(lang: string) {

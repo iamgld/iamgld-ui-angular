@@ -10,7 +10,7 @@ import {
 } from '@ngrx/signals'
 // This Module Imports
 import { ICONS, UiTheme, UI_THEMES } from '../../models'
-import { Theme } from '../../services'
+import { ThemeService } from '../../services'
 
 export interface ThemeState {
 	theme: UiTheme
@@ -31,7 +31,7 @@ export const ThemeStore = signalStore(
 			})
 		},
 	}),
-	withMethods((store, themeService = inject(Theme)) => ({
+	withMethods((store, themeService = inject(ThemeService)) => ({
 		changeTheme: ({
 			theme,
 			iconTheme,

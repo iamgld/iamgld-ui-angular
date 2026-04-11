@@ -4,7 +4,7 @@ import { computed, inject, signal } from '@angular/core'
 // Thirdparty Imports
 import { catchError, Observable, Subject, switchMap, throwError } from 'rxjs'
 // This Module Imports
-import { Authentication } from '../../services'
+import { AuthenticationService } from '../../services'
 import { AuthenticationStore } from '../../stores'
 
 export const refreshToken: HttpInterceptorFn = (
@@ -12,7 +12,7 @@ export const refreshToken: HttpInterceptorFn = (
   next: HttpHandlerFn,
 ) => {
   const authenticationStore = inject(AuthenticationStore)
-  const authentication = inject(Authentication)
+  const authentication = inject(AuthenticationService)
   const logged = computed(() => authenticationStore.logged())
   const accessToken = computed(() => authenticationStore.accessToken())
   const refreshToken = computed(() => authenticationStore.refreshToken())

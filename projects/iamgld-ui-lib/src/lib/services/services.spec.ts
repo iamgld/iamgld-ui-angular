@@ -5,16 +5,16 @@ import { TranslocoService as JsverseTranslocoService } from '@jsverse/transloco'
 import { firstValueFrom, of } from 'rxjs'
 import { ICONS, TRANSLOCO_LANGUAGE_KEYS, UI_THEMES, type Environment } from '../models'
 import { SERVICES_ENVIRONMENT_TOKEN } from './services-environment-token'
-import { CustomPreloadingStrategy } from './custom-preload-strategy/custom-preload-strategy.service'
-import { Environments } from './environments/environments.service'
-import { Theme } from './theme/theme.service'
-import { Transloco, TranslocoHttpLoader } from './transloco/transloco.service'
+import { CustomPreloadingStrategyService } from './custom-preload-strategy/custom-preload-strategy.service'
+import { EnvironmentsService } from './environments/environments.service'
+import { ThemeService } from './theme/theme.service'
+import { TranslocoService, TranslocoHttpLoaderService } from './transloco/transloco.service'
 
 describe('library services', () => {
   describe('CustomPreloadingStrategy', () => {
   it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
-      const service = new CustomPreloadingStrategy()
+      const service = new CustomPreloadingStrategyService()
       const load = vi.fn().mockReturnValue(of(undefined))
       const route = { path: 'admin', data: { preload: true } }
 
@@ -28,7 +28,7 @@ describe('library services', () => {
 
   it('Given test context, When executing, Then validates expected behavior', async () => {
       // Given
-      const service = new CustomPreloadingStrategy()
+      const service = new CustomPreloadingStrategyService()
       const load = vi.fn().mockReturnValue(of(undefined))
       const route = { path: 'admin', data: { preload: false } }
 
@@ -53,12 +53,12 @@ describe('library services', () => {
 
       TestBed.configureTestingModule({
         providers: [
-          Environments,
+          EnvironmentsService,
           { provide: SERVICES_ENVIRONMENT_TOKEN, useValue: environmentMock },
         ],
       })
 
-      const service = TestBed.inject(Environments)
+      const service = TestBed.inject(EnvironmentsService)
 
       // When
       const environment = service.getEnvironment()
@@ -83,10 +83,10 @@ describe('library services', () => {
       }
 
       TestBed.configureTestingModule({
-        providers: [Theme, { provide: RendererFactory2, useValue: rendererFactoryMock }],
+        providers: [ThemeService, { provide: RendererFactory2, useValue: rendererFactoryMock }],
       })
 
-      const service = TestBed.inject(Theme)
+      const service = TestBed.inject(ThemeService)
 
       // When
       service.changeTheme(UI_THEMES.dark)
@@ -106,10 +106,10 @@ describe('library services', () => {
       }
 
       TestBed.configureTestingModule({
-        providers: [{ provide: JsverseTranslocoService, useValue: translocoServiceMock }, Transloco],
+        providers: [{ provide: JsverseTranslocoService, useValue: translocoServiceMock }, TranslocoService],
       })
 
-      const service = TestBed.inject(Transloco)
+      const service = TestBed.inject(TranslocoService)
 
       // When
       service.changeLanguage(TRANSLOCO_LANGUAGE_KEYS.english)
@@ -131,10 +131,10 @@ describe('library services', () => {
       }
 
       TestBed.configureTestingModule({
-        providers: [TranslocoHttpLoader, { provide: HttpClient, useValue: httpClientMock }],
+        providers: [TranslocoHttpLoaderService, { provide: HttpClient, useValue: httpClientMock }],
       })
 
-      const loader = TestBed.inject(TranslocoHttpLoader)
+      const loader = TestBed.inject(TranslocoHttpLoaderService)
 
       // When
       const payload = await firstValueFrom(loader.getTranslation('en'))

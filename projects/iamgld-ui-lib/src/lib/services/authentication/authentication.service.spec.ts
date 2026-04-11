@@ -5,10 +5,10 @@ import { of, throwError } from 'rxjs'
 import { Environment } from '../../models'
 import { AuthenticationStore } from '../../stores'
 import { SERVICES_ENVIRONMENT_TOKEN } from '../services-environment-token'
-import { Authentication } from './authentication.service'
+import { AuthenticationService } from './authentication.service'
 
 describe('Authentication service', () => {
-  let service: Authentication
+  let service: AuthenticationService
   let injector: Injector
 
   const httpMock = {
@@ -36,7 +36,7 @@ describe('Authentication service', () => {
 
     injector = Injector.create({
       providers: [
-        Authentication,
+        AuthenticationService,
         { provide: HttpClient, useValue: httpMock },
         { provide: Router, useValue: routerMock },
         { provide: AuthenticationStore, useValue: authenticationStoreMock },
@@ -44,7 +44,7 @@ describe('Authentication service', () => {
       ],
     })
 
-    service = injector.get(Authentication)
+    service = injector.get(AuthenticationService)
   })
 
   describe('signin', () => {

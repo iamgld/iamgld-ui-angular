@@ -4,13 +4,13 @@ import { HttpHandlerFn, HttpInterceptorFn, HttpParams, HttpRequest } from '@angu
 import { inject } from '@angular/core'
 // This Module Imports
 import { TRANSLOCO_LANGUAGE_KEYS, TRANSLOCO_LANGUAGE_NAMES, TranslocoLanguageName } from '../../models'
-import { Transloco } from '../../services'
+import { TranslocoService } from '../../services'
 
 export const changeLanguage: HttpInterceptorFn = (
   request: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ) => {
-  const transloco = inject(Transloco)
+  const transloco = inject(TranslocoService)
 
   let cloneRequest: HttpRequest<unknown> = request
 
