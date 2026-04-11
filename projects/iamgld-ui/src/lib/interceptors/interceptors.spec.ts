@@ -6,7 +6,7 @@ import {
   TRANSLOCO_LANGUAGE_NAMES,
   type TranslocoLanguageKey,
 } from '../models'
-import { Authentication, Transloco } from '../services'
+import { AuthenticationService, TranslocoService } from '../services'
 import { AuthenticationStore } from '../stores'
 import { addToken } from './add-token/add-token.interceptor'
 import { changeLanguage } from './change-language/change-language.interceptor'
@@ -52,7 +52,7 @@ describe('interceptors', () => {
       }
 
       TestBed.configureTestingModule({
-        providers: [{ provide: Transloco, useValue: translocoMock }],
+        providers: [{ provide: TranslocoService, useValue: translocoMock }],
       })
 
       const request = new HttpRequest('GET', '/api', undefined, {
@@ -89,7 +89,7 @@ describe('interceptors', () => {
       TestBed.configureTestingModule({
         providers: [
           { provide: AuthenticationStore, useValue: storeMock },
-          { provide: Authentication, useValue: authMock },
+          { provide: AuthenticationService, useValue: authMock },
         ],
       })
 
@@ -123,7 +123,7 @@ describe('interceptors', () => {
       TestBed.configureTestingModule({
         providers: [
           { provide: AuthenticationStore, useValue: storeMock },
-          { provide: Authentication, useValue: { refreshAccessToken: vi.fn() } },
+          { provide: AuthenticationService, useValue: { refreshAccessToken: vi.fn() } },
         ],
       })
 

@@ -1,6 +1,26 @@
 #!/usr/bin/env sh
 set -e
 
+
+# Load local system configuration if exists (e.g. for Homebrew on macOS)
+if [ -f "$HOME/.huskyrc" ]; then
+  . "$HOME/.huskyrc"
+fi
+
+# Inicializar fnm si está disponible
+if command -v fnm >/dev/null 2>&1; then
+    eval "$(fnm env --use-on-cd --shell sh)"
+fi
+
+# Inicializar pnpm si es necesario (añadir su home al PATH)
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+[ "${HUSKY:-1}" = "0" ] && exit 0
+
 echo "[hook pre-commit] Running linters - linting, formatting and stylelint..."
 
 # Ensure Node is available in Git Bash (fnm-managed Node)

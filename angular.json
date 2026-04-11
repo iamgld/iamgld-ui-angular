@@ -8,7 +8,7 @@
 	},
 	"newProjectRoot": "projects",
 	"projects": {
-		"iamgld-ui": {
+		"app": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:application": {
@@ -134,16 +134,16 @@
 					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"local": {
-							"buildTarget": "iamgld-ui:build:local"
+							"buildTarget": "app:build:local"
 						},
 						"development": {
-							"buildTarget": "iamgld-ui:build:development"
+							"buildTarget": "app:build:development"
 						},
 						"staging": {
-							"buildTarget": "iamgld-ui:build:staging"
+							"buildTarget": "app:build:staging"
 						},
 						"production": {
-							"buildTarget": "iamgld-ui:build:production"
+							"buildTarget": "app:build:production"
 						}
 					},
 					"defaultConfiguration": "local"
@@ -159,7 +159,7 @@
 				}
 			}
 		},
-		"iamgld-ui-lib": {
+		"iamgld-ui": {
 			"projectType": "library",
 			"schematics": {
 				"@schematics/angular:application": {
@@ -186,18 +186,18 @@
 					"type": "model"
 				}
 			},
-			"root": "projects/iamgld-ui-lib",
-			"sourceRoot": "projects/iamgld-ui-lib/src",
+			"root": "projects/iamgld-ui",
+			"sourceRoot": "projects/iamgld-ui/src",
 			"prefix": "lib",
 			"architect": {
 				"build": {
 					"builder": "@angular/build:ng-packagr",
 					"configurations": {
 						"production": {
-							"tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.prod.json"
+							"tsConfig": "projects/iamgld-ui/tsconfig.lib.prod.json"
 						},
 						"development": {
-							"tsConfig": "projects/iamgld-ui-lib/tsconfig.lib.json"
+							"tsConfig": "projects/iamgld-ui/tsconfig.lib.json"
 						}
 					},
 					"defaultConfiguration": "production"
@@ -205,15 +205,15 @@
 				"test": {
 					"builder": "@angular/build:unit-test",
 					"options": {
-						"tsConfig": "projects/iamgld-ui-lib/tsconfig.spec.json"
+						"tsConfig": "projects/iamgld-ui/tsconfig.spec.json"
 					}
 				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
 						"lintFilePatterns": [
-							"projects/iamgld-ui-lib/src/**/*.ts",
-							"projects/iamgld-ui-lib/src/**/*.html"
+							"projects/iamgld-ui/src/**/*.ts",
+							"projects/iamgld-ui/src/**/*.html"
 						]
 					}
 				}

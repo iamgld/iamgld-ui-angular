@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 import { CookieService } from 'ngx-cookie-service'
 import { COOKIES_KEYS, ICONS, UI_THEMES } from '../models'
-import { Theme } from '../services'
+import { ThemeService } from '../services'
 import { AuthenticationStore } from './authentication/authentication-store'
 import { ThemeStore } from './theme/theme-store'
 
@@ -56,7 +56,7 @@ describe('stores', () => {
     }
 
     TestBed.configureTestingModule({
-      providers: [ThemeStore, { provide: Theme, useValue: themeServiceMock }],
+      providers: [ThemeStore, { provide: ThemeService, useValue: themeServiceMock }],
     })
 
     const store = TestBed.inject(ThemeStore)

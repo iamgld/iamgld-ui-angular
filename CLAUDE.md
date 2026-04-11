@@ -24,7 +24,7 @@ Tu trabajo es mejorar ambas sin mezclar sus límites.
 
 ## Contexto real del repo
 La app en `src/` sirve como host SSR y entorno de integración.
-La librería en `projects/iamgld-ui-lib/` contiene componentes, utils, validators, stores y servicios reutilizables.
+La librería en `projects/iamgld-ui/` contiene componentes, utils, validators, stores y servicios reutilizables.
 
 Regla simple:
 - si el cambio debe sobrevivir fuera de esta app, va a la librería;

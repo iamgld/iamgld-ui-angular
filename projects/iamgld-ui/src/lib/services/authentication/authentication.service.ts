@@ -11,7 +11,7 @@ import { SERVICES_ENVIRONMENT_TOKEN } from '../services-environment-token'
 import { RefreshAccessTokenResponse, SigninResponse } from './authentication-adapter'
 
 @Injectable()
-export class Authentication {
+export class AuthenticationService {
   private readonly environment = inject<Environment>(SERVICES_ENVIRONMENT_TOKEN)
   private readonly router = inject(Router)
   private readonly http = inject(HttpClient)
