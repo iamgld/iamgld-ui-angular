@@ -1,6 +1,6 @@
 {
   "name": "@iamgld/ui",
-  "version": "21.7.0",
+  "version": "21.9.0",
   "peerDependencies": {
     "@angular/common": "21.2.5",
     "@angular/core": "21.2.5",

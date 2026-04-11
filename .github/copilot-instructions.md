@@ -6,9 +6,9 @@ Expert in TypeScript, Angular 21, and scalable web application development. Writ
 
 This is a **monorepo** with two main parts:
 - **`src/`** - Demo/showcase application (`iamgld.dev`)
-- **`projects/iamgld-ui-lib/`** - Publishable UI component library (`@iamgld/ui` on npm, v21.1.3+)
+- **`projects/iamgld-ui/`** - Publishable UI component library (`@iamgld/ui` on npm, v21.1.3+)
 
-### Component Library (`projects/iamgld-ui-lib/`)
+### Component Library (`projects/iamgld-ui/`)
 - Entry point: `src/public-api.ts` - exports all public APIs
 - Components: `src/lib/components/` - organized by category (buttons, controls, tables, icon, image, loaders, tile)
 - Models: `src/lib/models/` - TypeScript enums and types (e.g., `ButtonColor`, `Icons`, `TableColumn`)
@@ -123,7 +123,7 @@ App supports Server-Side Rendering:
 ## Library Publishing
 
 ```bash
-pnpm build:iamgld-ui-lib  # Build library
+pnpm build:iamgld-ui  # Build library
 pnpm npm:publish          # Build and publish to npm
 ```
 

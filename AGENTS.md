@@ -18,7 +18,7 @@ Tu enfoque acá es:
 
 Tiene:
 - una app Angular SSR en `src/`;
-- una librería Angular publicable en `projects/iamgld-ui-lib/`;
+- una librería Angular publicable en `projects/iamgld-ui/`;
 - utilidades, validators, stores, guards, interceptors y componentes reutilizables;
 - pruebas unitarias y browser tests.
 
@@ -43,7 +43,7 @@ Vive en `src/`.
 Sirve como host, demo y entorno real para probar la librería.
 
 ### Librería UI
-Vive en `projects/iamgld-ui-lib/`.
+Vive en `projects/iamgld-ui/`.
 Es el corazón del repo y debe mantenerse reusable, tipada y estable.
 
 Regla crítica:
@@ -58,7 +58,7 @@ iamgld-ui/
 │   ├── environments/
 │   └── server.ts
 ├── projects/
-│   └── iamgld-ui-lib/
+│   └── iamgld-ui/
 │       ├── src/lib/
 │       │   ├── components/
 │       │   ├── directives/
@@ -154,7 +154,7 @@ Como la app corre con SSR:
 ```bash
 pnpm start
 pnpm build
-pnpm build:iamgld-ui-lib
+pnpm build:iamgld-ui
 pnpm test
 pnpm test:coverage
 pnpm test:browser
